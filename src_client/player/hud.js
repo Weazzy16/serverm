@@ -637,7 +637,7 @@ gm.events.add(global.renderName ["125ms"], () => {
 				mp.gui.emmit(`window.vehicleState.handbrake(${isHandbrakePressed})`);
 				
 				// ✅ ДОБАВЬ: Фары (lights)
-				const lightsState = vehicle.getVariable('LIGHTS') || 0; // 0 = выключены, 1 = ближний, 2 = дальний
+				const lightsState = vehicle.getVariable('LIGHTS_STATE') || 0;
 				mp.gui.emmit(`window.vehicleState.lights(${lightsState})`);
 			}
 		} else if (vehiclestatus && !global.hudstatus.invehicle) {
@@ -653,29 +653,80 @@ gm.events.add(global.renderName ["125ms"], () => {
 });
 
 
-function getVehicleLightsState(vehicle) {
+// ✅ ==================== ФАРЫ (С БЕЗОПАСНОЙ НАТИВКОЙ) ====================
+
+// ✅ Функция получения состояния фар из игры (с защитой от краша)
+function getVehicleLightsStateSafe(vehicle) {
     try {
-        // Пробуем разные варианты
-        if (typeof vehicle.areLightsOn !== 'undefined') {
-            const lightsOn = vehicle.areLightsOn;
-            const highBeamsOn = vehicle.areHighBeamsOn || false;
-            
-            if (highBeamsOn) return 2;
-            if (lightsOn) return 1;
-            return 0;
+        // Используем безопасную версию нативки
+        const result = Natives.GET_VEHICLE_LIGHTS_STATE_SAFE(vehicle.handle);
+        
+        if (!result.success) {
+            console.log('🔦 [ERROR] Native failed:', result.error);
+            return -1; // Нативка не работает
         }
         
-        // Альтернативный вариант
-        if (typeof vehicle.getLightsState !== 'undefined') {
-            return vehicle.getLightsState();
-        }
-        
-        return -1; // Не поддерживается
+        if (result.highBeamsOn) return 2; // Дальний свет
+        if (result.lightsOn) return 1; // Ближний свет
+        return 0; // Выключены
     } catch (e) {
-        console.log('🔦 [ERROR] getVehicleLightsState:', e);
+        console.log('🔦 [ERROR] getVehicleLightsStateSafe:', e);
         return -1;
     }
 }
+
+let lastLightsState = -1;
+let lightsCheckFailed = false;
+let nativeCheckAttempts = 0;
+
+// ✅ Проверка каждые 500мс
+setInterval(() => {
+    try {
+        // Если нативка не работает после 3 попыток — не пытаемся больше
+        if (lightsCheckFailed && nativeCheckAttempts >= 3) return;
+        
+        if (!global.loggedin || !global.localplayer.isInAnyVehicle(false)) {
+            if (lastLightsState !== -1) {
+                lastLightsState = -1;
+            }
+            return;
+        }
+        
+        const vehicle = global.localplayer.vehicle;
+        if (!vehicle || vehicle.getPedInSeat(-1) != global.localplayer.handle) return;
+        
+        // ✅ Получаем состояние фар из игры
+        const currentState = getVehicleLightsStateSafe(vehicle);
+        
+        // Если нативка не работает — считаем попытки
+        if (currentState === -1) {
+            nativeCheckAttempts++;
+            if (nativeCheckAttempts >= 3) {
+                lightsCheckFailed = true;
+                console.log('🔦 [WARNING] Native не работает после 3 попыток. Используй биндер на H!');
+            }
+            return;
+        }
+        
+        // Нативка работает! Сбрасываем счётчик
+        nativeCheckAttempts = 0;
+        lightsCheckFailed = false;
+        
+        // Если состояние изменилось — отправляем на сервер
+        if (currentState !== lastLightsState) {
+            lastLightsState = currentState;
+            callRemote('server.vehicle.syncLights', currentState);
+            console.log('🔦 [AUTO] Lights state changed:', currentState);
+        }
+    } catch (e) {
+        console.log('🔦 [AUTO ERROR]:', e);
+        lightsCheckFailed = true;
+    }
+}, 500);
+
+
+
+// ✅ ==================== КОНЕЦ ФАРЫ ====================
 
 gm.events.add(global.renderName ["5s"], () => {
 	try {
@@ -869,6 +920,8 @@ const ShowSpeed = (vehicle) => {
 }
 
 gm.events.add("playerLeaveVehicle", (entity) => {
+	lastLightsState = -1;
+    nativeCheckAttempts = 0;
 	CloseVehicleSpeed ();
 });
 
@@ -1299,74 +1352,3 @@ gm.events.add("hud.event.cool", async (_subTitle, _title, _desc, _image, timeWai
 	mp.gui.emmit(`window.listernEvent ('hud.event', false);`);
 });
 
-// ✅ ==================== ФАРЫ (СПОСОБ 2) ====================
-
-// ✅ Функция получения состояния фар из игры
-function getVehicleLightsStateFromGame(vehicle) {
-    try {
-        const lightsOn = {};
-        const highBeamsOn = {};
-        
-        // Вызываем нативку GET_VEHICLE_LIGHTS_STATE
-        mp.game.invoke('0xB91B4C20085BD12F', vehicle.handle, lightsOn, highBeamsOn);
-        
-        // Проверяем результаты
-        if (highBeamsOn.value === true || highBeamsOn.value === 1) {
-            return 2; // Дальний свет
-        } else if (lightsOn.value === true || lightsOn.value === 1) {
-            return 1; // Ближний свет
-        } else {
-            return 0; // Выключены
-        }
-    } catch (e) {
-        // Если нативка не работает — возвращаем -1 (неизвестно)
-        console.log('🔦 [ERROR] getVehicleLightsStateFromGame:', e.message);
-        return -1;
-    }
-}
-
-let lastLightsState = -1;
-let lightsCheckFailed = false;
-
-// ✅ Проверка каждые 500мс
-setInterval(() => {
-    try {
-        // Если нативка не работает — не пытаемся больше
-        if (lightsCheckFailed) return;
-        
-        if (!global.loggedin || !global.localplayer.isInAnyVehicle(false)) {
-            if (lastLightsState !== -1) {
-                lastLightsState = -1;
-            }
-            return;
-        }
-        
-        const vehicle = global.localplayer.vehicle;
-        if (!vehicle || vehicle.getPedInSeat(-1) != global.localplayer.handle) return;
-        
-        // ✅ Получаем состояние фар из игры
-        const currentState = getVehicleLightsStateFromGame(vehicle);
-        
-        // Если нативка не работает — помечаем и выходим
-        if (currentState === -1) {
-            lightsCheckFailed = true;
-            console.log('🔦 [WARNING] GET_VEHICLE_LIGHTS_STATE не работает, используй вариант с биндером на H');
-            return;
-        }
-        
-        // Если состояние изменилось — отправляем на сервер
-        if (currentState !== lastLightsState) {
-            lastLightsState = currentState;
-            callRemote('server.vehicle.syncLights', currentState);
-            console.log('🔦 [AUTO] Lights state changed:', currentState);
-        }
-    } catch (e) {
-        console.log('🔦 [AUTO ERROR]:', e);
-        lightsCheckFailed = true;
-    }
-}, 500);
-
-// ✅ Сброс при выходе
-
-
-// ✅ ==================== КОНЕЦ ФАРЫ ====================
