@@ -637,7 +637,7 @@ gm.events.add(global.renderName ["125ms"], () => {
 				mp.gui.emmit(`window.vehicleState.handbrake(${isHandbrakePressed})`);
 				
 				// ✅ ДОБАВЬ: Фары (lights)
-				const lightsState = vehicle.getVariable('LIGHTS') || 0; // 0 = выключены, 1 = ближний, 2 = дальний
+				const lightsState = vehicle.getSharedData('LIGHTS_STATE') || 0; // 0 = выключены, 1 = ближний, 2 = дальний
 				mp.gui.emmit(`window.vehicleState.lights(${lightsState})`);
 			}
 		} else if (vehiclestatus && !global.hudstatus.invehicle) {
