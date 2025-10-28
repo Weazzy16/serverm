@@ -112,8 +112,33 @@ Natives.GET_VEHICLE_TRAILER_VEHICLE = (vehicle, trailer) => mp.game.invoke('0x1C
 Natives.DETACH_VEHICLE_FROM_TRAILER = (vehicle) => mp.game.invoke('0x90532EDF0D2BDD86', vehicle);
 Natives.ATTACH_VEHICLE_TO_TRAILER = (vehicle, trailer, radius) => mp.game.invoke('0x3C7D42D58F770B54', vehicle, trailer, radius);
 // ✅ ДОБАВЬ ЭТУ СТРОКУ
-Natives.GET_VEHICLE_LIGHTS_STATE = (vehicle, lightsOn, highbeamsOn) => mp.game.invoke('0xB91B4C20085BD12F', vehicle, lightsOn, highbeamsOn);
-// ✅ ДОБАВЬ ЭТУ СТРОКУ
+// ✅ Исправленная версия GET_VEHICLE_LIGHTS_STATE (с защитой от краша)
+Natives.GET_VEHICLE_LIGHTS_STATE_SAFE = (vehicle) => {
+    try {
+        const lightsOn = {};
+        const highBeamsOn = {};
+        
+        // Пытаемся вызвать нативку
+        const result = mp.game.invoke('0xB91B4C20085BD12F', vehicle, lightsOn, highBeamsOn);
+        
+        // Возвращаем объект с результатами
+        return {
+            success: true,
+            lightsOn: lightsOn.value || false,
+            highBeamsOn: highBeamsOn.value || false,
+            result: result
+        };
+    } catch (e) {
+        // Если краш — возвращаем null
+        return {
+            success: false,
+            error: e.message
+        };
+    }
+};
+
+// Старая версия (оставляем для совместимости)
+Natives.GET_VEHICLE_LIGHTS_STATE = (vehicle, lightsOn, highbeamsOn) => mp.game.invoke('0xB91B4C20085BD12F', vehicle, lightsOn, highbeamsOn);// ✅ ДОБАВЬ ЭТУ СТРОКУ
 Natives.GET_VEHICLE_CURRENT_RPM = (vehicle) => mp.game.invoke('0x5F739BB8', vehicle);
 Natives.GET_FRAME_COUNT = () => mp.game.invoke('0xFC8202EFC642E6F2');
 Natives.GET_GAME_TIMER = () => mp.game.invoke('0x9CD27B0045628463');
