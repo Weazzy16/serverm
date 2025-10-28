@@ -1,0 +1,184 @@
+
+
+.skills {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2.7777777778vh;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden
+}
+
+.skills::-webkit-scrollbar {
+    width: .3703703704vh
+}
+
+.skills::-webkit-scrollbar-track {
+    border-radius: .5555555556vh;
+    background: linear-gradient(270deg,transparent 0,hsla(0,0%,100%,.1) 30%,hsla(0,0%,100%,.1) 50%,hsla(0,0%,100%,.1) 70%,transparent)
+}
+
+.skills::-webkit-scrollbar-thumb {
+    border-radius: .5555555556vh;
+    background: #686868
+}
+
+.skills .wrapperss {
+    gap: 2.7777777778vh
+}
+
+.skills .wrapperss .categoryss .skills .wrapperss {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%
+}
+
+.skills .wrapperss .categoryss {
+    gap: 1.8518518519vh
+}
+
+.skills .wrapperss .categoryss h3 {
+    color: #fff;
+    font-size: 1.6666666667vh;
+    font-family: ProximaNova;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase
+}
+
+
+.skills .wrapperss .categoryss .card4-wrapperss {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(34.7222222222vh,1fr));
+    grid-template-rows: auto;
+    grid-gap: .9259259259vh;
+    width: 100%
+}
+
+.skills .wrapperss .categoryss .card4-wrapperss .card4 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 2.037037037vh;
+    width: 100%;
+    min-height: 17.2222222222vh;
+    border-radius: .7407407407vh;
+    border: .0925925926vh solid #212121;
+    background: #111;
+    gap: 1.8518518519vh;
+    flex-shrink: 0
+}
+
+.skills .wrapperss .categoryss .card4-wrapperss .card4 .card4-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1.4814814815vh;
+    width: 100%
+}
+
+.skills .wrapperss .categoryss .card4-wrapperss .card4 .card4-heading .top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%
+}
+
+.skills .wrapperss .categoryss .card4-wrapperss .card4 .card4-heading .top .more {
+    width: 1.6666666667vh;
+    height: 1.6666666667vh;
+    cursor: pointer
+}
+
+.skills .wrapperss .categoryss .card4-wrapperss .card4 .card4-heading .top .more svg {
+    width: 100%;
+    height: 100%;
+    fill: #868686;
+    transition: fill .2s ease
+}
+
+.skills .wrapperss .categoryss .card4-wrapperss .card4 .card4-heading .top .more:hover svg {
+    fill: #fff
+}
+
+.skills .wrapperss .categoryss .card4-wrapperss .card4 .card4-heading h6 {
+    color: #fff;
+    font-size: 1.6666666667vh;
+    font-style: normal;
+    font-family: ProximaNova;
+    font-weight: 700
+}
+
+.skills .wrapperss .categoryss .card4-wrapperss .card4 p {
+    color: #868686;
+    font-size: 1.2962962963vh;
+    font-family: ProximaNova;
+    font-style: normal;
+    font-weight: 500
+}
+
+.skills .wrapperss .categoryss .card4-wrapperss .card4 .card4-footer {
+    margin-top: auto;
+    width: 100%;
+    color: #868686;
+    font-size: 1.2962962963vh;
+    font-style: normal;
+    font-family: ProximaNova;
+    font-weight: 600
+}
+
+.skills .wrapperss .categoryss .card4-wrapperss .card4 .card4-footer span {
+    color: #fff;
+    font-size: 1.2962962963vh;
+    font-family: ProximaNova;
+    font-style: normal;
+    font-weight: 700
+}
+.skills .wrapperss .categoryss .card4-wrapperss .card4 b {
+    color: #868686;
+    font-family: ProximaNova;
+    font-size: 1.2962962963vh;
+    font-style: normal;
+    font-weight: 600
+}
+.skills .wrapperss .categoryss .card4-wrapperss .card4 .card4-footer .progress4 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1.1111111111vh
+}
+
+.skills .wrapperss .categoryss .card4-wrapperss .card4 .card4-footer .progress4-counter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%
+}
+
+.skills .wrapperss .categoryss .card4-wrapperss .card4 .card4-footer .progress4-bar {
+    width: 100%;
+    height: .1851851852vh;
+    flex-shrink: 0;
+    border-radius: 9.2592592593vh;
+    background: hsla(0,0%,100%,.1)
+}
+
+.skills .wrapperss .categoryss .card4-wrapperss .card4 .card4-footer .progress4-bar-inner {
+    width: 50%;
+    height: .1851851852vh;
+    flex-shrink: 0;
+    border-radius: 9.2592592593vh;
+    background: #e81c5a
+}
+
+ 

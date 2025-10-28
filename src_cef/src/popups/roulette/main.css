@@ -1,0 +1,361 @@
+.opencasedon {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0vh;
+    top: 0vh;
+    background: url(https://imgur.com/FUbVYh6.png);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.opencasedon .caseclosed {
+    position: absolute;
+    top: 2.222vh;
+    right: 3.519vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.opencasedon .caseopen {
+    margin-top: 5.278vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.opencasedon .caseclosed p {
+    color: #FFF;
+    text-align: right;
+    text-shadow: 0px 0px 0.648vh rgba(255, 255, 255, 0.25);
+    font-family: Gilroy;
+    font-size: 1.111vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.389vh;
+    letter-spacing: 0.067vh;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.opencasedon .caseclosed .btncl {
+    display: flex;
+    width: 2.778vh;
+    height: 2.778vh;
+    border-radius: 0.278vh;
+    background: #C92A2A;
+    box-shadow: 0px 0.556vh 2.037vh 0px rgba(201, 42, 42, 0.50);
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.833vh;
+}
+
+.opencasedon .caseclosed .btncl p {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.096vh;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.389vh;
+    letter-spacing: 0.078vh;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.opencasedon .caseopen h1 {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 2.963vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.opencasedon .caseopen .caserun {
+    margin-top: 3.056vh;
+    width: 111.885vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.opencasedon .caseopen .caseitemlist {margin-top: 1.911vh;width: 51.852vh;max-height: 57vh;display: flex;flex-direction: row;flex-wrap: wrap;align-items: flex-start;justify-content: flex-start;overflow: auto;-ms-overflow-style: none;scrollbar-width: none;}
+
+.opencasedon .caseopen .caserun .runtop {
+    background: url(https://imgur.com/UYXXK44.png);
+    width: 3.981vh;
+    height: 4.167vh;
+    background-size: cover;
+}
+
+.opencasedon .caseopen .caserun .runbot {
+    background: url(https://imgur.com/UYXXK44.png);
+    width: 3.981vh;
+    height: 4.167vh;
+    background-size: cover;
+    transform: rotate(180deg);
+}
+
+.opencasedon .caseopen .caseitemlist .items {
+    width: 7.407vh;
+    height: 7.407vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.7vh;
+}
+
+.opencasedon .caseopen .caseitemlist .items.blue {
+    width: 7.407vh;
+    height: 7.407vh;
+    background-size: cover !important;
+    background: url(https://imgur.com/rvGh4AU.png);
+}
+
+.opencasedon .caseopen .caseitemlist .items.yellow {
+    width: 7.407vh;
+    height: 7.407vh;
+    background-size: cover !important;
+    background: url(https://imgur.com/kDMWlAr.png);
+}
+
+.opencasedon .caseopen .caseitemlist .items.pink {
+    width: 7.407vh;
+    height: 7.407vh;
+    background-size: cover !important;
+    background: url(https://imgur.com/IhXFcIS.png);
+}
+
+.opencasedon .caseopen .caseitemlist .items.red {
+    width: 7.407vh;
+    height: 7.407vh;
+    background-size: cover !important;
+    background: url(hhttps://imgur.com/1iS4FRz.png);
+}
+
+.opencasedon .caseopen .caseitemlist .items img.icoi {
+    height: 4.167vh;
+}
+
+.opencasedon .caseopen .caserun .casebtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2.259vh;
+}
+
+.opencasedon .caseopen .caserun .casebtn .caseru {
+    display: flex;
+    width: 11.944vh;
+    height: 2.963vh;
+    background: linear-gradient(90deg, #386ED7 0%, #45C7FF 100%);
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.185vh;
+}
+
+.opencasedon .caseopen .caserun .casebtn .casefast {
+    display: flex;
+    width: 11.944vh;
+    height: 2.963vh;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #D77138 0%, #FF6745 100%);
+}
+
+.opencasedon .caseopen .caserun .casebtn .caseru p {
+    color: #FFF;
+    font-family: Gilroy;
+    text-align: center;
+    font-size: 1.019vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.opencasedon .caseopen .caserun .casebtn .casefast p {
+    color: #FFF;
+    font-family: Gilroy;
+    text-align: center;
+    font-size: 1.019vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.opencasedon .caseopen .caserun .casebtn .caseru:hover, .casefast:hover {
+    transform: scale(1.03);
+}
+
+.opencasedon .caseopen .caseitemlist::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+}
+
+.opencasedon .caseopen .caseitemlist .items p {
+    position: absolute;
+    color: #FFF;
+    font-family: Gilroy;
+    font-size: 1.296vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2.130vh;
+    margin-top: -10vh;
+    margin-bottom: 0vh;
+    background: radial-gradient(178.85% 90.03% at 50% 50%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.00) 100%);
+    padding: 0.5vh;
+    z-index: 1;
+    opacity: 0;
+}
+
+.opencasedon .caseopen .caseitemlist .items:hover {
+}
+
+.opencasedon .caseopen .caseitemlist .items:hover p {
+    opacity: 1;
+}
+
+.opencasedon .caseopen .caserun .itemcase {
+    background: url(https://imgur.com/hmRwGTW.png);
+    width: 12.389vh;
+    height: 14.241vh;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.opencasedon .caseopen .caserun .itemcase img.icoi {
+    width: 6.481vh;
+}
+
+.opencasedon .caselut {
+    position: absolute;
+    left: 0vh;
+    top: 0vh;
+    width: 100%;
+    height: 100%;
+    background: rgba(16, 21, 24, 0.90);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.opencasedon .caselut p {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 2.222vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.opencasedon .caselut .itemlut {
+    background: url(https://imgur.com/xVgazRs.png);
+    background-size: cover;
+    width: 65.926vh;
+    height: 52.685vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    top: -10vh;
+}
+
+.opencasedon .caselut .lutbtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: -13vh;
+}
+
+.opencasedon .caselut .itemlut img.iclut {
+    height: 11.389vh;
+    position: absolute;
+}
+
+.opencasedon .caselut .itemlut p {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 2.222vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: auto;
+    margin-bottom: 6.574vh;
+}
+
+.opencasedon .caselut .lutbtn .btninv {
+    display: flex;
+    width: 11.944vh;
+    height: 2.963vh;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #386ED7 0%, #45C7FF 100%);
+    margin-right: 0.5vh;
+}
+
+.opencasedon .caselut .lutbtn .btnsell {
+    display: flex;
+    width: 11.944vh;
+    height: 2.963vh;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #D77138 0%, #FF6745 100%);
+}
+
+.opencasedon .caselut .lutbtn .btninv p {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.111vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.opencasedon .caselut .lutbtn .btnsell p {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.111vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.opencasedon .caselut .lutbtn .btninv:hover {
+    transform: scale(1.03);
+}
+
+.opencasedon .caselut .lutbtn .btnsell:hover {
+    transform: scale(1.03);
+}

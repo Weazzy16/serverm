@@ -1,0 +1,1084 @@
+.fade-up-animation {
+    animation: fadeOutUp 1s ease
+    }
+.fade-down-animation {
+    animation: fadeOutDown 1s ease
+    }
+@keyframes fadeOutUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        background-color: #40b6ff;
+        color: #fff
+        } to {
+        opacity: 0;
+        transform: translateY(-100%);
+        background-color: #40b6ff;
+        color: #fff
+        }
+    }
+@keyframes fadeOutDown {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        background-color: #071e30;
+        color: #fff
+        } to {
+        opacity: 0;
+        transform: translateY(100%);
+        background-color: #071e30;
+        color: #fff
+        }
+    }
+.logotype-enter-active {
+    animation: logotype 0.5s ease
+    }
+.logotype-leave-active {
+    animation: logotype 0.5s ease reverse
+    }
+@keyframes logotype {
+    0% {
+        transform: scale(0);
+        opacity: 0
+        } to {
+        transform: scale(1);
+        opacity: 1
+        }
+    }
+.cardMoveIn {
+    animation: cardMoveInside ease forwards;
+    animation-duration: 2s
+    }
+.cardMoveOut {
+    animation: cardMoveOutside ease forwards;
+    animation-duration: 2s
+    }
+@keyframes cardMoveOutside {
+    0% {
+        right: 27.7777777778vh
+        } to {
+        right: 1.0185185185vh
+        }
+    }
+@keyframes cardMoveInside {
+    0% {
+        right: 1.0185185185vh
+        } to {
+        right: 27.7777777778vh
+        }
+    }
+@keyframes borderBlink {
+    0% {
+        opacity: .5
+        } to {
+        opacity: 1
+        }
+    }
+.fade-enter, .fade-leave-to {
+    opacity: 0
+    }
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.5s
+    }
+@keyframes slide-up {
+    0% {
+        transform: translateY(-20%);
+        opacity: 0
+        } to {
+        transform: translateY(0);
+        opacity: 1
+        }
+    }
+@keyframes slide-down {
+    0% {
+        transform: translateY(0);
+        opacity: 1
+        } to {
+        transform: translateY(20%);
+        opacity: 0
+        }
+    }
+.ipad-slide-enter-active {
+    animation: ipad-slide 0.4s ease
+    }
+.ipad-slide-leave-active {
+    animation: ipad-slide 0.4s ease reverse
+    }
+@keyframes ipad-slide {
+    0% {
+        transform: translateY(120%)
+        } to {
+        transform: translateY(0)
+        }
+    }
+@keyframes bounce-in-transition {
+    0% {
+        transform: scale(0);
+        opacity: 0
+        } to {
+        transform: scale(1);
+        opacity: 1
+        }
+    }
+.jackpot {
+    overflow: hidden;
+    background-color: hsla(0, 0%, 7%, 0.9);
+    mix-blend-mode: normal;
+    padding: 0 2.777778vh
+    }
+.jackpot  {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover
+    }
+.jackpot .no-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%
+    }
+.jackpot .no-content h1 {
+    font-family: var(--IntegratedFont), sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 3.240741vh;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff
+    }
+.jackpot .info {
+    margin-bottom: 1.481481vh;
+    padding: 1.851852vh 2.222222vh;
+    height: 7.777778vh;
+    background: #171717;
+    border-radius: 1.666667vh
+    }
+.jackpot .info .minigamesIcon {
+    margin-right: 1.203704vh;
+    width: 2.777778vh;
+    height: 2.222222vh;
+    fill: url(#paint0_linear_55_3401)
+    }
+.jackpot .info .title {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2.222222vh;
+    line-height: 2.592593vh;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-right: 0.740741vh
+    }
+.jackpot .info .gameID {
+    min-width: 4.166667vh;
+    min-height: 3.611111vh;
+    padding: 0.925926vh 1.111111vh;
+    background: #2d2d2d;
+    border-radius: 0.740741vh
+    }
+.jackpot .info .gameID span {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.481481vh;
+    line-height: 1.759259vh;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #fff, #9a9a9a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent
+    }
+.jackpot .info .history {
+    margin-right: 2.222222vh;
+    padding: 0.833333vh 1.666667vh 0.833333vh 1.296296vh;
+    border: none;
+    background-color: #2d2d2d;
+    border-radius: 0.740741vh;
+    min-width: 11.388889vh;
+    height: 3.611111vh;
+    cursor: pointer
+    }
+.jackpot .info .history .icon {
+    margin-right: 0.555556vh;
+    width: 1.944444vh;
+    height: 1.944444vh;
+    fill: url(#paint0_linear_55_3401)
+    }
+.jackpot .info .history span {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.481481vh;
+    line-height: 1.759259vh;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #fff, #9a9a9a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent
+    }
+.jackpot .info .players {
+    margin-right: 3.468519vh
+    }
+.jackpot .info .players .icon {
+    margin-right: 1.296296vh;
+    width: 2.222222vh;
+    height: 2.777778vh;
+    fill: url(#paint0_linear_55_3401)
+    }
+.jackpot .info .players .count {
+    font-size: 1.666667vh;
+    line-height: 1.944444vh;
+    color: #fff
+    }
+.jackpot .info .players .count, .jackpot .info .players .text {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: -0.02em;
+    text-transform: uppercase
+    }
+.jackpot .info .players .text {
+    font-size: 1.481481vh;
+    line-height: 1.759259vh;
+    color: #616161
+    }
+.jackpot .info .bank .icon {
+    margin-right: 1.253704vh;
+    width: 3.055556vh;
+    height: 1.944444vh;
+    fill: url(#paint0_linear_55_3401)
+    }
+.jackpot .info .bank .count {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.666667vh;
+    line-height: 1.944444vh;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #fff
+    }
+.jackpot .info .bank .count .coins {
+    width: 1.543519vh;
+    height: 1.543519vh;
+    margin-left: 0.37037vh
+    }
+.jackpot .info .bank .text {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.481481vh;
+    line-height: 1.759259vh;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #616161
+    }
+.jackpot .empty {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center
+    }
+.jackpot .empty .emptyBets .icon {
+    margin-bottom: 1.157407vh;
+    width: 2.5vh;
+    height: 2.5vh;
+    fill: #616161
+    }
+.jackpot .empty .emptyBets .text {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.666667vh;
+    line-height: 1.944444vh;
+    text-align: center;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #616161
+    }
+.jackpot .gameWrapper {
+    margin-bottom: 1.481481vh
+    }
+.jackpot .gameWrapper .game {
+    padding: 2.222222vh;
+    margin-right: 1.481481vh;
+    max-width: 99.907407vh;
+    width: calc(100% - 42.87037vh);
+    height: 40vh;
+    background: #171717;
+    border-radius: 1.666667vh;
+    overflow: hidden
+    }
+.jackpot .gameWrapper .game .gameInfo {
+    margin-bottom: 1.666667vh
+    }
+.jackpot .gameWrapper .game .gameInfo .bank, .jackpot .gameWrapper .game .gameInfo .players {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.666667vh;
+    line-height: 1.944444vh;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 1.851852vh;
+    height: 5.555556vh;
+    background: #111;
+    border-radius: 1.111111vh
+    }
+.jackpot .gameWrapper .game .gameInfo .bank {
+    white-space: nowrap;
+    margin-right: 1.481481vh;
+    width: 23.148148vh
+    }
+.jackpot .gameWrapper .game .gameInfo .bank .coins {
+    margin-left: 0.525vh;
+    width: 1.543519vh;
+    height: 1.543519vh
+    }
+.jackpot .gameWrapper .game .gameInfo .players {
+    position: relative;
+    width: 70.833333vh;
+    overflow: hidden
+    }
+.jackpot .gameWrapper .game .gameInfo .players span {
+    white-space: nowrap;
+    position: relative;
+    z-index: 1
+    }
+.jackpot .gameWrapper .game .gameInfo .players .back {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, #a359ff, #672fac);
+    border-radius: 1.111111vh;
+    transition: width 0.2s ease
+    }
+.jackpot .gameWrapper .game .bets {
+    position: relative;
+    margin-bottom: 0.740741vh;
+    width: 100%;
+    height: 18.425926vh;
+    background: #0c0c0c;
+    border: 0.092593vh solid #1e1e1e;
+    border-radius: 1.666667vh
+    }
+.jackpot .gameWrapper .game .bets .playerBetWrapper {
+    width: 100%;
+    height: 17.87037vh !important;
+    position: relative;
+    padding: 0.555556vh;
+    padding-right: 0;
+    overflow-x: auto
+    }
+.jackpot .gameWrapper .game .bets .playerBetWrapper::-webkit-scrollbar {
+    display: none
+    }
+.jackpot .gameWrapper .game .bets .playerBetWrapper.scrollDisabled {
+    overflow-x: hidden
+    }
+.jackpot .gameWrapper .game .bets .playerBetWrapper .playerBetHistory, .jackpot .gameWrapper .game .bets .playerBetWrapper .playerBet {
+    margin-right: 0.555556vh;
+    padding: 1.666667vh 0;
+    width: 12.777778vh;
+    height: 16.759259vh;
+    background: #222;
+    border-radius: 1.666667vh;
+    flex-shrink: 0;
+    transition: opacity 0.2s ease
+    }
+.jackpot .gameWrapper .game .bets .playerBetWrapper .playerBetHistory:last-child, .jackpot .gameWrapper .game .bets .playerBetWrapper .playerBet:last-child {
+    margin-right: 0
+    }
+.jackpot .gameWrapper .game .bets .playerBetWrapper .playerBet .jack-avatar-wrapper, .jackpot .gameWrapper .game .bets .playerBetWrapper .playerBetHistory .jack-avatar-wrapper {
+    margin-bottom: 1.851852vh
+    }
+.jackpot .gameWrapper .game .bets .playerBetWrapper .playerBet.lose, .jackpot .gameWrapper .game .bets .playerBetWrapper .playerBetHistory.lose {
+    opacity: 0.25
+    }
+.jackpot .gameWrapper .game .bets .playerBetWrapper .playerBet.winner, .jackpot .gameWrapper .game .bets .playerBetWrapper .playerBetHistory.winner {
+    opacity: 1
+    }
+.jackpot .gameWrapper .game .bets .playerBetWrapper .playerBet .avatar, .jackpot .gameWrapper .game .bets .playerBetWrapper .playerBetHistory .avatar {
+    position: relative;
+    margin-bottom: 1.111111vh;
+    width: 5.925926vh;
+    height: 5.925926vh;
+    border-radius: 1.616157vh
+    }
+.jackpot .gameWrapper .game .bets .playerBetWrapper .playerBet .avatar .owned, .jackpot .gameWrapper .game .bets .playerBetWrapper .playerBetHistory .avatar .owned {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.111111vh;
+    line-height: 14px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #fff;
+    position: absolute;
+    bottom: -0.740741vh;
+    left: 1.296296vh;
+    right: 1.296296vh;
+    width: 3.333333vh;
+    height: 2.407407vh;
+    background: #599bff;
+    border-radius: 0.740741vh
+    }
+.jackpot .gameWrapper .game .bets .playerBetWrapper .playerBet .amount, .jackpot .gameWrapper .game .bets .playerBetWrapper .playerBetHistory .amount {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.666667vh;
+    line-height: 21px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 1.296296vh
+    }
+.jackpot .gameWrapper .game .bets .playerBetWrapper .playerBet .amount .coins, .jackpot .gameWrapper .game .bets .playerBetWrapper .playerBetHistory .amount .coins {
+    margin-left: 0.525vh;
+    width: 1.543519vh;
+    height: 1.543519vh
+    }
+.jackpot .gameWrapper .game .bets .playerBetWrapper .playerBet .chance, .jackpot .gameWrapper .game .bets .playerBetWrapper .playerBetHistory .chance {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.666667vh;
+    line-height: 21px;
+    text-align: center;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 0.648148vh
+    }
+.jackpot .gameWrapper .game .bets .playerBetWrapper .playerBet .color, .jackpot .gameWrapper .game .bets .playerBetWrapper .playerBetHistory .color {
+    width: 2.314815vh;
+    height: 0.555556vh;
+    border-radius: 20px
+    }
+.jackpot .gameWrapper .game .bets .winArrowWrapper {
+    position: absolute;
+    z-index: 9999;
+    top: -0.555556vh;
+    left: 0;
+    right: 0;
+    margin-left: -0.555556vh
+    }
+.jackpot .gameWrapper .game .bets .winArrowWrapper .winArrow {
+    fill: url(#paint0_linear_55_3401);
+    width: 2.592593vh;
+    height: 2.314815vh
+    }
+.jackpot .gameWrapper .game .colors {
+    padding: 0.37037vh;
+    margin-bottom: 1.666667vh;
+    height: 1.296296vh;
+    background: #0c0c0c;
+    border: 0.092593vh solid #1e1e1e;
+    border-radius: 1.666667vh
+    }
+.jackpot .gameWrapper .game .colors .colorItem {
+    margin-right: 0.37037vh;
+    height: 0.555556vh;
+    border-radius: 1.851852vh;
+    transition: width 0.2s ease
+    }
+.jackpot .gameWrapper .game .colors .colorItem:last-child {
+    margin-right: 0
+    }
+.jackpot .gameWrapper .game .placeBet {
+    height: 5.648148vh
+    }
+.jackpot .gameWrapper .game .placeBet .inputWrapper {
+    margin-right: 1.481481vh;
+    width: 30.555556vh;
+    position: relative;
+    background: #171717;
+    border-radius: 1.666667vh;
+    transition: opacity 0.2s ease
+    }
+.jackpot .gameWrapper .game .placeBet .inputWrapper input {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2.222222vh;
+    line-height: 28px;
+    letter-spacing: -0.02em;
+    color: #616161;
+    padding: 1.666667vh;
+    padding-right: 5.555556vh;
+    background: #111;
+    border: 0.092593vh solid #1e1e1e;
+    border-radius: 1.111111vh;
+    transition: color 0.2s ease
+    }
+.jackpot .gameWrapper .game .placeBet .inputWrapper input.focus {
+    color: #fff
+    }
+.jackpot .gameWrapper .game .placeBet .inputWrapper .coins {
+    position: absolute;
+    top: 1.898148vh;
+    right: 1.851852vh;
+    width: 1.851852vh;
+    height: 1.851852vh
+    }
+.jackpot .gameWrapper .game .placeBet .inputWrapper.disabled {
+    opacity: 0.5
+    }
+.jackpot .gameWrapper .game .placeBet .startTime {
+    padding: 1.111111vh 1.851852vh;
+    width: 63.425926vh;
+    background: linear-gradient(180deg, #e81c5a, #9f1d44);
+    border-radius: 1.111111vh;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease
+    }
+.jackpot .gameWrapper .game .placeBet .startTime .text, .jackpot .gameWrapper .game .placeBet .startTime .time {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.666667vh;
+    line-height: 1.944444vh;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #fff
+    }
+.jackpot .gameWrapper .game .placeBet .startTime .time .item {
+    margin-right: 0.37037vh;
+    width: 2.777778vh;
+    height: 3.425926vh;
+    background: #97173e;
+    border-radius: 0.740741vh
+    }
+.jackpot .gameWrapper .game .placeBet .startTime .time .item:last-child, .jackpot .gameWrapper .game .placeBet .startTime .time .item:nth-child(2) {
+    margin-right: 0
+    }
+.jackpot .gameWrapper .game .placeBet .startTime .time .colon {
+    margin: 0 0.925926vh
+    }
+.jackpot .gameWrapper .game .placeBet .startTime.disabled {
+    cursor: default;
+    opacity: 0.5
+    }
+.jackpot .gameWrapper .luckOfDay {
+    padding: 1.666667vh;
+    min-width: 38.888889vh;
+    width: 42.87037vh;
+    height: 40vh;
+    background: #171717;
+    border-radius: 1.666667vh
+    }
+.jackpot .gameWrapper .luckOfDay .title {
+    margin-bottom: 1.990741vh
+    }
+.jackpot .gameWrapper .luckOfDay .title .icon {
+    margin-right: 0.77037vh;
+    width: 2.160185vh;
+    height: 1.728704vh;
+    fill: url(#paint0_linear_55_3401)
+    }
+.jackpot .gameWrapper .luckOfDay .title .text {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.666667vh;
+    line-height: 1.944444vh;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #fff
+    }
+.jackpot .gameWrapper .luckOfDay .item {
+    padding: 1.666667vh 2.037037vh;
+    height: 10vh;
+    border-radius: 1.666667vh;
+    margin-bottom: 1.203704vh
+    }
+.jackpot .gameWrapper .luckOfDay .item:last-child {
+    margin-bottom: 0
+    }
+.jackpot .gameWrapper .luckOfDay .item .avatar {
+    flex-shrink: 0;
+    margin-right: 1.481481vh;
+    width: 5.925926vh;
+    height: 5.925926vh;
+    opacity: 0.8;
+    border-radius: 1.616157vh
+    }
+.jackpot .gameWrapper .luckOfDay .item .avatar.empty {
+    background: #2f2f2f
+    }
+.jackpot .gameWrapper .luckOfDay .item .nameType .name, .jackpot .gameWrapper .luckOfDay .item .nameType .type {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.666667vh;
+    line-height: 1.944444vh;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 15.277778vh
+    }
+.jackpot .gameWrapper .luckOfDay .item .nameType .name.empty, .jackpot .gameWrapper .luckOfDay .item .nameType .type.empty {
+    height: 1.944444vh;
+    width: 8.333333vh;
+    border-radius: 1.111111vh;
+    background: #2f2f2f
+    }
+.jackpot .gameWrapper .luckOfDay .item .nameType .name {
+    margin-bottom: 0.37037vh;
+    color: #fff
+    }
+.jackpot .gameWrapper .luckOfDay .item .nameType .name.empty {
+    width: 11.111111vh
+    }
+.jackpot .gameWrapper .luckOfDay .item .nameType .type {
+    color: #616161
+    }
+.jackpot .gameWrapper .luckOfDay .item .chance {
+    padding: 1.388889vh 1.666667vh;
+    background: hsla(0, 0%, 100%, 0.07);
+    border-radius: 1.111111vh
+    }
+.jackpot .gameWrapper .luckOfDay .item .chance .text, .jackpot .gameWrapper .luckOfDay .item .chance .value {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.666667vh;
+    line-height: 1.759259vh;
+    text-align: right;
+    letter-spacing: -0.02em;
+    text-transform: uppercase
+    }
+.jackpot .gameWrapper .luckOfDay .item .chance .text {
+    margin-right: 0.525vh;
+    color: #fff
+    }
+.jackpot .gameWrapper .luckOfDay .item .chance .value {
+    background: linear-gradient(180deg, #f2bf3b, #f29e3b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent
+    }
+.jackpot .gameWrapper .luckOfDay .item .chance .coins {
+    width: 1.543519vh;
+    height: 1.543519vh
+    }
+.jackpot .gameWrapper .luckOfDay .item .chance.empty {
+    height: 4.537037vh;
+    width: 11.574074vh;
+    border-radius: 1.111111vh;
+    background: #2f2f2f
+    }
+.jackpot .gameWrapper .luckOfDay .item.lucky {
+    background: linear-gradient(180deg, #1e1e1e, #f3bf3b 767.59%)
+    }
+.jackpot .gameWrapper .luckOfDay .item.bigJackpot {
+    background: linear-gradient(180deg, #1e1e1e 30.99%, #a359ff 767.59%)
+    }
+.jackpot .gameWrapper .luckOfDay .item.prevGame {
+    background: linear-gradient(180deg, #1e1e1e 30.99%, #3de7a5 767.59%)
+    }
+.jackpot .gameWrapper .luckOfDay .item.empty {
+    justify-content: space-between;
+    background: #1f1f1f
+    }
+.jackpot .betsWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.740741vh;
+    margin: 0 auto;
+    padding-bottom: 1.481481vh;
+    max-width: 144.259259vh;
+    width: 100%;
+    height: 41.666667vh;
+    overflow-y: auto
+    }
+.jackpot .betsWrapper::-webkit-scrollbar {
+    display: none
+    }
+.jackpot .betsWrapper.empty {
+    justify-content: center;
+    padding-bottom: 0;
+    margin-bottom: 2.777778vh;
+    height: 38.888889vh;
+    border: 0.092593vh solid #1e1e1e;
+    border-radius: 1.666667vh
+    }
+.jackpot .betsWrapper .betItem {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2.777778vh;
+    padding: 1.759259vh 1.666667vh;
+    height: 7.962963vh;
+    background: #171717;
+    border-radius: 1.666667vh;
+    border-left: 0.277778vh solid
+    }
+.jackpot .betsWrapper .betItem:last-child {
+    margin-bottom: 0
+    }
+.jackpot .betsWrapper .betItem.owned {
+    background: #222
+    }
+.jackpot .betsWrapper .betItem .jack-avatar-wrapper {
+    margin-right: auto
+    }
+.jackpot .betsWrapper .betItem .amountWrapper {
+    padding: 1.342593vh 1.666667vh;
+    background: #2d2d2d;
+    border-radius: 1.111111vh
+    }
+.jackpot .betsWrapper .betItem .amountWrapper .amount {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.481481vh;
+    line-height: 1.759259vh;
+    text-align: center;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #fff
+    }
+.jackpot .betsWrapper .betItem .amountWrapper .amount .coins {
+    margin-left: 0.525vh;
+    width: 1.543519vh;
+    height: 1.543519vh
+    }
+.jackpot .betsWrapper .betItem .chance {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.481481vh;
+    line-height: 1.759259vh;
+    text-align: right;
+    letter-spacing: -0.02em;
+    text-transform: uppercase
+    }
+.jackpot .betsWrapper .betItem .chance .title {
+    margin-right: 0.525vh;
+    color: #848484
+    }
+.jackpot .betsWrapper .betItem .chance .value {
+    background: linear-gradient(180deg, #f2bf3b, #f29e3b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent
+    }
+.jackpot .betsWrapper .betItem .ticket .title {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.481481vh;
+    line-height: 1.759259vh;
+    text-align: right;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #848484;
+    margin-right: 1.111111vh
+    }
+.jackpot .betsWrapper .betItem .ticket .ticketNumber {
+    padding: 1.342593vh 1.203704vh;
+    background: #2d2d2d;
+    border-radius: 1.111111vh
+    }
+.jackpot .betsWrapper .betItem .ticket .ticketNumber span {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.481481vh;
+    line-height: 1.759259vh;
+    text-align: center;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #fff, #9a9a9a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    margin-right: 8px;
+    white-space: nowrap
+    }
+.jackpot .betsWrapper .betItem .ticket .ticketNumber .icon {
+    width: 1.851852vh;
+    height: 1.481481vh;
+    fill: url(#paint0_linear_55_3401)
+    }
+.jackpot .gameItem {
+    margin-bottom: 0.740741vh;
+    height: 5.648148vh;
+    background: #171717;
+    border-radius: 1.666667vh;
+    flex-shrink: 0;
+    border: none
+    }
+.jackpot .gameItem:last-child {
+    margin-bottom: 0
+    }
+.jackpot .gameItem.owned {
+    background: #222
+    }
+.jackpot .gameItem .gameID {
+    margin-right: 6.388889vh;
+    background: #2d2d2d;
+    border-radius: 8px;
+    padding: 0.925926vh 1.111111vh;
+    height: 3.611111vh
+    }
+.jackpot .gameItem .gameID span {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.481481vh;
+    line-height: 1.759259vh;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #fff, #9a9a9a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent
+    }
+.jackpot .gameItem .avatar {
+    margin-right: 1.111111vh;
+    width: 5.648148vh;
+    height: 5.648148vh;
+    border-radius: 1.111111vh
+    }
+.jackpot .gameItem .nameWrapper .name, .jackpot .gameItem .nameWrapper .winner {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.481481vh;
+    line-height: 1.759259vh;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    text-align: left
+    }
+.jackpot .gameItem .nameWrapper .name {
+    margin-bottom: 0.37037vh;
+    color: #fff
+    }
+.jackpot .gameItem .nameWrapper .winner {
+    color: #616161
+    }
+.jackpot .gameItem .amountWrapper {
+    padding: 1.342593vh 1.666667vh;
+    background: #2d2d2d;
+    border-radius: 1.111111vh
+    }
+.jackpot .gameItem .amountWrapper .amount {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.481481vh;
+    line-height: 1.759259vh;
+    text-align: center;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #fff
+    }
+.jackpot .gameItem .amountWrapper .amount .coins {
+    margin-left: 0.525vh;
+    width: 1.543519vh;
+    height: 1.543519vh
+    }
+.jackpot .gameItem .arrowIcon {
+    margin: 0 1.851852vh;
+    width: 1vh;
+    height: 1.111111vh;
+    fill: #3de7a5
+    }
+.jackpot .gameItem .chance {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.481481vh;
+    line-height: 1.759259vh;
+    text-align: right;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-right: 2.777778vh
+    }
+.jackpot .gameItem .chance .desc {
+    margin-right: 0.525vh;
+    color: #848484
+    }
+.jackpot .gameItem .chance .value {
+    background: linear-gradient(180deg, #f2bf3b, #f29e3b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent
+    }
+.jackpot .gameItem .ticket .desc {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.481481vh;
+    line-height: 1.759259vh;
+    text-align: right;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #848484;
+    margin-right: 1.111111vh
+    }
+.jackpot .gameItem .ticket .ticketNumber {
+    padding: 1.342593vh 1.203704vh;
+    background: #2d2d2d;
+    border-radius: 1.111111vh
+    }
+.jackpot .gameItem .ticket .ticketNumber span {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.481481vh;
+    line-height: 1.759259vh;
+    text-align: center;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #fff, #9a9a9a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    margin-right: 8px;
+    white-space: nowrap
+    }
+.jackpot .gameItem .ticket .ticketNumber .icon {
+    width: 1.851852vh;
+    height: 1.481481vh;
+    fill: url(#paint0_linear_55_3401)
+    }
+.jackpot .historyList .title {
+    margin-bottom: 0.925926vh;
+    padding: 2.222222vh;
+    height: 7.777778vh;
+    background: #171717;
+    border-radius: 1.666667vh
+    }
+.jackpot .historyList .title .icon {
+    margin-right: 1.203704vh;
+    width: 2.777778vh;
+    height: 2.777778vh;
+    fill: url(#paint0_linear_55_3401)
+    }
+.jackpot .historyList .title .text {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2.222222vh;
+    line-height: 2.592593vh;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #fff
+    }
+.jackpot .historyList .list {
+    height: 83.703704vh;
+    padding-bottom: 0.925926vh;
+    overflow-y: auto
+    }
+.jackpot .historyList .list::-webkit-scrollbar {
+    display: none
+    }
+.jackpot .historyList .list .historyGameItem {
+    padding: 1.759259vh 1.666667vh;
+    height: 7.962963vh;
+    cursor: pointer
+    }
+.jackpot .historyList .list .historyGameItem .avatar {
+    width: 4.444444vh;
+    height: 4.444444vh
+    }
+.jackpot .historyList .list .historyGameItem .historyListItem:first-child {
+    width: 46.296296vh;
+    justify-content: center
+    }
+.jackpot .historyList .list .historyGameItem .historyListItem:nth-child(2) {
+    width: 41.666667vh;
+    display: flex;
+    justify-content: center
+    }
+.jackpot .historyList .list .historyGameItem .historyListItem:nth-child(3) {
+    width: 46.296296vh;
+    display: flex;
+    justify-content: center
+    }
+.jackpot .historyList .list .historyGameItem .historyListItem:first-child {
+    display: flex;
+    justify-content: flex-start
+    }
+.jackpot .historyList .list .historyGameItem .historyListItem:last-child {
+    display: flex;
+    justify-content: flex-end
+    }
+.jackpot .historyList .list .historyGameItem .jack-avatar-wrapper .jack-content .jack-main-info {
+    flex-direction: row
+    }
+.jackpot .historyList .list .historyGameItem .amountWrapperItems {
+    width: 18.518519vh
+    }
+.jackpot .historyList .list .historyGameItem .amountWrapperItems .amountWrapper {
+    width: -moz-fit-content;
+    width: fit-content
+    }
+.jackpot .historyList .list .historyGameItem .amountWrapperItems:first-child {
+    display: flex;
+    justify-content: flex-end
+    }
+.jackpot .historyList .list .historyGameItem .amountWrapperItems:last-child {
+    display: flex;
+    justify-content: flex-start
+    }
+.jackpot .historyList .empty-list {
+    font-family: Roboto-Condensed, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.666667vh;
+    line-height: 1.944444vh;
+    text-align: center;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #616161;
+    margin: auto
+    }
+.jackpot .historyItem .gameWrapper .game {
+    margin-right: 0;
+    height: 32.777778vh;
+    width: 100%
+    }
+.jackpot .historyItem .gameWrapper .game .gameItem {
+    padding: 0;
+    height: 5.648148vh
+    }
+.jackpot .historyItem .gameWrapper .game .gameItem .avatar {
+    height: 5.648148vh;
+    width: 5.648148vh
+    }
+.jackpot .historyItem .betsWrapper {
+    height: 48.888889vh
+    }

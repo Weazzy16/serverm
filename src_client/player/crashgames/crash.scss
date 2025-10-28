@@ -1,0 +1,102 @@
+.minigames {
+    background: #151515;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+
+    .crash {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      .header {
+        justify-content: space-between;
+        margin-bottom: 1rem;
+      }
+
+      .history {
+        span.history-item {
+          margin-right: 0.5rem;
+          padding: 0.2rem 0.5rem;
+          background: rgba(255,255,255,0.1);
+          border-radius: 0.2rem;
+        }
+      }
+
+      .game-container {
+        background: rgba(0,0,0,0.5);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        text-align: center;
+
+        .multiplier {
+          font-size: 3rem;
+          font-weight: bold;
+          margin-bottom: 1rem;
+        }
+
+        .graph {
+          height: 200px;
+          margin-bottom: 1rem;
+        }
+
+        .bet-controls {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .input-group {
+            margin-bottom: 0.5rem;
+
+            input {
+              width: 200px;
+              padding: 0.5rem;
+              text-align: center;
+              border-radius: 0.3rem;
+              border: none;
+            }
+          }
+
+          .multipliers button,
+          .submit-bet {
+            margin-top: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.3rem;
+            cursor: pointer;
+          }
+
+          .submit-bet {
+            background: #17a673;
+            color: #fff;
+          }
+        }
+      }
+
+      .players-list {
+        margin-top: 1rem;
+
+        .player {
+          display: flex;
+          justify-content: space-between;
+          padding: 0.5rem;
+          background: rgba(255,255,255,0.1);
+          border-radius: 0.3rem;
+          margin-bottom: 0.3rem;
+
+          &.active {
+            background: #17a673;
+          }
+
+          button {
+            background: transparent;
+            border: none;
+            color: inherit;
+          }
+        }
+      }
+    }
+  }

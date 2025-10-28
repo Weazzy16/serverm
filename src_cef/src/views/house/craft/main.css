@@ -1,0 +1,477 @@
+.gta5devcraftmenu {
+    position: absolute;
+    left: 0vh;
+    top: 0vh;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gta5devcraftmenu .craftmenu {
+    display: flex;
+    width: 107.4074vh;
+    height: 74.0741vh;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.2037vh;
+    background: rgb(26, 26, 26);
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.gta5devcraftmenu .craftmenu .cmleft {
+    width: 43.0556vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-right: 0.1852vh solid #ffffff08;
+}
+
+.gta5devcraftmenu .craftmenu .cmright {
+    width: 64.3519vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.gta5devcraftmenu .craftmenu .cmleft h1 {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.6667vh;
+    font-weight: 600;
+    line-height: 1.9444vh;
+    letter-spacing: 0.037vh;
+    text-align: left;
+    margin-top: 2.7778vh;
+}
+
+.gta5devcraftmenu .craftmenu .cmleft .bginput {
+    width: 37.3148vh;
+    height: 4.1667vh;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5556vh;
+    background: rgb(13, 13, 13);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 2.8704vh;
+}
+
+.gta5devcraftmenu .craftmenu .cmleft .cmllist {
+    width: 43.0556vh;
+    margin-top: 1.7593vh;
+    height: 54.5185vh;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.gta5devcraftmenu .craftmenu .cmleft .bginput svg {
+    width: 1.5741vh;
+    height: 1.5741vh;
+    margin-left: 1.3889vh;
+    margin-right: 0.7407vh;
+}
+
+.gta5devcraftmenu .craftmenu .cmleft .bginput input {
+    height: 100%;
+    width: 33.1481vh;
+    background: none;
+    border: none;
+    outline: none;
+    color: rgba(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.gta5devcraftmenu .craftmenu .cmleft .cmllist .blockitem {
+    width: 37.3148vh;
+    height: 8.1481vh;
+    min-height: 8.1481vh;
+    max-height: 8.1481vh;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5556vh;
+    background: rgb(21, 21, 21);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin-bottom: 0.9259vh;
+    margin-left: 0.2vh;
+}
+
+.gta5devcraftmenu .craftmenu .cmleft .cmllist .blockitem img {
+    width: 6.4815vh;
+    height: 6.4815vh;
+    margin-left: 0.9259vh;
+    margin-right: 0.7407vh;
+}
+
+.gta5devcraftmenu .craftmenu .cmleft .cmllist .blockitem .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.gta5devcraftmenu .craftmenu .cmleft .cmllist .blockitem .info p {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.gta5devcraftmenu .craftmenu .cmleft .cmllist .blockitem .info span {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.0185vh;
+    font-weight: 500;
+    line-height: 1.2037vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    padding: 0.463vh 0.5556vh;
+    border-radius: 0.3704vh;
+    background: rgb(45, 45, 45);
+    margin-top: 2.2222vh;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .cmrhead {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 2.7778vh;
+    height: 9.7222vh;
+    margin-bottom: 5.7407vh;
+}
+
+.gta5devcraftmenu .craftmenu .cmright h1 {color: rgb(255, 255, 255);font-family: SF Pro Display;font-size: 1.4815vh;font-weight: 600;line-height: 1.7593vh;letter-spacing: 0.037vh;text-align: center;}
+
+.gta5devcraftmenu .craftmenu .cmright .itemlist {
+    margin-top: 2.7778vh;
+    width: 100%;
+    gap: 0.9259vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .inputhead {
+    width: 35.5556vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3.9815vh;
+    margin-bottom: 1.3889vh;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .inputbg {
+    width: 35.5556vh;
+    height: 4.9074vh;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5556vh;
+    background: rgb(13, 13, 13);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .btncraft {
+    width: 35.5556vh;
+    height: 4.3519vh;
+    border-radius: 0.5556vh;
+    background: rgb(44, 44, 44);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5.6481vh;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .btncraftnone {
+    width: 35.5556vh;
+    height: 4.3519vh;
+    border-radius: 0.5556vh;
+    background: rgb(44, 44, 44);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5.6481vh;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .kpd {
+    margin-top: 3.9815vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .cmrhead span {
+    width: 57.4074vh;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+    letter-spacing: 0.037vh;
+    text-align: center;
+    margin-top: 2.2222vh;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .cmrhead h1 {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.6667vh;
+    font-weight: 600;
+    line-height: 1.9444vh;
+    letter-spacing: 0.037vh;
+    text-align: left;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .itemlist .itemcraft {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .itemlist .itemcraft .bgitems {
+    width: 11.2963vh;
+    height: 11.1111vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.8333vh;
+    background: rgb(21, 21, 21);
+}
+
+.gta5devcraftmenu .craftmenu .cmright .itemlist .itemcraft p {
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+    letter-spacing: 0.037vh;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 0.9259vh;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .itemlist .itemcraft svg {
+    width: 2.037vh;
+    height: 2.037vh;
+    margin-top: 0.7407vh;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .itemlist .itemcraft p b {
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+    letter-spacing: 0.037vh;
+    text-align: center;
+    color: rgba(255, 255, 255);
+    margin-right: 0.3704vh;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .itemlist .itemcraft .bgitems img {
+    width: 9.2593vh;
+    height: 9.2593vh;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .inputhead p {
+    color: rgba(255, 255, 255, 0.6);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .inputbg input {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    height: 100%;
+    margin-left: 1.3889vh;
+    width: 20.8333vh;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .inputbg p {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: right;
+    margin-right: 1.3889vh;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .btncraft p {
+    color: rgba(255, 255, 255, 0.6);
+    font-family: SF Pro Display;
+    font-size: 1.3889vh;
+    font-weight: 600;
+    line-height: 1.6667vh;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .btncraftnone p {
+    color: rgba(255, 255, 255, 0.6);
+    font-family: SF Pro Display;
+    font-size: 1.3889vh;
+    font-weight: 600;
+    line-height: 1.6667vh;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .kpd p {
+    color: rgba(255, 255, 255, 0.6);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .kpd span {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.3889vh;
+    font-weight: 700;
+    line-height: 1.6667vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    margin-top: 0.8333vh;
+}
+
+.gta5devcraftmenu h1,p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.gta5devcraftmenu .craftmenu .cmleft .cmllist::-webkit-scrollbar {
+  width: 0.1852vh;
+}
+.gta5devcraftmenu .craftmenu .cmleft .cmllist::-webkit-scrollbar-track {
+  background: none;
+}
+.gta5devcraftmenu .craftmenu .cmleft .cmllist::-webkit-scrollbar-thumb {
+  border-radius: 1.8519vh;
+  border: 0.2778vh solid white;
+}
+
+.gta5devcraftmenu .craftmenu .cmleft .cmllist .blockitem:hover {
+    background: #1a577d;
+}
+
+.gta5devcraftmenu .craftmenu .cmleft .cmllist .blockitem.active {
+    background: #1a577d;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .btncraft:hover {
+    background: #009EFF;
+}
+
+.gta5devcraftmenu .craftmenu .cmright .btncraft:hover p {
+    color: #fff;
+}
+
+.gta5devcraftmenu .craftmenu span.closed {
+    position: relative;
+    width: 2.2222vh;
+    height: 2.2222vh;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.3704vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -4.222vh;
+    margin-top: 2vh;
+}
+
+.gta5devcraftmenu .craftmenu span.closed svg {
+    width: 1vh;
+    height: 1vh;
+    stroke: #fff;
+    opacity: 0.4;
+}
+
+.gta5devcraftmenu .craftmenu span.closed:hover {
+    border: 0.0926vh solid #fff;
+}
+
+.gta5devcraftmenu .craftmenu span.closed:hover svg {
+    opacity: 1;
+}
+
+.iteminfoblock {
+    position: absolute;
+    z-index: 1;
+    background: #000;
+    padding: 1.7593vh 0vh;
+    width: 36.0185vh;
+    border-radius: 0.7407vh;
+}
+
+.iteminfoblock h1 {
+    color: #fff;
+    font-family: SF Pro Display;
+    font-size: 1.8519vh;
+    font-weight: 600;
+    line-height: 2.2222vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    width: 31.9444vh;
+    margin-bottom: 1.2963vh;
+    margin-left: 2.037vh;
+}
+
+.iteminfoblock p {
+    color: #ffffff50;
+    font-family: SF Pro Display;
+    font-size: 1.6667vh;
+    font-weight: 500;
+    line-height: 1.9444vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    width: 31.9444vh;
+    margin-left: 2.037vh;
+}

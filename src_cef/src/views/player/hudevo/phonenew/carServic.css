@@ -1,0 +1,619 @@
+.carService .control-button-container .control-button,.carService .control-button-container,.carService header .categories .category {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.carService .backgrounds {
+    position: absolute;
+    left: 0;
+    top: 0
+}
+
+.row-block {
+    display: flex;
+    flex-direction: row
+}
+
+.row-reverse-block {
+    display: flex;
+    flex-direction: row-reverse
+}
+
+.column-block {
+    display: flex;
+    flex-direction: column
+}
+
+.flex-block {
+    display: flex
+}
+
+.justify-start {
+    display: flex;
+    justify-content: flex-start
+}
+
+.justify-center {
+    display: flex;
+    justify-content: center
+}
+
+.justify-between {
+    display: flex;
+    justify-content: space-between
+}
+
+.justify-end {
+    display: flex;
+    justify-content: flex-end
+}
+
+.align-start {
+    display: flex;
+    align-content: flex-start
+}
+
+.align-center {
+    display: flex;
+    align-items: center
+}
+
+.align-end {
+    display: flex;
+    align-items: flex-end
+}
+
+.full-width {
+    width: 100%
+}
+
+.full-height {
+    height: 100%
+}
+
+.picture-handler {
+    display: flex;
+    cursor: pointer
+}
+
+.debug {
+    border: 1px solid red
+}
+
+.fade-up-animation {
+    animation: fadeOutUp-29ba576a 1s ease
+}
+
+.fade-down-animation {
+    animation: fadeOutDown-29ba576a 1s ease
+}
+
+@keyframes fadeOutUp-29ba576a {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        background-color: #40b6ff;
+        color: #fff
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-100%);
+        background-color: #40b6ff;
+        color: #fff
+    }
+}
+
+@keyframes fadeOutDown-29ba576a {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        background-color: #071e30;
+        color: #fff
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(100%);
+        background-color: #071e30;
+        color: #fff
+    }
+}
+
+.logotype-enter-active {
+    animation: logotype-29ba576a .5s ease
+}
+
+.logotype-leave-active {
+    animation: logotype-29ba576a .5s ease reverse
+}
+
+@keyframes logotype-29ba576a {
+    0% {
+        transform: scale(0);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.cardMoveIn {
+    animation: cardMoveInside-29ba576a ease forwards;
+    animation-duration: 2s
+}
+
+.cardMoveOut {
+    animation: cardMoveOutside-29ba576a ease forwards;
+    animation-duration: 2s
+}
+
+@keyframes cardMoveOutside-29ba576a {
+    0% {
+        right: 27.7777777778vh
+    }
+
+    to {
+        right: 1.0185185185vh
+    }
+}
+
+@keyframes cardMoveInside-29ba576a {
+    0% {
+        right: 1.0185185185vh
+    }
+
+    to {
+        right: 27.7777777778vh
+    }
+}
+
+@keyframes borderBlink-29ba576a {
+    0% {
+        opacity: .5
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.fade-enter,.fade-leave-to {
+    opacity: 0
+}
+
+.fade-enter-active,.fade-leave-active {
+    transition: opacity .5s
+}
+
+@keyframes slide-up-29ba576a {
+    0% {
+        transform: translateY(-20%);
+        opacity: 0
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1
+    }
+}
+
+@keyframes slide-down-29ba576a {
+    0% {
+        transform: translateY(0);
+        opacity: 1
+    }
+
+    to {
+        transform: translateY(20%);
+        opacity: 0
+    }
+}
+
+.ipad-slide-enter-active {
+    animation: ipad-slide-29ba576a .4s ease
+}
+
+.ipad-slide-leave-active {
+    animation: ipad-slide-29ba576a .4s ease reverse
+}
+
+@keyframes ipad-slide-29ba576a {
+    0% {
+        transform: translateY(120%)
+    }
+
+    to {
+        transform: translateY(0)
+    }
+}
+
+@keyframes bounce-in-transition-29ba576a {
+    0% {
+        transform: scale(0);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.local-fade-enter-from,.local-fade-leave-to {
+    opacity: 0
+}
+
+.local-fade-enter-active,.local-fade-leave-active {
+    transition: opacity .2s
+}
+
+.carService {
+    background-color: #fafafa;
+    position: relative
+}
+
+.carService .main-content {
+    position: relative;
+    z-index: 1
+}
+
+.carService .backgrounds {
+    height: 100%;
+    width: 100%
+}
+
+.carService header {
+    background-color: #fefefe;
+    border-bottom: .0925925926vh solid #efefef;
+    z-index: 3;
+    padding: 5vh 1.8518518519vh 1.2962962963vh 1.8518518519vh
+}
+
+.carService header .categories {
+    margin-bottom: 1.2962962963vh;
+    gap: .7407407407vh
+}
+
+.carService header .categories .category {
+    width: 3.3333333333vh;
+    height: 3.3333333333vh;
+    border: .0925925926vh solid #e8e8e8;
+    cursor: pointer;
+    transition: background-color .2s ease;
+    border-radius: .5555555556vh;
+    background-color: #fefefe
+}
+
+.carService header .categories .category:hover {
+    background-color: #e8e8e8;
+    border-color: #e8e8e8
+}
+
+.carService header .categories .category:hover svg {
+    fill: rgba(0,0,0,.5)
+}
+
+.carService header .categories .category.selected {
+    background-color: #1b7bff;
+    border-color: #1b7bff
+}
+
+.carService header .categories .category.selected svg {
+    fill: #fff
+}
+
+.carService header .categories .category svg {
+    width: 1.4814814815vh;
+    height: 1.4814814815vh;
+    transition: fill .2s ease;
+    fill: rgba(39,41,46,.5)
+}
+
+.carService header .search {
+    padding: 0 1.8518518519vh;
+    background-color: #f7f7f7;
+    border-radius: .5555555556vh;
+    border: .0925925926vh solid #e8e8e8;
+    height: 3.4259259259vh
+}
+
+.carService header .search__input {
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    width: 17.5925925926vh;
+    background-color: transparent;
+    border: none;
+    color: #27292e
+}
+
+.carService header .search__icon {
+    width: 1.2037037037vh;
+    height: 1.2037037037vh;
+    fill: rgba(39,41,46,.5);
+    transition: fill .2s ease
+}
+
+.carService header .search__icon.filled {
+    fill: #1b7bff
+}
+
+.carService .car-list {
+    padding-top: 1.2962962963vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 35.1851851852vh;
+    padding: 1.2962962963vh 1.2962962963vh 1.2962962963vh 1.8518518519vh;
+    gap: .5555555556vh;
+    margin-right: .5555555556vh
+}
+
+.carService .car-list::-webkit-scrollbar {
+    width: .1851851852vh;
+    background-color: transparent
+}
+
+.carService .car-list::-webkit-scrollbar-thumb {
+    background-color: #717171
+}
+
+.carService .car-list .tile-block {
+    min-height: 5.8333333333vh;
+    width: 100%;
+    border-radius: .7407407407vh;
+    position: relative;
+    cursor: pointer;
+    padding: 1.0185185185vh 1.3888888889vh;
+    overflow: hidden;
+    transition: background-color .2s ease;
+    background-color: #fefefe;
+    border: .0925925926vh solid #e8e8e8
+}
+
+.carService .car-list .tile-block.expanded {
+    min-height: 7.4074074074vh
+}
+
+.carService .car-list .tile-block:hover {
+    background-color: #e8e8e8;
+    border-color: #e8e8e8
+}
+
+.carService .car-list .tile-block:hover .content .car-info .rent-time__picture {
+    fill: #000
+}
+
+.carService .car-list .tile-block.active {
+    background-color: #1b7bff;
+    border-color: #1b7bff
+}
+
+.carService .car-list .tile-block.active .content .car-info__text-number,.carService .car-list .tile-block.active .content__title {
+    color: #fefefe
+}
+
+.carService .car-list .tile-block.active .content .car-info .rent-time__picture {
+    fill: #fefefe
+}
+
+.carService .car-list .tile-block.active .content .car-info .rent-time__value {
+    color: #fefefe
+}
+
+.carService .car-list .tile-block.active .tile-block__picture {
+    transform: translateX(-1.8518518519vh)
+}
+
+.carService .car-list .tile-block.active.arrested {
+    background-color: #e53737;
+    border-color: #e53737
+}
+
+.carService .car-list .tile-block.active.arrested .content .car-info .arrested__picture {
+    width: 1.2037037037vh;
+    height: 1.2037037037vh
+}
+
+.carService .car-list .tile-block.active.arrested .content .car-info .arrested__picture .cross {
+    fill: #e53737
+}
+
+.carService .car-list .tile-block.active.arrested .content .car-info .arrested__picture .backgrounds {
+    fill: #fefefe
+}
+
+.carService .car-list .tile-block.active.arrested .content .car-info .arrested__value {
+    color: #fefefe
+}
+
+.carService .car-list .tile-block__picture {
+    width: 10.3703703704vh;
+    position: absolute;
+    right: -3.8888888889vh;
+    -o-object-fit: contain;
+    object-fit: contain;
+    transition: transform .2s ease
+}
+
+.carService .car-list .tile-block .content {
+    position: absolute;
+    left: 1.2962962963vh;
+    padding: 1.1111111111vh 0
+}
+
+.carService .car-list .tile-block .content__title {
+    font-family: ProximaNova;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    color: #27292e;
+    transition: color .2s ease;
+    max-width: 15.7407407407vh;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+
+.carService .car-list .tile-block .content .car-info {
+    margin-top: .6481481481vh
+}
+
+.carService .car-list .tile-block .content .car-info__text-number {
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.1111111111vh;
+    color: #27292e;
+    transition: color .2s ease
+}
+
+.carService .car-list .tile-block .content .car-info .rent-time {
+    margin-left: .462962963vh
+}
+
+.carService .car-list .tile-block .content .car-info .rent-time__picture {
+    width: 1.2037037037vh;
+    height: 1.2037037037vh;
+    fill: #1b7bff;
+    transition: fill .2s ease
+}
+
+.carService .car-list .tile-block .content .car-info .rent-time__value {
+    font-family: ProximaNova;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 1.1111111111vh;
+    color: #27292e;
+    margin-left: .3703703704vh;
+    transition: color .2s ease
+}
+
+.carService .car-list .tile-block .content .car-info .arrested {
+    margin-left: .462962963vh
+}
+
+.carService .car-list .tile-block .content .car-info .arrested__picture {
+    width: 1.2037037037vh;
+    height: 1.2037037037vh
+}
+
+.carService .car-list .tile-block .content .car-info .arrested__picture .cross {
+    fill: #fff;
+    transition: fill .2s ease
+}
+
+.carService .car-list .tile-block .content .car-info .arrested__picture .backgrounds {
+    fill: #e53737;
+    transition: fill .2s ease
+}
+
+.carService .car-list .tile-block .content .car-info .arrested__value {
+    font-family: ProximaNova;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 1.1111111111vh;
+    color: #27292e;
+    margin-left: .3703703704vh;
+    transition: color .2s ease
+}
+
+.carService .car-list.double-btn {
+    height: 32.4074074074vh
+}
+
+.carService .control-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .9259259259vh;
+    position: absolute;
+    bottom: 0;
+    height: 12.4074074074vh;
+    background-image: linear-gradient(180deg,transparent,#f7f7f7 40%);
+    padding: 0 1.8518518519vh
+}
+
+.carService .control-button-container .control-button {
+    font-family: ProximaNova;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    height: 4.1666666667vh;
+    padding: 0 1.8518518519vh;
+    color: #fefefe;
+    background-color: #27292e;
+    border-radius: .7407407407vh;
+    transition: background-color .2s ease;
+    cursor: pointer
+}
+
+.carService .control-button-container .control-button.disabled {
+    opacity: .5;
+    pointer-events: none
+}
+
+.carService .control-button-container .control-button:hover {
+    background-color: #1b7bff
+}
+
+.carService .control-button-container .control-button.cancelRent {
+    background-color: #e82e2e
+}
+
+.carService .control-button-container .control-button.arrested {
+    background-color: #e53737
+}
+
+.carService .control-button-container .control-button.arrested:hover {
+    background-color: #c13131
+}
+
+.close-block {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: .5555555556vh;
+    height: 2.2222222222vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+    z-index: 6
+}
+
+.close-block-handler {
+    width: 11.1111111111vh;
+    height: .462962963vh;
+    border-radius: 9.2592592593vh;
+    background-color: #000
+}
+
+.car-count {
+    margin: 1.2962962963vh 0
+}
+
+.car-count:first-child {
+    margin-top: 0
+}
+
+.car-count:last-child {
+    margin-bottom: 0
+}
+
+.car-count>p {
+    font-family: ProximaNova;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    color: rgba(39,41,46,.75)
+}
+
+.car-count>p>span {
+    color: #27292e
+}

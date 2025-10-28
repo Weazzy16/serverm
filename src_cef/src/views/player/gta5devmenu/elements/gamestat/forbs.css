@@ -1,0 +1,730 @@
+.forbes-header.row-block.justify-between.align-center {
+        position: absolute;
+    margin-top: -5.5vh;
+    margin-right: 83vh;
+}
+button.tab.selected {
+    background-color: rgba(0, 0, 0, .35);
+}
+
+button.tab {
+    padding-left: 1.6666666667vh;
+    height: 100%;
+    width: 50%;
+    border: none;
+    cursor: pointer;
+    background-color: hsla(0, 0%, 100%, .04);
+    mix-blend-mode: normal;
+    transition: background-color .2s ease;
+}
+
+
+
+.tabs.row-block {
+    margin-left: 2.8703703704vh;
+    width: 35.2777777778vh;
+    height: 3.8888888889vh;
+}
+
+.tab span {
+    font-family: var(--IntegratedFont), sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    color: hsla(0, 0%, 100%, .5);
+    transition: color .2s ease;
+}
+
+.selected span {
+    color: #fff;
+}
+
+button svg {
+    transition: fill .2s ease
+}
+svg.people.selected {
+    fill: hsla(0, 0%, 100%, 0.75);
+}
+svg.families.selected {
+    fill: hsla(0, 0%, 100%, 0.75);
+}
+
+button .people {
+    margin-right: 1.0185185185vh;
+    height: 1.0833333333vh;
+    width: 1.5740740741vh;
+    fill: hsla(0,0%,100%,.25)
+}
+
+ button .families {
+    margin-right: 1.2481481481vh;
+    height: 1.4814814815vh;
+    width: 1.2064814815vh;
+    fill: hsla(0,0%,100%,.25)
+}
+.forbes {
+    align-items: center;
+    overflow: hidden;
+    background-color: hsla(0,0%,7%,.8);
+    mix-blend-mode: normal
+}
+
+.forbes .no-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%
+}
+
+.forbes .no-content h1 {
+    font-family: ProximaNova;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 3.2407407407vh;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff
+}
+
+.forbes .info-wrapper {
+    max-width: 166vh;
+    width: 100%;
+    height: 23.7962962963vh;
+    max-height: 23.7962962963vh;
+    min-height: 23.7962962963vh;
+    display: grid;
+    grid-template-columns: 4.5fr 5.5fr
+}
+
+.forbes .info-wrapper .selectedItem {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 23.7962962963vh;
+    max-height: 23.7962962963vh;
+    min-height: 23.7962962963vh;
+    background-color: hsla(0,0%,100%,.02);
+    mix-blend-mode: normal
+}
+
+.forbes .info-wrapper .selectedItem .avatar {
+    margin-top: 3.7037037037vh;
+    margin-left: 4.6296296296vh;
+    margin-right: 2.7777777778vh
+}
+
+.forbes .info-wrapper .selectedItem .avatar .img {
+    margin-bottom: .9259259259vh;
+    width: 11.1111111111vh;
+    height: 11.1111111111vh;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%
+}
+
+.forbes .info-wrapper .selectedItem .avatar .top {
+    width: 11.1111111111vh;
+    height: 2.5vh;
+    background: #111;
+    border-radius: 6px;
+    font-family: ProximaNova;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff
+}
+
+.forbes .info-wrapper .selectedItem .info:not(.info-wrapper) {
+    margin-top: 3.7037037037vh;
+    height: 23.7962962963vh;
+    max-height: 23.7962962963vh;
+    min-height: 23.7962962963vh
+}
+
+.forbes .info-wrapper .selectedItem .info .name-static-tag {
+    margin-bottom: .8333333333vh
+}
+
+.forbes .info-wrapper .selectedItem .info .name-static-tag .name {
+    font-family: ProximaNova;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.8518518519vh;
+    color: #fff;
+    text-transform: uppercase
+}
+
+.forbes .info-wrapper .selectedItem .info .name-static-tag .static {
+    margin-left: .9259259259vh;
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.8518518519vh;
+    color: hsla(0,0%,100%,.25)
+}
+
+.forbes .info-wrapper .selectedItem .info .name-static-tag .tag {
+    margin-left: .6481481481vh;
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2037037037vh;
+    color: hsla(0,0%,100%,.75);
+    width: 5vh;
+    height: 2.2222222222vh;
+    background-color: #111;
+    border-radius: .2777777778vh;
+    text-transform: uppercase
+}
+
+.forbes .info-wrapper .selectedItem .info .level,.forbes .info-wrapper .selectedItem .info .membersf {
+    margin-bottom: 1.2037037037vh
+}
+
+.forbes .info-wrapper .selectedItem .info .level .value,.forbes .info-wrapper .selectedItem .info .membersf .value {
+    margin-right: .7407407407vh;
+    font-family: ProximaNova;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.6666666667vh;
+    color: #fff;
+    text-transform: uppercase
+}
+
+.forbes .info-wrapper .selectedItem .info .level .title,.forbes .info-wrapper .selectedItem .info .membersf .title {
+    font-family: ProximaNova;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    color: hsla(0,0%,100%,.5);
+    text-transform: uppercase
+}
+
+.forbes .info-wrapper .selectedItem .info .membersf .value {
+    margin-right: .5555555556vh
+}
+
+.forbes .info-wrapper .selectedItem .info .leader {
+    margin-bottom: 4.1666666667vh
+}
+
+.forbes .info-wrapper .selectedItem .info .leader .icon {
+    width: 1.2037037037vh;
+    height: .8601851852vh;
+    margin-right: .7407407407vh;
+    fill: hsla(0,0%,100%,.25)
+}
+
+.forbes .info-wrapper .selectedItem .info .leader .name {
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    color: #fff;
+    margin-right: .5555555556vh;
+    text-transform: uppercase
+}
+
+.forbes .info-wrapper .selectedItem .info .leader .static {
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    color: hsla(0,0%,100%,.5)
+}
+
+.forbes .info-wrapper .selectedItem .info .business {
+    margin-bottom: .7407407407vh
+}
+
+.forbes .info-wrapper .selectedItem .info .business .icon {
+    margin-right: .6481481481vh;
+    width: 1.2037037037vh;
+    height: 1.2037037037vh;
+    fill: hsla(0,0%,98%,.25)
+}
+
+.forbes .info-wrapper .selectedItem .info .business .title {
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    color: hsla(0,0%,100%,.5)
+}
+
+.forbes .info-wrapper .selectedItem .info .family {
+    margin-bottom: 1.8518518519vh
+}
+
+.forbes .info-wrapper .selectedItem .info .family .icon {
+    margin-right: .8716666667vh;
+    width: .9805555556vh;
+    height: 1.2037037037vh;
+    fill: hsla(0,0%,100%,.25)
+}
+
+.forbes .info-wrapper .selectedItem .info .family .title {
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    color: hsla(0,0%,100%,.5)
+}
+
+.forbes .info-wrapper .selectedItem .info .money .amount {
+    font-family: ProximaNova;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.6666666667vh;
+    color: #fff
+}
+
+.forbes .info-wrapper .selectedItem .info .money .icon {
+    margin-left: 1.3888888889vh;
+    margin-right: .5555555556vh;
+    width: .9259259259vh;
+    height: .462962963vh
+}
+
+.forbes .info-wrapper .selectedItem .info .money .icon.positive {
+    fill: #57b44c
+}
+
+.forbes .info-wrapper .selectedItem .info .money .icon.negative {
+    transform: rotate(180deg);
+    fill: #aa2f2f
+}
+
+.forbes .info-wrapper .selectedItem .info .money .icon.unchanged {
+    margin-right: 0;
+    height: .5555555556vh;
+    fill: hsla(0,0%,100%,.2)
+}
+
+.forbes .info-wrapper .selectedItem .info .money .changing {
+    font-family: ProximaNova;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    color: #fff
+}
+
+.forbes .info-wrapper .changeForYear {
+    padding: 1.8518518519vh 1.8518518519vh 0;
+    background-color: rgba(0,0,0,.2);
+    mix-blend-mode: normal
+}
+
+.forbes .info-wrapper .changeForYear .title {
+    font-family: ProximaNova;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    margin-bottom: 1.6666666667vh;
+    color: #fff
+}
+
+.forbes .info-wrapper .changeForYear .monthWrapper {
+    min-height: 17.5vh;
+    max-height: 17.5vh;
+    width: 70vh
+}
+
+.forbes .info-wrapper .changeForYear .monthWrapper .month {
+    position: relative;
+    margin-right: .2777777778vh;
+    width: 5.5555555556vh;
+    height: 100%
+}
+
+.forbes .info-wrapper .changeForYear .monthWrapper .month .column {
+    width: 100%;
+    min-height: 12.962962963vh;
+    max-height: 12.962962963vh
+}
+
+.forbes .info-wrapper .changeForYear .monthWrapper .month .column .value {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(0,0%,100%,.08);
+    mix-blend-mode: normal;
+    transition-property: background-color,height;
+    transition-duration: .2s;
+    transition-timing-function: ease
+}
+
+.forbes .info-wrapper .changeForYear .monthWrapper .month .column .value .amount {
+    font-family: ProximaNova;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.1111111111vh;
+    color: hsla(0,0%,100%,.25);
+    position: absolute;
+    left: 0;
+    top: -1.8518518519vh;
+    width: 100%;
+    height: 1.3888888889vh;
+    text-align: center;
+    transition: color .2s ease
+}
+
+.forbes .info-wrapper .changeForYear .monthWrapper .month .monthTitle {
+    font-family: ProximaNova;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    color: hsla(0,0%,100%,.5);
+    margin-top: 1.1111111111vh;
+    width: 100%;
+    height: 1.5740740741vh;
+    text-align: center;
+    transition: color .2s ease
+}
+
+.forbes .info-wrapper .changeForYear .monthWrapper .month:hover .column .value {
+    background-color: hsla(0,0%,100%,.2)
+}
+
+.forbes .info-wrapper .changeForYear .monthWrapper .month:hover .column .value .amount,.forbes .info-wrapper .changeForYear .monthWrapper .month:hover .monthTitle {
+    color: #fff
+}
+
+.forbes .table {
+    max-width: 166vh;
+    width: 100%
+}
+
+.forbes .table .header {
+    height: 4.8148148148vh;
+    background-color: rgba(0,0,0,.5);
+    mix-blend-mode: normal
+}
+
+.forbes .table .header__title {
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    color: #fff;
+    text-align: center;
+    width: 100%
+}
+
+.forbes .table .header.player .header__title.title1 {
+    max-width: 3.7037037037vh;
+    margin-left: 2.7777777778vh
+}
+
+.forbes .table .header.player .header__title.title2 {
+    max-width: 21.2962962963vh;
+    margin-left: 2.7777777778vh
+}
+
+.forbes .table .header.player .header__title.title3 {
+    max-width: 9.2592592593vh;
+    margin-left: 1.9444444444vh
+}
+
+.forbes .table .header.player .header__title.title4 {
+    max-width: 9.2592592593vh;
+    margin-left: 2.6851851852vh
+}
+
+.forbes .table .header.player .header__title.title5 {
+    max-width: 27.7777777778vh;
+    margin-left: 2.1296296296vh
+}
+
+.forbes .table .header.player .header__title.title6 {
+    max-width: 27.7777777778vh;
+    margin-left: 3.4259259259vh
+}
+
+.forbes .table .header.player .header__title.title7 {
+    max-width: 13.8888888889vh;
+    margin-left: 3.7037037037vh
+}
+
+.forbes .table .header.player .header__title.title8 {
+    max-width: 9.2592592593vh;
+    margin-left: 4.537037037vh
+}
+
+.forbes .table .header.player .header__title.title2 {
+    text-align: left
+}
+
+.forbes .table .header.player .header__title.title7 {
+    text-align: right
+}
+
+.forbes .table .header.families .header__title.title1 {
+    max-width: 3.7037037037vh;
+    margin-left: 2.7777777778vh
+}
+
+.forbes .table .header.families .header__title.title2 {
+    max-width: 27.7777777778vh;
+    margin-left: 2.7777777778vh
+}
+
+.forbes .table .header.families .header__title.title3 {
+    max-width: 9.2592592593vh;
+    margin-left: 2.7777777778vh
+}
+
+.forbes .table .header.families .header__title.title4 {
+    max-width: 21.2962962963vh;
+    margin-left: 9.2592592593vh
+}
+
+.forbes .table .header.families .header__title.title5 {
+    max-width: 9.2592592593vh;
+    margin-left: 1.8518518519vh
+}
+
+.forbes .table .header.families .header__title.title6 {
+    max-width: 13.8888888889vh;
+    margin-left: 27.7777777778vh
+}
+
+.forbes .table .header.families .header__title.title7 {
+    max-width: 9.2592592593vh;
+    margin-left: 4.6296296296vh
+}
+
+.forbes .table .header.families .header__title.title2,.forbes .table .header.families .header__title.title4 {
+    text-align: left
+}
+
+.forbes .table .header.families .header__title.title6 {
+    text-align: right
+}
+
+.forbes .table .itemsWrapper {
+    height: 100%;
+    max-height: 63.7962962963vh;
+    overflow-y: auto
+}
+
+.forbes .table .itemsWrapper::-webkit-scrollbar {
+    width: .462962963vh;
+    background-color: #1a1b1b
+}
+
+.forbes .table .itemsWrapper::-webkit-scrollbar-thumb {
+    background-color: hsla(0,0%,100%,.2)
+}
+
+.forbes .table .itemsWrapper .item {
+    min-height: 5.1851851852vh;
+    max-height: 5.1851851852vh;
+    background-color: hsla(0,0%,100%,0);
+    mix-blend-mode: normal;
+    cursor: pointer;
+    transition: background-color .2s ease
+}
+
+.forbes .table .itemsWrapper .item__title {
+    font-family: ProximaNova;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    color: #fff;
+    text-align: center;
+    width: 100%
+}
+
+.forbes .table .itemsWrapper .item__title__icon {
+    margin-right: .5555555556vh;
+    width: .9259259259vh;
+    height: .462962963vh
+}
+
+.forbes .table .itemsWrapper .item__title__icon.positive {
+    fill: #57b44c
+}
+
+.forbes .table .itemsWrapper .item__title__icon.negative {
+    transform: rotate(180deg);
+    fill: #aa2f2f
+}
+
+.forbes .table .itemsWrapper .item__title__icon.unchanged {
+    margin-right: 0;
+    height: .5555555556vh;
+    fill: hsla(0,0%,100%,.2)
+}
+
+.forbes .table .itemsWrapper .item__title.dimmer {
+    color: hsla(0,0%,100%,.5);
+    text-transform: uppercase
+}
+
+.forbes .table .itemsWrapper .item:hover {
+    background-color: hsla(0,0%,100%,.03)
+}
+
+.forbes .table .itemsWrapper .item.players .item__title.title1 {
+    max-width: 3.7037037037vh;
+    margin-left: 2.7777777778vh
+}
+
+.forbes .table .itemsWrapper .item.players .item__title.title2 {
+    max-width: 21.2962962963vh;
+    margin-left: 2.7777777778vh
+}
+
+.forbes .table .itemsWrapper .item.players .item__title.title3 {
+    max-width: 9.2592592593vh;
+    margin-left: 1.9444444444vh
+}
+
+.forbes .table .itemsWrapper .item.players .item__title.title4 {
+    max-width: 9.2592592593vh;
+    margin-left: 2.6851851852vh
+}
+
+.forbes .table .itemsWrapper .item.players .item__title.title5 {
+    max-width: 27.7777777778vh;
+    margin-left: 2.1296296296vh
+}
+
+.forbes .table .itemsWrapper .item.players .item__title.title6 {
+    max-width: 27.7777777778vh;
+    margin-left: 3.4259259259vh
+}
+
+.forbes .table .itemsWrapper .item.players .item__title.title7 {
+    max-width: 13.8888888889vh;
+    margin-left: 3.7037037037vh
+}
+
+.forbes .table .itemsWrapper .item.players .item__title.title8 {
+    max-width: 9.2592592593vh;
+    margin-left: 4.537037037vh
+}
+
+.forbes .table .itemsWrapper .item.players .item__title.title2 {
+    text-align: left
+}
+
+.forbes .table .itemsWrapper .item.players .item__title.title7 {
+    text-align: right
+}
+
+.forbes .table .itemsWrapper .item.families .item__title.title1 {
+    max-width: 3.7037037037vh;
+    margin-left: 2.7777777778vh
+}
+
+.forbes .table .itemsWrapper .item.families .item__title.title2 {
+    max-width: 27.7777777778vh;
+    margin-left: 2.7777777778vh
+}
+
+.forbes .table .itemsWrapper .item.families .item__title.title3 {
+    max-width: 9.2592592593vh;
+    margin-left: 2.7777777778vh
+}
+
+.forbes .table .itemsWrapper .item.families .item__title.title4 {
+    max-width: 21.2962962963vh;
+    margin-left: 9.2592592593vh
+}
+
+.forbes .table .itemsWrapper .item.families .item__title.title5 {
+    max-width: 9.2592592593vh;
+    margin-left: 1.8518518519vh
+}
+
+.forbes .table .itemsWrapper .item.families .item__title.title6 {
+    max-width: 13.8888888889vh;
+    margin-left: 27.7777777778vh
+}
+
+.forbes .table .itemsWrapper .item.families .item__title.title7 {
+    max-width: 9.2592592593vh;
+    margin-left: 4.6296296296vh
+}
+
+.forbes .table .itemsWrapper .item.families .item__title.title2,.forbes .table .itemsWrapper .item.families .item__title.title4 {
+    text-align: left
+}
+
+.forbes .table .itemsWrapper .item.families .item__title.title6 {
+    text-align: right
+}
+
+.row-block {
+    display: flex;
+    flex-direction: row
+}
+
+.row-reverse-block {
+    display: flex;
+    flex-direction: row-reverse
+}
+
+.column-block {
+    display: flex;
+    flex-direction: column
+}
+
+.flex-block {
+    display: flex
+}
+
+.justify-start {
+    display: flex;
+    justify-content: flex-start
+}
+
+.justify-center {
+    display: flex;
+    justify-content: center
+}
+
+.justify-between {
+    display: flex;
+    justify-content: space-between
+}
+
+.justify-end {
+    display: flex;
+    justify-content: flex-end
+}
+
+.align-start {
+    display: flex;
+    align-content: flex-start
+}
+
+.align-center {
+    display: flex;
+    align-items: center
+}
+
+.align-end {
+    display: flex;
+    align-items: flex-end
+}
+
+.full-width {
+    width: 100%
+}
+
+.full-height {
+    height: 100%
+}
+
+.picture-handler {
+    display: flex;
+    cursor: pointer
+}

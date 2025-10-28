@@ -1,0 +1,100 @@
+#activityWar {
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgb(0, 0, 0, .8);
+}
+
+#activityWar * {
+    color: #fff;
+}
+
+#activityWar nav {
+    position: absolute;
+    left: 50%; top: 52%;
+    width: 100vh;
+    height: fit-content;
+    display: flex; flex-wrap: wrap;
+    transform: translate(-50%, -50%);
+}
+
+#activityWar nav header {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    top: -4vh;
+}
+
+#activityWar nav header p {
+    width: 100%;
+    font-size: 1.75vh;
+    color: #ffffff50;
+}
+
+#activityWar nav header p:last-child {
+    position: relative;
+    text-align: right;
+    left: -1vh;
+}
+
+#activityWar nav div.aw_block {
+    position: relative;
+    margin-right: 1vh;
+    margin-bottom: 1vh;
+    width: 49vh;
+    height: 20vh;
+    background: rgb(0, 0, 0);
+    border-radius: 1vh;
+    overflow: hidden;
+}
+
+#activityWar nav div.aw_block img {
+    width: 100%;
+    z-index: -1;
+}
+
+#activityWar nav div.aw_block .aw_back {
+    position: absolute;
+    width: 100%; height: 100%;
+    left: 0; top: 0;
+    background: linear-gradient(0, rgb(150, 0, 0, .75), rgb(150, 0, 0, .5));
+}
+
+#activityWar nav div.aw_block .aw_back.my {
+    background: linear-gradient(0, rgba(4, 53, 3, 0.9), rgb(86, 255, 80, .1));
+}
+
+#activityWar nav div.aw_block .aw_back.no {
+	background: linear-gradient(0, rgb(0, 0, 0, .9), rgb(0, 0, 0, .5));
+}
+
+#activityWar nav div.aw_block h1 {
+    position: absolute;
+    bottom: 1vh;
+    left: 1vh;
+    font-size: 2vh;
+    z-index: 2;
+}
+
+#activityWar nav div.aw_block ul {
+    position: absolute;
+    top: 1vh;
+    right: 1vh;
+    text-align: right;
+    font-size: 1vh;
+    z-index: 2
+}
+
+#activityWar nav div.aw_block ul h2 {
+    opacity: .5;
+    font-weight: 600;
+}
+
+#activityWar nav div.aw_block footer {
+    position: absolute;
+    bottom: 1vh;
+    right: 1vh;
+    opacity: .5;
+    z-index: 2;
+    font-size: 1.25vh
+}

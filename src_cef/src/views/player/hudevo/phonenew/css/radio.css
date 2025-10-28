@@ -1,0 +1,554 @@
+.music-container .control-buttons .arrowr,.music-container .control-buttons .play {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.row-block {
+    display: flex;
+    flex-direction: row
+}
+
+.row-reverse-block {
+    display: flex;
+    flex-direction: row-reverse
+}
+
+.column-block {
+    display: flex;
+    flex-direction: column
+}
+
+.flex-block {
+    display: flex
+}
+
+.justify-start {
+    display: flex;
+    justify-content: flex-start
+}
+
+.justify-center {
+    display: flex;
+    justify-content: center
+}
+
+.justify-between {
+    display: flex;
+    justify-content: space-between
+}
+
+.justify-end {
+    display: flex;
+    justify-content: flex-end
+}
+
+.align-start {
+    display: flex;
+    align-content: flex-start
+}
+
+.align-center {
+    display: flex;
+    align-items: center
+}
+
+.align-end {
+    display: flex;
+    align-items: flex-end
+}
+
+.full-width {
+    width: 100%
+}
+
+.full-height {
+    height: 100%
+}
+
+.picture-handler {
+    display: flex;
+    cursor: pointer
+}
+
+.debug {
+    border: 1px solid red
+}
+
+.fade-up-animation {
+    animation: fadeOutUp-731d0d7e 1s ease
+}
+
+.fade-down-animation {
+    animation: fadeOutDown-731d0d7e 1s ease
+}
+
+@keyframes fadeOutUp-731d0d7e {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        background-color: #40b6ff;
+        color: #fff
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-100%);
+        background-color: #40b6ff;
+        color: #fff
+    }
+}
+
+@keyframes fadeOutDown-731d0d7e {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        background-color: #071e30;
+        color: #fff
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(100%);
+        background-color: #071e30;
+        color: #fff
+    }
+}
+
+.logotype-enter-active {
+    animation: logotype-731d0d7e .5s ease
+}
+
+.logotype-leave-active {
+    animation: logotype-731d0d7e .5s ease reverse
+}
+
+@keyframes logotype-731d0d7e {
+    0% {
+        transform: scale(0);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.cardMoveIn {
+    animation: cardMoveInside-731d0d7e ease forwards;
+    animation-duration: 2s
+}
+
+.cardMoveOut {
+    animation: cardMoveOutside-731d0d7e ease forwards;
+    animation-duration: 2s
+}
+
+@keyframes cardMoveOutside-731d0d7e {
+    0% {
+        right: 27.7777777778vh
+    }
+
+    to {
+        right: 1.0185185185vh
+    }
+}
+
+@keyframes cardMoveInside-731d0d7e {
+    0% {
+        right: 1.0185185185vh
+    }
+
+    to {
+        right: 27.7777777778vh
+    }
+}
+
+@keyframes borderBlink-731d0d7e {
+    0% {
+        opacity: .5
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.fade-enter,.fade-leave-to {
+    opacity: 0
+}
+
+.fade-enter-active,.fade-leave-active {
+    transition: opacity .5s
+}
+
+@keyframes slide-up-731d0d7e {
+    0% {
+        transform: translateY(-20%);
+        opacity: 0
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1
+    }
+}
+
+@keyframes slide-down-731d0d7e {
+    0% {
+        transform: translateY(0);
+        opacity: 1
+    }
+
+    to {
+        transform: translateY(20%);
+        opacity: 0
+    }
+}
+
+.ipad-slide-enter-active {
+    animation: ipad-slide-731d0d7e .4s ease
+}
+
+.ipad-slide-leave-active {
+    animation: ipad-slide-731d0d7e .4s ease reverse
+}
+
+@keyframes ipad-slide-731d0d7e {
+    0% {
+        transform: translateY(120%)
+    }
+
+    to {
+        transform: translateY(0)
+    }
+}
+
+@keyframes bounce-in-transition-731d0d7e {
+    0% {
+        transform: scale(0);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.local-fade-enter-from,.local-fade-leave-to {
+    opacity: 0
+}
+
+.local-fade-enter-active,.local-fade-leave-active {
+    transition: opacity .2s
+}
+
+.music-container {
+    background-color: #fff;
+    padding: 0 2.2222222222vh
+}
+
+.music-container__picture {
+    width: 22.962962963vh;
+    height: 22.962962963vh;
+    margin-top: 5.5555555556vh;
+    border-radius: 1.1111111111vh;
+    box-shadow: 0 .9259259259vh 1.1111111111vh rgba(0,0,0,.05);
+    border: .0925925926vh solid #e8e8e8
+}
+
+.music-container .title-block {
+    margin-top: 3.7037037037vh
+}
+
+.music-container .title-block__value-name {
+    font-family: var(--IntegratedFont),sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    color: #000
+}
+
+.music-container .title-block__value-author {
+    font-family: var(--IntegratedFont),sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    color: rgba(0,0,0,.5);
+    margin-top: .3703703704vh
+}
+
+.music-container .music-time {
+    margin-top: 1.8518518519vh
+}
+
+.music-container .music-time .progress-block {
+    position: relative
+}
+
+.music-container .music-time .progress-block__progress {
+    height: .2777777778vh;
+    background-color: hsla(0,0%,60%,.2);
+    overflow: hidden;
+    border-radius: .9259259259vh
+}
+
+.music-container .music-time .progress-block__progress .value {
+    background-color: #1b7bff;
+    border-radius: .9259259259vh
+}
+
+.music-container .music-time .time {
+    margin-top: 1.8518518519vh
+}
+
+.music-container .music-time .time span {
+    font-family: var(--IntegratedFont),sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    color: hsla(0,0%,51%,.85)
+}
+
+.music-container .control-buttons {
+    margin-top: 3.7037037037vh;
+    gap: 3.7037037037vh
+}
+
+.music-container .control-buttons .arrowr,.music-container .control-buttons .play {
+    cursor: pointer;
+    transition: .1s ease;
+    transition-property: transform,opacity;
+    width: 2.7777777778vh;
+    height: 2.7777777778vh;
+    opacity: .5
+}
+
+.music-container .control-buttons .arrowr:active,.music-container .control-buttons .play:active {
+    transform: scale(.9);
+    opacity: 1
+}
+
+.music-container .control-buttons .arrowr:hover,.music-container .control-buttons .play:hover {
+    opacity: 1
+}
+
+.music-container .control-buttons .arrowr.disable,.music-container .control-buttons .play.disable {
+    opacity: .5;
+    cursor: default
+}
+
+.music-container .control-buttons .arrowr.disable:active,.music-container .control-buttons .play.disable:active {
+    transform: scale(1)
+}
+
+.music-container .control-buttons__picture-forward {
+    width: 2.3148148148vh
+}
+
+.music-container .control-buttons__picture-forward.rotated {
+    transform: rotate(180deg)
+}
+
+.music-container .control-buttons__picture-play {
+    width: 2.037037037vh;
+    height: 2.6851851852vh
+}
+
+.music-container .volume {
+    margin-top: 3.7037037037vh
+}
+
+.music-container .volume .vue-slider {
+    margin: 0 1.1111111111vh;
+    height: .2777777778vh!important;
+    padding: 0!important;
+    width: 18.5185185185vh!important
+}
+
+.music-container .volume .vue-slider .vue-slider-rail {
+    background-color: hsla(0,0%,60%,.2);
+    border-radius: .5555555556vh
+}
+.vue-slider-rail {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    -webkit-transition-property: width, height, left, right, top, bottom;
+    transition-property: width, height, left, right, top, bottom;
+}
+.vue-slider {
+    position: relative;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: block;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.music-container .volume .vue-slider .vue-slider-process {
+    background-color: #27292e;
+    border-radius: .5555555556vh
+}
+.vue-slider-process {
+    position: absolute;
+    z-index: 1;
+}
+.music-container .volume .vue-slider .vue-slider-dot {
+    width: 1.7592592593vh!important;
+    height: 1.7592592593vh!important
+}
+.vue-slider-dot {
+    position: absolute;
+    -webkit-transition: all 0s;
+    transition: all 0s;
+    z-index: 5;
+}
+.music-container .volume .vue-slider .vue-slider-dot-handle {
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    background-color: #fff;
+    border: .0925925926vh solid #e0e0e0;
+    box-shadow: 0 .0925925926vh .2777777778vh rgba(0,0,0,.05);
+    cursor: pointer
+}
+
+.music-container .volume__picture {
+    width: 1.1111111111vh;
+    height: 1.1111111111vh;
+    fill: #8e8e93
+}
+
+.close-block {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: .5555555556vh;
+    height: 2.2222222222vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+    z-index: 6
+}
+
+.close-block-handler {
+    width: 11.1111111111vh;
+    height: .462962963vh;
+    border-radius: 9.2592592593vh;
+    background-color: #000
+}
+
+
+.switch {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.092593vh;
+    width: 3.240741vh;
+    height: 1.851852vh;
+    border: 0.092593vh solid #2e2e2e;
+    border-radius: 9.259259vh;
+    background: #292929;
+    cursor: pointer;
+    transition: background 0.2s ease
+    }
+.switch .point {
+    width: 1.481481vh;
+    height: 1.481481vh;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: transform 0.2s ease
+    }
+.switch:hover {
+    border-color: #292929;
+    background: #2e2e2e
+    }
+.switch.active {
+    background: #e81c5a
+    }
+.switch.active .point {
+    transform: translatex(calc(100% - 0.09259vh))
+    }
+
+.modal-wrapper {
+    z-index: 1000;
+    position: absolute;
+    top: -9.259259vh;
+    height: 60.740741vh;
+    padding: 11.111111vh 1.851852vh 34.444444vh 1.851852vh;
+    background: rgba(0, 0, 0, 0.25)
+    }
+.modal-wrapper .modal, .modal-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+    }
+.modal-wrapper .modal {
+    padding: 1.851852vh;
+    border-radius: 0.925926vh;
+    background: #fff
+    }
+.modal-wrapper .modal-location, .modal-wrapper .modal-type {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.481481vh;
+    align-self: stretch
+    }
+.modal-wrapper .modal-location p, .modal-wrapper .modal-type p {
+    align-self: stretch;
+    color: #27292e;
+    text-align: center;
+    font-size: 1.296296vh;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 100%
+    }
+.modal-wrapper .modal-location_btns, .modal-wrapper .modal-type_btns {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.740741vh;
+    align-self: stretch
+    }
+.modal-wrapper .modal-location_btns button, .modal-wrapper .modal-type_btns button {
+    display: flex;
+    width: 20vh;
+    height: 3.796296vh;
+    padding: 0 1.296296vh;
+    justify-content: center;
+    align-items: center;
+    gap: 0.925926vh;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+    border-radius: 0.740741vh;
+    background: rgba(39, 41, 46, 0.1);
+    color: rgba(39, 41, 46, 0.75);
+    font-size: 1.296296vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%
+    }
+.modal-wrapper .modal-location_btns button:hover, .modal-wrapper .modal-type_btns button:hover {
+    background: #f22e2e;
+    color: #fff
+    }
+
+.input-switch {
+    flex: none !important
+    }
+.input-switch, .input-switch:hover {
+    background-color: #dadada;
+    border-color: #dadada
+    }
+.input-switch.active {
+    background-color: #f22e2e
+    }

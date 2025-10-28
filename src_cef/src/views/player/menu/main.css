@@ -1,0 +1,586 @@
+.playermenuhax {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0vh;
+    top: 0vh;
+    background: url(http://gta5dev.online/heone/inventory/bg.png);
+    background-size: cover;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    
+}
+
+.playermenuhax.active {
+    display: flex !important;
+    
+}
+
+.playermenuhax .headerpl {
+    width: 100%;
+    min-height: 11.7593vh;
+    max-height: 11.7593vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 2;
+    position: relative;
+}
+
+.playermenuhax .headerpl .topheaderp {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 11.7593vh;
+    max-height: 11.7593vh;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 97.40%);
+}
+
+.playermenuhax .headerpl .topheaderp .navmenupl {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10.9259vh;
+}
+
+.playermenuhax .headerpl .topheaderp .Usernamep {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 19.537vh;
+}
+
+.playermenuhax .headerpl .lineheader {
+    width: 100%;
+    min-height: 1.5vh;
+    background: url(http://gta5dev.online/heone/inventory/lime.png);
+    background-size: cover;
+    position: relative;
+    top: -1.1vh;
+}
+
+.playermenuhax .headerpl .topheaderp .Usernamep h1 {
+    color: #FFF;
+    text-align: center;
+    text-shadow: 0px 0px 0.6481vh rgba(255, 255, 255, 0.50);
+    font-family: SF Pro Display;
+    font-size: 3.0556vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 0vh;
+}
+
+.playermenuhax .headerpl .topheaderp .Usernamep p {
+    color: #FFF;
+    text-align: center;
+    text-shadow: 0px 0px 0.6481vh rgba(255, 255, 255, 0.50);
+    font-family: SF Pro Display;
+    font-size: 1.6667vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 0vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 19.537vh;
+}
+
+.playermenuhax .headerpl .topheaderp .Usernamep p span.lefttpl {
+    display: block;
+    width: 3.713vh;
+    height: 2.6944vh;
+    background: url(http://gta5dev.online/heone/inventory/left.png);
+    background-size: cover;
+    margin-right: auto;
+}
+
+.playermenuhax .headerpl .topheaderp .Usernamep p span.rightpl {
+    display: block;
+    width: 3.713vh;
+    height: 2.6944vh;
+    background: url(http://gta5dev.online/heone/inventory/right.png);
+    background-size: cover;
+    margin-left: auto;
+}
+
+.playermenuhax .headerpl .topheaderp .navmenupl .itempl {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.9444vh;
+}
+
+.playermenuhax .headerpl .topheaderp .navmenupl .itempl p {
+    margin-bottom: 0vh;
+    color: #FFF;
+    text-align: center;
+    text-shadow: 0px 0px 0.6481vh rgba(255, 255, 255, 0.50);
+    font-family: SF Pro Display;
+    font-size: 1.8222vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    opacity: 0.1;
+}
+
+.playermenuhax .headerpl .topheaderp .navmenupl .itempl:hover p {
+    opacity: 1;
+}
+
+.playermenuhax .headerpl .topheaderp .navmenupl .itempl.active p {
+    opacity: 1;
+}
+
+.playermenuhax .headerpl .topheaderp .balancuser {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10.9259vh;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.00) 100%);
+    height: 100%;
+    width: 12.5vh;
+}
+
+.playermenuhax .headerpl .topheaderp .balancuser h1 {
+    color: #FFF;
+    text-align: center;
+    text-shadow: 0px 0px 0.6481vh rgba(255, 255, 255, 0.25);
+    font-family: SF Pro Display;
+    font-size: 1.8519vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 0vh;
+}
+
+.playermenuhax .headerpl .topheaderp .balancuser p {
+    color: #FF9900;
+    text-align: center;
+    text-shadow: 0px 0px 0.6481vh rgba(255, 123, 0, 0.25);
+    font-family: SF Pro Display;
+    font-size: 1.6667vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 0vh;
+}
+
+.playermenuhax .headerpl .topheaderp .logo {
+    position: absolute;
+    right: 8.1481vh;
+    width: 9.259vh;
+    height: 9.259vh;
+    background-size: cover;
+    background: url(http://gta5dev.online/heone/logo/logoauth.png);
+}
+
+.playermenuhax .headerpl .topheaderp .closed {
+    position: absolute;
+    right: 2vh;
+}
+
+.playermenuhax .headerpl .topheaderp .closed svg {
+    fill: #E73835;
+}
+
+.playermenuhax .headerpl .topheaderp .closed:hover svg {
+    fill: #df5351;
+}
+
+.playermenuhax .selectermenu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vh;
+}
+
+.aquainventory {
+    position: absolute;
+    width: 138.7037vh;
+    height: 82.4074vh;
+    border-radius: 0.7407vh;
+    background: rgb(21, 21, 21);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.aquainventory .aqualeft {
+    width: 91.1111vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.aquainventory .aquaright {
+    width: 47.5926vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 0.0926vh solid rgba(255, 255, 255, 0.04);
+}
+
+.aquainventory .aqualeft .headleft {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    height: 5.7407vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+.aquainventory .aqualeft .skladinvlist {
+    margin-left: 2.6852vh;
+    margin-top: 1.7593vh;
+    width: 88.3333vh;
+    height: 73.9815vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.9259vh;
+    align-content: flex-start;
+    overflow: auto;
+}
+
+.aquainventory .aqualeft .headleft h1 {
+    margin-left: 5.463vh;
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 1.6667vh;
+    font-weight: 600;
+    line-height: 2.037vh;
+    text-align: left;
+}
+
+.aquainventory .aqualeft .headleft p.slots {
+    margin-left: 1.8519vh;
+    font-family: Proxima Nova;
+    font-size: 1.4815vh;
+    font-weight: 600;
+    line-height: 1.7593vh;
+    letter-spacing: 0%;
+    text-align: left;
+    color: #fff;
+    margin-top: 0.3vh;
+}
+
+.aquainventory .aqualeft .headleft .inputinv {
+    margin-left: 19.3519vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 48.5185vh;
+    height: 3.5185vh;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.3704vh;
+    background: rgba(21, 21, 21, 0.8);
+}
+
+.aquainventory .aqualeft .headleft p.slots b {
+    color: rgba(255, 255, 255, 0.2);
+    font-family: Proxima Nova;
+    font-size: 1.4815vh;
+    font-weight: 600;
+    line-height: 1.7593vh;
+    text-align: left;
+    margin-left: 0.5vh;
+}
+
+.aquainventory .aqualeft .headleft .inputinv svg {
+    width: 1.2963vh;
+    height: 1.2963vh;
+    margin-left: 1.1111vh;
+    margin-right: 1.1111vh;
+}
+
+.aquainventory .aqualeft .headleft .inputinv input {
+    background: none;
+    border: none;
+    outline: none;
+    color: rgb(178, 178, 178);
+    font-family: Proxima Nova;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+.aquainventory .aqualeft .skladinvlist .block {
+    width: 27.7778vh;
+    height: 19.8148vh;
+    border-radius: 0.3704vh;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.aquainventory .aqualeft .skladinvlist .block h1 {
+    margin: 1.9444vh;
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+.aquainventory .aqualeft .skladinvlist .block img {
+    height: 9.4907vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -0.2778vh;
+}
+
+.aquainventory .aqualeft .skladinvlist .block span {
+    font-family: Proxima Nova;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+    letter-spacing: 0%;
+    text-align: left;
+    margin-top: auto;
+    margin-left: 1.9444vh;
+    margin-bottom: 1.9444vh;
+    color: #fff;
+}
+
+.aquainventory .aqualeft .skladinvlist .block span b {
+    font-family: Proxima Nova;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+    letter-spacing: 0%;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.aquainventory .aquaright .headright {
+    width: 100%;
+    height: 5.7407vh;
+    background: rgba(255, 255, 255, 0.04);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.aquainventory .aquaright .invlist {
+    margin-left: 2.8704vh;
+    width: 44.4444vh;
+    height: 73.9815vh;
+    margin-top: 1.7593vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.9259vh;
+    overflow: auto;
+}
+
+.aquainventory .aquaright .headright h1 {
+    margin-left: 3.6111vh;
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 1.4815vh;
+    font-weight: 600;
+    line-height: 1.7593vh;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+.aquainventory .aquaright .invlist .block {
+    width: 41.8519vh;
+    height: 16.2963vh;
+    border-radius: 0.3704vh;
+    background: rgba(255, 255, 255, 0.02);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.aquainventory .aquaright .invlist .block .blockleft {
+    border-radius: 0.3704vh 0vh 0vh 0.3704vh;
+    display: flex;
+    width: 13.1481vh;
+    height: 16.2963vh;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.aquainventory .aquaright .invlist .block .blockright {
+    display: flex;
+    width: 28.7037vh;
+    height: 16.2963vh;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.aquainventory .aquaright .invlist .block .blockleft img {
+    width: 11.1111vh;
+}
+
+.aquainventory .aquaright .invlist .block .blockright h1 {
+    margin: 1.5741vh 1.5741vh 0vh 1.5741vh;
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 1.4815vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+.aquainventory .aquaright .invlist .block .blockright span {
+    margin: 1.3889vh 1.5741vh 0 1.5741vh;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: Proxima Nova;
+    font-size: 1.2037vh;
+    font-weight: 600;
+    line-height: 1.4815vh;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+
+.aquainventory .aquaright .invlist .block .blockright .blockbtn {
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.6667vh;
+    width: 25.5556vh;
+    height: 3.8889vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgba(255, 255, 255, 0.06);
+    border-radius: 0.5556vh;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.aquainventory .aquaright .invlist .block .blockright .blockbtn p {
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+.aquainventory p, h1 {
+    margin: 0;
+}
+
+.aquainventory .aqualeft .skladinvlist::-webkit-scrollbar {
+  width: 0.1852vh;               /* ширина scrollbar */
+}
+.aquainventory .aqualeft .skladinvlist::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);        /* цвет дорожки */
+}
+.aquainventory .aqualeft .skladinvlist::-webkit-scrollbar-thumb {
+  border: 0.1852vh solid rgba(255, 255, 255, 0.08);  /* padding вокруг плашки */
+}
+
+.aquainventory .aquaright .invlist::-webkit-scrollbar {
+  width: 0.1852vh;               /* ширина scrollbar */
+}
+.aquainventory .aquaright .invlist::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);        /* цвет дорожки */
+}
+.aquainventory .aquaright .invlist::-webkit-scrollbar-thumb {
+  border: 0.1852vh solid rgba(255, 255, 255, 0.08);  /* padding вокруг плашки */
+}
+
+.aquainventory .aquaright .invlist .block .blockright .blockbtn:hover {
+    background: #1772D9;
+    border: none;
+}
+
+.aquainventory .aqualeft .skladinvlist .block:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.aquainventory .aqualeft .skladinvlist .blockfree {
+    width: 27.7778vh;
+    height: 19.8148vh;
+    border-radius: 0.3704vh;
+    border: 0.0926vh dashed rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+.aquainventory .aqualeft .skladinvlist .blockfree h1 {
+    margin: 1.9444vh;
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+    letter-spacing: 0%;
+    text-align: right;
+}
+
+.aquainventory .aqualeft .skladinvlist .blockfree svg {
+    width: 7.2222vh;
+    height: 7.2222vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0vh;
+}
+
+.aquainventory .aqualeft .skladinvlist .blockfree p {
+    width: 21.8519vh;
+    height: 3.3333vh;
+    color: rgb(139, 138, 134);
+    font-family: Proxima Nova;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.6667vh;
+    letter-spacing: 0%;
+    text-align: left;
+    margin-top: 0.9259vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.aquainventory .aqualeft .skladinvlist .noneitem {
+    display: none;
+    position: absolute;
+}

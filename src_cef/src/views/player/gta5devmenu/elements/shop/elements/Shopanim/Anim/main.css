@@ -1,0 +1,93 @@
+.animations {
+    color: #fff
+}
+
+.animations .anims-list {
+    padding: 1.8518518519vh 2.7777777778vh;
+    flex-wrap: wrap;
+    max-height: 92.40741vh;
+    overflow: auto;
+    align-content: flex-start;
+    scroll-behavior: smooth;
+    gap: .9259259259vh
+    
+}
+
+.animations .anims-list::-webkit-scrollbar {
+    width: .2777777778vh;
+    background-color: hsla(0,0%,100%,.4)
+}
+
+.animations .anims-list::-webkit-scrollbar-thumb {
+    background-color: hsla(0,0%,100%,.4)
+}
+
+.animations .anims-list .anim-tile {
+    position: relative;
+    width: 19.4%;
+    height: 23.1481481481vh;
+    background-color: hsla(0,0%,7%,.8);
+    border-radius: .5555555556vh;
+    transition: background-color .2s ease
+}
+
+.animations .anims-list .anim-tile__picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .2s ease;
+    padding: .9259259259vh
+}
+
+.animations .anims-list .anim-tile__picture img,.animations .anims-list .anim-tile__picture video {
+    height: 15.5555555556vh
+}
+
+.animations .anims-list .anim-tile__title {
+    font-family: var(--IntegratedFont),sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    color: #fff;
+    position: absolute;
+    bottom: 1.3888888889vh;
+    left: 1.3888888889vh;
+    max-width: calc(100% - 1.38889vh)
+}
+
+.animations .anims-list .anim-tile:hover {
+    background-color: #000
+}
+
+.animations .anims-list .anim-tile:hover .favourite svg {
+    fill: hsla(0,0%,100%,.2)
+}
+
+.animations .anims-list .anim-tile .favourite {
+    display: flex;
+    position: absolute;
+    right: 1.6666666667vh;
+    top: 1.7037037037vh;
+    width: 1.4814814815vh;
+    height: 1.4814814815vh;
+    cursor: pointer
+}
+
+.animations .anims-list .anim-tile .favourite svg {
+    width: inherit;
+    height: inherit;
+    fill: hsla(0,0%,100%,.1);
+    transition: fill .2s ease
+}
+
+.animations .anims-list .anim-tile .favourite:hover svg {
+    fill: hsla(0,0%,98%,.5)
+}
+
+.animations .anims-list .anim-tile .favourite.active svg {
+    fill: #ffba31
+}
+
+.anim-price {
+    margin-left: 15vh;
+}

@@ -1,0 +1,352 @@
+.row-block{
+    display: flex;
+    flex-direction: row
+    }
+.row-reverse-block{
+    display: flex;
+    flex-direction: row-reverse
+    }
+.column-block{
+    display: flex;
+    flex-direction: column
+    }
+.flex-block{
+    display: flex
+    }
+.justify-start{
+    display: flex;
+    justify-content: flex-start
+    }
+.justify-center{
+    display: flex;
+    justify-content: center
+    }
+.justify-between{
+    display: flex;
+    justify-content: space-between
+    }
+.justify-end{
+    display: flex;
+    justify-content: flex-end
+    }
+.align-start{
+    display: flex;
+    align-content: flex-start
+    }
+.align-center{
+    display: flex;
+    align-items: center
+    }
+.align-end{
+    display: flex;
+    align-items: flex-end
+    }
+.full-width{
+    width: 100%
+    }
+.full-height{
+    height: 100%
+    }
+.picture-handler{
+    display: flex;
+    cursor: pointer
+    }
+.debug{
+    border: 1px solid red
+    }
+.fade-up-animation{
+    animation: fadeOutUp 1s ease
+    }
+.fade-down-animation{
+    animation: fadeOutDown 1s ease
+    }
+@keyframes fadeOutUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        background-color: #40b6ff;
+        color: #fff
+        } to {
+        opacity: 0;
+        transform: translateY(-100%);
+        background-color: #40b6ff;
+        color: #fff
+        }
+    }
+@keyframes fadeOutDown {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        background-color: #071e30;
+        color: #fff
+        } to {
+        opacity: 0;
+        transform: translateY(100%);
+        background-color: #071e30;
+        color: #fff
+        }
+    }
+.logotype-enter-active{
+    animation: logotype 0.5s ease
+    }
+.logotype-leave-active{
+    animation: logotype 0.5s ease reverse
+    }
+@keyframes logotype {
+    0% {
+        transform: scale(0);
+        opacity: 0
+        } to {
+        transform: scale(1);
+        opacity: 1
+        }
+    }
+.cardMoveIn{
+    animation: cardMoveInside ease forwards;
+    animation-duration: 2s
+    }
+.cardMoveOut{
+    animation: cardMoveOutside ease forwards;
+    animation-duration: 2s
+    }
+@keyframes cardMoveOutside {
+    0% {
+        right: 27.7777777778vh
+        } to {
+        right: 1.0185185185vh
+        }
+    }
+@keyframes cardMoveInside {
+    0% {
+        right: 1.0185185185vh
+        } to {
+        right: 27.7777777778vh
+        }
+    }
+@keyframes borderBlink {
+    0% {
+        opacity: .5
+        } to {
+        opacity: 1
+        }
+    }
+.fade-enter, .fade-leave-to{
+    opacity: 0
+    }
+.fade-enter-active, .fade-leave-active{
+    transition: opacity 0.5s
+    }
+@keyframes slide-up {
+    0% {
+        transform: translateY(-20%);
+        opacity: 0
+        } to {
+        transform: translateY(0);
+        opacity: 1
+        }
+    }
+@keyframes slide-down {
+    0% {
+        transform: translateY(0);
+        opacity: 1
+        } to {
+        transform: translateY(20%);
+        opacity: 0
+        }
+    }
+.ipad-slide-enter-active{
+    animation: ipad-slide 0.4s ease
+    }
+.ipad-slide-leave-active{
+    animation: ipad-slide 0.4s ease reverse
+    }
+@keyframes ipad-slide {
+    0% {
+        transform: translateY(120%)
+        } to {
+        transform: translateY(0)
+        }
+    }
+@keyframes bounce-in-transition {
+    0% {
+        transform: scale(0);
+        opacity: 0
+        } to {
+        transform: scale(1);
+        opacity: 1
+        }
+    }
+.phone-fade-enter-from, .phone-fade-leave-to{
+    opacity: 0
+    }
+.phone-fade-enter-active, .phone-fade-leave-active{
+    transition: opacity 0.2s
+    }
+.taxi-main{
+    padding-top: 3.703704vh;
+    background-color: #fafafa;
+    background-image: url(https://cdn.majestic-files.com/public/master/static/img/iPhone/apps/carService/map2.png?aaaa);
+    background-size: cover;
+    background-position: 50%
+    }
+.taxi-main .header{
+    padding: 0.925926vh 1.851852vh 1.203704vh;
+    margin-bottom: 0.925926vh;
+    border-bottom: 0.092593vh solid #e8e8e8
+    }
+.taxi-main .header .icon{
+    margin-right: 1.111111vh;
+    width: 2.685185vh;
+    height: 2.685185vh
+    }
+.taxi-main .header .title{
+    font-family: var(--IntegratedFont), sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 1.666667vh;
+    color: #000
+    }
+.taxi-main .header .orders{
+    margin-left: auto
+    }
+.taxi-main .header .orders-value{
+    font-family: var(--IntegratedFont), sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 1.481481vh;
+    color: #000
+    }
+.taxi-main .header .orders-icon{
+    margin-left: 0.555556vh;
+    width: 1.388889vh;
+    height: 1.388889vh;
+    fill: #ffd245
+    }
+.taxi-main .wrapper-list{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 2.777778vh
+    }
+.taxi-main .wrapper-list .list{
+    padding: 0 0.925926vh;
+    max-height: 48.888889vh;
+    overflow-y: auto
+    }
+.taxi-main .wrapper-list .list::-webkit-scrollbar {
+    display: none
+    }
+.taxi-main .wrapper-list .list-item{
+    padding: 0.925926vh 1.111111vh;
+    margin-bottom: 0.555556vh;
+    min-height: 4.351852vh;
+    border-radius: 0.740741vh;
+    border: 0.092593vh solid #e8e8e8;
+    background-color: transparent;
+    transition: background-color 0.2s ease, border 0.2s ease
+    }
+.taxi-main .wrapper-list .list-item:last-child {
+    margin-bottom: 0
+    }
+.taxi-main .wrapper-list .list-item__picture{
+    margin-right: 0.555556vh;
+    width: 2.5vh;
+    height: 2.5vh;
+    border-radius: 50%
+    }
+.taxi-main .wrapper-list .list-item__text-nickname-text{
+    margin-right: 0.37037vh;
+    font-family: var(--IntegratedFont), sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.296296vh;
+    color: rgba(39, 41, 46, 0.5);
+    transition: color 0.2s ease
+    }
+.taxi-main .wrapper-list .list-item__text-nickname-value{
+    font-family: var(--IntegratedFont), sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 1.296296vh;
+    color: #27292e
+    }
+.taxi-main .wrapper-list .list-item__text-distance{
+    margin-left: auto
+    }
+.taxi-main .wrapper-list .list-item__text-distance-value{
+    margin-right: 0.185185vh;
+    font-family: var(--IntegratedFont), sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 1.296296vh;
+    color: #27292e
+    }
+.taxi-main .wrapper-list .list-item__text-distance-text{
+    font-family: var(--IntegratedFont), sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.296296vh;
+    color: rgba(39, 41, 46, 0.5);
+    transition: color 0.2s ease
+    }
+.taxi-main .wrapper-list .list-item:hover {
+    border: 0.092593vh solid #ffd245;
+    background-color: #ffd245
+    }
+.taxi-main .wrapper-list .list-item:hover .list-item__text-distance-text, .taxi-main .wrapper-list .list-item:hover .list-item__text-nickname-text{
+    color: #27292e
+    }
+.taxi-main .wrapper-list .btn{
+    display: flex;
+    width: 23.703704vh;
+    padding: 1.296296vh;
+    justify-content: center;
+    align-items: center;
+    gap: 1.111111vh;
+    cursor: pointer;
+    border-radius: 0.740741vh;
+    background: #27292e;
+    transition: background 0.2s ease
+    }
+.taxi-main .wrapper-list .btn:hover {
+    background: #ffd245
+    }
+.taxi-main .wrapper-list .btn:hover p{
+    color: #27292e
+    }
+.taxi-main .wrapper-list .btn:hover svg{
+    fill: #27292e
+    }
+.taxi-main .wrapper-list .btn p{
+    color: #fff;
+    text-align: center;
+    font-family: var(--IntegratedFont), sans-serif;
+    font-weight: 900;
+    font-size: 1.296296vh;
+    font-style: normal;
+    line-height: 100%;
+    transition: color 0.2s ease
+    }
+.taxi-main .wrapper-list .btn svg{
+    transition: fill 0.2s ease;
+    fill: #fff
+    }
+.close-block{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 0.555556vh;
+    height: 2.222222vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+    z-index: 6
+    }
+.close-block-handler{
+    width: 11.111111vh;
+    height: 0.462963vh;
+    border-radius: 9.259259vh;
+    background-color: #000
+    }

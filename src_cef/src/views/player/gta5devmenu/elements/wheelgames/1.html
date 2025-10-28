@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wheel Game Test</title>
+  <link rel="stylesheet" href="wheel.css" />
+</head>
+<body>
+  <div class="Wheel full-width full-height row-block align-start justify-between">
+    <!-- Загрузка -->
+    <div class="no-content">
+      <h1>Loading...</h1>
+    </div>
+
+    <!-- Coming soon -->
+    <div class="no-content">
+      <h1>Coming soon...</h1>
+    </div>
+
+    <!-- Основная страница -->
+    <div class="full-width full-height">
+      <div class="main full-width full-height row-block align-start justify-center">
+        <div class="game align-start justify-start column-block full-height">
+          <img class="back full-height full-width" src="gameBack.png" alt="game background" />
+
+          <div class="history row-block align-center justify-start">
+            <button class="full-height">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                <path d="M12 2C6.48 2 2 6.48 ..."></path>
+              </svg>
+            </button>
+
+            <div class="items emptyHistoryItems row-block align-center justify-start">
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <!-- ... -->
+            </div>
+          </div>
+
+          <!-- Время/результат -->
+          <div class="timeStart column-block align-center justify-start">
+            <span class="time">10</span>
+            <span class="text">Time Start</span>
+          </div>
+
+          <!-- Колесо -->
+          <div class="wheelWrapper">
+            <svg class="wheel full-width full-height" xmlns="http://www.w3.org/2000/svg" width="500" height="500">
+              <circle cx="250" cy="250" r="200" fill="lightgray" stroke="black" stroke-width="10"/>
+            </svg>
+            <div class="line"></div>
+          </div>
+
+          <img class="dealer" src="dealer.png" alt="dealer" />
+
+          <!-- Ставка -->
+          <div class="placeBet column-block align-center justify-start">
+            <div class="inputWrapper full-width">
+              <input type="text" maxlength="6" class="full-width full-height" placeholder="Enter bet" />
+              <img class="coins" src="mcoin.svg" alt="coins" />
+            </div>
+
+            <div class="colors row-block align-center justify-between full-width">
+              <button class="color red align-center justify-center">2X</button>
+              <button class="color green align-center justify-center">3X</button>
+              <button class="color white align-center justify-center">5X</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Блок ставок -->
+        <div class="bets align-start justify-start column-block full-height">
+          <div class="info row-block align-center justify-between full-width">
+            <div class="row-block align-center justify-start">
+              <span class="title">Game</span>
+              <div class="gameID"><span>#1234</span></div>
+            </div>
+
+            <div class="row-block align-center justify-start">
+              <div class="players row-block align-center justify-start">
+                <div class="players-info column-block align-start justify-between">
+                  <span class="count">5</span>
+                  <span class="text">Players</span>
+                </div>
+              </div>
+
+              <div class="bank row-block align-center justify-start">
+                <div class="bank-info column-block align-start justify-between">
+                  <span class="count row-block align-center justify-start">
+                    1000 <img class="coins" src="mcoin.svg" alt="coins" />
+                  </span>
+                  <span class="text">Bank</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Информация по цветам -->
+          <div class="colorsInfo full-width row-block align-center justify-between">
+            <div class="color full-height column-block align-start justify-between red">
+              <div class="coefficient full-width row-block align-center justify-center">2X</div>
+              <div class="colorInfo row-block align-center justify-between">
+                <div class="playersWrapper row-block align-center justify-start">
+                  <span class="count">2</span>
+                </div>
+                <div class="bankWrapper row-block align-center justify-start">
+                  <span class="count">500</span>
+                  <img class="coins" src="mcoin.svg" alt="coins" />
+                </div>
+              </div>
+            </div>
+            <!-- Другие цвета аналогично -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

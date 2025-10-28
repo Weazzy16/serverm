@@ -1,0 +1,233 @@
+.shoprd {
+    position: absolute;
+    left: 0vh;
+    top: 0vh;
+    width: 100%;
+    height: 100%;
+    /* background: url(http://cdn.piecerp.ru/src/views/business/menu/img/background.png); */
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.shoprd .leftsh {
+    margin-right: 4.907vh;
+}
+
+.shoprd .rightsh {
+    margin-bottom: 15.000vh;
+    height: 69.907vh;
+}
+
+.shoprd .leftsh .headsh {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.shoprd .leftsh .imgshop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.shoprd .leftsh .headsh .leftsho {
+    margin-right: 0.577vh;
+}
+
+.shoprd .leftsh .headsh .rightsho {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 32.185vh;
+    height: 7.315vh;
+}
+
+.shoprd .leftsh .headsh .leftsho img {
+    width: 13.796vh;
+    height: 7.315vh;
+}
+
+.shoprd .leftsh .headsh .rightsho h1 {
+    color: #FFF;
+    text-shadow: 0px 0px 0.648vh rgba(255, 255, 255, 0.50);
+    font-family: Gilroy;
+    font-size: 2.870vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.201vh;
+    margin-bottom: 0vh;
+}
+
+.shoprd .leftsh .headsh .rightsho p {
+    color: rgba(255, 255, 255, 0.50);
+    text-shadow: 0px 0px 0.648vh rgba(0, 0, 0, 0.25);
+    font-family: Gilroy;
+    font-size: 1.759vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.018vh;
+    margin-bottom: 0vh;
+}
+
+.shoprd .leftsh .imgshop img {
+    width: 44.352vh;
+    height: 77.130vh;
+}
+
+.shoprd .rightsh .listsh {
+    width: 85.3vh;
+    max-height: 69.907vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: auto;
+}
+
+.shoprd .rightsh .blockitem {
+    width: 27.037vh;
+    height: 16.852vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* background: url(https://imgur.com/s9FAM4p.png); */
+    background: black;
+    background-size: cover;
+    margin-right: 1.296vh;
+    margin-bottom: 0.833vh;
+}
+
+.shoprd .rightsh span {
+    color: #0091FF;
+    font-family: Gilroy;
+    font-size: 1.481vh;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-top: 1.389vh;
+    padding-left: 1.667vh;
+    width: 100%;
+}
+
+.shoprd .rightsh svg {
+    min-width: 4.074vh;
+    min-height: 3.796vh;
+    max-width: 4.074vh;
+    max-height: 3.796vh;
+    position: relative;
+    margin-left: auto;
+    margin-right: 1.019vh;
+    top: -2.222vh;
+}
+
+.shoprd .rightsh img {
+    width: 6.019vh;
+    height: 6.019vh;
+    background-size: cover;
+    position: relative;
+    top: -2.222vh;
+    z-index: 2;
+}
+
+.shoprd .rightsh p {
+    color: #FFF;
+    text-align: center;
+    text-shadow: 0px 0px 0.741vh rgba(255, 255, 255, 0.80);
+    font-family: Gilroy;
+    font-size: 1.481vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 0vh;
+    position: relative;
+    top: -0.6vh;
+    height: 3vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.itemline {
+    width: 6.111vh;
+    height: 0.278vh;
+    background: #fff;
+    border-radius: 2vh;
+    box-shadow: 0px 0px 0.741vh rgba(255, 255, 255, 0.80);
+    position: relative;
+    top: -1vh;
+    z-index: 0;
+}
+
+.shoprd .rightsh .blockitem:hover {
+    /* background: url(https://imgur.com/RmHWjqC.png); */
+    opacity: 0.7;
+    background-size: cover;
+}
+
+.shoprd .rightsh .listsh::-webkit-scrollbar {
+  width: 0.3vh; /* в основном для вертикальных полос прокрутки */
+   /* в основном для горизонтальных полос прокрутки */
+  border-radius: 2vh;
+}
+.shoprd .rightsh .listsh::-webkit-scrollbar-thumb { /* плашка-бегунок */
+  background: #0091FF;
+  border-radius: 2vh;
+}
+.shoprd .rightsh .listsh::-webkit-scrollbar-track { /* фон */
+  background: #14141426;
+  border-radius: 2vh;
+}
+
+.closedhax {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    top: 2.222vh;
+    right: 3.519vh;
+}
+
+.closedhax p {
+    text-shadow: 0px 0px 0.648vh rgba(255, 255, 255, 0.25);
+    font-family: Gilroy;
+    font-size: 1.111vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.389vh; /* 125% */
+    letter-spacing: 0.067vh;
+    margin-bottom: 0vh;
+    color: #fff;
+    margin-right: 0.833vh;
+}
+
+.closedhax span {
+    margin-bottom: 0vh;
+    width: 2.778vh;
+    height: 2.778vh;
+    border-radius: 0.278vh;
+    background: #C92A2A;
+    box-shadow: 0px 0.556vh 2.037vh 0px rgba(201, 42, 42, 0.50);
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.296vh;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.389vh; /* 107.143% */
+    letter-spacing: 0.078vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

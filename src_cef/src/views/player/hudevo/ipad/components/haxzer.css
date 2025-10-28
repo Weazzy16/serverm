@@ -1,0 +1,687 @@
+.header_app {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.1296vh;
+    margin-bottom: 1.1111vh;
+}
+
+.header_app .bghead {
+    width: 7.1296vh;
+    height: 1.1111vh;
+    background: url(https://imgur.com/yyEU6nx.png);
+    background-size: cover;
+}
+
+.header_app h1 {
+    margin: 0px 0.6481vh;
+    color: #FFF;
+    font-family: Akrobat;
+    font-size: 1.8519vh;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-transform: capitalize;
+}
+
+
+.content_app .app_filter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 2.5vh;
+    width: 100%;
+}
+
+.content_app .app_timer {
+    color: #000;
+    text-align: center;
+    font-family: Arial;
+    font-size: 0.8407vh;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+    margin-left: auto;
+    margin-right: 2.037vh;
+    border-radius: 0.463vh;
+    background: #fff;
+    padding: 0.3704vh;
+    width: auto;
+    margin-bottom: 0.6481vh;
+}
+
+.content_app .app_bonuslist {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    max-height: 37.963vh;
+    overflow: auto;
+}
+
+.content_app .app_filter span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: #6B6B6B;
+    padding: 0.1852vh 0.5556vh;
+    border-radius: 1.2037vh;
+    color: #FFF;
+    font-family: Calistoga;
+    font-size: 0.9259vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+}
+
+.content_app .app_filter span svg {
+    width: 0.5875vh;
+    height: 0.6031vh;
+    margin-right: 0.2778vh;
+}
+
+.content_app .app_bonuslist .bonusblock {
+    min-width: 22.8484vh;
+    min-height: 8.0416vh;
+    max-width: 22.8484vh;
+    max-height: 8.0416vh;
+    background-size: cover !important;
+    margin-bottom: 1.2037vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+
+.content_app .app_bonuslist::-webkit-scrollbar {
+    opacity:0;
+    width: 0vh;
+    height: 0vh;
+}
+.content_app .app_bonuslist::-webkit-scrollbar-thumb {
+    opacity:0;
+    width: 0vh;
+    height: 0vh;
+}
+.content_app .app_bonuslist::-webkit-scrollbar-track {
+    opacity:0;
+    width: 0vh;
+    height: 0vh;
+}
+
+.content_app .app_bonuslist .bonusblock h1 {
+    margin-top: 0.7407vh;
+    margin-bottom: 0px;
+    margin-right: 1.0185vh;
+    color: #000;
+    text-align: right;
+    font-family: SF Pro Display;
+    font-size: 0.9259vh;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+}
+
+.content_app .app_bonuslist .bonusblock span {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 1.0185vh;
+    color: #000;
+    text-align: right;
+    font-family: Iceberg;
+    font-size: 0.9259vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+}
+
+.content_app .app_bonuslist .bonusblock .btnbonus {
+    margin-right: 0.463vh;
+    color: #fff;
+    text-align: center;
+    font-family: SF Pro Display;
+    font-size: 0.8333vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 0.1852vh 0.5556vh;
+    background: #6B6B6B;
+    border-radius: 0.5556vh;
+    margin-bottom: 0.463vh;
+}
+
+.link_app {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+}
+
+.link_app .btnlink {
+    margin-left: 1.4352vh;
+    margin-right: 1.4352vh;
+    margin-top: 0.6481vh;
+}
+
+.link_app .btnlink svg {
+    width: 2.3148vh;
+    height: 2.3148vh;
+}
+
+.link_app .btnlink svg.active {
+    fill: #fff;
+}
+
+.link_app .btnlink svg:hover {
+    fill: #ffffffcf;
+}
+
+.content_app .app_bonuslist .bonusblock.car {
+    background: url(https://imgur.com/Br7ZPoB.png);
+}
+
+.content_app .app_bonuslist .bonusblock.money {
+    background: url(https://imgur.com/MYpt3wv.png);
+}
+
+.content_app .app_bonuslist .bonusblock.cloth {
+    background: url(https://imgur.com/1mpKwhZ.png);
+}
+
+.content_app .app_bonuslist .bonusblock.coins {
+    background: url(https://imgur.com/cfydd4f.png);
+}
+
+.content_app .app_bonuslist .bonusblock.moan {
+    background: url(https://imgur.com/MTfjD7j.png);
+}
+
+.content_app .app_bonuslist .bonusblock.vido {
+    background: url(https://imgur.com/mdxfhRL.png);
+}
+
+.content_app .app_bonuslist .bonusblock .btnbonus.use {
+    background: #fff;
+    color: #000;
+}
+
+.content_app .app_bonuslist .bonusblock .btnbonus.dont {
+    background: #fff;
+    color: #000;
+    opacity: 0.5;
+}
+
+.app_nagrad {
+    width: 24.2193vh;
+    height: 11.4593vh;
+    border-radius: 0.463vh;
+    border: 0.0926vh solid #FFF;
+    background: linear-gradient(180deg, #F4F4F4 0%, #F8F8F8 100%);
+    box-shadow: 0vh 0.3704vh 0.3704vh 0vh rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.app_nagrad .nagrad_clos {
+    background: #E2E2E2;
+    width: 0.9259vh;
+    height: 0.9259vh;
+    border-radius: 0.9259vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    font-size: 0.7407vh;
+    margin-top: 0.5556vh;
+    margin-right: 0.5556vh;
+    margin-left: auto;
+}
+
+.app_nagrad h1 {
+    color: #000;
+    text-align: center;
+    font-family: SF Pro Display;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+    margin-bottom: 27px;
+}
+
+.app_nagrad .lvlnagrad {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.app_nagrad .lvlnagrad .lvlnag {
+    width: 1.8519vh;
+    height: 1.8519vh;
+    background: #1b1b1b;
+    border-radius: 1.8519vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: Gluten;
+    font-size: 0.8333vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    margin-left: 0.2315vh;
+    margin-right: 0.2315vh;
+}
+
+.app_promocode {
+    width: 19.5844vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 2.5vh;
+}
+
+.app_promocode h1 {
+    margin-bottom: 0px;
+    color: #fff;
+    text-align: right;
+    font-family: SF Pro Display;
+    font-size: 0.9259vh;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+    margin-left: auto;
+}
+
+.app_promocode span {
+    padding: 1.7593vh 4.6296vh;
+    border: 0.1852vh dashed #fff;
+    color: #fff;
+    text-align: center;
+    font-family: SF Pro Display;
+    font-size: 1.7593vh;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+    margin-top: 0.463vh;
+    margin-bottom: 0.7407vh;
+}
+
+.app_promocode .btnpromocode {
+    border-radius: 0.463vh;
+    background: #F2F2F2;
+    color: #000;
+    text-align: center;
+    font-family: SF Pro Display;
+    font-size: 0.9259vh;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+    padding: 0.2778vh 0.6481vh;
+}
+
+.app_static {
+    margin-top: 6.9444vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 20.4177vh;
+}
+
+.app_static .vsego {
+    width: 20.4177vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 0.0926vh solid #ECECEC;
+    border-bottom: 0.0926vh solid #ECECEC;
+}
+
+.app_static .ned {
+    width: 20.4177vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.0926vh solid #ECECEC;
+}
+
+.app_static .vsego p {
+    color: #fff;
+    font-family: SF Pro Display;
+    font-size: 1.0185vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+    padding: 0.1852vh;
+}
+
+.app_static .ned p {
+    color: #fff;
+    font-family: SF Pro Display;
+    font-size: 1.0185vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+    padding: 0.1852vh;
+}
+
+.content_app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.app_nagrad .lvlnagrad .lvlnag.active {
+    color: #000;
+    background: #FFD464;
+    box-shadow: 0vh 0vh 0.6481vh #FFD464;
+}
+
+.content_app .app_timer.info {
+    width: auto;
+    font-size: 0.8vh;
+}
+
+.app_nagrad.info {
+    height: auto;
+    margin-bottom: 4.1667vh;
+}
+
+.app_nagrad.info p {
+    color: #000;
+    text-align: center;
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    padding: 0.5556vh 0.5556vh;
+}
+
+.app_nagrad.info p b {
+    color: #F00;
+    font-family: SF Pro Display;
+    font-size: 1.3889vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.app_balance {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0vh 2.1296vh;
+    margin-bottom: 2.6852vh;
+}
+
+.app_balance .btnba {
+    color: #FFF;
+    font-family: SF Pro Display;
+    font-size: 0.9259vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+    padding: 0.1852vh 0.5556vh;
+    border-radius: 0.463vh;
+    background: #F00;
+}
+
+.app_balance .user_balance {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.app_balance .user_balance svg {
+    width: 3.0556vh;
+    height: 3.0556vh;
+    margin-right: 0.5556vh;
+}
+
+.app_balance .user_balance .ubalan {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.app_balance .user_balance .ubalan p {
+    color: #fff;
+    text-align: right;
+    font-family: SF Pro Display;
+    font-size: 1.6667vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.app_balance .user_balance .ubalan b {
+    color: #fff;
+    font-family: Akrobat;
+    font-size: 0.9259vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.app_balance .user_balance .ubalan svg {
+    width: 1.5741vh;
+    height: 1.5741vh;
+    margin-left: 0.2778vh;
+    margin-right: 0vh;
+}
+
+.content_app .app_bonuslist .bonusblock.\35 eu {
+    background: url(https://imgur.com/hcJTb7X.png);
+}
+
+.content_app .app_bonuslist .bonusblock.\31 0eu {
+    background: url(https://imgur.com/qK6JOMb.png);
+}
+
+.content_app .app_bonuslist .bonusblock.\32 0eu {
+    background: url(https://imgur.com/1KO3oGl.png);
+}
+
+.content_app .app_bonuslist .bonusblock.\35 0eu {
+    background: url(https://imgur.com/M7E853I.png);
+}
+
+.content_app .app_bonuslist .bonusblock.\35 eu h1 {
+    color: #FFF;
+    text-align: right;
+    text-shadow: 0vh 0.0926vh 0.1852vh #000;
+    font-family: SF Pro Display;
+    font-size: 1.8519vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.content_app .app_bonuslist .bonusblock.\31 0eu h1 {
+    color: #FFF;
+    text-align: right;
+    text-shadow: 0vh 0.0926vh 0.1852vh #000;
+    font-family: SF Pro Display;
+    font-size: 1.8519vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.content_app .app_bonuslist .bonusblock.\32 0eu h1 {
+    color: #FFF;
+    text-align: right;
+    text-shadow: 0vh 0.0926vh 0.1852vh #000;
+    font-family: SF Pro Display;
+    font-size: 1.8519vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.content_app .app_bonuslist .bonusblock.\35 0eu h1 {
+    color: #FFF;
+    text-align: right;
+    text-shadow: 0vh 0.0926vh 0.1852vh #000;
+    font-family: SF Pro Display;
+    font-size: 1.8519vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.content_app .app_bonuslist .bonusblock h1 svg {
+    width: 1.5741vh;
+    height: 1.5741vh;
+    margin-left: 0.1852vh;
+}
+
+.content_app .app_bonuslist .bonusblock.\31 0eu span {
+    text-align: right;
+    text-shadow: 0vh 0.0926vh 0.1852vh #000;
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    color: #FFE600;
+    margin-top: 0vh;
+}
+
+
+
+.content_app .app_bonuslist .bonusblock.\32 0eu span {
+    text-align: right;
+    text-shadow: 0vh 0.0926vh 0.1852vh #000;
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    color: #FFE600;
+    margin-top: 0vh;
+}
+
+.content_app .app_bonuslist .bonusblock.\35 0eu span {
+    text-align: right;
+    text-shadow: 0vh 0.0926vh 0.1852vh #000;
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    color: #FFE600;
+    margin-top: 0vh;
+}
+
+.content_app .app_bonuslist .bonusblock.\35 eu .btnbonus {
+    margin-top: auto;
+    text-align: right;
+    text-shadow: 0vh 0.0926vh 0.1852vh #000;
+    font-family: SF Pro Display;
+    font-size: 2.3148vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    background: none;
+    padding: 0vh 0.5556vh;
+}
+
+.content_app .app_bonuslist .bonusblock.\31 0eu .btnbonus {
+    text-align: right;
+    text-shadow: 0vh 0.0926vh 0.1852vh #000;
+    font-family: SF Pro Display;
+    font-size: 2.3148vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    background: none;
+    padding: 0vh 0.5556vh;
+}
+
+.content_app .app_bonuslist .bonusblock.\32 0eu .btnbonus {
+    text-align: right;
+    text-shadow: 0vh 0.0926vh 0.1852vh #000;
+    font-family: SF Pro Display;
+    font-size: 2.3148vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    background: none;
+    padding: 0vh 0.5556vh;
+}
+
+.content_app .app_bonuslist .bonusblock.\35 0eu .btnbonus {
+    text-align: right;
+    text-shadow: 0vh 0.0926vh 0.1852vh #000;
+    font-family: SF Pro Display;
+    font-size: 2.3148vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    background: none;
+    padding: 0vh 0.5556vh;
+}
+
+.content_app .app_bonuslist .bonusblock.paypal {
+    background: url(https://imgur.com/BYeWcKN.png);
+}

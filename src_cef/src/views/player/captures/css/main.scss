@@ -1,0 +1,285 @@
+// @import @/views/assets/css/main.sass;
+
+@import url("https://fonts.cdnfonts.com/css/sf-pro-display");
+
+$blackColor: rgba(12, 12, 12, 1);
+$grayText: rgba(255, 255, 255, 0.3);
+$whiteText: rgba(255, 255, 255, 1);
+
+$marabuntaColor: radial-gradient(50.00% 50.00% at 50% 50%,rgb(50, 230, 255),rgb(50, 157, 255) 100%);
+$vagosColor: radial-gradient(50.00% 50.00% at 50% 50%,rgb(255, 198, 50),rgb(255, 173, 50) 100%);
+$familiesColor: radial-gradient(50.00% 50.00% at 50% 50%,rgb(94, 251, 110),rgb(49, 222, 67) 100%);
+$ballasColor: radial-gradient(50.00% 50.00% at 50% 50%,rgb(137, 57, 174),rgb(100, 45, 155) 100%);
+$bloodsColor: radial-gradient(50.00% 50.00% at 50% 50%,rgb(255, 77, 77),rgb(255, 50, 50) 100%);
+
+.fade-in {
+  opacity: 1;
+  animation-name: fade-in-opacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  animation-duration: 0.16s;
+  transform: scale(1);
+  transition: transform 0.15s;
+}
+
+@keyframes fade-in-opacity {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.16s, transform 0.15s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.capture_tablet_main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & > .capture-tablet {
+    background-image: url("../assets/tablet-bg.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 1110px;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & > .screen {
+      margin-top: 3px;
+      margin-left: 5px;
+      background-image: url("../assets/map.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 125%;
+      border-radius: 20px;
+      width: 1015px;
+      height: 705px;
+      & > .zones {
+        display: flex;
+        width: 100%;
+        margin-top: 100px;
+        height: calc(100% - 170px);
+
+        .grid-squares-left {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, 63px);
+          grid-template-rows: repeat(auto-fill, 63px);
+          width: 55%;
+          margin-left: 25px;
+          margin-top: 15px;
+        }
+
+        .grid-squares-right {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, 63px);
+          grid-template-rows: repeat(auto-fill, 63px);
+          width: 45%;
+          margin-top: 3px;
+        }
+
+        .square_wrapper {
+          position: relative;
+          width: 60px;
+          height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          &:hover {
+            & > .square {
+              opacity: 1;
+            }
+          }
+          & > .square {
+            z-index: 1;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.7;
+            border-radius: 5px;
+            background-color: #494949;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: opacity 0.2s;
+            user-select: none;
+
+            &:hover {
+              opacity: 1;
+            }
+
+            .skull {
+              width: 65%;
+              height: 65%;
+              background-image: url("../assets/skull.svg");
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: 100%;
+            }
+
+            &.marabunta {
+              border: solid 1px #32e6ff;
+              background-image: $marabuntaColor;
+            }
+
+            &.ballas {
+              border: solid 1px #8939AE;
+              background-image: $ballasColor;
+            }
+
+            &.families {
+              border: solid 1px #5EFB6E;
+              background-image: $familiesColor;
+            }
+
+            &.bloods {
+              border: solid 1px #FF6565;
+              background-image: $bloodsColor;
+            }
+
+            &.vagos {
+              border: solid 1px #ffc632;
+              background-image: $vagosColor;
+            }
+          }
+          & > .text {
+            user-select: none;
+            z-index: 2;
+            position: absolute;
+            font-family: "SF Pro Display", sans-serif;
+            font-stretch: normal;
+            font-style: normal;
+            font-size: 18px;
+            color: $whiteText;
+            opacity: 1;
+            text-shadow: 0px 1px 2px #000000;
+          }
+        }
+
+        .empty-square {
+          width: 60px;
+          height: 60px;
+        }
+      }
+      & > .header {
+        display: flex;
+        align-items: center;
+        margin-top: 30px;
+        margin-left: 22px;
+        gap: 8px;
+
+        font-family: "SF Pro Display", sans-serif;
+        font-weight: normal;
+        font-size: 14px;
+
+        & > button {
+          background-color: $blackColor;
+          border-radius: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: none;
+          width: 40px;
+          height: 40px;
+
+          & > svg {
+            fill: white;
+            opacity: 0.7;
+          }
+          &:hover {
+            transition: 0.2s ease-in-out;
+            background-color: #404040;
+            & > svg {
+              //   fill: white;
+              //   opacity: 1;
+            }
+          }
+
+          &:not(hover) {
+            transition: 0.2s ease-in-out;
+          }
+        }
+
+        & > .notifications {
+          margin-left: auto;
+          margin-right: 22px;
+        }
+
+        & > .control {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: $blackColor;
+          border-radius: 5px;
+          width: 185px;
+          height: 40px;
+
+          .control-info {
+            color: $whiteText;
+
+            span {
+              color: $grayText;
+            }
+          }
+        }
+
+        & > .attacks {
+          background-color: $blackColor;
+          color: $whiteText;
+          font-weight: 400;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 5px;
+          width: 69px;
+          height: 40px;
+          img {
+            margin-right: 5px;
+          }
+        }
+        & > .defends {
+          background-color: $blackColor;
+          color: $whiteText;
+          font-weight: 400;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          border-radius: 5px;
+          width: 69px;
+          height: 40px;
+          img {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+  & > .popups {
+    position: absolute;
+    width: 1110px;
+    height: 620px;
+    margin-top: 90px;
+  }
+}

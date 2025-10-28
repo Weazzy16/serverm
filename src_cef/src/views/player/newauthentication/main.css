@@ -1,0 +1,176 @@
+.welcome-screen {
+    position: fixed; /* Позволяет блоку находиться поверх всех остальных */
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2; /* Выше всех элементов */
+    color: white !important;
+    font-size: 3em;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Добавляем тень для четкости */
+}
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.199);
+    z-index: 1; 
+}
+
+.background-video {
+    position: fixed; /* Фиксированное положение, чтобы видео было фоном */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover; /* Покрывает весь экран */
+    z-index: -1; /* Отправляет видео на задний план */
+}
+.click__enter{
+    margin-top: 16vw;
+}
+
+
+
+.auth{
+    /* margin: 0 auto; */
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    color: white;
+    z-index: 1;
+}
+
+.background{
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(http://cdn.piecerp.ru/src/views/player/newauthentication/images/bg.png);
+    background-size: cover;
+    background-position: center; 
+    z-index: -1; 
+    pointer-events: none;
+}
+
+.man-container {
+    position: absolute; /* Контейнер привязан к правому нижнему углу */
+    bottom: 0;
+    right: 0;
+    height: 33vw; /* Контейнер имеет высоту 60% от высоты экрана */
+    /* margin-top: 14vw; */
+}
+
+.man {
+    /* background: url(http://cdn.piecerp.ru/src/views/player/newauthentication/images/man.png); */
+    width: auto;
+    height: 100%; /* Высота изображения соответствует высоте контейнера */
+    object-fit: contain; /* Сохраняем пропорции изображения */
+    pointer-events: none; /* Изображение не будет перекрывать интерактивные элементы */
+}
+
+
+
+.athmode1 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.athmode1 a {
+    font-weight: 700;
+    font-size: 5vw;
+    color: #fff;
+}
+
+
+.reg{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.athmode__reg {
+    text-align: right;
+}
+
+
+.button_reg {
+    width: 12.5vw;
+    height: 3vw;
+    /* background: green; */
+    border: 0.2vw solid white;
+    border-radius: 0.5vw;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 1.5vw;
+    transition: all 1s;
+}
+
+.button_reg:hover{
+    background: white;
+    color: black;
+}
+
+.button_login{
+    width: 12.5vw;
+    height: 3vw;
+    /* background: green; */
+    border: 0.2vw solid white;
+    border-radius: 0.5vw;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 1.5vw;
+    transition: all 1s;
+}
+
+.button_login:hover{
+    background: white;
+    color: black;
+}
+
+
+.us, .pass {
+    /* margin-left: 9.5vw; */
+    display: flex;
+    align-items: center;
+}
+
+.inputs__auth {
+    margin-top: 1vw;
+    width: 18vw;
+}
+
+.inputs__reg div {
+    display: flex;
+    align-items: center;
+}
+.auth img{
+    width: 1.8vw;
+}
+
+.reg img{
+    width: 1.8vw;
+}
+
+.res img{
+    width: 1.8vw;
+}
+
+/* .auth .us{
+    width: 15vw;
+} */

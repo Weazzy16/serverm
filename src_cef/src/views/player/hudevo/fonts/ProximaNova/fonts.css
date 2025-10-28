@@ -1,0 +1,81 @@
+
+@font-face {
+    font-family: TSProximaNova;
+    src: url(./ProximaNova-ThinItalic.366e4128.ttf) format("truetype");
+    font-weight: 100;
+    font-style: italic;
+}
+@font-face {
+    font-family: TSProximaNova;
+    src: url(./ProximaNova-Light.987fc499.ttf) format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: TSProximaNova;
+    src: url(./ProximaNova-LightItalic.74e2dd41.ttf) format("truetype");
+    font-weight: 300;
+    font-style: italic;
+}
+@font-face {
+    font-family: TSProximaNova;
+    src: url(./ProximaNova-Regular.d71d8615.ttf) format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: TSProximaNova;
+    src: url(./ProximaNova-RegularItalic.6fbd997c.ttf) format("truetype");
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: TSProximaNova;
+    src: url(./ProximaNova-Semibold.5a4bc83a.ttf) format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: TSProximaNova;
+    src: url(./ProximaNova-SemiboldItalic.7049db2d.ttf) format("truetype");
+    font-weight: 600;
+    font-style: italic;
+}
+@font-face {
+    font-family: TSProximaNova;
+    src: url(./ProximaNova-Bold.6174ed57.ttf) format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: TSProximaNova;
+    src: url(./ProximaNova-BoldItalic.05044c70.ttf) format("truetype");
+    font-weight: 700;
+    font-style: italic;
+}
+@font-face {
+    font-family: TSProximaNova;
+    src: url(./ProximaNova-Extrabold.f6a57bf6.ttf) format("truetype");
+    font-weight: 800;
+    font-style: normal;
+}
+@font-face {
+    font-family: TSProximaNova;
+    src: url(./ProximaNova-ExtraboldItalic.f15f9447.ttf) format("truetype");
+    font-weight: 800;
+    font-style: italic;
+}
+@font-face {
+    font-family: TSProximaNova;
+    src: url(./ProximaNova-Black.32f6a29e.ttf) format("truetype");
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: TSProximaNova;
+    src: url(./ProximaNova-BlackItalic.024cbecb.ttf) format("truetype");
+    font-weight: 900;
+    font-style: italic;
+}
+
+

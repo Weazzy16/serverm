@@ -1,0 +1,283 @@
+.chat-container {
+    position: absolute
+}
+.chat-main-container {
+    position: relative;
+    margin-right: auto;
+    
+}
+
+.chat-main-container .chat-hide-container {
+    position: relative;
+    bottom: 0;
+    width: inherit;
+    height: 100%;
+    transition: height .2s ease;
+    overflow: hidden
+}
+
+.chat-main-container .chat-hide-container .hint-showed {
+    height: 90%
+}
+
+
+
+.chat-window {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none
+}
+
+.chat-window .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    min-height: 100vh;
+    max-height: 100vh;
+    width: 74.0740740741vh;
+    background: linear-gradient(90deg,rgba(0,0,0,.5),transparent)
+}
+
+.chat-window .input-wrapper {
+    display: flex;
+        position: relative;
+    z-index: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: .462962963vh;
+    margin-left: 1.3888888889vh;
+    width: 43.5185185185vh
+}
+
+.chat-window .input-wrapper .input-container {
+    width: 100%;
+    padding-left: 1.3888888889vh;
+    background-color: rgba(30,33,36,.8)
+}
+
+.chat-window .input-wrapper .input-container__label {
+    padding: .1851851852vh .5555555556vh;
+    color: #fff;
+    border-radius: .1851851852vh;
+    background-color: #7d47ce;
+    margin-right: .9259259259vh;
+    font-family: ProximaNova-Condensed;
+    font-size: 1.5740740741vh
+}
+
+.chat-window .input-wrapper .input-container__label.me {
+    background-color: #7d47ce
+}
+
+.chat-window .input-wrapper .input-container__label.do {
+    background-color: #4271f2
+}
+
+.chat-window .input-wrapper .input-container__label.try {
+    background-color: #97de45;
+    color: #000
+}
+
+.chat-window .input-wrapper .input-container__label .nonRp {
+    background-color: orange
+}
+
+.chat-window .input-wrapper .input-container__input {
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    margin: 0 .9259259259vh 0 0;
+    resize: none;
+    overflow: hidden;
+    min-height: 3.3333333333vh;
+    max-height: 9.2592592593vh
+}
+
+.chat-window .input-wrapper .favorites-cmds {
+    display: grid;
+    grid-gap: .9259259259vh;
+    width: 100%;
+    height: 3.1481481481vh
+}
+
+.chat-window .input-wrapper .favorites-cmds-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 1.3888888889vh;
+    width: 100%;
+    height: 100%;
+    border-radius: .3703703704vh;
+    background-color: rgba(26,26,26,.8);
+    cursor: pointer;
+    transition: background-color .2s ease
+}
+
+.chat-window .input-wrapper .favorites-cmds-item>span {
+    color: #fff;
+    font-style: normal;
+    line-height: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    transition-property: color,font-size;
+    transition-duration: .2s;
+    transition-timing-function: ease
+}
+
+.chat {
+    align-items: flex-end;
+    direction: rtl;
+    
+    height: 35.2777777778vh;
+    width: 74.0740740741vh;
+    overflow: auto;
+    padding: 1.3888888889vh;
+    margin-bottom: .9259259259vh;
+    transition: opacity .3s ease;
+    scrollbar-gutter: stable
+}
+
+.chat::-webkit-scrollbar {
+    width: .3703703704vh;
+    background-color: transparent
+}
+
+.chat::-webkit-scrollbar-thumb {
+    background-color: hsla(0,0%,100%,0)
+}
+
+.chat.afk {
+    opacity: .5
+}
+
+.chat.input-active::-webkit-scrollbar {
+    width: .3703703704vh;
+    background-color: rgba(0,0,0,.25)
+}
+
+.chat.input-active::-webkit-scrollbar-thumb {
+    background-color: hsla(0,0%,100%,.35)
+}
+
+.chat__message {
+    direction: ltr;
+    color: #fff;
+    word-break: break-word;
+    hyphens: auto;
+    font-weight: unset!important;
+    position: relative;
+    z-index: 2;
+    line-height: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    margin-right: auto;
+}
+
+.chat__message:first-child {
+    margin-top: 0!important
+}
+
+.chat__message-part {
+    white-space: pre-wrap
+}
+
+.chat__message-prefix {
+    padding: .0925925926vh .462962963vh;
+    border-radius: .2777777778vh;
+    margin-right: .462962963vh;
+    text-shadow: none;
+    font-weight: 700;
+    text-transform: uppercase
+}
+
+.block .chat__message {
+    position: relative;
+    width: -moz-fit-content;
+    width: fit-content;
+    background-color: rgba(30,33,36,.7);
+    padding: .462962963vh .9259259259vh;
+    border-radius: .462962963vh;
+    text-shadow: unset
+}
+
+.block .chat__message.try {
+    display: flex;
+    padding: 0
+}
+
+.block .chat__message.me {
+    background-color: rgba(125,71,206,.7)
+}
+
+.block .chat__message.do {
+    background-color: rgba(71,130,206,.7)
+}
+
+.block .chat__message .try-result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    border-radius: 0 .3703703704vh .3703703704vh 0;
+    padding: .462962963vh .9259259259vh;
+    box-sizing: border-box
+}
+
+.chat:not(.clean) .chat__message.try .chat__message-timestamp {
+    align-self: center;
+    margin-left: .8333333333vh
+}
+
+.chat:not(.block) .chat__message.me {
+    color: #c2a2da
+}
+
+.chat:not(.block) .chat__message.do {
+    color: #00c9c3
+}
+
+.block .chat__message.try .chat__message-part {
+    margin: .462962963vh 0 .462962963vh .9259259259vh;
+    display: flex;
+    align-items: center
+}
+
+.disable-pointer-events .chat {
+    overflow: hidden
+}
+
+.confirmation-buttons {
+    display: inline-flex;
+    flex-direction: row;
+    border-radius: .2777777778vh;
+    overflow: hidden
+}
+
+.confirmation-buttons .control-button {
+    display: inline-flex;
+    padding: .1851851852vh .462962963vh;
+    opacity: .8;
+    transition: opacity .2s ease
+}
+
+.confirmation-buttons .control-button:first-child {
+    background-color: #61de2f
+}
+
+.confirmation-buttons .control-button:last-child {
+    background-color: #de2f2f
+}
+
+.confirmation-buttons .control-button:hover {
+    opacity: 1
+}

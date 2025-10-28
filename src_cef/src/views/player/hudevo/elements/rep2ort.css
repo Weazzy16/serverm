@@ -1,0 +1,60 @@
+
+
+ .report-info .reports-amount.press-button-wrapper .current-button.skip-intro .button.territory-war .main-info .main-counter__text-kills.territory-war .war-container.territory-war-dark .count.territory-war-dark .first-team.territory-war-dark .second-team.territory-war-dark .timer.territory-war-light .count.territory-war-light .first-team.territory-war-light .second-team.territory-war-light .timer {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.justify-end {
+    display: flex;
+    justify-content: flex-end
+}
+.align-center {
+    display: flex;
+    align-items: center
+}
+.row-block {
+    display: flex;
+    flex-direction: row
+}
+.justify-center {
+    display: flex;
+    justify-content: center
+}
+
+.report-info {
+    width: 18.1481481481vh;
+    height: 2.7777777778vh;
+    border-radius: 3.7037037037vh;
+    gap: .462962963vh;
+    margin-right: 12vh;
+    margin-top: 1vh;
+}
+
+.report-info-container {
+    border-radius: .5555555556vh;
+    background-color: rgba(30,33,36,.75);
+    padding: .7407407407vh .9259259259vh;
+    align-items: baseline
+}
+
+.report-info .reports-amount {
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    background-color: #e81c5a;
+    color: #fff;
+    border-radius: .2777777778vh;
+    padding: .1851851852vh .462962963vh
+}
+
+.report-info__title {
+    font-family: ProximaNova;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    color: #fff;
+    text-shadow: 0 0 .1851851852vh rgba(0,0,0,.25);
+    margin-right: .8333333333vh
+}

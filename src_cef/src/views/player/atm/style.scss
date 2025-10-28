@@ -1,0 +1,703 @@
+.atm {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vh;
+    height: 66.6666666667vh;
+    padding: 3.7037037037vh;
+    border-radius: 1.8518518519vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    overflow: hidden;
+    background: 50% / cover url(https://cdn.majestic-files.com/img/atm2/background.png) no-repeat, rgba(var(--atm-bg), 1);
+
+    * {
+        font-family: 'Proxima Nova', sans-serif;
+    }
+
+    &.light {
+        --atm-bg: 247, 247, 247;
+        --atm-txt: 34, 34, 34;
+        --atm-add: 255, 255, 255;
+        --atm-card: 251, 251, 251;
+        --atm-main: 44, 164, 66;
+        --atm-btn: 235, 235, 235;
+        --atm-inp: 242, 242, 242;
+        --atm-icon: rgba(HexToRGB(#222222),0.5);
+        --atm-icon-solid: #222;
+        --atm-tile-background: linear-gradient(180deg, #fff, #f2f2f2);
+        --atm-modal-background: 251, 251, 251;
+        --atm-modal-overlay-background: hsla(0, 0%, 89%, .85);
+        --atm-button-hover-color: 235, 235, 235;
+        --atm-slider-thumb-background: #fff;
+        --atm-slider-thumb-border: #2ca442;
+        --atm-selector-chevron: 255, 255, 255;
+        --atm-selector-background: 235, 235, 235;
+        --atm-selector-background-hover: 39, 163, 62;
+        --atm-selector-border: 34, 34, 34;
+        --atm-stat-background: #fff;
+        --atm-stat-border: rgba(34, 34, 34, .1);
+        --atm-stat-title-color: 34, 34, 34;
+    }
+
+    &.dark {
+        --atm-bg: 22,22,22;
+        --atm-txt: 255,255,255;
+        --atm-add: 26,26,26;
+        --atm-card: 34,34,34;
+        --atm-main: 40,144,60;
+        --atm-btn: 34,34,34;
+        --atm-inp: 36,36,36;
+        --atm-icon: hsla(0,0%,100%,.5);
+        --atm-icon-solid: #fff;
+        --atm-tile-background: linear-gradient(180deg,#292929,#1b1a1a);
+        --atm-modal-background: 18,18,18;
+        --atm-modal-overlay-background: rgba(34,34,34,.85);
+        --atm-button-hover-color: 235,235,235;
+        --atm-slider-thumb-background: #fff;
+        --atm-slider-thumb-border: #fff;
+        --atm-selector-chevron: 255,255,255;
+        --atm-selector-background: 34,34,34;
+        --atm-selector-background-hover: 39,163,62;
+        --atm-selector-border: 255,255,255;
+        --atm-stat-background: #161616;
+        --atm-stat-border: hsla(0,0%,100%,.1);
+        --atm-stat-title-color: 255,255,255
+    }
+
+    .header {
+        height: 3.7037037037vh;
+        flex-shrink: 0;
+        flex-grow: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        > img {
+            display: block;
+            width: 11.1111111111vh;
+            height: 3.2407407407vh;
+        }
+
+        &-data {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 2.7777777778vh;
+
+            &__user {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1.2962962963vh;
+
+                > p {
+                    font-size: 1.6666666667vh;
+                    font-weight: 500;
+                    color: rgba(var(--atm-txt), 1);
+                    line-height: 1.6666666667vh;
+                }
+
+                > img {
+                    display: block;
+                    width: 3.7037037037vh;
+                    height: 3.7037037037vh;
+                    border-radius: 50%;
+                }
+            }
+
+            &__close {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 1.2962962963vh;
+
+                > p {
+                    font-size: 1.6666666667vh;
+                    font-weight: 500;
+                    color: rgba(var(--atm-txt), 1);
+                    line-height: 1.6666666667vh;
+                }
+
+                > button {
+                    display: block;
+                    border: none;
+                    outline: none;
+                    padding: .7407407407vh;
+                    background-color: rgba(var(--atm-txt), 1);
+                    border-radius: .3703703704vh;
+                    font-size: 1.2962962963vh;
+                    font-weight: 900;
+                    color: rgba(var(--atm-bg), 1);
+                    line-height: 1.2962962963vh;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+
+    &-content {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        ._wrapper {
+            position: absolute !important;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            &.main {
+                height: 40.7037037037vh;
+
+                .content {
+                    width: 74.0740740741vh;
+                    padding: 2.6851851852vh;
+                    gap: 1.8518518519vh;
+                }
+            }
+
+            &.transaction {
+                padding-bottom: 3.7037037037vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .content {
+                    padding: 2.3148148148vh 2.6851851852vh 2.6851851852vh;
+                    gap: 2.7777777778vh;
+
+                    flex-direction: column;
+                }
+            }
+
+            .content {
+                display: flex;
+                justify-content: flex-start;
+                align-items: stretch;
+               
+                background-color: rgba(var(--atm-add), 1);
+                border: .0925925926vh solid rgba(var(--atm-txt), .1);
+                border-radius: .9259259259vh;
+
+                .header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: stretch;
+
+                    &-button {
+                        border: none;
+                        outline: none;
+                        background-color: rgba(var(--atm-btn), 1);
+                        transition: background-color .2s ease;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 0 1.4814814815vh;
+                        gap: 1.1111111111vh;
+                        border-radius: .5555555556vh;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: rgba(var(--atm-main), 1);
+
+                            > svg {
+                                fill: #fff;
+                            }
+
+                            > p {
+                                color: #fff;
+                            }
+                        }
+
+                        > svg {
+                            width: .7407407407vh;
+                            height: 1.1111111111vh;
+
+                            display: block;
+                            fill: rgba(var(--atm-txt), .5);
+                            transition: fill .2s ease;
+                        }
+
+                        > p {
+                            font-size: 1.2962962963vh;
+                            font-weight: 500;
+                            color: rgba(var(--atm-txt), .5);
+                            line-height: 1.2962962963vh;
+                            transition: color .2s ease;
+                        }
+                    }
+
+                    &-main {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: flex-end;
+                        gap: .5555555556vh;
+
+                        > p {
+                            font-size: 1.2962962963vh;
+                            font-weight: 500;
+                            color: rgba(var(--atm-txt), .5);
+                            line-height: 1.2962962963vh;
+                        }
+
+                        &__balance {
+                            display: flex;
+                            justify-content: flex-end;
+                            align-items: center;
+                            gap: .7407407407vh;
+
+                            > p {
+                                font-size: 1.4814814815vh;
+                                font-weight: 900;
+                                color: rgba(var(--atm-txt), 1);
+                                line-height: 1.4814814815vh;
+                            }
+
+                            > svg {
+                                display: block;
+                                width: 1.4814814815vh;
+                                height: 1.4814814815vh;
+                                fill: rgba(var(--atm-txt), 1);
+                            }
+                        }
+                    }
+                }
+
+                &-button {
+                    border: none;
+                    outline: none;
+                    background-color: rgba(var(--atm-btn), 1);
+                    transition: background-color .2s ease;
+                    display: block;
+                    font-size: 1.4814814815vh;
+                    font-weight: 500;
+                    color: rgba(var(--atm-txt), .5);
+                    line-height: 1.4814814815vh;
+                    text-align: center;
+                    transition: background-color .2s ease, color .2s ease;
+                    padding: 1.5740740741vh 1.4814814815vh;
+                    border-radius: .5555555556vh;
+                    font-family: var(--IntegratedFont);
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: rgba(var(--atm-main), 1);
+                        color: #fff;
+                    }
+                }
+
+                &-main {
+                    width: 31.1111111111vh;
+                    gap: 1.8518518519vh;
+
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: stretch;
+
+                    > p {
+                        font-size: 1.6666666667vh;
+                        font-weight: 500;
+                        color: rgba(var(--atm-txt), 1);
+                        line-height: 2.3148148148vh;
+                    }
+
+                    &__inputs {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        gap: .9259259259vh;
+
+                        align-items: stretch;
+
+                        .input {
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            gap: .9259259259vh;
+
+                            height: 4.6296296296vh;
+                            padding: 0 1.2962962963vh;
+                            justify-content: space-between;
+                            background-color: rgba(var(--atm-card), 1);
+                            border: .0925925926vh solid rgba(var(--atm-txt), .1);
+                            border-radius: .5555555556vh;
+                            transition: background-color .2s ease;
+
+                            &:hover {
+                                background-color: rgba(var(--atm-inp), 1);
+                            }
+
+                            &.active {
+                                .wrapper-main > svg {
+                                    g {
+                                        &:first-child {
+                                            fill: rgba(var(--atm-main), 1);
+                                        }
+
+                                        &:not(:first-child) {
+                                            fill: #fff;
+                                        }
+                                    }
+                                }
+                            }
+
+                            > button {
+                                flex-shrink: 0;
+                                flex-grow: 0;
+                                border: none;
+                                outline: none;
+                                background-color: rgba(var(--atm-btn), 1);
+                                transition: background-color .2s ease;
+                                display: block;
+                                font-size: 1.4814814815vh;
+                                font-weight: 500;
+                                line-height: 1.4814814815vh;
+                                text-align: center;
+                                transition: background-color .2s ease, color .2s ease;
+                                padding: .5555555556vh .7407407407vh;
+                                background-color: rgba(var(--atm-txt), .1);
+                                border-radius: .3703703704vh;
+                                font-size: 1.2962962963vh;
+                                color: rgba(var(--atm-txt), .5);
+                                line-height: 1.2962962963vh;
+                                white-space: nowrap;
+                                cursor: pointer;
+
+                                &:hover {
+                                    background-color: rgba(var(--atm-main), 1);
+                                    color: #fff;
+                                }
+                            }
+
+                            .wrapper-main {
+                                width: 100%;
+                                display: flex;
+                                align-items: center;
+                                gap: .9259259259vh;
+                                justify-content: flex-start;
+
+                                > svg {
+                                    flex-shrink: 0;
+                                    flex-grow: 0;
+                                    display: block;
+                                    width: 1.6666666667vh;
+                                    height: 1.6666666667vh;
+
+                                    > g {
+                                        transition: fill .2s ease;
+
+                                        &:first-child {
+                                            fill: rgba(var(--atm-txt),.3)
+                                        }
+
+                                        &:not(:first-child) {
+                                            fill: rgba(var(--atm-bg),1)
+                                        }
+                                    }
+                                }
+
+                                > input {
+                                    width: 100%;
+                                    height: 100%;
+                                    display: block;
+                                    border: none;
+                                    outline: none;
+                                    background-color: transparent;
+                                    font-size: 1.4814814815vh;
+                                    font-weight: 500;
+                                    color: rgba(var(--atm-txt), 1);
+                                    line-height: 1.4814814815vh;
+
+                                    &::placeholder {
+                                        color: rgba(var(--atm-txt),.5)
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &__tax {
+                        align-items: flex-start;
+
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        gap: .9259259259vh;
+
+                        > p {
+                            font-size: 1.2962962963vh;
+                            font-weight: 500;
+                            color: rgba(var(--atm-txt), .5);
+                            line-height: 1.2962962963vh;
+
+                            > span {
+                                color: rgba(var(--atm-txt), 1);
+                                line-height: 1.2962962963vh;
+                            }
+                        }
+                    }
+                }
+
+                &-grid {
+                    flex-shrink: 0;
+                    flex-grow: 0;
+                    display: grid;
+                    grid-template-columns: repeat(2, 20.3703703704vh);
+                    grid-auto-rows: 11.1111111111vh;
+                    grid-gap: .9259259259vh;
+
+                    .tile {
+                        padding: 1.3888888889vh;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        align-items: flex-start;
+                        gap: .9259259259vh;
+                        border: .0925925926vh solid rgba(var(--atm-btn), 1);
+                        border-radius: .5555555556vh;
+                        position: relative;
+                        background-image: var(--atm-tile-background);
+
+                        > p {
+                            font-size: 1.2962962963vh;
+                            font-weight: 500;
+                            color: rgba(var(--atm-txt), .7);
+                            line-height: 1.2962962963vh;
+                        }
+
+                        .background {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background-image: url(https://cdn.majestic-files.com/img/atm2/card-bg.png);
+                            background-position: 50%;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                        }
+
+                        &-balance {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            gap: .9259259259vh;
+
+                            > p {
+                                font-size: 1.2962962963vh;
+                                font-weight: 500;
+                                color: rgba(var(--atm-txt), .5);
+                                line-height: 1.2962962963vh;
+                            }
+
+                            &__main {
+                                display: flex;
+                                justify-content: flex-start;
+                                align-items: center;
+                                gap: .7407407407vh;
+
+                                > svg {
+                                    display: block;
+                                    width: 1.6666666667vh;
+                                    height: 1.6666666667vh;
+                                    fill: var(--atm-icon);
+                                }
+
+                                > p {
+                                    font-size: 1.4814814815vh;
+                                    font-weight: 900;
+                                    color: rgba(var(--atm-txt), 1);
+                                    line-height: 1.4814814815vh;
+                                }
+                            }
+                        }
+                    }
+
+                    &__item {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        gap: .9259259259vh;
+                        background-color: rgba(var(--atm-card), 1);
+                        border: .0925925926vh solid rgba(var(--atm-txt), .05);
+                        border-radius: .5555555556vh;
+                        transition: background-color .2s ease, border-color .2s ease;
+                        cursor: pointer; 
+
+                        &:hover {
+                            background-color: rgba(var(--atm-main), 1);
+                            border-color: rgba(var(--atm-main), 1);
+
+                            > svg {
+                                fill: #fff;
+                            }
+
+                            > p {
+                                color: #fff;
+                            }
+                        }
+
+                        > svg {
+                            display: block;
+                            width: 2.7777777778vh;
+                            height: 2.7777777778vh;
+                            fill: rgba(var(--atm-main), 1);
+                            transition: fill .2s ease;
+                        }
+
+                        > p {
+                            font-size: 1.4814814815vh;
+                            font-weight: 500;
+                            color: rgba(var(--atm-txt), 1);
+                            line-height: 1.4814814815vh;
+                            transition: color .2s ease;
+                            font-family: var(--IntegratedFont);
+                        }
+                    }
+                }
+                
+                .data {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: stretch;
+
+                    &-main {
+                        &__content {
+                            padding: 1.3888888889vh;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            gap: 1.4814814815vh;
+                            border: .0925925926vh solid rgba(var(--atm-txt), .1);
+                            border-radius: .5555555556vh .5555555556vh 0 0;
+
+                            > p {
+                                font-size: 1.6666666667vh;
+                                font-weight: 900;
+                                color: rgba(var(--atm-txt), 1);
+                                line-height: 1.6666666667vh;
+                            }
+                        }
+
+                        &__tax {
+                            display: flex;
+                            justify-content: center;
+                            align-items: stretch;
+
+                            &-item {
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: flex-start;
+                                gap: .9259259259vh;
+                                border: solid rgba(var(--atm-txt), .1);
+
+                                &:first-child {
+                                    width: calc(50% + .09259vh);
+                                    padding: 1.4814814815vh 1.3888888889vh 1.3888888889vh 1.3888888889vh;
+                                    border-width: 0 .0925925926vh .0925925926vh .0925925926vh;
+                                    border-radius: 0 0 0 .5555555556vh;
+                                }
+
+                                &:not(:first-child) {
+                                    width: 50%;
+                                    padding: 1.4814814815vh 1.3888888889vh 1.3888888889vh 1.4814814815vh;
+                                    border-width: 0 .0925925926vh .0925925926vh 0;
+                                    border-radius: 0 0 .5555555556vh 0;
+                                }
+
+                                > p {
+                                    &:first-child {
+                                        font-size: 1.2962962963vh;
+                                        font-weight: 500;
+                                        color: rgba(var(--atm-txt), .5);
+                                        line-height: 1.2962962963vh;
+                                    }
+
+                                    &:not(:first-child) {
+                                        font-size: 1.6666666667vh;
+                                        font-weight: 900;
+                                        color: rgba(var(--atm-txt), 1);
+                                        line-height: 1.6666666667vh;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &-manage {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-end;
+                        align-items: stretch;
+                        gap: .9259259259vh;
+
+                        &__button {
+                            border: none;
+                            outline: none;
+                            background-color: rgba(var(--atm-btn), 1);
+                            transition: background-color .2s ease;
+                            display: block;
+                            font-size: 1.4814814815vh;
+                            font-weight: 500;
+                            color: rgba(var(--atm-txt), .5);
+                            line-height: 1.4814814815vh;
+                            text-align: center;
+                            transition: background-color .2s ease, color .2s ease;
+                            padding: 1.5740740741vh 1.4814814815vh;
+                            border-radius: .5555555556vh;
+                            cursor: pointer;
+
+                            &:hover {
+                                background-color: rgba(var(--atm-main), 1);
+                                color: #fff;
+                            }
+                        }
+
+                        &__price {
+                            padding: 1.3888888889vh;
+                            border: .0925925926vh solid rgba(var(--atm-txt), .1);
+                            border-radius: .5555555556vh;
+
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: flex-start;
+                            gap: .9259259259vh;
+
+                            > p {
+                                &:first-child {
+                                    font-size: 1.2962962963vh;
+                                    font-weight: 500;
+                                    color: rgba(var(--atm-txt), .5);
+                                    line-height: 1.2962962963vh;
+                                }
+
+                                &:not(:first-child) {
+                                    font-size: 1.6666666667vh;
+                                    font-weight: 900;
+                                    color: rgba(var(--atm-txt), 1);
+                                    line-height: 1.6666666667vh;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

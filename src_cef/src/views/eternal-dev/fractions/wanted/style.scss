@@ -1,0 +1,172 @@
+.wanted {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1.875rem 1.875rem 1.875rem;
+    width: 100%;
+    
+    &-wrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        z-index: 9999;
+        pointer-events: none;
+        background: linear-gradient(180deg, hsla(0, 0%, 39%, 0) 0, hsla(0, 0%, 39%, .2));
+        height: 100%;
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        * {
+            font-family: "ProximaNova", sans-serif;
+        }
+
+        .close-block {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            transition: all .2s ease-in-out !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: .25rem;
+            background-color: #1c1c1c;
+            border: 1px solid #3a3a3a;
+
+            background: none;
+
+            &:hover {
+                background-color: #f9f9f9;
+                border: 1px solid #f9f9f9;
+                cursor: pointer;
+
+                svg {
+                    opacity: 1;
+
+                    path {
+                        stroke: #111
+                    }
+                }
+            }
+
+            svg {
+                transition: all .2s ease-in-out;
+                height: .625rem;
+                max-height: .625rem;
+                min-height: .625rem;
+                width: .625rem;
+                max-width: .625rem;
+                min-width: .625rem;
+                opacity: .5;
+
+                path {
+                    transition: all .2s ease-in-out;
+                }
+            }
+        }
+    }
+
+    &-container {
+        padding: 1.625rem 0 0 0;
+        display: flex;
+        flex-direction: column;
+        width: 31.25rem;
+        background: #1a1a1a;
+        overflow: hidden;
+        position: relative;
+        pointer-events: all;
+        border-radius: .75rem;
+
+        &__title {
+            font-weight: 500;
+            font-style: normal;
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            padding-left: 1.875rem;
+            width: 100%;
+            color: #fff;
+        }
+
+        &__message {
+            margin-bottom: .875rem;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 1rem;
+            color: hsla(0, 0%, 98%, .5);
+            line-height: 1.5rem;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+    }
+
+    &__input {
+        font-weight: 400;
+        font-style: normal;
+        font-size: 1rem;
+        width: 100%;
+        height: 3rem;
+        color: #fbfbfb;
+        background: #212121;
+        border: 1px solid #2e2e2e;
+        padding: 0 1rem;
+        margin-top: 2rem;
+        border-radius: .375rem;
+        transition: all .2s ease-in-out;
+
+        margin-top: 0;
+        margin-bottom: 1.5625rem;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            appearance: none;
+        }
+
+        &:focus {
+            background-color: #0d0d0d;
+        }
+    }
+
+    &.custom {
+        margin-top: 1.5625rem;
+    }
+
+    .buttons-container {
+        margin-top: .3125rem;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: .375rem;
+
+        &__button-cancel,
+        &__button-accept {
+            text-align: center;
+            padding: .1875rem .625rem;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 1rem;
+            width: 50%;
+            min-height: 3rem;
+            color: #fff;
+            background: hsla(0, 0%, 100%, .08);
+            color: hsla(0, 0%, 100%, .5);
+            transition: .2s ease;
+            transition-property: color, background-color;
+            cursor: pointer;
+            border-radius: .375rem;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+                background: #fff;
+                color: #000;
+            }
+        }
+    }
+}

@@ -1,0 +1,855 @@
+@font-face {
+    font-family: Roboto-Condensed;
+    src: url(../fonts/RobotoCondensed-Bold.dfae6327.ttf);
+    font-weight: 700;
+    font-style: normal
+}
+.Wheel {
+    overflow: hidden;
+    background-color: hsla(0,0%,7%,.9);
+    mix-blend-mode: normal;
+    padding: 0 2.7777777778vh
+}
+
+.Wheel  {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
+.Wheel .no-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%
+}
+
+.Wheel .no-content h1 {
+    font-family: var(--IntegratedFont),sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 3.2407407407vh;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff
+}
+
+.Wheel .info {
+    margin-bottom: 1.4814814815vh;
+    padding: 1.8518518519vh 2.2222222222vh;
+    height: 7.7777777778vh;
+    background: #171717;
+    border-radius: 1.6666666667vh
+}
+
+.Wheel .info .minigamesIcon {
+    margin-right: 1.2037037037vh;
+    width: 2.7777777778vh;
+    height: 2.2222222222vh;
+    fill: url(#paint0_linear_55_3401)
+}
+
+.Wheel .info .title {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2.2222222222vh;
+    line-height: 2.5925925926vh;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-right: .7407407407vh
+}
+
+.Wheel .info .gameID {
+    min-width: 4.1666666667vh;
+    min-height: 3.6111111111vh;
+    padding: .9259259259vh 1.1111111111vh;
+    background: #2d2d2d;
+    border-radius: .7407407407vh
+}
+
+.Wheel .info .gameID span {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    line-height: 1.7592592593vh;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    background: linear-gradient(180deg,#fff,#9a9a9a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent
+}
+
+.Wheel .info .players {
+    margin-right: 3.4685185185vh
+}
+
+.Wheel .info .players .icon {
+    margin-right: 1.2962962963vh;
+    width: 2.2222222222vh;
+    height: 2.7777777778vh;
+    fill: url(#paint0_linear_55_3401)
+}
+
+.Wheel .info .players .count {
+    font-size: 1.6666666667vh;
+    line-height: 1.9444444444vh;
+    color: #fff
+}
+
+.Wheel .info .players .count,.Wheel .info .players .text {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: -.02em;
+    text-transform: uppercase
+}
+
+.Wheel .info .players .text {
+    font-size: 1.4814814815vh;
+    line-height: 1.7592592593vh;
+    color: #616161
+}
+
+.Wheel .info .bank .icon {
+    margin-right: 1.2537037037vh;
+    width: 3.0555555556vh;
+    height: 1.9444444444vh;
+    fill: url(#paint0_linear_55_3401)
+}
+
+.Wheel .info .bank .count {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.6666666667vh;
+    line-height: 1.9444444444vh;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #fff
+}
+
+.Wheel .info .bank .count .coins {
+    width: 1.5435185185vh;
+    height: 1.5435185185vh;
+    margin-left: .3703703704vh
+}
+
+.Wheel .info .bank .text {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    line-height: 1.7592592593vh;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #616161
+}
+
+.Wheel .colorsInfo {
+    max-width: 144.2592592593vh;
+    margin-bottom: 1.4814814815vh;
+    height: 10.9259259259vh
+}
+
+.Wheel .colorsInfo .color {
+    padding: 1.1111111111vh;
+    margin-right: 1.4814814815vh;
+    width: 25%;
+    background: #171717;
+    border-radius: 1.6666666667vh;
+    transition: opacity .2s ease
+}
+
+.Wheel .colorsInfo .color:last-child {
+    margin-right: 0
+}
+
+.Wheel .colorsInfo .color.lose {
+    opacity: .25
+}
+
+.Wheel .colorsInfo .color .coefficient {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2.2222222222vh;
+    line-height: 2.5925925926vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    height: 6.2962962963vh;
+    border-radius: 1.1111111111vh;
+    margin-bottom: .462962963vh
+}
+
+.Wheel .colorsInfo .color .coefficient.white {
+    background: linear-gradient(180deg,#fff,#9a9a9a);
+    color: #2d2d2d
+}
+
+.Wheel .colorsInfo .color .coefficient.red {
+    background: linear-gradient(180deg,#e81c5a,#9f1d44);
+    color: #fff
+}
+
+.Wheel .colorsInfo .color .coefficient.green {
+    background: linear-gradient(180deg,#3de7a5,#22a874);
+    color: #fff
+}
+
+.Wheel .colorsInfo .color .coefficient.yellow {
+    background: linear-gradient(180deg,#f2bf3b,#f29e3b 118.29%);
+    color: #2d2d2d
+}
+
+.Wheel .colorsInfo .color .colorInfo .playersWrapper .icon {
+    margin-right: .462962963vh;
+    width: 1.1111111111vh;
+    height: 1.3888888889vh;
+    fill: #616161
+}
+
+.Wheel .colorsInfo .color .colorInfo .playersWrapper .count {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.6666666667vh;
+    line-height: 1.9444444444vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #616161
+}
+
+.Wheel .colorsInfo .color .colorInfo .bankWrapper .coins {
+    margin-left: .525vh;
+    width: 1.5435185185vh;
+    height: 1.5435185185vh;
+    filter: grayscale(100%);
+    opacity: .75
+}
+
+.Wheel .colorsInfo .color .colorInfo .bankWrapper .count {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.6666666667vh;
+    line-height: 1.9444444444vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #616161
+}
+
+.Wheel .betsOnColor {
+    max-width: 144.2592592593vh
+}
+
+.Wheel .betsOnColor .betOnColor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .7407407407vh;
+    padding-bottom: 1.4814814815vh;
+    margin-right: 1.4814814815vh;
+    width: 25%;
+    height: 70.7407407407vh;
+    overflow-y: auto
+}
+
+.Wheel .betsOnColor .betOnColor:last-child {
+    margin-right: 0
+}
+
+.Wheel .betsOnColor .betOnColor::-webkit-scrollbar {
+    display: none
+}
+
+.Wheel .betsOnColor .betOnColor.empty {
+    justify-content: center;
+    border: .0925925926vh solid #1e1e1e;
+    border-radius: 1.6666666667vh;
+    height: 67.962962963vh
+}
+
+.Wheel .betsOnColor .betOnColor.empty .emptyBets .icon {
+    margin-bottom: 1.1574074074vh;
+    width: 2.5vh;
+    height: 2.5vh;
+    fill: #616161
+}
+
+.Wheel .betsOnColor .betOnColor.empty .emptyBets .text {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.6666666667vh;
+    line-height: 1.9444444444vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #616161
+}
+
+.Wheel .betsOnColor .betOnColor.lose {
+    opacity: .25
+}
+
+.Wheel .betsOnColor .betOnColor .player {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4814814815vh 1.6666666667vh;
+    min-height: 6.2962962963vh;
+    border-radius: 1.8518518519vh;
+    background-color: #171717
+}
+
+.Wheel .betsOnColor .betOnColor .player:last-child {
+    margin-bottom: 0
+}
+
+.Wheel .betsOnColor .betOnColor .player .avatar-wrapper .more-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5555555556vh
+}
+
+.Wheel .betsOnColor .betOnColor .player .amount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5555555556vh;
+    padding: 0 .9259259259vh;
+    height: 3.3333333333vh;
+    border-radius: .9259259259vh;
+    background: hsla(0,0%,100%,.1)
+}
+
+.Wheel .betsOnColor .betOnColor .player .amount .text {
+    color: #fff;
+    font-family: ProximaNova-Condensed,serif;
+    font-size: 1.2962962963vh;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 110%
+}
+
+.Wheel .betsOnColor .betOnColor .player .amount .coins {
+    width: 1.2962962963vh;
+    height: 1.2962962963vh
+}
+
+.Wheel .betsWrapper .bet {
+    margin-right: .7407407407vh;
+    padding: 1.1111111111vh 2.7777777778vh;
+    height: 4.4444444444vh;
+    background: #2d2d2d;
+    border-radius: 1.1111111111vh;
+    opacity: .25
+}
+
+.Wheel .betsWrapper .bet:last-child {
+    margin-right: 0
+}
+
+.Wheel .betsWrapper .bet span {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    line-height: 1.7592592593vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-right: .525vh
+}
+
+.Wheel .betsWrapper .bet .color {
+    margin-right: 1.1111111111vh;
+    width: 2.2222222222vh;
+    height: 2.2222222222vh;
+    border-radius: .7407407407vh
+}
+
+.Wheel .betsWrapper .bet .color.white {
+    background: linear-gradient(180deg,#fff,#9a9a9a)
+}
+
+.Wheel .betsWrapper .bet .color.red {
+    background: linear-gradient(180deg,#e81c5a,#9f1d44)
+}
+
+.Wheel .betsWrapper .bet .color.green {
+    background: linear-gradient(180deg,#3de7a5,#22a874)
+}
+
+.Wheel .betsWrapper .bet .color.yellow {
+    background: linear-gradient(180deg,#f2bf3b,#f29e3b 118.29%)
+}
+
+.Wheel .betsWrapper .bet .coins {
+    width: 1.5435185185vh;
+    height: 1.5435185185vh
+}
+
+.Wheel .betsWrapper .bet.win {
+    opacity: 1
+}
+
+.Wheel .main .game {
+    position: relative;
+    margin-right: 2.7777777778vh;
+    max-width: 52.4074074074vh;
+    width: 36.153846%;
+    height: 89.6296296296vh;
+    background: #0c0c0c;
+    border: .0925925926vh solid #1e1e1e;
+    border-radius: 1.6666666667vh;
+    overflow: hidden
+}
+
+.Wheel .main .game .back {
+    -o-object-fit: cover;
+    object-fit: cover;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0
+}
+
+.Wheel .main .game .history {
+    position: absolute;
+    z-index: 2;
+    top: 1.6666666667vh;
+    left: 1.6666666667vh;
+    right: 0;
+    height: 3.6111111111vh
+}
+
+.Wheel .main .game .history button {
+    flex-shrink: 0;
+    margin-right: .5555555556vh;
+    width: 4.537037037vh;
+    background: linear-gradient(180deg,#171717,#a3a3a3 676.39%);
+    border-radius: .7407407407vh;
+    border: none;
+    cursor: pointer
+}
+
+.Wheel .main .game .history button .icon {
+    width: 1.6203703704vh;
+    height: 1.6203703704vh;
+    fill: url(#paint0_linear_55_3401)
+}
+
+.Wheel .main .game .history .itemsw {
+    overflow-x: scroll;
+    opacity: .5
+}
+
+.Wheel .main .game .history .itemsw::-webkit-scrollbar {
+    display: none
+}
+
+.Wheel .main .game .history .itemsw .itemw {
+    flex-shrink: 0;
+    width: 5.3703703704vh;
+    height: 1.6666666667vh;
+    border-radius: .5555555556vh;
+    margin-right: .5555555556vh
+}
+
+.Wheel .main .game .history .itemsw .itemw:last-child {
+    margin-right: 1.6666666667vh
+}
+
+.Wheel .main .game .history .itemsw .itemw.white {
+    background: linear-gradient(180deg,#fff,#9a9a9a)
+}
+
+.Wheel .main .game .history .itemsw .itemw.red {
+    background: linear-gradient(180deg,#e81c5a,#9f1d44)
+}
+
+.Wheel .main .game .history .itemsw .itemw.green {
+    background: linear-gradient(180deg,#3de7a5,#22a874)
+}
+
+.Wheel .main .game .history .itemsw .itemw.yellow {
+    background: linear-gradient(180deg,#f2bf3b,#f29e3b 118.29%)
+}
+
+.Wheel .main .game .history .itemsw.emptyHistoryItems {
+    overflow-x: hidden
+}
+
+.Wheel .main .game .history .itemsw.emptyHistoryItems .itemw {
+    background: linear-gradient(180deg,#171717,#a3a3a3 676.39%)
+}
+
+.Wheel .main .game .timeStart {
+    position: absolute;
+    z-index: 2;
+    top: 7.4074074074vh;
+    left: 0;
+    right: 0
+}
+
+.Wheel .main .game .timeStart .time {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 5.9259259259vh;
+    letter-spacing: -.02em;
+    line-height: 6.9444444444vh;
+    text-align: center
+}
+
+.Wheel .main .game .timeStart .time.white,.Wheel .main .game .timeStart .time {
+    background: linear-gradient(180deg,#fff,#9a9a9a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent
+}
+
+.Wheel .main .game .timeStart .time.red {
+    background: linear-gradient(180deg,#e81c5a,#9f1d44);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent
+}
+
+.Wheel .main .game .timeStart .time.green {
+    background: linear-gradient(180deg,#3de7a5,#22a874);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent
+}
+
+.Wheel .main .game .timeStart .time.yellow {
+    background: linear-gradient(180deg,#f2bf3b,#f29e3b 118.29%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent
+}
+
+.Wheel .main .game .timeStart .text {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.6666666667vh;
+    line-height: 1.9444444444vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: hsla(0,0%,100%,.25)
+}
+
+.Wheel .main .game .wheelWrapper {
+    position: absolute;
+    z-index: 1;
+    top: -54.8425925926vh;
+    left: calc(50% - 45.13889vh);
+    right: calc(50% - 45.13889vh);
+    max-width: 90.2777777778vh!important;
+    max-height: 90.2777777778vh!important;
+    min-width: 90.2777777778vh!important;
+    min-height: 90.2777777778vh!important
+}
+
+.Wheel .main .game .wheelWrapper .wheel {
+    width: 90.5009259259vh;
+    height: 90.3972222222vh
+}
+
+.Wheel .main .game .wheelWrapper .line {
+    position: absolute;
+    bottom: -4.7546296296vh;
+    right: calc(50% - .13889vh);
+    left: calc(50% - .13889vh);
+    height: 20.3703703704vh;
+    width: .2777777778vh;
+    box-shadow: 0 0 1.8518518519vh rgba(0,0,0,.7);
+    background: linear-gradient(180deg,#fff,#d5d5d5)
+}
+
+.Wheel .main .game .dealer {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: -37.45583%;
+    width: 174.734982%
+}
+
+.Wheel .main .game .placeBet {
+    position: absolute;
+    z-index: 2;
+    bottom: 2.7777777778vh;
+    left: 2.7777777778vh;
+    right: 2.7777777778vh;
+    max-width: 46.8518518519vh
+}
+
+.Wheel .main .game .placeBet.lose {
+    pointer-events: none
+}
+
+.Wheel .main .game .placeBet.lose .inputWrapper .coins,.Wheel .main .game .placeBet.lose .inputWrapper input {
+    opacity: .25
+}
+
+.Wheel .main .game .placeBet .inputWrapper {
+    position: relative;
+    margin-bottom: .5555555556vh;
+    height: 9.2592592593vh;
+    background: #171717;
+    border-radius: 1.6666666667vh;
+    padding: 1.6666666667vh
+}
+
+.Wheel .main .game .placeBet .inputWrapper input {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2.2222222222vh;
+    line-height: 28px;
+    letter-spacing: -.02em;
+    color: #616161;
+    padding: 1.6666666667vh;
+    padding-right: 5.5555555556vh;
+    background: #111;
+    border: .0925925926vh solid #1e1e1e;
+    border-radius: 1.1111111111vh;
+    transition: opacity .2s ease,color .2s ease
+}
+
+.Wheel .main .game .placeBet .inputWrapper input.focus {
+    color: #fff
+}
+
+.Wheel .main .game .placeBet .inputWrapper .coins {
+    position: absolute;
+    top: 3.5185185185vh;
+    right: 3.3333333333vh;
+    width: 2.2222222222vh;
+    height: 2.2222222222vh;
+    transition: opacity .2s ease
+}
+
+.Wheel .main .game .placeBet .colors {
+    height: 6.5740740741vh;
+    background: #171717;
+    border-radius: 1.6666666667vh;
+    padding: 1.1111111111vh
+}
+
+.Wheel .main .game .placeBet .colors .color {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    line-height: 1.7592592593vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    margin-right: 1.1111111111vh;
+    width: 10.7407407407vh;
+    height: 4.3518518519vh;
+    border-radius: 1.1111111111vh;
+    border: none;
+    cursor: pointer;
+    transition: opacity .2s ease
+}
+
+.Wheel .main .game .placeBet .colors .color:last-child {
+    margin-right: 0
+}
+
+.Wheel .main .game .placeBet .colors .color.disabled {
+    opacity: .25;
+    cursor: default
+}
+
+.Wheel .main .game .placeBet .colors .color.white {
+    background: linear-gradient(180deg,#fff,#9a9a9a);
+    color: #2d2d2d
+}
+
+.Wheel .main .game .placeBet .colors .color.red {
+    background: linear-gradient(180deg,#e81c5a,#9f1d44);
+    color: #fff
+}
+
+.Wheel .main .game .placeBet .colors .color.green {
+    background: linear-gradient(180deg,#3de7a5,#22a874);
+    color: #fff
+}
+
+.Wheel .main .game .placeBet .colors .color.yellow {
+    background: linear-gradient(180deg,#f2bf3b,#f29e3b 118.29%);
+    color: #2d2d2d
+}
+
+.Wheel .main .bets {
+    width: 89.2592592593vh
+}
+
+.Wheel .historyList .title {
+    margin-bottom: .9259259259vh;
+    padding: 0.222222vh;
+    height: 7.7777777778vh;
+    background: #171717;
+    border-radius: 1.6666666667vh
+}
+.back-btn {
+    margin-right: 1vh;
+}
+.Wheel .historyList .title .icon {
+    margin-right: 1.2037037037vh;
+    width: 2.7777777778vh;
+    height: 2.7777777778vh;
+    fill: url(#paint0_linear_55_3401)
+}
+
+.Wheel .historyList .title .text {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    gap: 2vh;
+    font-style: normal;
+    font-size: 2.2222222222vh;
+    line-height: 2.5925925926vh;
+    display: flex;
+    align-items: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #fff
+}
+
+.Wheel .historyList .list {
+    max-width: 144.2592592593vh;
+    height: 83.7037037037vh;
+    overflow-y: auto
+}
+
+.Wheel .historyList .list::-webkit-scrollbar {
+    display: none
+}
+
+.Wheel .historyList .list .game {
+    padding: 1.7592592593vh;
+    margin-bottom: .7407407407vh;
+    height: 7.962962963vh;
+    background: #171717;
+    border-radius: 1.6666666667vh;
+    flex-shrink: 0;
+    border: none;
+    cursor: pointer
+}
+
+.Wheel .historyList .list .game:last-child {
+    margin-bottom: .9259259259vh
+}
+
+.Wheel .historyList .list .game .gameID {
+    background: #2d2d2d;
+    border-radius: 8px;
+    padding: .9259259259vh 1.1111111111vh;
+    height: 3.6111111111vh;
+    width: -moz-min-content;
+    width: min-content
+}
+
+.Wheel .historyList .list .game .gameID span {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    line-height: 1.7592592593vh;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    background: linear-gradient(180deg,#fff,#9a9a9a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent
+}
+
+.Wheel .historyList .list .game .playersBank .bank,.Wheel .historyList .list .game .playersBank .playersCount {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    line-height: 1.7592592593vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 1.3425925926vh 1.6666666667vh;
+    height: 4.4444444444vh;
+    background: #2d2d2d;
+    border-radius: 1.1111111111vh
+}
+
+.Wheel .historyList .list .game .playersBank .playersCount {
+    margin-right: .9259259259vh
+}
+
+.Wheel .historyList .list .game .playersBank .playersCount .icon {
+    margin-right: .462962963vh;
+    width: 1.1111111111vh;
+    height: 1.3888888889vh;
+    fill: url(#paint0_linear_55_3401)
+}
+
+.Wheel .historyList .list .game .playersBank .bank .coins {
+    margin-left: 5.67px;
+    width: 1.5435185185vh;
+    height: 1.5435185185vh
+}
+
+.Wheel .historyList .list .game .historyListItem:first-child {
+    width: 21.1388888889vh;
+    justify-content: center
+}
+
+.Wheel .historyList .list .game .historyListItem:nth-child(2) {
+    width: 35.2314814815vh;
+    display: flex;
+    justify-content: center
+}
+
+.Wheel .historyList .list .game .historyListItem:nth-child(3) {
+    width: 84.5555555556vh;
+    display: flex;
+    justify-content: center
+}
+
+.Wheel .historyList .list .game .historyListItem:first-child {
+    display: flex;
+    justify-content: flex-start
+}
+
+.Wheel .historyList .list .game .historyListItem:last-child {
+    display: flex;
+    justify-content: flex-end
+}
+
+.Wheel .historyList .empty-list {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.6666666667vh;
+    line-height: 1.9444444444vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #616161;
+    margin: auto
+}
+

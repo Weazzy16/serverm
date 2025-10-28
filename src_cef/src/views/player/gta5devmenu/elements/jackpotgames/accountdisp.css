@@ -1,0 +1,109 @@
+.jack-avatar-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.296296vh
+    }
+.jack-avatar-wrapper .jack-avatar {
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5vh;
+    height: 5vh;
+    border: 0.092593vh solid hsla(0, 0%, 100%, 0.05);
+    background-color: hsla(0, 0%, 7%, 0.5);
+    border-radius: 0.925926vh
+    }
+.jack-avatar-wrapper .jack-avatar > img, .jack-avatar-wrapper .jack-avatar > svg {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    fill: #353535;
+    -o-object-fit: contain;
+    object-fit: contain
+    }
+.jack-avatar-wrapper .jack-avatar .jack-you {
+    position: absolute;
+    bottom: -0.648148vh;
+    left: 0;
+    right: 0
+    }
+.jack-avatar-wrapper .jack-content .jack-main-info, .jack-avatar-wrapper .jack-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.925926vh
+    }
+.jack-avatar-wrapper .jack-content .jack-main-info > p {
+    color: #fff;
+    font-family: ProximaNova-Condensed, serif;
+    font-size: 1.481481vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    text-transform: uppercase
+    }
+.jack-avatar-wrapper .jack-content .jack-main-info .jack-more-info .jack-static, .jack-avatar-wrapper .jack-content .jack-main-info .jack-more-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.555556vh
+    }
+.jack-avatar-wrapper .jack-content .jack-main-info .jack-more-info .jack-static > p {
+    color: hsla(0, 0%, 100%, 0.5);
+    font-family: ProximaNova-Condensed, serif;
+    font-size: 1.296296vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%
+    }
+.jack-avatar-wrapper .jack-content .jack-main-info .jack-more-info .jack-serverName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.277778vh 0.37037vh;
+    border-radius: 0.555556vh;
+    background-color: #24583b
+    }
+.jack-avatar-wrapper .jack-content .jack-main-info .jack-more-info .jack-serverName > p {
+    color: #fff;
+    font-family: ProximaNova-Condensed, serif;
+    font-size: 0.925926vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    text-transform: uppercase
+    }
+.jack-avatar-wrapper .jack-content > p {
+    color: hsla(0, 0%, 100%, 0.5);
+    font-family: ProximaNova-Condensed, serif;
+    font-size: 1.481481vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    text-transform: uppercase
+    }
+.jack-avatar-wrapper .jack-you {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.37037vh;
+    margin: 0 auto;
+    height: 1.296296vh;
+    width: -moz-fit-content;
+    width: fit-content;
+    border-radius: 0.555556vh;
+    background-color: #5d75ed
+    }
+.jack-avatar-wrapper .jack-you > p {
+    color: hsla(0, 0%, 100%, 0.75);
+    font-family: ProximaNova-Condensed, serif;
+    font-size: 0.925926vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    text-transform: uppercase
+    }

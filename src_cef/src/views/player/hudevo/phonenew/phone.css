@@ -1,0 +1,1751 @@
+.active {
+    opacity: 1
+}
+
+.fade-up-animation {
+    animation: fadeOutUp-a84c18ee 1s ease
+}
+
+.fade-down-animation {
+    animation: fadeOutDown-a84c18ee 1s ease
+}
+
+@keyframes fadeOutUp-a84c18ee {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        background-color: #40b6ff;
+        color: #fff
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-100%);
+        background-color: #40b6ff;
+        color: #fff
+    }
+}
+
+@keyframes fadeOutDown-a84c18ee {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        background-color: #071e30;
+        color: #fff
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(100%);
+        background-color: #071e30;
+        color: #fff
+    }
+}
+
+.logotype-enter-active {
+    animation: logotype-a84c18ee .5s ease
+}
+
+.logotype-leave-active {
+    animation: logotype-a84c18ee .5s ease reverse
+}
+
+@keyframes logotype-a84c18ee {
+    0% {
+        transform: scale(0);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.cardMoveIn {
+    animation: cardMoveInside-a84c18ee ease forwards;
+    animation-duration: 2s
+}
+
+.cardMoveOut {
+    animation: cardMoveOutside-a84c18ee ease forwards;
+    animation-duration: 2s
+}
+
+@keyframes cardMoveOutside-a84c18ee {
+    0% {
+        right: vh(300px)
+    }
+
+    to {
+        right: vh(11px)
+    }
+}
+
+@keyframes cardMoveInside-a84c18ee {
+    0% {
+        right: vh(11px)
+    }
+
+    to {
+        right: vh(300px)
+    }
+}
+
+@keyframes borderBlink-a84c18ee {
+    0% {
+        opacity: .5
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.fade-enter,.fade-leave-to {
+    opacity: 0
+}
+
+.fade-enter-active,.fade-leave-active {
+    transition: opacity .5s
+}
+
+@keyframes slide-up-a84c18ee {
+    0% {
+        transform: translateY(-20%);
+        opacity: 0
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1
+    }
+}
+
+@keyframes slide-down-a84c18ee {
+    0% {
+        transform: translateY(0);
+        opacity: 1
+    }
+
+    to {
+        transform: translateY(20%);
+        opacity: 0
+    }
+}
+
+.ipad-slide-enter-active {
+    animation: ipad-slide-a84c18ee .4s ease
+}
+
+.ipad-slide-leave-active {
+    animation: ipad-slide-a84c18ee .4s ease reverse
+}
+
+@keyframes ipad-slide-a84c18ee {
+    0% {
+        transform: translateY(120%)
+    }
+
+    to {
+        transform: translateY(0)
+    }
+}
+
+@keyframes bounce-in-transition-a84c18ee {
+    0% {
+        transform: scale(0);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.row-block {
+    display: flex;
+    flex-direction: row
+}
+
+.row-reverse-block {
+    display: flex;
+    flex-direction: row-reverse
+}
+
+.column-block {
+    display: flex;
+    flex-direction: column
+}
+
+.flex-block {
+    display: flex
+}
+
+.justify-start {
+    display: flex;
+    justify-content: flex-start
+}
+
+.justify-center {
+    display: flex;
+    justify-content: center
+}
+
+.justify-between {
+    display: flex;
+    justify-content: space-between
+}
+
+.justify-end {
+    display: flex;
+    justify-content: flex-end
+}
+
+.align-start {
+    display: flex;
+    align-content: flex-start
+}
+
+.align-center {
+    display: flex;
+    align-items: center
+}
+
+.align-end {
+    display: flex;
+    align-items: flex-end
+}
+
+.full-width {
+    width: 100%
+}
+
+.full-height {
+    height: 100%
+}
+
+.picture-handler {
+    display: flex;
+    cursor: pointer
+}
+
+.debug {
+    border: 1px solid red
+}
+
+mainw {
+    background-color: #fff;
+    border-radius: .8518518519vh
+}
+
+.weekday {
+    font-weight: 400;
+    font-size: .8333333333vh;
+    margin-top: .462962963vh;
+    color: #ff3b30
+}
+
+.monthday,.weekday {
+    font-family: ProximaNova;
+    font-style: normal
+}
+
+.monthday {
+    font-weight: 100;
+    font-size: 2.3148148148vh;
+    color: #000;
+    margin-top: -.1851851852vh
+}
+
+.fade-up-animation {
+    animation: fadeOutUp-4ae2466d 1s ease
+}
+
+.fade-down-animation {
+    animation: fadeOutDown-4ae2466d 1s ease
+}
+
+@keyframes fadeOutUp-4ae2466d {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        background-color: #40b6ff;
+        color: #fff
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-100%);
+        background-color: #40b6ff;
+        color: #fff
+    }
+}
+
+@keyframes fadeOutDown-4ae2466d {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        background-color: #071e30;
+        color: #fff
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(100%);
+        background-color: #071e30;
+        color: #fff
+    }
+}
+
+.logotype-enter-active {
+    animation: logotype-4ae2466d .5s ease
+}
+
+.logotype-leave-active {
+    animation: logotype-4ae2466d .5s ease reverse
+}
+
+@keyframes logotype-4ae2466d {
+    0% {
+        transform: scale(0);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.cardMoveIn {
+    animation: cardMoveInside-4ae2466d ease forwards;
+    animation-duration: 2s
+}
+
+.cardMoveOut {
+    animation: cardMoveOutside-4ae2466d ease forwards;
+    animation-duration: 2s
+}
+
+@keyframes cardMoveOutside-4ae2466d {
+    0% {
+        right: vh(300px)
+    }
+
+    to {
+        right: vh(11px)
+    }
+}
+
+@keyframes cardMoveInside-4ae2466d {
+    0% {
+        right: vh(11px)
+    }
+
+    to {
+        right: vh(300px)
+    }
+}
+
+@keyframes borderBlink-4ae2466d {
+    0% {
+        opacity: .5
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.fade-enter,.fade-leave-to {
+    opacity: 0
+}
+
+.fade-enter-active,.fade-leave-active {
+    transition: opacity .5s
+}
+
+@keyframes slide-up-4ae2466d {
+    0% {
+        transform: translateY(-20%);
+        opacity: 0
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1
+    }
+}
+
+@keyframes slide-down-4ae2466d {
+    0% {
+        transform: translateY(0);
+        opacity: 1
+    }
+
+    to {
+        transform: translateY(20%);
+        opacity: 0
+    }
+}
+
+.ipad-slide-enter-active {
+    animation: ipad-slide-4ae2466d .4s ease
+}
+
+.ipad-slide-leave-active {
+    animation: ipad-slide-4ae2466d .4s ease reverse
+}
+
+@keyframes ipad-slide-4ae2466d {
+    0% {
+        transform: translateY(120%)
+    }
+
+    to {
+        transform: translateY(0)
+    }
+}
+
+@keyframes bounce-in-transition-4ae2466d {
+    0% {
+        transform: scale(0);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.row-block {
+    display: flex;
+    flex-direction: row
+}
+
+.row-reverse-block {
+    display: flex;
+    flex-direction: row-reverse
+}
+
+.column-block {
+    display: flex;
+    flex-direction: column
+}
+
+.flex-block {
+    display: flex
+}
+
+.justify-start {
+    display: flex;
+    justify-content: flex-start
+}
+
+.justify-center {
+    display: flex;
+    justify-content: center
+}
+
+.justify-between {
+    display: flex;
+    justify-content: space-between
+}
+
+.justify-end {
+    display: flex;
+    justify-content: flex-end
+}
+
+.align-start {
+    display: flex;
+    align-content: flex-start
+}
+
+.align-center {
+    display: flex;
+    align-items: center
+}
+
+.align-end {
+    display: flex;
+    align-items: flex-end
+}
+
+.full-width {
+    width: 100%
+}
+
+.full-height {
+    height: 100%
+}
+
+.picture-handler {
+    display: flex;
+    cursor: pointer
+}
+
+.debug {
+    border: 1px solid red
+}
+
+.notification-main {
+    background: hsla(0,0%,100%,.5);
+    border-radius: .8333333333vh;
+    position: relative
+}
+
+.notification-main.iphone-type {
+    width: 22.4074074074vh;
+    height: 6.8518518519vh;
+    padding: .7407407407vh
+}
+
+.notification-main .happened {
+    font-family: ProximaNova;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 1.0185185185vh;
+    color: rgba(0,0,0,.72);
+    position: absolute;
+    right: .7407407407vh;
+    top: .7407407407vh
+}
+
+.notification-main .notification-content .notification-header__icon {
+    width: 1.3888888889vh;
+    height: 1.3888888889vh
+}
+
+.notification-main .notification-content .notification-header__text {
+    font-family: ProximaNova;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 1.1111111111vh;
+    color: rgba(0,0,0,.72);
+    margin-left: .462962963vh
+}
+
+.notification-main .notification-content__text-header {
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.1111111111vh;
+    color: rgba(0,0,0,.9);
+    margin-top: .3703703704vh
+}
+
+.notification-main .notification-content__text-message {
+    font-family: ProximaNova;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.0185185185vh;
+    color: #000;
+    margin-top: .0925925926vh
+}
+
+.camera .control-field .last-image{
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.camera .frames .camera{
+    position: absolute;
+    left: 0;
+    top: 0
+}
+
+.row-block{
+    display: flex;
+    flex-direction: row
+}
+
+.row-reverse-block{
+    display: flex;
+    flex-direction: row-reverse
+}
+
+.column-block{
+    display: flex;
+    flex-direction: column
+}
+
+.flex-block{
+    display: flex
+}
+
+.justify-start{
+    display: flex;
+    justify-content: flex-start
+}
+
+.justify-center{
+    display: flex;
+    justify-content: center
+}
+
+.justify-between{
+    display: flex;
+    justify-content: space-between
+}
+
+.justify-end{
+    display: flex;
+    justify-content: flex-end
+}
+
+.align-start{
+    display: flex;
+    align-content: flex-start
+}
+
+.align-center{
+    display: flex;
+    align-items: center
+}
+
+.align-end{
+    display: flex;
+    align-items: flex-end
+}
+
+.full-width{
+    width: 100%
+}
+
+.full-height{
+    height: 100%
+}
+
+.picture-handler{
+    display: flex;
+    cursor: pointer
+}
+
+.debug{
+    border: 1px solid red
+}
+
+.fade-up-animation{
+    animation: fadeOutUp-4ab4b2fa 1s ease
+}
+
+.fade-down-animation{
+    animation: fadeOutDown-4ab4b2fa 1s ease
+}
+
+@keyframes fadeOutUp-4ab4b2fa {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        background-color: #40b6ff;
+        color: #fff
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-100%);
+        background-color: #40b6ff;
+        color: #fff
+    }
+}
+
+@keyframes fadeOutDown-4ab4b2fa {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        background-color: #071e30;
+        color: #fff
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(100%);
+        background-color: #071e30;
+        color: #fff
+    }
+}
+
+.logotype-enter-active{
+    animation: logotype-4ab4b2fa .5s ease
+}
+
+.logotype-leave-active{
+    animation: logotype-4ab4b2fa .5s ease reverse
+}
+
+@keyframes logotype-4ab4b2fa {
+    0% {
+        transform: scale(0);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.cardMoveIn{
+    animation: cardMoveInside-4ab4b2fa ease forwards;
+    animation-duration: 2s
+}
+
+.cardMoveOut{
+    animation: cardMoveOutside-4ab4b2fa ease forwards;
+    animation-duration: 2s
+}
+
+@keyframes cardMoveOutside-4ab4b2fa {
+    0% {
+        right: 27.7777777778vh
+    }
+
+    to {
+        right: 1.0185185185vh
+    }
+}
+
+@keyframes cardMoveInside-4ab4b2fa {
+    0% {
+        right: 1.0185185185vh
+    }
+
+    to {
+        right: 27.7777777778vh
+    }
+}
+
+@keyframes borderBlink-4ab4b2fa {
+    0% {
+        opacity: .5
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.fade-enter .fade-leave-to{
+    opacity: 0
+}
+
+.fade-enter-active .fade-leave-active{
+    transition: opacity .5s
+}
+
+@keyframes slide-up-4ab4b2fa {
+    0% {
+        transform: translateY(-20%);
+        opacity: 0
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1
+    }
+}
+
+@keyframes slide-down-4ab4b2fa {
+    0% {
+        transform: translateY(0);
+        opacity: 1
+    }
+
+    to {
+        transform: translateY(20%);
+        opacity: 0
+    }
+}
+
+.ipad-slide-enter-active{
+    animation: ipad-slide-4ab4b2fa .4s ease
+}
+
+.ipad-slide-leave-active{
+    animation: ipad-slide-4ab4b2fa .4s ease reverse
+}
+
+@keyframes ipad-slide-4ab4b2fa {
+    0% {
+        transform: translateY(120%)
+    }
+
+    to {
+        transform: translateY(0)
+    }
+}
+
+@keyframes bounce-in-transition-4ab4b2fa {
+    0% {
+        transform: scale(0);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.camera .control-field{
+    position: absolute;
+    right: 0;
+    height: 100%
+}
+
+.camera .control-field .zoom-levels{
+    background-color: rgba(0,0,0,.3);
+    border-radius: 1.9907407407vh;
+    height: 22.2222222222vh;
+    width: 8.3333333333vh;
+    gap: .9259259259vh;
+    padding-bottom: 1.8518518519vh
+}
+
+.camera .control-field .zoom-levels .selected.symbol {
+    fill: #ffd60a
+}
+
+.camera .control-field .zoom-levels.symbol {
+    fill: #fff;
+    transition: fill .2s ease
+}
+
+.camera .control-field .zoom-levels .zoom-level{
+    width: inherit;
+    height: inherit
+}
+
+.camera .control-field .zoom-levels .zoom-05{
+    width: 3.7037037037vh;
+    height: 5.5555555556vh
+}
+
+.camera .control-field .zoom-levels .zoom-1{
+    width: 5.5555555556vh;
+    height: 5.5555555556vh
+}
+
+.camera .control-field .zoom-levels .zoom-3{
+    width: 3.7037037037vh;
+    height: 3.7037037037vh
+}
+
+.camera .control-field .control-panel{
+    width: 20vh;
+    margin-left: 1.8518518519vh;
+    position: relative
+}
+
+.camera .control-field .control-panel .action-button{
+    width: 9.2592592593vh;
+    height: 9.2592592593vh;
+    position: absolute;
+    right: 2.3148148148vh
+}
+
+.camera .control-field .control-panel .action-button svg{
+    width: inherit;
+    height: inherit
+}
+
+.camera .control-field .camera-types{
+    position: absolute;
+    transform: rotate(-90deg) translateY(-4.6296296296vh)
+}
+
+.camera .control-field .camera-types .moving-container{
+    gap: 3.7037037037vh;
+    transition: transform .2s ease
+}
+
+.camera .control-field .camera-types .camera-type{
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 2.3148148148vh;
+    color: #fff;
+    text-transform: uppercase;
+    transition: color .2s ease
+}
+
+.camera .control-field .camera-types .camera-type.selected{
+    color: #ffd60a
+}
+
+.camera .control-field .last-image{
+    position: absolute;
+    bottom: 9.2592592593vh
+}
+
+.camera .control-field .last-image__picture{
+    width: 9.2592592593vh;
+    height: 9.2592592593vh;
+    border-radius: 1.8518518519vh;
+    background-size: 200%;
+    background-position: 50%;
+    background-repeat: no-repeat
+}
+
+.camera .frames{
+    pointer-events: none
+}
+
+.camera .frames .frame{
+    width: 5.0925925926vh;
+    height: 5.0925925926vh;
+    position: relative
+}
+
+.camera .frames .frame-element{
+    background-color: #999b9f;
+    position: absolute
+}
+
+.camera .frames .frame-element[data-v-4ab4b2fa]:first-child {
+    width: 2.29px;
+    height: 100%
+}
+
+.camera .frames .frame-element[data-v-4ab4b2fa]:last-child {
+    height: 2.29px;
+    width: 100%
+}
+
+.camera .frames .frame[data-v-4ab4b2fa]:first-child {
+    position: absolute;
+    right: 4.6296296296vh;
+    bottom: 4.6296296296vh
+}
+
+.camera .frames .frame:first-child .frame-element[data-v-4ab4b2fa]:first-child,.camera .frames .frame:first-child .frame-element[data-v-4ab4b2fa]:last-child {
+    right: 0;
+    bottom: 0
+}
+
+.camera .frames .frame[data-v-4ab4b2fa]:nth-child(2) {
+    position: absolute;
+    left: 4.6296296296vh;
+    top: 4.6296296296vh
+}
+
+.camera .frames .frame:nth-child(2) .frame-element[data-v-4ab4b2fa]:first-child,.camera .frames .frame:nth-child(2) .frame-element[data-v-4ab4b2fa]:last-child {
+    top: 0;
+    left: 0
+}
+
+.camera .frames .frame[data-v-4ab4b2fa]:nth-child(3) {
+    position: absolute;
+    right: 4.6296296296vh;
+    top: 4.6296296296vh
+}
+
+.camera .frames .frame:nth-child(3) .frame-element[data-v-4ab4b2fa]:first-child {
+    top: 0;
+    right: 0
+}
+
+.camera .frames .frame:nth-child(3) .frame-element[data-v-4ab4b2fa]:last-child {
+    top: 0;
+    left: 0
+}
+
+.camera .frames .frame[data-v-4ab4b2fa]:nth-child(4) {
+    position: absolute;
+    left: 4.6296296296vh;
+    bottom: 4.6296296296vh
+}
+
+.camera .frames .frame:nth-child(4) .frame-element[data-v-4ab4b2fa]:first-child {
+    bottom: 0;
+    left: 0
+}
+
+.camera .frames .frame:nth-child(4) .frame-element[data-v-4ab4b2fa]:last-child {
+    bottom: 0;
+    right: 0
+}
+
+.iphone .camera,.iphone-home .fast-apps-container .fast-apps .app-container .app-container-icon .notifications-amount,.iphone-locked .bottom-content .unlock-hint,.iphone-voice-conversation .main-content .control-container .control-button,.iphone {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.iphone-app,.iphone-background,.iphone-frame,.iphone-home,.iphone-locked,.iphone-main-content,.iphone-main,.iphone-shadow,.iphone-statusbar,.iphone-voice-conversation {
+    position: absolute;
+    left: 0;
+    top: 0
+}
+
+.row-block {
+    display: flex;
+    flex-direction: row
+}
+
+.row-reverse-block {
+    display: flex;
+    flex-direction: row-reverse
+}
+
+.column-block {
+    display: flex;
+    flex-direction: column
+}
+
+.flex-block {
+    display: flex
+}
+
+.justify-start {
+    display: flex;
+    justify-content: flex-start
+}
+
+.justify-center {
+    display: flex;
+    justify-content: center
+}
+
+.justify-between {
+    display: flex;
+    justify-content: space-between
+}
+
+.justify-end {
+    display: flex;
+    justify-content: flex-end
+}
+
+.align-start {
+    display: flex;
+    align-content: flex-start
+}
+
+.align-center {
+    display: flex;
+    align-items: center
+}
+
+.align-end {
+    display: flex;
+    align-items: flex-end
+}
+
+.full-width {
+    width: 100%
+}
+
+.full-height {
+    height: 100%
+}
+
+.picture-handler {
+    display: flex;
+    cursor: pointer
+}
+
+.debug {
+    border: 1px solid red
+}
+
+.fade-up-animation {
+    animation: fadeOutUp-1c044914 1s ease
+}
+
+.fade-down-animation {
+    animation: fadeOutDown-1c044914 1s ease
+}
+
+@keyframes fadeOutUp-1c044914 {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        background-color: #40b6ff;
+        color: #fff
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-100%);
+        background-color: #40b6ff;
+        color: #fff
+    }
+}
+
+@keyframes fadeOutDown-1c044914 {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        background-color: #071e30;
+        color: #fff
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(100%);
+        background-color: #071e30;
+        color: #fff
+    }
+}
+
+.logotype-enter-active {
+    animation: logotype-1c044914 .5s ease
+}
+
+.logotype-leave-active {
+    animation: logotype-1c044914 .5s ease reverse
+}
+
+@keyframes logotype-1c044914 {
+    0% {
+        transform: scale(0);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.cardMoveIn {
+    animation: cardMoveInside-1c044914 ease forwards;
+    animation-duration: 2s
+}
+
+.cardMoveOut {
+    animation: cardMoveOutside-1c044914 ease forwards;
+    animation-duration: 2s
+}
+
+@keyframes cardMoveOutside-1c044914 {
+    0% {
+        right: 27.7777777778vh
+    }
+
+    to {
+        right: 1.0185185185vh
+    }
+}
+
+@keyframes cardMoveInside-1c044914 {
+    0% {
+        right: 1.0185185185vh
+    }
+
+    to {
+        right: 27.7777777778vh
+    }
+}
+
+@keyframes borderBlink-1c044914 {
+    0% {
+        opacity: .5
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.fade-enter,.fade-leave-to {
+    opacity: 0
+}
+
+.fade-enter-active,.fade-leave-active {
+    transition: opacity .5s
+}
+
+@keyframes slide-up-1c044914 {
+    0% {
+        transform: translateY(-20%);
+        opacity: 0
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1
+    }
+}
+
+@keyframes slide-down-1c044914 {
+    0% {
+        transform: translateY(0);
+        opacity: 1
+    }
+
+    to {
+        transform: translateY(20%);
+        opacity: 0
+    }
+}
+
+.ipad-slide-enter-active {
+    animation: ipad-slide-1c044914 .4s ease
+}
+
+.ipad-slide-leave-active {
+    animation: ipad-slide-1c044914 .4s ease reverse
+}
+
+@keyframes ipad-slide-1c044914 {
+    0% {
+        transform: translateY(120%)
+    }
+
+    to {
+        transform: translateY(0)
+    }
+}
+
+@keyframes bounce-in-transition-1c044914 {
+    0% {
+        transform: scale(0);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.local-fade-enter-from,.local-fade-leave-to {
+    opacity: 0
+}
+
+.local-fade-enter-active,.local-fade-leave-active {
+    transition: opacity .2s
+}
+
+.iphone-main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    z-index: 1000
+}
+
+.iphone {
+    position: relative;
+    margin: 0 2.7777777778vh 2.7777777778vh 0;
+    width: 30.1851851852vh;
+    height: 62.962962963vh
+}
+
+.iphone .unlock-button {
+    position: absolute;
+    top: 18.5185185185vh;
+    right: 0;
+    height: 7.4074074074vh;
+    width: .462962963vh;
+    cursor: pointer;
+    z-index: 11
+}
+
+.iphone-content {
+    width: 27.7777777778vh;
+    border-radius: 2.7777777778vh;
+    height: 60.7407407407vh;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    margin-left: -.0925925926vh
+}
+
+.iphone-frame {
+    width: calc(100% + .18519vh);
+    height: 100%;
+    z-index: 10;
+    transform: translateX(-.0925925926vh);
+    pointer-events: none;
+}
+
+.iphone-statusbar {
+    justify-content: space-between;
+    width: 100%;
+    z-index: 6;
+    padding: 1.2037037037vh 2.2222222222vh .8333333333vh 2.2222222222vh;
+    height: 3.7037037037vh;
+    pointer-events: none
+}
+
+.iphone-statusbar.default .time {
+    color: #fff
+}
+
+.iphone-statusbar.default .net-status,.iphone-statusbar.default .net-status tspan,.iphone-statusbar.default svg {
+    fill: #fff
+}
+
+.iphone-statusbar.dark .time {
+    color: #000
+}
+
+.iphone-statusbar.dark .net-status,.iphone-statusbar.dark .net-status tspan,.iphone-statusbar.dark svg {
+    fill: #000
+}
+
+.iphone-statusbar .time {
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.3888888889vh
+}
+
+.iphone-statusbar .phone-status {
+    gap: .462962963vh
+}
+
+.iphone-statusbar .phone-status .wifi {
+    width: 1.2037037037vh;
+    height: .9259259259vh
+}
+
+.iphone-statusbar .phone-status .net {
+    width: 1.2037037037vh
+}
+
+.iphone-statusbar .phone-status .battery {
+    width: 1.5740740741vh
+}
+
+.iphone .camera {
+    position: absolute;
+    top: .7407407407vh;
+    pointer-events: none;
+    z-index: 6
+}
+
+.iphone .camera__picture {
+    width: 8.5185185185vh;
+    height: 2.5vh
+}
+
+.iphone-notification {
+    position: absolute;
+    left: 0;
+    top: 3.0555555556vh;
+    width: 100%;
+    z-index: 3
+}
+
+.iphone-notification .statusbar-container-notification {
+    cursor: pointer
+}
+
+.iphone-shadow {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: transparent;
+    z-index: 11;
+    transition: background-color .2s ease;
+    cursor: pointer
+}
+
+.iphone-shadow.disabled {
+    pointer-events: all;
+    background: #000!important
+}
+
+.iphone-background,.iphone-locked {
+    width: 100%;
+    height: 100%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
+.iphone-locked {
+    z-index: 4;
+    cursor: pointer
+}
+
+.iphone-locked.transition {
+    transition: top .3s ease
+}
+
+.iphone-locked.removed {
+    top: -100%
+}
+
+.iphone-locked .lock-block {
+    width: 2.3148148148vh;
+    height: 2.7777777778vh;
+    margin-top: 4.8148148148vh
+}
+
+.iphone-locked .lock-block .moving-detail {
+    transition: transform .2s ease
+}
+
+.iphone-locked .lock-block.unlocked .moving-detail {
+    animation: unLock-1c044914 .3s ease forwards
+}
+
+@keyframes unLock-1c044914 {
+    0% {
+        transform: translateX(0) translateY(0)
+    }
+
+    15% {
+        transform: translateX(0) translateY(1px)
+    }
+
+    30% {
+        transform: translateX(0) translateY(0)
+    }
+
+    50% {
+        transform: translateX(0) translateY(-4px)
+    }
+
+    to {
+        transform: scaleX(-1) translateX(-25px) translateY(-4px)
+    }
+}
+
+.iphone-locked .time-week {
+    color: hsla(0,0%,100%,.85);
+    margin-top: 4.2962962963vh
+}
+
+.iphone-locked .time-week span {
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.4814814815vh
+}
+
+.iphone-locked .time-main {
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 7.4074074074vh;
+    color: #fefefe
+}
+
+.iphone-locked .notifications-block {
+    display: flex;
+    width: 100%;
+    margin-top: 1.0185185185vh;
+    max-height: 23.3333333333vh
+}
+
+.iphone-locked .notifications-block .lock-notification {
+    margin-bottom: 1.0185185185vh
+}
+
+.iphone-locked .bottom-content {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%
+}
+
+.iphone-locked .bottom-content .unlock-hint {
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    width: 14.2592592593vh;
+    margin-bottom: .9259259259vh;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 .2777777778vh rgba(0,0,0,.16) .5555555556vh
+}
+
+.iphone-locked .bottom-content .handler {
+    height: 2.2222222222vh;
+    cursor: pointer;
+    padding-bottom: .5555555556vh
+}
+
+.iphone-locked .bottom-content .handler-content {
+    width: 11.1111111111vh;
+    height: .462962963vh;
+    border-radius: 9.2592592593vh;
+    background: #fff
+}
+
+.iphone-main-content {
+    width: 100%;
+    height: 100%;
+    z-index: 2
+}
+img {
+    pointer-events: none;
+}
+.iphone-voice-conversation {
+    z-index: 5;
+    background: url(https://cdn.majestic-files.com/public/master/static/img/iPhone/iphone_background.png) no-repeat;
+    background-size: cover
+}
+
+.iphone-voice-conversation .main-content {
+    background: rgba(46,46,46,.8);
+    padding-top: 7.4074074074vh;
+    position: relative
+}
+
+.iphone-voice-conversation .main-content__text-username {
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 2.5vh;
+    color: #fff;
+    text-align: center
+}
+
+.iphone-voice-conversation .main-content .status-block {
+    margin-top: .3703703704vh
+}
+
+.iphone-voice-conversation .main-content .status-block__text-isCalling,.iphone-voice-conversation .main-content .status-block__text-isTalking {
+    font-family: ProximaNova;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.6666666667vh;
+    color: hsla(0,0%,100%,.5)
+}
+
+.iphone-voice-conversation .main-content .control-container {
+    position: absolute;
+    bottom: 8.6111111111vh;
+    left: 0
+}
+
+.iphone-voice-conversation .main-content .control-container .red-color {
+    background: #ff3b30
+}
+
+.iphone-voice-conversation .main-content .control-container .green-color {
+    background: #4cd964
+}
+
+.iphone-voice-conversation .main-content .control-container .white-transparent-color {
+    background: hsla(0,0%,100%,.36)
+}
+
+.iphone-voice-conversation .main-content .control-container .control-button {
+    width: 5.5555555556vh;
+    height: 5.5555555556vh;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color .2s ease
+}
+
+.iphone-voice-conversation .main-content .control-container .control-button.decline {
+    background-color: #eb5545
+}
+
+.iphone-voice-conversation .main-content .control-container .control-button.decline .control-button__icon {
+    width: 2.5925925926vh;
+    height: 2.5925925926vh
+}
+
+.iphone-voice-conversation .main-content .control-container .control-button.decline:hover {
+    background-color: #db4d3e
+}
+
+.iphone-voice-conversation .main-content .control-container .control-button.accept {
+    background-color: #32d74b
+}
+
+.iphone-voice-conversation .main-content .control-container .control-button.accept .control-button__icon {
+    width: 1.8518518519vh;
+    height: 1.8518518519vh
+}
+
+.iphone-voice-conversation .main-content .control-container .control-button.accept:hover {
+    background-color: rgba(50,215,75,.8)
+}
+
+.iphone-voice-conversation .main-content .control-container .control-button__icon {
+    fill: #fefefe
+}
+
+.iphone-voice-conversation .main-content .control-container .incoming-call {
+    padding: 0 3.7037037037vh
+}
+
+.iphone-voice-conversation .main-content .control-container .incoming-call__text {
+    font-family: ProximaNova;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    color: hsla(0,0%,100%,.5);
+    margin-top: .7407407407vh
+}
+
+.iphone-app {
+    z-index: 2;
+    width: 100%;
+    height: 100%
+}
+
+.iphone-home {
+    width: 100%;
+    height: 100%;
+    transform-origin: center center;
+    z-index: 1
+}
+
+.iphone-home .apps-container {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    padding: 0 1.0185185185vh;
+    padding-top: 5.5555555556vh;
+    gap: 1.7592592593vh .1851851852vh
+}
+
+.iphone-home .apps-container .app-container {
+    max-width: 6.2037037037vh;
+    min-width: 6.2037037037vh
+}
+
+.iphone-home .apps-container .app-container-icon {
+    width: 4.537037037vh;
+    height: 4.537037037vh;
+    cursor: pointer;
+    position: relative;
+    border-radius: .9259259259vh;
+    overflow: hidden
+}
+
+.iphone-home .apps-container .app-container-icon__picture {
+    width: 100%;
+    height: 100%;
+    position: absolute
+}
+
+.iphone-home .apps-container .app-container__title {
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.1111111111vh;
+    color: #fff;
+    margin-top: .5555555556vh;
+    text-align: center
+}
+
+.iphone-home .fast-apps-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0 .7407407407vh
+}
+
+.iphone-home .fast-apps-container .fast-apps {
+    display: flex;
+    flex-flow: row nowrap;
+    position: relative;
+    border-radius: 2.037037037vh;
+    background: hsla(0,0%,100%,.4);
+    margin-bottom: .9259259259vh;
+    overflow: hidden;
+    padding: 1.1111111111vh;
+    gap: 1.8518518519vh
+}
+
+.iphone-home .fast-apps-container .fast-apps .app-container {
+    width: 4.537037037vh;
+    height: 4.537037037vh
+}
+
+.iphone-home .fast-apps-container .fast-apps .app-container .app-container-icon {
+    cursor: pointer;
+    position: relative;
+    width: inherit;
+    height: inherit
+}
+
+.iphone-home .fast-apps-container .fast-apps .app-container .app-container-icon .notifications-amount {
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.1111111111vh;
+    position: absolute;
+    top: -.6481481481vh;
+    right: -.6481481481vh;
+    color: #fff;
+    border-radius: .9259259259vh;
+    background-color: #ff3b30;
+    padding: .1388888889vh .5092592593vh
+}
+
+.iphone-home .fast-apps-container .fast-apps .app-container .app-container-icon .notifications-amount.digits-1 {
+    width: 1.6666666667vh;
+    height: 1.6666666667vh
+}
+
+.iphone-home .fast-apps-container .fast-apps .app-container .app-container-icon__picture {
+    width: inherit;
+    height: inherit
+}
+
+.iphone-home .fast-apps-container .fast-apps .app-container:last-child {
+    margin-right: 0
+}
+
+.iphone-scale-enter-active {
+    animation: iphone-scale-1c044914 .5s ease
+}
+
+@keyframes iphone-scale-1c044914 {
+    0% {
+        transform: scale(1.5);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.notification-slide-enter-active {
+    animation: notification-slide-1c044914 .3s ease
+}
+
+.notification-slide-leave-active {
+    animation: notification-slide-1c044914 .3s ease reverse
+}
+
+@keyframes notification-slide-1c044914 {
+    0% {
+        transform: translateY(-120%);
+        opacity: 0
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1
+    }
+}
+
+.list-complete-item {
+    transition: all .2s;
+    display: inline-block
+}
+
+.list-complete-enter {
+    opacity: 0;
+    transform: translateY(30px)
+}
+
+.list-complete-leave-to {
+    opacity: 0;
+    transform: translateY(-30px)
+}
+
+.list-complete-leave-active {
+    position: absolute
+}

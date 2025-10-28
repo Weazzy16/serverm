@@ -1,0 +1,534 @@
+@font-face {
+  font-family: 'tableticons';
+  src:  url('./tableticons.eot?wtmxyt');
+  src:  url('./tableticons.eot?wtmxyt#iefix') format('embedded-opentype'),
+    url('./tableticons.ttf?wtmxyt') format('truetype'),
+    url('./tableticons.woff?wtmxyt') format('woff'),
+    url('./tableticons.svg?wtmxyt#tableticons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="tableticons-"], [class*=" tableticons-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'tableticons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.tableticons-smile:before {
+  content: "\e97a";
+}
+.tableticons-mic-off1:before {
+  content: "\e96d";
+}
+.tableticons-decline:before {
+  content: "\e96e";
+}
+.tableticons-reload:before {
+  content: "\e94d";
+}
+.tableticons-check:before {
+  content: "\e954";
+}
+.tableticons-filter:before {
+  content: "\e95e";
+}
+.tableticons-hidden:before {
+  content: "\e963";
+}
+.tableticons-upload:before {
+  content: "\e95f";
+}
+.tableticons-trash:before {
+  content: "\e960";
+}
+.tableticons-icons8-upload-50-1:before {
+  content: "\e961";
+}
+.tableticons-asdasd:before {
+  content: "\e913";
+}
+.tableticons-volume-medium:before {
+  content: "\e94a";
+}
+.tableticons-Vector-Stroke:before {
+  content: "\e94b";
+}
+.tableticons-Vector:before {
+  content: "\e94c";
+}
+.tableticons-padlock-1-1:before {
+  content: "\e94e";
+}
+.tableticons-add1:before {
+  content: "\e965";
+}
+.tableticons-battery:before {
+  content: "\e950";
+}
+.tableticons-black-plane:before {
+  content: "\e951";
+}
+.tableticons-home:before {
+  content: "\e952";
+}
+.tableticons-jobs:before {
+  content: "\e953";
+}
+.tableticons-licenses:before {
+  content: "\e903";
+}
+.tableticons-location:before {
+  content: "\e904";
+}
+.tableticons-locator:before {
+  content: "\e905";
+}
+.tableticons-lsc:before {
+  content: "\e906";
+}
+.tableticons-mafia:before {
+  content: "\e907";
+}
+.tableticons-npc:before {
+  content: "\e908";
+}
+.tableticons-orga:before {
+  content: "\e909";
+}
+.tableticons-parks:before {
+  content: "\e90a";
+}
+.tableticons-recent:before {
+  content: "\e90c";
+}
+.tableticons-rent:before {
+  content: "\e90e";
+}
+.tableticons-search:before {
+  content: "\e90f";
+}
+.tableticons-smiles:before {
+  content: "\e910";
+}
+.tableticons-weapons:before {
+  content: "\e911";
+}
+.tableticons-247:before {
+  content: "\e912";
+}
+.tableticons-bands:before {
+  content: "\e955";
+}
+.tableticons-bank:before {
+  content: "\e956";
+}
+.tableticons-burgers:before {
+  content: "\e957";
+}
+.tableticons-Button:before {
+  content: "\e958";
+}
+.tableticons-buttons:before {
+  content: "\e959";
+}
+.tableticons-call:before {
+  content: "\e966";
+}
+.tableticons-cars:before {
+  content: "\e95b";
+}
+.tableticons-carwash:before {
+  content: "\e95c";
+}
+.tableticons-chat:before {
+  content: "\e95d";
+}
+.tableticons-clothes:before {
+  content: "\e921";
+}
+.tableticons-clubs:before {
+  content: "\e922";
+}
+.tableticons-contacts:before {
+  content: "\e923";
+}
+.tableticons-drugs:before {
+  content: "\e924";
+}
+.tableticons-fraction:before {
+  content: "\e925";
+}
+.tableticons-fuelstation:before {
+  content: "\e926";
+}
+.tableticons-gos:before {
+  content: "\e927";
+}
+.tableticons-giftbox:before {
+  content: "\e900";
+}
+.tableticons-youtube:before {
+  content: "\e902";
+}
+.tableticons-back:before {
+  content: "\e914";
+}
+.tableticons-close:before {
+  content: "\e915";
+}
+.tableticons-discord:before {
+  content: "\e916";
+}
+.tableticons-forum:before {
+  content: "\e917";
+}
+.tableticons-line:before {
+  content: "\e918";
+}
+.tableticons-news:before {
+  content: "\e919";
+}
+.tableticons-online:before {
+  content: "\e91a";
+}
+.tableticons-settings:before {
+  content: "\e91b";
+}
+.tableticons-vk:before {
+  content: "\e91c";
+}
+.tableticons-vk1:before {
+  content: "\e969";
+}
+.tableticons-discord1:before {
+  content: "\e968";
+}
+.tableticons-youtube1:before {
+  content: "\e967";
+}
+.tableticons-arrow1:before {
+  content: "\e964";
+}
+.tableticons-twitch:before {
+  content: "\e95a";
+}
+.tableticons-eye1:before {
+  content: "\e94f";
+}
+.tableticons-car-top:before {
+  content: "\e96f";
+}
+.tableticons-ban:before {
+  content: "\e970";
+}
+.tableticons-time:before {
+  content: "\e971";
+}
+.tableticons-garage:before {
+  content: "\e972";
+}
+.tableticons-bike-top:before {
+  content: "\e973";
+}
+.tableticons-safe:before {
+  content: "\e974";
+}
+.tableticons-medkit:before {
+  content: "\e975";
+}
+.tableticons-bike:before {
+  content: "\e976";
+}
+.tableticons-car:before {
+  content: "\e977";
+}
+.tableticons-house:before {
+  content: "\e978";
+}
+.tableticons-check1:before {
+  content: "\e979";
+}
+.tableticons-hanger:before {
+  content: "\e91d";
+}
+.tableticons-clothes1:before {
+  content: "\e91e";
+}
+.tableticons-line1:before {
+  content: "\e91f";
+}
+.tableticons-eye:before {
+  content: "\e920";
+}
+.tableticons-tablet:before {
+  content: "\e928";
+}
+.tableticons-rupor:before {
+  content: "\e929";
+}
+.tableticons-shop:before {
+  content: "\e92a";
+}
+.tableticons-gps:before {
+  content: "\e92b";
+}
+.tableticons-loop:before {
+  content: "\e92c";
+}
+.tableticons-personal:before {
+  content: "\e92d";
+}
+.tableticons-park:before {
+  content: "\e92e";
+}
+.tableticons-tasks:before {
+  content: "\e92f";
+}
+.tableticons-achivments:before {
+  content: "\e930";
+}
+.tableticons-settings1:before {
+  content: "\e931";
+}
+.tableticons-up:before {
+  content: "\e932";
+}
+.tableticons-down:before {
+  content: "\e933";
+}
+.tableticons-clock:before {
+  content: "\e934";
+}
+.tableticons-edit:before {
+  content: "\e935";
+}
+.tableticons-send:before {
+  content: "\e937";
+}
+.tableticons-info:before {
+  content: "\e938";
+}
+.tableticons-icon:before {
+  content: "\e939";
+}
+.tableticons-add:before {
+  content: "\e93a";
+}
+.tableticons-dell:before {
+  content: "\e93b";
+}
+.tableticons-plus:before {
+  content: "\e93c";
+}
+.tableticons-minus:before {
+  content: "\e93d";
+}
+.tableticons-sellcar:before {
+  content: "\e949";
+}
+.tableticons-tuning:before {
+  content: "\e948";
+}
+.tableticons-edit1:before {
+  content: "\e947";
+}
+.tableticons-save:before {
+  content: "\e946";
+}
+.tableticons-crime:before {
+  content: "\e945";
+}
+.tableticons-customs:before {
+  content: "\e944";
+}
+.tableticons-office:before {
+  content: "\e943";
+}
+.tableticons-gps2:before {
+  content: "\e942";
+}
+.tableticons-alarm:before {
+  content: "\e941";
+}
+.tableticons-light:before {
+  content: "\e940";
+}
+.tableticons-sherif:before {
+  content: "\e93f";
+}
+.tableticons-dron:before {
+  content: "\e93e";
+}
+.tableticons-p-radio:before {
+  content: "\e412";
+}
+.tableticons-door:before {
+  content: "\e433";
+}
+.tableticons-bullets:before {
+  content: "\e434";
+}
+.tableticons-microtablet:before {
+  content: "\e435";
+}
+.tableticons-bank1:before {
+  content: "\e436";
+}
+.tableticons-money:before {
+  content: "\e437";
+}
+.tableticons-engine:before {
+  content: "\e438";
+}
+.tableticons-gas:before {
+  content: "\e439";
+}
+.tableticons-close1:before {
+  content: "\e43a";
+}
+.tableticons-arrow:before {
+  content: "\e43b";
+}
+.tableticons-send1:before {
+  content: "\e43c";
+}
+.tableticons-flatarrow:before {
+  content: "\e43d";
+}
+.tableticons-twoarrow:before {
+  content: "\e43e";
+}
+.tableticons-connect-good:before {
+  content: "\e43f";
+}
+.tableticons-connect-medium:before {
+  content: "\e440";
+}
+.tableticons-power-null:before {
+  content: "\e441";
+}
+.tableticons-power-full:before {
+  content: "\e442";
+}
+.tableticons-power-medium:before {
+  content: "\e443";
+}
+.tableticons-tablet-home:before {
+  content: "\e444";
+}
+.tableticons-exit:before {
+  content: "\e445";
+}
+.tableticons-dollar:before {
+  content: "\e446";
+}
+.tableticons-star:before {
+  content: "\e447";
+}
+.tableticons-helmet:before {
+  content: "\e448";
+}
+.tableticons-helmet-table:before {
+  content: "\e449";
+}
+.tableticons-success:before {
+  content: "\e44a";
+}
+.tableticons-questions:before {
+  content: "\e44b";
+}
+.tableticons-information:before {
+  content: "\e44c";
+}
+.tableticons-error:before {
+  content: "\e44d";
+}
+.tableticons-alert:before {
+  content: "\e44e";
+}
+.tableticons-update:before {
+  content: "\e44f";
+}
+.tableticons-ar-refresh:before {
+  content: "\e450";
+}
+.tableticons-ar-close:before {
+  content: "\e451";
+}
+.tableticons-p-bonus:before {
+  content: "\e452";
+}
+.tableticons-p-rent:before {
+  content: "\e453";
+}
+.tableticons-p-car:before {
+  content: "\e454";
+}
+.tableticons-p-fraction:before {
+  content: "\e455";
+}
+.tableticons-p-biz:before {
+  content: "\e456";
+}
+.tableticons-p-add:before {
+  content: "\e457";
+}
+.tableticons-p-sim:before {
+  content: "\e458";
+}
+.tableticons-p-call-accept:before {
+  content: "\e459";
+}
+.tableticons-p-call-cancel:before {
+  content: "\e45a";
+}
+.tableticons-p-gps:before {
+  content: "\e45b";
+}
+.tableticons-p-contacts:before {
+  content: "\e45c";
+}
+.tableticons-p-gift:before {
+  content: "\e45d";
+}
+.tableticons-p-lock:before {
+  content: "\e45e";
+}
+.tableticons-p-bank:before {
+  content: "\e45f";
+}
+.tableticons-p-hotel:before {
+  content: "\e460";
+}
+.tableticons-bullet-2:before {
+  content: "\e461";
+}
+.tableticons-tent:before {
+  content: "\e962";
+}
+.tableticons-p-house:before {
+  content: "\edf2";
+}
+.tableticons-backpack:before {
+  content: "\e90b";
+}
+.tableticons-withdrow:before {
+  content: "\e901";
+}
+.tableticons-person:before {
+  content: "\e90d";
+}
+.tableticons-price-tags:before {
+  content: "\e936";
+}

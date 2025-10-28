@@ -1,0 +1,373 @@
+<script>
+    import { translateText } from 'lang';
+    export let popupData;
+    import { ItemId } from 'json/itemsInfo.js';
+    import { onDestroy } from 'svelte';
+    import { selectCase } from '../shop/elements/roulette/state.js';
+    import { executeClient, executeClientAsync } from 'api/rage';
+    import { accountRedbucks, accountUnique } from 'store/account';
+    import { format } from 'api/formatter';
+    
+    import './main.sass';
+  
+    // Заглушки для теста:
+    if (!window.getItemToCount) {
+      window.getItemToCount = (id) => 10;
+    }
+    if (!executeClient) {
+      window.executeClient = (name, ...args) => {
+        console.log("executeClient вызвана с:", name, args);
+      };
+    }
+    
+    let width;
+    window.addEventListener('resize', () => {
+      width = window.innerWidth;
+    });
+    width = window.innerWidth;
+  
+    // Тестовые данные для кейса с индексом 0
+    let caseData = {
+      index: 0,
+      name: "Обычный кейс",
+      desc: "Кейс, в котором вам могут выпасть валюта, коины, VIP аккаунт и автомобили",
+      image: "keys_0", // ожидание: document.cloud + "img/roulette/test_case.png"
+      price: 200,
+      items: [
+        { title: "Предмет 1", image: "items_1", color: "blue" },
+        { title: "Предмет 2", image: "items_15", color: "red" },
+        { title: "Предмет 3", image: "items_32", color: "yellow" },
+        { title: "Предмет 4", image: "items_5", color: "pink" },
+        { title: "Предмет 5", image: "Virgo", color: "red" },
+        { title: "Предмет 6", image: "Bmx", color: "red" }
+      ],
+      
+    
+    };
+    // Задаём selectCaseToItems для теста
+    let selectCaseToItems = caseData.items;
+    
+    // Тестовая генерация данных для рулетки
+    const getRndInteger = (min, max) => {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
+    const GetRouletteData = () => {
+      const maxCount = 8;
+      let _casesData = [];
+      for (let i = 0; i < maxCount; i++) {
+        let newItems = [];
+        const sCase = caseData.items;
+        let randToIndex;
+        for (let j = 0; j < 50; j++) {
+          randToIndex = getRndInteger(0, sCase.length - 1);
+          newItems = [...newItems, sCase[randToIndex]];
+        }
+        _casesData.push({
+          randomBlocks: newItems,
+          startRandomBlocks: newItems.slice(0, 9),
+          winBlock: {},
+          carousel: 0,
+          carouselStart: 0,
+          fixСarousel: true,
+          IntervalId: null,
+          IntervalTick: null,
+          lastCenterIndex: -1
+        });
+      }
+      return _casesData;
+    };
+    
+    let casesData = GetRouletteData();
+    let isLoad = true;
+    let caseuses = window.getItemToCount(ItemId["Case" + caseData.index]);
+    
+    // Звук "тик" (на каждую клетку) и функция для его запуска (оставляем, если нужна анимация)
+    const tickSound = new Audio("http://cdn.piecerp.ru/cloud/inventoryItems/donate/cases/sound/tick.ogg");
+    function startTickInterval(caseindex) {
+      // Если fast режим не реализован для теста, можно игнорировать
+      const containerSelector = `#popuponate__roulette1 .newdonate__roulette-main:nth-child(${caseindex + 1})`;
+      const containerEl = document.querySelector(containerSelector);
+      if (!containerEl) return;
+      const centerLine = containerEl.querySelector(".linecenter");
+      if (!centerLine) return;
+      const items = containerEl.querySelectorAll(".newdonate__roulette-element");
+      if (!items.length) return;
+      casesData[caseindex].IntervalTick = setInterval(() => {
+        const centerRect = centerLine.getBoundingClientRect();
+        const centerX = centerRect.left + centerRect.width / 2;
+        let minDistance = Infinity;
+        let centerItemIndex = 0;
+        items.forEach((elem, i) => {
+          const rect = elem.getBoundingClientRect();
+          const elemCenter = rect.left + rect.width / 2;
+          const distance = Math.abs(elemCenter - centerX);
+          if (distance < minDistance) {
+            minDistance = distance;
+            centerItemIndex = i;
+          }
+        });
+        if (centerItemIndex !== casesData[caseindex].lastCenterIndex) {
+          casesData[caseindex].lastCenterIndex = centerItemIndex;
+          tickSound.currentTime = 0;
+          tickSound.play().catch(e => {});
+        }
+      }, 50);
+    }
+    function stopTickInterval(caseindex) {
+      if (casesData[caseindex].IntervalTick) {
+        clearInterval(casesData[caseindex].IntervalTick);
+        casesData[caseindex].IntervalTick = null;
+      }
+    }
+    
+    // Заглушка функции Confirm (если используется для анимации)
+    const Confirm = (data) => {
+      // Здесь логика рулетки для теста может быть оставлена без изменений
+      console.log("Confirm вызвана с данными:", data);
+    };
+    
+    // Функция открытия кейса: для теста сейчас просто вызываем alert
+    let value = 1;
+    let roulletcase = false;
+    let faststart = false;
+    let antiFlud = 0;
+    let currentCount = 0;
+    const onOpen = (_toggledFast = false) => {
+  roulletcase = true;
+  currentCount = value;
+  alert(`Открывается кейс "${caseData.name}"`);
+  executeClient("client.roullete.open", caseData.index, value);
+
+  // Запускаем анимацию рулетки при открытии кейса:
+  casesData.forEach((roll, i) => {
+    setTimeout(() => {
+      roll.fixСarousel = false;  // если используете латинское название
+      roll.carousel = 3000;
+    }, i * 500);
+  });
+};
+    const onOpen1 = (_toggledFast = false) => {
+      // Для покупки кейсов (аналогично)
+      let value1 = value;
+      if ($accountRedbucks < getPrice(caseData.price * value1, caseData.index, $accountUnique))
+        return window.notificationAdd(4, 9, `Недостаточно Redbucks!`, 3000);
+      antiFlud = new Date().getTime() + 250;
+      executeClient("client.roullete.buy", caseData.index, value1);
+    };
+    
+    function checkitem() {
+      caseuses = window.getItemToCount(ItemId["Case" + caseData.index]);
+    }
+    const onfast = () => {
+        faststart = true;
+    }
+
+    const offfast = () => {
+        faststart = false;
+    }
+    const onCurrentCount = (count) => {
+      if (antiFlud > new Date().getTime()) return;
+      // Для теста просто установим значение
+      value = count;
+    }
+    
+    let isPopup = false;
+    const SetPopup = (toggled = false, data = null) => {
+      // Для теста просто выключим popup
+      isPopup = toggled;
+      roulletcase = false;
+    };
+    
+    // Звуки для выигрышных предметов (пример)
+    const colorSounds = {
+      blue: new Audio("http://cdn.piecerp.ru/cloud/inventoryItems/donate/cases/sound/gray.ogg"),
+      yellow: new Audio("http://cdn.piecerp.ru/cloud/inventoryItems/donate/cases/sound/blue.ogg"),
+      pink: new Audio("http://cdn.piecerp.ru/cloud/inventoryItems/donate/cases/sound/red.ogg"),
+      red: new Audio("http://cdn.piecerp.ru/cloud/inventoryItems/donate/cases/sound/gold.ogg")
+    };
+    function playSoundForColor(item) {
+      const color = item.color;
+      console.log("Попытка воспроизвести звук для цвета:", color);
+      if (colorSounds[color]) {
+        colorSounds[color].play()
+          .then(() => console.log("Звук для цвета", color, "проигран"))
+          .catch((e) => console.error("Ошибка воспроизведения для цвета", color, e));
+      } else {
+        console.warn("Нет звука для цвета:", color);
+      }
+    }
+    const getPrice = (price, index, unique) => {
+    // Здесь можно реализовать любую логику скидки или модификации цены
+    // Пример: если уникальных данных нет, просто возвращаем price
+    return price;
+  };
+    $: totalPrice = getPrice(caseData.price * value, caseData.index, $accountUnique);
+
+
+
+  let min = 1;
+  let max = 20;
+
+    function onRangeInput(e) {
+    const val = +e.target.value;
+    const range = max - min;
+    const percent = ((val - min) / range) * 92;
+
+    e.target.style.background = `
+      linear-gradient(to right, 
+                      #E81C5A 0%, 
+                      #E81C5A ${percent}%, 
+                      transparent ${percent}%, 
+                      transparent 100%)
+    `;
+  }
+
+  function formatMoney(num) {
+    return new Intl.NumberFormat('ru-RU', {
+      maximumFractionDigits: 0
+    }).format(num);
+  }
+
+  
+  </script>
+  <img class="imgd3" src="https://cdn.majestic-files.com/img/panelMenu/donate/cases/cases2.png">
+  {#if isLoad}
+  <div id="app" class="caseopenmenu">
+          {#if isPopup}
+                  <PoputWin {SetPopup} popupData={dataPopup} {roulletcase} /> 
+          {:else if roulletcase}
+          <div class="headcasemenu">
+              <div id="popuponate__roulette1">
+                  <div class="newdonate__roulette-container">
+                      {#each casesData as caseData, indexCase}
+                          {#if currentCount > indexCase}
+                          <div class="newdonate__roulette-main">
+                              <div class="linecenter"></div>
+                              <div class="newdonate__roulette-elements" style={`transition: ${caseData.fixСarousel ? "none" : "all 10000ms cubic-bezier(0.32, 0.64, 0.45, 1) 0s"};transform: translate3d(${caseData.fixСarousel ? (0 - (caseData.carouselStart + 350 ) / width * 100) : (0 - (caseData.carousel + 350 ) / width * 100)}vw, 0px, 0px)`}>
+                                  {#each (!caseData.fixСarousel ? caseData.randomBlocks : caseData.startRandomBlocks) as item, index}
+                                  <div class="newdonate__roulette-element margin-22">
+                                      <div class="cases_content_prizes_list-item-line {item.color}"></div>
+                                      <img src="http://cdn.piecerp.ru/cloud/img/roulette/{item.image}.png" alt="">
+                                      <span>{item.title}</span>
+                                  </div>
+                                  {/each}
+                              </div>
+                          </div>
+                          {/if}
+                      {/each}
+                  </div>
+              </div>
+          </div>
+          {:else}
+          <div class="headcasemenu">
+              <div class="infocasename">
+                  <h1>{caseData.name}</h1>
+                  <p>{caseData.desc}</p>
+              </div>
+              <div class="caseblockuse">
+                  <img src="http://cdn.piecerp.ru/cloud/img/cases/{caseData.image}.png" alt=""/>
+                  <div class="caseuseb">
+                      <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g filter="url(#filter0_d_712_2779)">
+                          <rect x="10" y="10" width="15" height="15" rx="2" fill="#E41958"/>
+                          </g>
+                          <path d="M16.3175 21C16.1118 20.9999 15.9145 20.9182 15.7691 20.7727L14.2177 19.2214C14.0764 19.0751 13.9983 18.8792 14 18.6758C14.0018 18.4724 14.0834 18.2779 14.2272 18.134C14.371 17.9902 14.5655 17.9086 14.7689 17.9069C14.9723 17.9051 15.1682 17.9833 15.3145 18.1246L16.2736 19.0837L20.3823 14.2905C20.4474 14.2094 20.528 14.1421 20.6196 14.0928C20.7111 14.0435 20.8116 14.0131 20.9151 14.0034C21.0186 13.9937 21.123 14.0049 21.2221 14.0363C21.3212 14.0678 21.413 14.1188 21.492 14.1864C21.5709 14.254 21.6355 14.3368 21.6819 14.4299C21.7282 14.523 21.7554 14.6244 21.7617 14.7282C21.7681 14.832 21.7535 14.936 21.7189 15.034C21.6843 15.132 21.6303 15.2221 21.5602 15.2988L16.9062 20.7285C16.834 20.8142 16.7439 20.883 16.6421 20.9299C16.5404 20.9769 16.4295 21.0008 16.3175 21Z" fill="white"/>
+                          <defs>
+                          <filter id="filter0_d_712_2779" x="0" y="0" width="35" height="35" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                          <feOffset/>
+                          <feGaussianBlur stdDeviation="5"/>
+                          <feComposite in2="hardAlpha" operator="out"/>
+                          <feColorMatrix type="matrix" values="0 0 0 0 0.894118 0 0 0 0 0.0980392 0 0 0 0 0.345098 0 0 0 0.5 0"/>
+                          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_712_2779"/>
+                          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_712_2779" result="shape"/>
+                          </filter>
+                          </defs>
+                      </svg>
+                      <p>У вас <b>{caseuses}</b> кейсов</p>                                        
+                  </div>
+              </div>
+              <div class="casebuyblock" class:none={caseData.price <= 0}>
+                  <h1>ПРИОБРЕСТИ КЕЙСЫ</h1>
+                  <span>Количество кейсов к покупке</span>
+                  <div class="bginput">
+                    
+                    <!-- Вывод количества (можно добавить, если требуется) -->
+                    <span class="slider-value"><input type="number" min="1" max="20" bind:value={value} /></span>
+                    
+                   
+                        <input
+                        type="range"
+                        min={min}
+                        max={max}
+                        bind:value={value}
+                        on:input={onRangeInput}
+                      />
+                     
+                  <b></b>
+                    <!-- Блок с ценой -->
+                    <div class="pricinput">
+                        <p>{formatMoney(totalPrice)}</p>
+                        <img src="http://cdn.piecerp.ru/cloud/inventoryItems/donate/pconin.svg" alt="icon" />
+                    </div>
+                </div>  
+                  
+                  <div class="btnbuycase" on:keypress on:click={() => onOpen1()}>
+                      <p>Купить за</p>
+                      <img src="http://cdn.piecerp.ru/cloud/inventoryItems/donate/pconin.svg" alt="">                             
+                      <p>{format("money",  (caseData.price * value, caseData.index, $accountUnique))}</p>
+                  </div>
+              </div>
+          </div>
+          {/if}
+      <div class="opencasebtns" class:none={isPopup}>
+          <div class="numberopencase none">
+              <p>ОТКРЫТЬ КЕЙСОВ</p>
+              <div class="listbtnnum">
+                  <div class="btnnum">1</div>
+                  <div class="btnnum">2</div>
+                  <div class="btnnum">3</div>
+                  <div class="btnnum">4</div>
+                  <div class="btnnum">5</div>
+              </div>
+          </div>
+          {#if roulletcase}
+              <div class="openbtncaseon">ОТКРЫВАЕМ...</div>
+              {:else}
+              {#if faststart}
+                  <div class="openbtncase" on:keypress on:click={() => onOpen(true)}>ОТКРЫТЬ КЕЙС</div>
+                  {:else}
+                  <div class="openbtncase" on:keypress on:click={() => onOpen()}>ОТКРЫТЬ КЕЙС</div>
+              {/if}
+          {/if}
+          <div class="openbtncasefast" class:none={roulletcase}>
+              <p>БЫСТРОЕ ОТКРЫТИЕ</p>
+              {#if faststart}
+                  <svg width="48" height="26" viewBox="0 0 48 26" fill="none" xmlns="http://www.w3.org/2000/svg" on:keypress on:click={() => offfast()}>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M14.9242 0.0772886C16.5619 -0.00658199 18.1976 0.000127651 19.8353 0.000127651C19.8466 0.000127651 28.1336 0.000127651 28.1336 0.000127651C29.8033 0.000127651 31.4391 -0.00658199 33.0758 0.0772886C34.5638 0.152772 36.0132 0.313804 37.456 0.673608C40.4932 1.43012 43.1454 3.01024 45.0626 5.25042C46.9685 7.47635 48 10.2013 48 12.9992C48 15.8005 46.9685 18.5238 45.0626 20.7497C43.1454 22.989 40.4932 24.57 37.456 25.3265C36.0132 25.6863 34.5638 25.8465 33.0758 25.9228C31.4391 26.0067 29.8033 25.9992 28.1656 25.9992C28.1544 25.9992 19.8654 26 19.8654 26C18.1976 25.9992 16.5619 26.0067 14.9242 25.9228C13.4372 25.8465 11.9878 25.6863 10.5449 25.3265C7.50777 24.57 4.85553 22.989 2.93835 20.7497C1.03247 18.5238 0 15.8005 0 13.0001C0 10.2013 1.03247 7.47635 2.93835 5.25042C4.85553 3.01024 7.50777 1.43012 10.5449 0.673608C11.9878 0.313804 13.4372 0.152772 14.9242 0.0772886Z" fill="#E81C5A"/>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M34 24C40.0751 24 45 19.0751 45 13C45 6.92487 40.0751 2 34 2C27.9249 2 23 6.92487 23 13C23 19.0751 27.9249 24 34 24Z" fill="white"/>
+                  </svg>                                    
+                  {:else}
+                  <svg width="48" height="26" viewBox="0 0 48 26" fill="none" xmlns="http://www.w3.org/2000/svg" on:keypress on:click={() => onfast()}>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M14.9242 0.0772886C16.5619 -0.00658199 18.1976 0.000127651 19.8353 0.000127651C19.8466 0.000127651 28.1336 0.000127651 28.1336 0.000127651C29.8033 0.000127651 31.4391 -0.00658199 33.0758 0.0772886C34.5638 0.152772 36.0132 0.313804 37.456 0.673608C40.4932 1.43012 43.1454 3.01024 45.0626 5.25042C46.9685 7.47635 48 10.2013 48 12.9992C48 15.8005 46.9685 18.5238 45.0626 20.7497C43.1454 22.989 40.4932 24.57 37.456 25.3265C36.0132 25.6863 34.5638 25.8465 33.0758 25.9228C31.4391 26.0067 29.8033 25.9992 28.1656 25.9992C28.1544 25.9992 19.8654 26 19.8654 26C18.1976 25.9992 16.5619 26.0067 14.9242 25.9228C13.4372 25.8465 11.9878 25.6863 10.5449 25.3265C7.50777 24.57 4.85553 22.989 2.93835 20.7497C1.03247 18.5238 0 15.8005 0 13.0001C0 10.2013 1.03247 7.47635 2.93835 5.25042C4.85553 3.01024 7.50777 1.43012 10.5449 0.673608C11.9878 0.313804 13.4372 0.152772 14.9242 0.0772886Z" fill="#272727"/>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M14 24C20.0751 24 25 19.0751 25 13C25 6.92487 20.0751 2 14 2C7.92487 2 3 6.92487 3 13C3 19.0751 7.92487 24 14 24Z" fill="white"/>
+                  </svg> 
+              {/if}                                  
+          </div>
+      </div>
+      <div class="infocl">СОДЕРЖИМОЕ КЕЙСА</div>
+      <div class="listblockitems">
+          {#each caseData.items as value, index}
+              <div class="blockitemcase">
+                  <div class="linebic {value.color}"></div>
+                  <img src="http://cdn.piecerp.ru/cloud/img/roulette/{value.image}.png" alt="">
+                  <p>{value.title}</p>
+              </div>
+          {/each}
+      </div>
+  </div>
+  {/if}
+  
+
+ 

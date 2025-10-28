@@ -1,0 +1,402 @@
+.gta5devshop {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0vh;
+    top: 0vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.gta5devshop .left {
+    top: 2.7778vh;
+    left: 2.7778vh;
+    width: 35.1852vh;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 0.9259vh;
+    background: rgb(26, 26, 26);
+}
+
+.gta5devshop .right {
+    position: absolute;
+    width: 35.1852vh;
+    right: 2.7778vh;
+    border-radius: 0.9259vh;
+    background: rgb(26, 26, 26);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.gta5devshop .left img {
+    width: 35.1852vh;
+    height: 12.963vh;
+    margin-bottom: 1.8519vh;
+}
+
+.gta5devshop .left .listitems {
+    width: 30.5556vh;
+    max-height: 50vh;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.gta5devshop .left .btnback {
+    width: 30.5556vh;
+    height: 5.5556vh;
+    margin-top: 2.2222vh;
+    margin-bottom: 2.3148vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 0.7407vh;
+    background: rgb(38, 38, 38);
+}
+
+.gta5devshop .left .listitems .blockitem {
+    min-width: 30.5556vh;
+    min-height: 4.537vh;
+    max-width: 30.5556vh;
+    max-height: 4.537vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.gta5devshop .left .listitems .blockitem p {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 8%;
+    text-align: left;
+    margin-left: 1.3889vh;
+}
+
+.gta5devshop .left .btnback svg {
+    width: 1.4815vh;
+    height: 1.4815vh;
+    margin-left: 2.3148vh;
+    fill: rgb(173, 173, 173);
+}
+
+.gta5devshop .left .btnback p {
+    color: rgb(204, 203, 203);
+    font-family: SF Pro Display;
+    font-size: 1.4815vh;
+    font-weight: 500;
+    line-height: 1.7593vh;
+    letter-spacing: 8%;
+    text-align: left;
+    margin-left: 1.0185vh;
+}
+
+.gta5devshop .right h1 {
+    width: 29.6296vh;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.4815vh;
+    font-weight: 500;
+    line-height: 1.7593vh;
+    letter-spacing: 0.0926vh;
+    text-align: left;
+    margin-top: 2.963vh;
+}
+
+.gta5devshop .right .inr {
+    width: 29.6296vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2.4074vh;
+}
+
+.gta5devshop .right .inr p {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.4815vh;
+    font-weight: 400;
+    line-height: 1.7593vh;
+    letter-spacing: 0.0278vh;
+    text-align: left;
+}
+
+.gta5devshop .right .inr .vibs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.gta5devshop .right .inr .vibs .btnleft {
+    width: 2.2222vh;
+    height: 2.2222vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgba(255, 255, 255, 0.05);
+    border-radius: 0.2778vh;
+    background: rgb(38, 38, 38);
+}
+
+.gta5devshop .right .inr .vibs .btnright {
+    width: 2.2222vh;
+    height: 2.2222vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgba(255, 255, 255, 0.05);
+    border-radius: 0.2778vh;
+    background: rgb(38, 38, 38);
+}
+
+.gta5devshop .right .inr .vibs p {
+    font-family: SF Pro Display;
+    font-size: 1.2037vh;
+    font-weight: 400;
+    line-height: 1.4815vh;
+    letter-spacing: 0.0278vh;
+    text-align: left;
+    color: rgb(255, 255, 255);
+    width: 5.5556vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gta5devshop .right .inr .vibs p b {
+    font-family: SF Pro Display;
+    font-size: 1.2037vh;
+    font-weight: 400;
+    line-height: 1.4815vh;
+    letter-spacing: 0.0278vh;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.gta5devshop .right .inr .vibs .btnleft svg {
+    width: 0.6481vh;
+    height: 1.1111vh;
+    stroke: #fff;
+}
+
+.gta5devshop .right .inr .vibs .btnright svg {
+    width: 0.6481vh;
+    height: 1.1111vh;
+    stroke: #fff;
+}
+
+.gta5devshop p,h1 {
+    margin: 0;
+}
+
+.gta5devshop.clothes .left .listitems .blockitem:hover {
+    border-radius: 0.5556vh;
+    background: rgb(238, 98, 105);
+}
+
+.gta5devshop.clothes .left .listitems .blockitem.active {
+    border-radius: 0.5556vh;
+    background: rgb(238, 98, 105);
+}
+
+.gta5devshop .right .price {
+    width: 29.6296vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2.8704vh;
+}
+
+.gta5devshop .right .btnbuys {
+    width: 29.6296vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2.8704vh;
+}
+
+.gta5devshop .right img {
+    width: 35.1852vh;
+    height: 12.963vh;
+}
+
+.gta5devshop .right .price p {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.4815vh;
+    font-weight: 400;
+    line-height: 1.7593vh;
+    letter-spacing: 0.0278vh;
+    text-align: left;
+}
+
+.gta5devshop .right .price span {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.4815vh;
+    font-weight: 500;
+    line-height: 1.7593vh;
+    letter-spacing: 0.0278vh;
+    text-align: right;
+}
+
+.gta5devshop .right .btnbuys .btnshopbuy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 14.537vh;
+    height: 4.4444vh;
+    border-radius: 0.5556vh;
+    background: rgb(38, 38, 38);
+}
+
+.gta5devshop .right .btnbuys .btnshopbuy svg {
+    width: 1.4815vh;
+    height: 1.4815vh;
+    margin-right: 0.9259vh;
+    fill: #fff;
+}
+
+.gta5devshop .right .btnbuys .btnshopbuy p {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.4815vh;
+    font-weight: 400;
+    line-height: 1.7593vh;
+    letter-spacing: 0.0278vh;
+    text-align: left;
+}
+
+.gta5devshop .right .mouseinfo {
+    position: relative;
+    width: 35.1852vh;
+    height: 4.4444vh;
+    border-radius: 0.463vh;
+    background: rgba(26, 26, 26, 0.6);
+    margin-top: -4.4vh;
+    top: 6.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gta5devshop .right .mouseinfo p {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0.0926vh;
+    text-align: center;
+}
+
+.gta5devshop.tattoo .right .btnbuys .btnshopbuy:hover {
+    background: #fff;
+}
+
+.gta5devshop.tattoo .right .inr .vibs .btnleft:hover {
+    background: #fff;
+    border: none;
+}
+
+.gta5devshop.tattoo .right .inr .vibs .btnright:hover {
+    background: #fff;
+    border: none;
+}
+
+.gta5devshop.tattoo .left .btnback:hover {
+    background: #fff;
+}
+
+.gta5devshop.tattoo .left .btnback:hover p {
+    color: #1e1e1e;
+}
+
+.gta5devshop.tattoo .left .btnback:hover svg {
+    fill: #1e1e1e !important;
+}
+
+.gta5devshop.tattoo .left .listitems .blockitem:hover {
+    border-radius: 0.5556vh;
+    background: #fff;
+}
+
+.gta5devshop.tattoo .left .listitems .blockitem.active {
+    border-radius: 0.5556vh;
+    background: #fff;
+}
+
+.gta5devshop.tattoo .left .listitems .blockitem:hover p {
+    color: #1e1e1e;
+}
+
+.gta5devshop.tattoo .right .btnbuys .btnshopbuy:hover p {
+    color: #1e1e1e;
+}
+
+.gta5devshop.tattoo .right .btnbuys .btnshopbuy:hover svg {
+    fill: #1e1e1e;
+}
+
+.gta5devshop.tattoo .right .inr .vibs .btnleft:hover svg {
+    stroke: #1e1e1e;
+}
+
+.gta5devshop.tattoo .right .inr .vibs .btnright:hover svg {
+    stroke: #1e1e1e;
+}
+
+.gta5devshop .right .price .priceitem {
+    display: none;
+}
+
+.gta5devshop .right .price .priceitem.active {
+    display: block;
+}
+
+.gta5devshop .left .listitems .blockitem span {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+    letter-spacing: 8%;
+    text-align: right;
+    margin-right: 1.3889vh;
+}
+
+.gta5devshop.tattoo .left .listitems .blockitem:hover span {
+    color: #1e1e1e;
+}
+
+.gta5devshop .left .listitems::-webkit-scrollbar {
+    display:none;
+}
+
+.gta5devshop .right .inr .vibs p p {
+    display: none;
+}
+
+.gta5devshop .right .inr .vibs p p.active {
+    display: block;
+    width: auto;
+}

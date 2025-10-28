@@ -1,0 +1,389 @@
+.autogta5dev {
+    background: radial-gradient(55% 77% at 50% 50%,rgba(38, 38, 38, 0) 4.167%,rgba(34, 35, 40, 0.5) 77.604%);
+    position: absolute;
+    left: 0vh;
+    top: 0vh;
+    width: 100%;
+    height: 100%;
+}
+
+.autogta5dev .autoclosed {
+    position: absolute;
+    top: 2.2222vh;
+    right: 3.5185vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.autogta5dev .autoclosed p {
+    color: rgb(255, 255, 255);
+    font-family: Gilroy;
+    font-size: 1.1111vh;
+    font-weight: 500;
+    line-height: 1.3889vh;
+    letter-spacing: 6%;
+    text-align: right;
+}
+
+.autogta5dev .autoclosed b {
+    border-radius: 0.2778vh;
+    box-shadow: 0vh 0.5556vh 2.037vh 0vh rgba(201, 42, 42, 0.5);
+    background: rgb(201, 42, 42);
+    color: rgb(255, 255, 255);
+    font-family: Gilroy;
+    font-size: 1.2963vh;
+    font-weight: 300;
+    line-height: 1.3889vh;
+    text-align: center;
+    padding: 0.7407vh 0.9259vh;
+    margin-left: 0.8333vh;
+}
+
+.autogta5dev p,h1 {
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.autogta5dev .autoleft {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: absolute;
+    top: 18.9444vh;
+    left: 3.7037vh;
+}
+
+.autogta5dev .autobottom {
+    width: -webkit-fill-available;
+    position: absolute;
+    bottom: 2.037vh;
+    margin: 0vh 3.3333vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.autogta5dev .autoright {
+    position: absolute;
+    right: 3.7037vh;
+    top: 31.9444vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.autogta5dev .autoleft span {
+    color: rgb(237, 55, 68);
+    font-family: SF Pro Display;
+    font-size: 2.5519vh;
+    font-weight: 500;
+    line-height: 2.8148vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    margin-bottom: 1.3889vh;
+}
+
+.autogta5dev .autoleft h1 {
+    width: 36.0185vh;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 3.5185vh;
+    font-weight: 600;
+    line-height: 3.7037vh;
+    letter-spacing: 0.1852vh;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.autogta5dev .autoleft p {
+    width: 36.0185vh;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.4815vh;
+    font-weight: 400;
+    line-height: 2.3148vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    margin-bottom: 0.9259vh;
+}
+
+.autogta5dev .autoleft .btnbuy {
+    width: 32.5vh;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.autogta5dev .autoleft .btntest {
+    width: 32.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.autogta5dev .autoleft .btnbuy .buy {
+    width: 15.7407vh;
+    height: 5.463vh;
+    border-radius: 0.463vh;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.4815vh;
+    font-weight: 600;
+    line-height: 2.3148vh;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.autogta5dev .autoleft .btntest .test {
+    width: 32.5vh;
+    height: 5.463vh;
+    border-radius: 0.463vh;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.4815vh;
+    font-weight: 600;
+    line-height: 2.3148vh;
+    letter-spacing: 0vh;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.9259vh;
+}
+
+.autogta5dev .autoleft .btntest .test1 {
+    width: 32.5vh;
+    height: 5.463vh;
+    border-radius: 0.463vh;
+    background: #ED3744;
+    color: rgba(255, 255, 255, 1);
+    font-family: SF Pro Display;
+    font-size: 1.4815vh;
+    font-weight: 600;
+    line-height: 2.3148vh;
+    letter-spacing: 0vh;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.9259vh;
+}
+
+.autogta5dev .autobottom .abhead {
+    width: -webkit-fill-available;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    margin-bottom: 2.037vh;
+}
+
+.autogta5dev .autobottom .carslist {
+    max-width: 97vw;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow-x: scroll;
+}
+
+.autogta5dev .autobottom .abhead h1 {
+    width: 25.6481vh;
+    display: flex;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.8519vh;
+    height: 2.2222vh;
+    font-weight: 500;
+    line-height: 2.2222vh;
+    letter-spacing: 0.037vh;
+    text-align: left;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.autogta5dev .autobottom .abhead .line {
+    width: -webkit-fill-available;
+    height: 0.1852vh;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.autogta5dev .autobottom .carslist .blockcar {min-width: 23.2407vh;height: 13.8889vh;box-sizing: border-box;border: 0.1389vh solid rgba(255, 255, 255, 0.1);border-radius: 0.9259vh;background: rgba(255, 255, 255, 0.05);margin-right: 1.3889vh;display: flex;justify-content: flex-start;align-items: center;flex-direction: column;}
+
+.autogta5dev .autobottom .carslist .blockcar img {
+    margin-top: 0.9259vh;
+}
+
+.autogta5dev .autobottom .carslist .blockcar .bcarinfo {
+    width: 20.8333vh;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.autogta5dev .autobottom .carslist .blockcar .bcarinfo .namecar {}
+
+.autogta5dev .autobottom .carslist .blockcar .bcarinfo .pricecar {}
+
+.autogta5dev .autobottom .carslist .blockcar .bcarinfo .namecar b {
+    color: rgba(255, 255, 255, 0.3);
+    font-family: SF Pro Display;
+    font-size: 1.1111vh;
+    font-weight: 500;
+    line-height: 1.2963vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.autogta5dev .autobottom .carslist .blockcar .bcarinfo .namecar p {/* 911 Turbo S */color: rgba(255, 255, 255, 0.5);font-family: SF Pro Display;font-size: 1.0815vh;font-weight: 500;line-height: 1.7593vh;letter-spacing: 0%;text-align: left;}
+
+.autogta5dev .autobottom .carslist .blockcar .bcarinfo .pricecar span {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.4815vh;
+    font-weight: 500;
+    line-height: 1.7593vh;
+    letter-spacing: 0%;
+    text-align: right;
+}
+
+.autogta5dev .autoright .autohar {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 2.7778vh;
+    margin-bottom: 2.037vh;
+}
+
+.autogta5dev .autoright .autohar .iconhar {
+    width: 2.7778vh;
+    height: 2.7778vh;
+    background: rgba(75, 86, 100, 0.17);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.2037vh;
+}
+
+.autogta5dev .autoright .autohar .infohar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 2.7778vh;
+}
+
+.autogta5dev .autoright .autohar .iconhar svg {
+    height: 1.4815vh;
+}
+
+.autogta5dev .autoright .autohar .infohar .namehar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 17.037vh;
+}
+
+.autogta5dev .autoright .autohar .infohar .barhar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.autogta5dev .autoright .autohar .infohar .namehar p {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2037vh;
+    font-weight: 400;
+    line-height: 1.4815vh;
+    letter-spacing: 0.1852vh;
+    text-align: left;
+}
+
+.autogta5dev .autoright .autohar .infohar .barhar .barik.active {
+    background: rgb(237, 55, 68);
+}
+
+.autogta5dev .autoright .autohar .infohar .barhar .barik {
+    background: rgba(255, 255, 255, 0.05);
+    width: 2.963vh;
+    height: 0.2778vh;
+    margin-right: 0.5556vh;
+}
+
+.autogta5dev .autoright h1 {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2037vh;
+    font-weight: 400;
+    line-height: 1.4815vh;
+    letter-spacing: 0.1852vh;
+    text-align: left;
+}
+
+.autogta5dev .autoright .clolorlist {
+    width: 21.3889vh;
+    margin-top: 1.0185vh;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.autogta5dev .autoright .clolorlist .color {
+    width: 2.4074vh;
+    height: 2.4074vh;
+    border-radius: 50%;
+    margin-right: 0.6481vh;
+    margin-bottom: 0.6481vh;
+}
+
+.autogta5dev .autoleft .btnbuy .buy:hover {
+    background: rgb(255, 255, 255);
+    color: rgb(47, 43, 43);
+}
+
+.autogta5dev .autoleft .btntest .test:hover {
+    background: rgb(255, 255, 255);
+    color: rgb(47, 43, 43);
+}
+
+.autogta5dev .autoleft .btntest .test1:hover {
+    background: rgb(255, 255, 255);
+    color: rgb(47, 43, 43);
+}
+
+.autogta5dev .autoright .clolorlist .color:hover {
+    position: relative;
+    top: -0.3704vh;
+}
+
+.carslist::-webkit-scrollbar {
+  height: 0vh;
+}
+
+.autobottom img{
+    /* height: 5vw; */
+    width: 5.7vw;
+    height: 5vw;
+    /* width: 1vw; */
+}

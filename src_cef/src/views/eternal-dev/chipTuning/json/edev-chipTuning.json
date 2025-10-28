@@ -1,0 +1,210 @@
+{
+  "blip_sprite": 446,
+  "blip_color": 4,
+  "remove-handling-price-mult": 0.5,
+  "vehicle-price-mult": 0.1,
+  "positions": [
+    {
+      "x": 110.481544,
+      "y": 6627.144,
+      "z": 31.851223,
+      "heading": -135.0
+    }
+  ],
+  "handling-settings": [
+    {
+      "name": "Привод",
+      "handlingParam": "fDriveBiasFront",
+      "min": 0.0,
+      "max": 1.0,
+      "step": 0.5,
+      "price": {
+        "cost": 25000000,
+        "isDonate": false,
+        "depends_vehicle": false
+      },
+      "depends_default": false,
+      "default": -1.0
+    },
+    {
+      "name": "Смещение тормозной силы",
+      "handlingParam": "fBrakeBiasFront",
+      "min": 0.0,
+      "max": 1.0,
+      "step": 0.05,
+      "price": {
+        "cost": 25000000,
+        "isDonate": false,
+        "depends_vehicle": false
+      },
+      "depends_default": false,
+      "default": -1.0
+    },
+    {
+      "name": "Сила ручного тормоза",
+      "handlingParam": "fHandBrakeForce",
+      "min": 0.0,
+      "max": 2.0,
+      "step": 0.01,
+      "price": {
+        "cost": 25000000,
+        "isDonate": false,
+        "depends_vehicle": false
+      },
+      "depends_default": false,
+      "default": -1.0
+    },
+    {
+      "name": "Резкость входа в поворот",
+      "handlingParam": "fTractionCurveMax",
+      "min": 0.0,
+      "max": 4.95,
+      "step": 0.01,
+      "price": {
+        "cost": 25000000,
+        "isDonate": false,
+        "depends_vehicle": false
+      },
+      "depends_default": false,
+      "default": -1.0
+    },
+    {
+      "name": "Сцепление в повороте",
+      "handlingParam": "fTractionCurveMin",
+      "min": 0.0,
+      "max": 4.95,
+      "step": 0.01,
+      "price": {
+        "cost": 25000000,
+        "isDonate": false,
+        "depends_vehicle": false
+      },
+      "depends_default": false,
+      "default": -1.0
+    },
+    {
+      "name": "Пробуксовка на старте",
+      "handlingParam": "fLowSpeedTractionLossMult",
+      "min": 0.15,
+      "max": 5.0,
+      "step": 0.01,
+      "price": {
+        "cost": 25000000,
+        "isDonate": false,
+        "depends_vehicle": false
+      },
+      "depends_default": false,
+      "default": -1.0
+    },
+    {
+      "name": "Кривая потеря боковой тяги",
+      "handlingParam": "fTractionCurveLateral",
+      "min": 0.05,
+      "max": 0.95,
+      "step": 0.01,
+      "price": {
+        "cost": 25000000,
+        "isDonate": false,
+        "depends_vehicle": false
+      },
+      "depends_default": false,
+      "default": -1.0
+    },
+    {
+      "name": "Диаметр колес",
+      "handlingParam": "wheelRadius",
+      "min": 1.0,
+      "max": 1.1,
+      "step": 0.01,
+      "price": {
+        "cost": 25000000,
+        "isDonate": false,
+        "depends_vehicle": false
+      },
+      "depends_default": true,
+      "default": 1.0
+    },
+    {
+      "name": "Ширина колес",
+      "handlingParam": "wheelWidth",
+      "min": 1.0,
+      "max": 1.2,
+      "step": 0.01,
+      "price": {
+        "cost": 25000000,
+        "isDonate": false,
+        "depends_vehicle": false
+      },
+      "depends_default": true,
+      "default": 1.0
+    },
+    {
+      "name": "Развал колес",
+      "handlingParam": "wheelCamber",
+      "min": -0.3,
+      "max": 0.0,
+      "step": 0.01,
+      "price": {
+        "cost": 25000000,
+        "isDonate": false,
+        "depends_vehicle": false
+      },
+      "depends_default": true,
+      "default": 0.0
+    },
+    {
+      "name": "Ширина колесной базы",
+      "handlingParam": "wheelTrackWidth",
+      "min": 1.0,
+      "max": 1.2,
+      "step": 0.01,
+      "price": {
+        "cost": 25000000,
+        "isDonate": false,
+        "depends_vehicle": false
+      },
+      "depends_default": true,
+      "default": 1.0
+    },
+    {
+      "name": "Высота подвески",
+      "handlingParam": "wheelHeight",
+      "min": -0.1,
+      "max": 0.15,
+      "step": 0.01,
+      "price": {
+        "cost": 25000000,
+        "isDonate": false,
+        "depends_vehicle": false
+      },
+      "depends_default": true,
+      "default": 0.0
+    },
+    {
+      "name": "Максимальный угол поворота колес",
+      "handlingParam": "fSteeringLock",
+      "min": 0.3,
+      "max": 0.9,
+      "step": 0.01,
+      "price": {
+        "cost": 25000000,
+        "isDonate": false,
+        "depends_vehicle": false
+      },
+      "depends_default": false,
+      "default": -1.0
+    }
+  ],
+  "controller-settings": [
+    {
+      "name": "Переключение стабилизации Т/С",
+      "description": "Переключатель стабилизации позволяет в ручном режиме управлять стабилизацией автомобиля на ходу, чтобы уходить в занос или восстанавливать сцепление с покрытием",
+      "type": "StabilizationSwitching",
+      "price": {
+        "cost": 200000000,
+        "isDonate": true,
+        "depends_vehicle": false
+      }
+    }
+  ]
+}

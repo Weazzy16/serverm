@@ -1,0 +1,3712 @@
+.gta5devpad {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0vh;
+    top: 0vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    align-content: center;
+    flex-direction: column;
+}
+
+.gta5devpad .menupad {
+    width: 112.963vh;
+    height: 79.6296vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: url(http://cdn.piecerp.ru/cloud/img/bg.jpg);
+    background-size: cover;
+    border-radius: 1.8519vh;
+}
+
+.gta5devpad .menupad .headbar {
+    width: 110.5556vh;
+    height: 2.2222vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.gta5devpad .menupad .applist {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 90.8546vh;
+    margin-top: 3.1852vh;
+    margin-left: -10.1852vh;
+}
+
+.gta5devpad .menupad .dock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 8.7037vh;
+    width: 43.7037vh;
+    margin-bottom: 1.1111vh;
+    margin-top: auto;
+    padding: 0vh 2.4074vh;
+    border-radius: 2.8704vh;
+    backdrop-filter: blur(4.6296vh);
+    background: rgba(0, 0, 0, 0.44);
+}
+
+.gta5devpad .menupad .headbar .leftbar {
+    margin-left: 1.2407vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.gta5devpad .menupad .headbar .rightbar {
+    margin-right: 1.2407vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.gta5devpad .menupad .headbar .leftbar p {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.1111vh;
+    font-weight: 500;
+    line-height: 1.2963vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.gta5devpad .menupad .headbar .rightbar svg {
+    margin-left: 0.3704vh;
+    height: 0.9259vh;
+}
+
+.gta5devpad .menupad .headbar .rightbar p {
+    margin-left: 0.3704vh;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.1111vh;
+    font-weight: 500;
+    line-height: 1.2963vh;
+    letter-spacing: 0vh;
+    text-align: right;
+}
+
+.gta5devpad .menupad .applist .blockapp {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 14.0741vh;
+    height: 14.0741vh;
+    margin: 0vh 0.5343vh;
+}
+
+.gta5devpad .menupad .applist .blockapp img {
+    width: 6.5556vh;
+    height: 6.5556vh;
+}
+.gta5devpad .menupad .applist .blockapps img {
+    width: 6.5556vh;
+    height: 6.5556vh;
+}
+
+.gta5devpad .menupad .applist .blockapp p {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.1111vh;
+    font-weight: 400;
+    line-height: 1.2963vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    margin-top: 0.463vh;
+}
+
+.gta5devpad .menupad .dock .blockapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gta5devpad .menupad .dock .blockapp img {
+    width: 5.5556vh;
+    height: 5.5556vh;
+    margin: 0 0.787vh;
+}
+
+.gta5devpad p,h1 {
+    margin: 0;
+}
+
+.gta5devpad .menupad .btnback {
+    position: absolute;
+    margin-right: 117vh;
+    margin-top: 9.2vh;
+    width: 0.5556vh;
+    height: 5.5556vh;
+    z-index: 1;
+}
+
+.gta5devpad .menupad::after {
+    content: "";
+    background: url(http://cdn.magicfive.ru/haxzer/ipad/bg1.png);
+    background-size: cover;
+    width: 117.037vh;
+    height: 83.7037vh;
+    position: absolute;
+    z-index: -1;
+    margin-top: -2.0159vh;
+    margin-left: -0.433vh;
+}
+
+.menupad .bgapp1 .menunav {
+    width: 102.25vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 3.8889vh;
+}
+
+.menupad .bgapp1 {
+    width: 100%;
+    height: 79.6296vh;
+    background: rgb(6, 6, 6);
+    border-radius: 1.8519vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.menupad .bgapp1 .apphead {
+    width: 110.5556vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menupad .bgapp1 .apphead .left {
+    margin-left: 2.4074vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menupad .bgapp1 .apphead .right {
+    margin-right: 2.4074vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.menupad .bgapp1 .apphead .left p {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 2.7778vh;
+    font-weight: 600;
+    line-height: 3.3333vh;
+    letter-spacing: 0.0278vh;
+    text-align: left;
+    margin-right: 4.2593vh;
+}
+
+.menupad .bgapp1 .apphead .right p {color: rgb(255, 255, 255);font-family: SF Pro Display;font-size: 1.4815vh;font-weight: 500;line-height: 1.7593vh;letter-spacing: 0.0463vh;text-align: right;margin-right: 2.6852vh;}
+
+.menupad .bgapp1 .apphead .right img {
+    width: 3.3333vh;
+    height: 3.3333vh;
+    margin-right: 2.6852vh;
+}
+
+.menupad .bgapp1 .apphead .right span {
+    width: 2.2222vh;
+    height: 2.2222vh;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.3704vh;
+    color: rgba(255, 255, 255, 0.2);
+    font-family: SF Pro Display;
+    font-size: 1.3889vh;
+    font-weight: 400;
+    line-height: 1.6667vh;
+    letter-spacing: 0.0463vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menupad .bgapp1 .menunav .nav {
+    width: 25.5556vh;
+    height: 22.3148vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.menupad .bgapp1 .menunav .nav svg {
+    width: 6.4815vh;
+    height: 6.4815vh;
+}
+
+.menupad .bgapp1 .menunav .nav p {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.4815vh;
+    font-weight: 500;
+    line-height: 1.7593vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    margin-top: 2.963vh;
+}
+
+.menupad .bgapp1 .menunav .nav svg {
+    fill: white;
+}
+
+.menupad .bgapp1 .menunav .nav:hover {
+    background: #fff;
+    border-radius: 0.5vh;
+}
+
+.menupad .bgapp1 .menunav .nav:hover p {
+    color: #060606;
+}
+
+.menupad .bgapp1 .menunav .nav:hover svg {
+    fill: #060606;
+}
+
+.gta5devpad .menupad .onlineapp {
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: 3vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 1vh;
+}
+
+.gta5devpad .menupad .onlineapp p {
+    color: rgb(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.gta5devpad .menupad .onlineapp p b {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.menupad .bgapp1 .appmenufrac {
+    width: 109vh;
+    height: 67vh;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 3.8889vh;
+}
+
+.menupad .bgapp1 .appmenufrac .left {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-right: solid 0.1vh #ffffff70;
+    padding-right: 2vh;
+    height: 100%;
+}
+
+.menupad .bgapp1 .appmenufrac .left img {
+    width: 8.3333vh;
+    height: 8.3333vh;
+}
+
+.menupad .bgapp1 .appmenufrac .left h1 {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 2.7778vh;
+    font-weight: 600;
+    line-height: 3.3333vh;
+    letter-spacing: 0.0278vh;
+    text-align: center;
+    margin-top: 1.2037vh;
+    margin-bottom: 1.2037vh;
+}
+
+.menupad .bgapp1 .appmenufrac .left p {
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    color: rgb(255, 255, 255, 0.5);
+}
+
+.menupad .bgapp1 .appmenufrac .left p b {
+    color: rgba(255, 255, 255, 1);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.menupad .bgapp1 .appmenufrac .left .btnappf {
+    width: 32.2222vh;
+    height: 3.7037vh;
+    border-radius: 0.3704vh;
+    background: rgb(26, 26, 26);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.6481vh;
+}
+
+.menupad .bgapp1 .appmenufrac .left .btnappf p {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.menupad .bgapp1 .appmenufrac .left .info {
+    width: 32.2222vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac .left .info .dop {
+    width: 32.2222vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.4407vh;
+}
+
+.menupad .bgapp1 .appmenufrac .left .info .dop span {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: right;
+}
+
+.menupad .bgapp1 .appmenufrac .right {
+    margin-right: 2vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.menupad .bgapp1 .appmenufrac .left .btnappf:hover {
+    background: #fff;
+}
+
+.menupad .bgapp1 .appmenufrac .left .btnappf:hover p {
+    color: #1A1A1A;
+}
+
+.menupad .bgapp1 .appmenufrac .left .info h1 {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.4815vh;
+    font-weight: 500;
+    line-height: 1.7593vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    margin: 0.7407vh 0vh;
+}
+
+.menupad .bgapp1 .appmenufrac .left .info .dop p {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news {
+    width: 68.562vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 1.3889vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs {
+    width: 68.562vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 1.3889vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news h1 {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 2.2222vh;
+    font-weight: 600;
+    line-height: 2.6852vh;
+    letter-spacing: 0.0278vh;
+    text-align: left;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .blocknews {
+    width: 68.562vh;
+    height: 17.2222vh;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgb(37, 37, 37);
+    border-radius: 0.7407vh;
+    background: rgb(16, 16, 16);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 1vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .btnnews {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 0.8333vh;
+    width: 68.562vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .blocknews .headnews {
+    width: 68.562vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.0185vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .blocknews span {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0.0278vh;
+    text-align: left;
+    margin-top: 1.0185vh;
+    width: 65vh;
+    margin-left: 1.6667vh;
+    margin-right: 1.6667vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .blocknews p {
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: auto;
+    margin-left: 1.6667vh;
+    margin-bottom: 1.0185vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .blocknews p b {
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    color: rgba(255, 255, 255);
+    margin-left: 0.2778vh;
+    margin-right: 0.2778vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .blocknews .headnews p {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.3889vh;
+    font-weight: 600;
+    line-height: 1.6667vh;
+    letter-spacing: 0.0278vh;
+    text-align: left;
+    margin-left: 1.6667vh;
+    margin-bottom: 0vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .blocknews .headnews span {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.1111vh;
+    font-weight: 600;
+    line-height: 1.2963vh;
+    letter-spacing: 0.0278vh;
+    text-align: right;
+    margin-right: 1.6667vh;
+    margin-top: 0vh;
+    width: auto;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .btnnews .leftn {
+    border-radius: 0.3704vh 0vh 0vh 0.3704vh;
+    background: rgb(26, 26, 26);
+    width: 4.0463vh;
+    height: 3.7037vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5833vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .btnnews .numbernw {
+    width: 4.0463vh;
+    height: 3.7037vh;
+    border-radius: 0.3704vh;
+    background: rgb(26, 26, 26);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5833vh;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .btnnews .right {
+    width: 4.0463vh;
+    height: 3.7037vh;
+    border-radius: 0vh 0.3704vh 0.3704vh 0vh;
+    background: rgb(26, 26, 26);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0vh;
+    margin-right: 0.5833vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .btnnews .btnbro {
+    border-radius: 0.3704vh;
+    background: rgb(26, 26, 26);
+    height: 3.7037vh;
+    padding: 0vh 2.037vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5833vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .btnnews .leftn svg {
+    width: 0.7407vh;
+    height: 1.2037vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .btnnews .right svg {
+    width: 0.6481vh;
+    height: 1.2037vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .btnnews .btnbro p {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs h1 {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 2.2222vh;
+    font-weight: 600;
+    line-height: 2.6852vh;
+    letter-spacing: 0.0278vh;
+    text-align: left;
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs .btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 0.7407vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs .logss {
+    width: 68.562vh;
+    height: 30.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 0.7407vh;
+    overflow: auto;
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs .btns .btnbro {
+    border-radius: 0.3704vh;
+    background: rgb(26, 26, 26);
+    height: 3.7037vh;
+    padding: 0vh 2.037vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5833vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs .btns .btnbro p {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs .logss p {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    padding: 1.5741vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs .logss .blockl {
+    width: 68.562vh;
+    height: 4.2593vh;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 0.1852vh;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgb(37, 37, 37);
+    border-radius: 0.3704vh;
+    background: rgb(16, 16, 16);
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs .logss .blockl .left {
+    width: 22.854vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border: none;
+    padding: 0vh;
+    margin: 0vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs .logss .blockl .center {
+    width: 22.854vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs .logss .blockl .right {
+    width: 22.854vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin: 0vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs .logss .blockl .left p {
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    padding: 0vh;
+    color: rgba(255, 255, 255, 1);
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs .logss .blockl .left p b {
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    padding: 0vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs .logss .blockl .center p {}
+
+.menupad .bgapp1 .appmenufrac .right .logs .logss .blockl .right p {
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    padding: 0vh;
+    color: rgba(255, 255, 255, 1);
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs .logss .blockl .right p b {
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    padding: 0vh;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .btnnews .btnbro:hover {
+    background: #fff;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .btnnews .btnbro:hover p {
+    color: rgb(26, 26, 26);
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .btnnews .numbernw:hover {
+    background: #fff;
+    color: rgb(26, 26, 26);
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs .btns .btnbro:hover {
+    background: #fff;
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs .btns .btnbro:hover p {
+    color: rgba(26, 26, 26);
+}
+
+.logss::-webkit-scrollbar {
+    width: 0vh;               /* ширина scrollbar */
+  }
+
+  .menupad .bgapp1 .appmenufrac .left .btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.6481vh;
+}
+
+.menupad .bgapp1 .appmenufrac .left .btns .btnappf {
+    width: 15.2222vh;
+    margin: 0vh 1vh;
+}
+
+.menupad .bgapp1 .appmenufrac .right .news .btnnews .numbernw.active {
+    background: #fff;
+    color: rgb(26, 26, 26);
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs .btns .btnbro.active p {
+    color: rgb(26, 26, 26);
+}
+
+.menupad .bgapp1 .appmenufrac .right .logs .btns .btnbro.active {
+    background: #fff;
+}
+
+.menupad .bgapp1 .appmenufrac .statuser {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac .onliuser {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 1.7593vh;
+}
+
+.menupad .bgapp1 .appmenufrac .nametable {
+    display: flex;
+    margin-top: 1.7593vh;
+    width: 100%;
+    height: 4.2593vh;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgb(37, 37, 37);
+    border-radius: 0.3704vh;
+    background: rgb(16, 16, 16);
+}
+
+.menupad .bgapp1 .appmenufrac .tablelist {
+    width: 100%;
+    height: 50.7593vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 0.8333vh;
+    overflow: auto;
+}
+
+.menupad .bgapp1 .appmenufrac .tablelist .tableuser {
+    display: flex;
+    margin-bottom: 0.3704vh;
+    width: 100%;
+    height: 4.2593vh;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgb(37, 37, 37);
+    border-radius: 0.3704vh;
+    background: rgb(16, 16, 16);
+}
+
+.menupad .bgapp1 .appmenufrac .tablelist .tableuser p {
+    width: 20.4444vh;
+    height: 4.2593vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.menupad .bgapp1 .appmenufrac .tablelist .tableuser p svg {
+    width: 1.7593vh;
+    height: 1.7593vh;
+    display: none;
+}
+
+.menupad .bgapp1 .appmenufrac .tablelist .tableuser p svg.online {
+    display: block;
+}
+
+
+.menupad .bgapp1 .appmenufrac .statuser .statileft {
+    width: 11.2963vh;
+    height: 3.7037vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-right: auto;
+}
+
+.menupad .bgapp1 .appmenufrac .statuser .stati {
+    width: 11.2963vh;
+    height: 3.7037vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac .statuser .statiright {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-left: auto;
+    height: 3.7037vh;
+}
+
+.menupad .bgapp1 .appmenufrac .statuser .statiright p {
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.8519vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    color: #fff;
+}
+
+.menupad .bgapp1 .appmenufrac .statuser .statiright span {
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.8519vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.menupad .bgapp1 .appmenufrac .statuser .stati p {
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.8519vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    color: #fff;
+}
+
+.menupad .bgapp1 .appmenufrac .statuser .stati span {
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.8519vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.menupad .bgapp1 .appmenufrac .statuser .statileft p {
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.8519vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    color: #fff;
+}
+
+.menupad .bgapp1 .appmenufrac .statuser .statileft span {
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.8519vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.menupad .bgapp1 .appmenufrac .onliuser p {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-right: 0.463vh;
+}
+
+.menupad .bgapp1 .appmenufrac .onliuser p svg {
+    width: 1.7593vh;
+    height: 1.7593vh;
+}
+
+.menupad .bgapp1 .appmenufrac .nametable p {
+    width: 20.4444vh;
+    height: 4.2593vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.menupad .bgapp1 .appmenufrac.table {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac .tablelist .tableuser b {
+    color: rgba(255, 255, 255, 0.5);
+    width: 20.4444vh;
+    height: 4.2593vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.tablelist::-webkit-scrollbar {
+  width: 0vh;
+}
+
+.menupad .bgapp1 .appmenufrac .squadnav {
+    width: 109vh;
+    height: 5.5556vh;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgb(37, 37, 37);
+    border-radius: 0.3704vh;
+    background: rgb(16, 16, 16);
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac .squadlist {
+    width: 109vh;
+    height: 58.6vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin-top: 1.1111vh;
+    overflow: auto;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac .squadlist .squad {
+    width: 100%;
+    height: 5.5556vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    border: 0.0926vh solid rgb(37, 37, 37);
+    border-radius: 0.3704vh;
+    background: rgb(16, 16, 16);
+    margin-bottom: 0.5556vh;
+}
+
+.menupad .bgapp1 .appmenufrac .squadlist .squad p {
+    width: 20.4444vh;
+    height: 5.5556vh;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menupad .bgapp1 .appmenufrac .squadlist .squad b {
+    width: 20.4444vh;
+    height: 5.5556vh;
+    color: rgb(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menupad .bgapp1 .appmenufrac .squadlist .squad .btns {
+    width: 20.4444vh;
+    height: 5.5556vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menupad .bgapp1 .appmenufrac .squadlist .squad .btns .btn {
+    width: 12.037vh;
+    height: 3.7037vh;
+    border-radius: 0.3704vh;
+    background: rgb(26, 26, 26);
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menupad .bgapp1 .appmenufrac .squadnav p {
+    width: 20.4444vh;
+    height: 5.5556vh;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menupad .bgapp1 .appmenufrac .squadnav .btns {
+    width: 20.4444vh;
+    height: 5.5556vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menupad .bgapp1 .appmenufrac .squadnav .btns .btn {
+    width: 12.037vh;
+    height: 3.7037vh;
+    border-radius: 0.3704vh;
+    background: rgb(26, 26, 26);
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menupad .bgapp1 .appmenufrac .squadlist .squad:hover {
+    background: rgb(33 33 33);
+}
+
+.menupad .bgapp1 .appmenufrac .squadlist .squad .btns .btn:hover {
+    color: rgb(26, 26, 26);
+    background: #fff;
+}
+
+.menupad .bgapp1 .appmenufrac .squadnav .btns .btn:hover {
+    color: rgb(26, 26, 26);
+    background: #fff;
+}
+
+.squadlist::-webkit-scrollbar {
+  width: 0vh;
+}
+
+.appmenufrac.task {
+    width: 109vh;
+    height: 67vh;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 3.8889vh;
+}
+
+.menupad .bgapp1 .appmenufrac .lefttask {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-right: 0.1vh solid rgba(255, 255, 255, 0.25);
+}
+
+.menupad .bgapp1 .appmenufrac .righttask {width: 60%;height: 100%;display: flex;flex-direction: column;align-items: flex-start;justify-content: flex-start;margin-left: 2vh;}
+
+.menupad .bgapp1 .appmenufrac .lefttask h1 {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 2.7778vh;
+    font-weight: 600;
+    line-height: 3.3333vh;
+    letter-spacing: 0.0278vh;
+    text-align: center;
+    margin-top: 1.8519vh;
+}
+
+.menupad .bgapp1 .appmenufrac .lefttask img {
+    width: 32.4074vh;
+    height: 18.2296vh;
+    border-radius: 0.7407vh;
+    background-size: cover;
+    margin-top: 1.2963vh;
+}
+
+.menupad .bgapp1 .appmenufrac .lefttask .info {
+    width: 32.4074vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 1.3889vh;
+}
+
+.menupad .bgapp1 .appmenufrac .lefttask .btnappf {
+    width: 32.4074vh;
+    height: 3.7037vh;
+    border-radius: 0.3704vh;
+    background: rgb(26, 26, 26);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.3889vh;
+}
+
+.menupad .bgapp1 .appmenufrac .lefttask .btnappf p {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.menupad .bgapp1 .appmenufrac .lefttask .info h1 {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.4815vh;
+    font-weight: 500;
+    line-height: 1.7593vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    margin: 0;
+}
+
+.menupad .bgapp1 .appmenufrac .lefttask .info .dop1 {
+    width: 32.4074vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menupad .bgapp1 .appmenufrac .lefttask .info .dop1 p {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    margin-top: 0.7407vh;
+}
+
+.menupad .bgapp1 .appmenufrac .lefttask .info .dop {
+    width: 32.4074vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menupad .bgapp1 .appmenufrac .lefttask .info .dop p {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    margin-top: 0.7407vh;
+}
+
+.menupad .bgapp1 .appmenufrac .lefttask .info .dop span {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: right;
+}
+
+.menupad .bgapp1 .appmenufrac .lefttask .btnappf:hover {
+    background: #fff;
+}
+
+.menupad .bgapp1 .appmenufrac .lefttask .btnappf:hover p {
+    color: rgb(26, 26, 26);
+}
+
+.menupad .bgapp1 .appmenufrac .righttask h1 {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 2.2222vh;
+    font-weight: 600;
+    line-height: 2.6852vh;
+    letter-spacing: 0.0278vh;
+    text-align: left;
+}
+
+.menupad .bgapp1 .appmenufrac .righttask .listtask {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: auto;
+    justify-content: flex-start;
+    margin-top: 0.9259vh;
+    height: 53.5vh;
+}
+
+.menupad .bgapp1 .appmenufrac .righttask .listtask::-webkit-scrollbar {
+    width: 0vh;
+}
+
+.menupad .bgapp1 .appmenufrac .righttask .listtask .blocktask {
+    width: 57.2222vh;
+    height: 17.2222vh;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgb(37, 37, 37);
+    border-radius: 0.7407vh;
+    background: rgb(16, 16, 16);
+    margin-bottom: 0.9259vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac .righttask .listtask .blocktask p {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.3889vh;
+    font-weight: 600;
+    line-height: 1.6667vh;
+    letter-spacing: 0.0278vh;
+    text-align: left;
+    margin-left: 1.6667vh;
+    margin-top: 1.0185vh;
+}
+
+.menupad .bgapp1 .apphead .left .btnappfр {
+    display: flex;
+    height: 3.7037vh;
+    border-radius: 0.3704vh;
+    background: rgb(26, 26, 26);
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.7407vh;
+}
+
+.menupad .bgapp1 .apphead .left .btnappfр p {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    padding: 0vh 1.9444vh;
+    margin-right: 0vh;
+}
+
+.menupad .bgapp1 .apphead .left .btnappfр:hover {
+    background: #fff;
+}
+
+.menupad .bgapp1 .apphead .left .btnappfр:hover p {
+    color: rgb(26, 26, 26);
+}
+
+.menupad .bgapp1 .apphead .left .btnappfр.active {
+    background: #fff;
+}
+
+.menupad .bgapp1 .apphead .left .btnappfр.active p {
+    color: rgba(26,26,26);
+}
+
+.menupad .bgapp1 .apphead .left span {
+    width: 2.2222vh;
+    height: 2.2222vh;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.3704vh;
+    color: rgba(255, 255, 255, 0.2);
+    font-family: SF Pro Display;
+    font-size: 1.3889vh;
+    font-weight: 400;
+    line-height: 1.6667vh;
+    letter-spacing: 0.0463vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5556vh;
+}
+
+.menupad .bgapp1 .appmenufrac.task1 {
+    width: 109vh;
+    height: 67vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 3.8889vh;
+}
+
+.menupad .bgapp1 .appmenufrac.task1 .tasknav {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgb(37, 37, 37);
+    border-radius: 0.3704vh;
+    background: rgb(16, 16, 16);
+}
+
+.menupad .bgapp1 .appmenufrac.task1 .tasklist {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac.task1 .tasknav p {
+    width: 25.5556vh;
+    height: 4.2593vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.menupad .bgapp1 .appmenufrac.task1 .tasklist .taskblock {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgb(37, 37, 37);
+    border-radius: 0.3704vh;
+    background: rgb(16, 16, 16);
+    margin-top: 1.1111vh;
+}
+
+.menupad .bgapp1 .appmenufrac.task1 .tasklist .taskblock p {
+    width: 25.5556vh;
+    height: 5.5556vh;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.1111vh;
+    font-weight: 500;
+    line-height: 1.2963vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menupad .bgapp1 .appmenufrac.task1 .tasklist .taskblock img {
+    width: 4.6296vh;
+    height: 4.6296vh;
+    margin-left: 10.463vh;
+    margin-right: 10.463vh;
+}
+
+.menupad .bgapp1 .appmenufrac.task1 .tasklist .taskblock b {
+    width: 25.5556vh;
+    height: 5.5556vh;
+    color: rgb(170, 236, 42);
+    font-family: SF Pro Display;
+    font-size: 1.1111vh;
+    font-weight: 500;
+    line-height: 1.2963vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menupad .bgapp1 .appmenufrac .carslist {
+    width: 100%;
+    overflow: overlay;
+    height: 62.4vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac .carslist .carsblock {
+    width: 54.2vh;
+    height: 31.0185vh;
+    background-size: 50% !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    border: 0.0926vh solid #1E1E1E;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac .carslist .carsblock .topcar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 1.9444vh;
+}
+
+.menupad .bgapp1 .appmenufrac .carslist .carsblock .bottomcar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-top: auto;
+    margin-bottom: 1.9444vh;
+}
+
+.menupad .bgapp1 .appmenufrac .carslist .carsblock .topcar .leftcar {
+    width: 17.4074vh;
+    height: 2.7778vh;
+    background: #181818;
+    border: 0.0926vh solid #1E1E1E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    margin-left: 1.9444vh;
+}
+
+.menupad .bgapp1 .appmenufrac .carslist .carsblock .topcar .rightcar {
+    margin-left: auto;
+    margin-right: 1.9444vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac .carslist .carsblock .topcar .rightcar .namecar {
+    background: #181818;
+    height: 2.7778vh;
+    border: 0.0926vh solid #1E1E1E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    padding: 0vh 1.0185vh;
+}
+
+.menupad .bgapp1 .appmenufrac .carslist .carsblock .topcar .rightcar .numbercar {
+    height: 2.7778vh;
+    background: #181818;
+    border: 0.0926vh solid #1E1E1E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    margin-top: 0.463vh;
+    padding: 0vh 1.0185vh;
+}
+
+.menupad .bgapp1 .appmenufrac .carslist .carsblock .bottomcar .leftcar {
+    padding: 0vh 1.0185vh;
+    height: 2.7778vh;
+    background: #181818;
+    border: 0.0926vh solid #1E1E1E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    margin-left: 1.9444vh;
+}
+
+.menupad .bgapp1 .appmenufrac .carslist .carsblock .bottomcar .rightcar {
+    margin-left: auto;
+}
+
+.menupad .bgapp1 .appmenufrac .carslist .carsblock .bottomcar .rightcar .tran {
+    padding: 0vh 1.0185vh;
+    height: 2.7778vh;
+    background: #181818;
+    border: 0.0926vh solid #1E1E1E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    margin-right: 1.9444vh;
+}
+
+.menupad .bgapp1 .appmenufrac .carslist .carsblock .bottomcar .rightcar .gps {
+    padding: 0vh 1.0185vh;
+    height: 2.7778vh;
+    background: #181818;
+    border: 0.0926vh solid #1E1E1E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    margin-right: 1.9444vh;
+    margin-top: 0.463vh;
+}
+
+.menupad .bgapp1 .appmenufrac .carslist .carsblock .bottomcar .rightcar .tran:hover {
+    background: #fff;
+    color: rgba(26,26,26);
+}
+
+.menupad .bgapp1 .appmenufrac .carslist .carsblock .bottomcar .rightcar .gps:hover {
+    background: #fff;
+    color: rgba(26, 26, 26);
+}
+
+.menupad .bgapp1 .appmenufrac .carslist .carsblock .topcar .leftcar:hover {
+    background: #fff;
+    color: rgba(26, 26, 26);
+}
+
+.menupad .bgapp1 .appmenufrac .carslist::-webkit-scrollbar {
+  width: 0vh;
+}
+
+.menupad .bgapp1 .appmenufrac .righttask .listtask .blocktask img {
+    width: 53.8889vh;
+    height: 13.0074vh;
+    border-radius: 0.7407vh;
+    background-size: cover;
+    margin-left: 1.6667vh;
+    margin-top: auto;
+    margin-bottom: 1.0185vh;
+}
+
+.menupad .bgapp1 .appmenufrac .clotheslist {
+    overflow: auto;
+    width: 109vh;
+    height: 58.4vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac .clotheslist .blockclo {
+    background: #141414;
+    width: 26.2037vh;
+    height: 8.7037vh;
+    border-radius: 0.5556vh;
+    display: flex;
+    margin-left: 0.5vh;
+    margin-right: 0.5vh;
+    flex-direction: row;
+    margin-bottom: 1vh;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.menupad .bgapp1 .appmenufrac .clotheslist .blockclo .leftclo {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.menupad .bgapp1 .appmenufrac .clotheslist .blockclo .rightclo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2.1296vh;
+}
+
+.menupad .bgapp1 .appmenufrac .clotheslist .blockclo .leftclo .name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 1.0185vh;
+    margin-top: 1.0185vh;
+}
+
+.menupad .bgapp1 .appmenufrac .clotheslist .blockclo .leftclo .setting {
+    width: 11.6046vh;
+    margin-left: 1.0185vh;
+    margin-bottom: 1.0185vh;
+    background: #181818;
+    border: 0.0463vh solid #1E1E1E;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 0.9259vh;
+    font-weight: 500;
+    line-height: 1.0185vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    height: 1.8519vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menupad .bgapp1 .appmenufrac .clotheslist .blockclo .leftclo .name p {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.1111vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.menupad .bgapp1 .appmenufrac .clotheslist .blockclo .leftclo .name span {
+    color: rgb(26, 26, 26);
+    font-family: SF Pro Display;
+    font-size: 1.1111vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    margin-left: 0.463vh;
+    background: #fff;
+    border-radius: 0.463vh;
+    padding: 0vh 0.463vh;
+}
+
+.menupad .bgapp1 .appmenufrac .clotheslist .blockclo .rightclo img {
+    width: 6vh;
+    height: 6vh;
+}
+
+.menupad .bgapp1 .appmenufrac .clotheslist .blockclo .leftclo .setting:hover {
+    color: rgba(26,26,26);
+    background: #fff;
+}
+
+.menupad .bgapp1 .appmenufrac .clotheslist::-webkit-scrollbar {
+  width: 0vh;
+}
+
+.menupad .bgapp1 .appmenufrac .leftacce {
+    width: 35.2778vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background: radial-gradient(70.71% 70.71% at 50% 50%, rgb(255 255 255 / 4%), rgb(255 255 255 / 3%) 100%);
+    border-right: solid 0.0926vh #ffffff0f;
+}
+
+.menupad .bgapp1 .appmenufrac .centeracce {
+    width: 35.2778vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background: radial-gradient(70.71% 70.71% at 50% 50%, rgb(255 255 255 / 4%), rgb(255 255 255 / 3%) 100%);
+    border-right: solid 0.0926vh #ffffff0f;
+}
+
+.menupad .bgapp1 .appmenufrac .rightacce {height: 100%;}
+
+.menupad .bgapp1 .appmenufrac .leftacce h1 {
+    height: 4.2593vh;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.8519vh;
+    font-weight: 500;
+    line-height: 2.2222vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 1.3889vh;
+}
+
+.menupad .bgapp1 .appmenufrac .leftacce .listacce {
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    border-top: solid 0.0926vh #ffffff0f;
+}
+
+.menupad .bgapp1 .appmenufrac .leftacce .listacce .blockacce {
+    width: 100%;
+    height: 4.2593vh;
+    border-bottom: solid 0.0926vh #ffffff0f;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac .leftacce .listacce .blockacce p {
+    color: rgb(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    margin-left: 1.3889vh;
+    margin-right: 1.3889vh;
+}
+
+.menupad .bgapp1 .appmenufrac .leftacce .listacce .blockacce b {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.menupad .bgapp1 .appmenufrac .leftacce .listacce .blockacce span {
+    display: none;
+}
+
+.menupad .bgapp1 .appmenufrac .centeracce h1 {
+    height: 4.2593vh;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.8519vh;
+    font-weight: 500;
+    line-height: 2.2222vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 1.3889vh;
+}
+
+.menupad .bgapp1 .appmenufrac .centeracce .listacce {
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    border-top: solid 0.0926vh #ffffff0f;
+}
+
+.menupad .bgapp1 .appmenufrac .centeracce .listacce .blockacce {
+    width: 100%;
+    height: 4.2593vh;
+    border-bottom: solid 0.0926vh #ffffff0f;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac .centeracce .listacce .blockacce p {
+    color: rgb(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    margin-left: 1.3889vh;
+    margin-right: 1.3889vh;
+}
+
+.menupad .bgapp1 .appmenufrac .centeracce .listacce .blockacce b {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.menupad .bgapp1 .appmenufrac.access {
+    border: solid 0.0926vh #ffffff0f;
+}
+
+.menupad .bgapp1 .appmenufrac .centeracce .listacce .blockacce span {
+    display: none;
+}
+
+.menupad .bgapp1 .appmenufrac .rightacce h1 {}
+
+.menupad .bgapp1 .appmenufrac .rightacce .listacce {
+    height: 63.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: auto;
+    margin-left: 3vh;
+    margin-top: 2vh;
+}
+
+.menupad .bgapp1 .appmenufrac .rightacce .listacce .blockacce {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac .rightacce .listacce .blockacce .btnseting {
+    width: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1vh;
+}
+
+.menupad .bgapp1 .appmenufrac .rightacce .listacce .blockacce p {
+    color: rgb(255, 255, 255, 0.6);
+    font-family: SF Pro Display;
+    font-size: 1.1111vh;
+    font-weight: 600;
+    line-height: 1.2963vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.menupad .bgapp1 .appmenufrac .rightacce .listacce .blockacce .btnseting svg.on {
+    display: none;
+    width: 5.2778vh;
+    height: 3.9815vh;
+}
+
+.menupad .bgapp1 .appmenufrac .rightacce .listacce .blockacce .btnseting svg.off {
+    display: block;
+    width: 5.2778vh;
+    height: 3.9815vh;
+}
+
+.menupad .bgapp1 .appmenufrac .listacce::-webkit-scrollbar {
+  width: 0vh;
+}
+
+.menupad .bgapp1 .appmenufrac .leftacce .listacce .blockacce:hover {
+    background: #fff;
+}
+
+.menupad .bgapp1 .appmenufrac .leftacce .listacce .blockacce:hover p {
+    color: rgba(26,26,26,0.5);
+}
+
+.menupad .bgapp1 .appmenufrac .leftacce .listacce .blockacce:hover b {
+    color: rgb(26,26,26);
+}
+
+.menupad .bgapp1 .appmenufrac .leftacce .listacce .blockacce.active {
+    background: #fff;
+}
+
+.menupad .bgapp1 .appmenufrac .leftacce .listacce .blockacce.active p {
+    color: rgb(26,26,26,0.5);
+}
+
+.menupad .bgapp1 .appmenufrac .leftacce .listacce .blockacce.active b {
+    color: rgb(26,26,26);
+}
+
+.menupad .bgapp1 .appmenufrac .centeracce .listacce .blockacce:hover {
+    background: #fff;
+}
+
+.menupad .bgapp1 .appmenufrac .centeracce .listacce .blockacce:hover p {
+    color: rgba(26, 26, 26, 0.5);
+}
+
+.menupad .bgapp1 .appmenufrac .centeracce .listacce .blockacce:hover b {
+    color: rgba(26, 26, 26, 1);
+}
+
+.menupad .bgapp1 .appmenufrac .centeracce .listacce .blockacce.active {
+    background: #fff;
+}
+
+.menupad .bgapp1 .appmenufrac .centeracce .listacce .blockacce.active p {
+    color: rgba(26, 26, 26, 0.5);
+}
+
+.menupad .bgapp1 .appmenufrac .centeracce .listacce .blockacce.active b {
+    color: rgba(26, 26, 26, 1);
+}
+
+.btnseting.active {}
+
+.menupad .bgapp1 .appmenufrac .rightacce .listacce .blockacce .btnseting.active svg.on {
+    display: block;
+}
+
+.menupad .bgapp1 .appmenufrac .rightacce .listacce .blockacce .btnseting.active svg.off {
+    display: none;
+}
+
+.menupad .bgapp1 .appmenufrac .leftacce input {
+    width: 33vh;
+    background: #ffffff0a;
+    margin-left: 1.3889vh;
+    outline: none !important;
+    height: 4vh;
+    border-radius: 0.5vh;
+    border: none;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.5741vh;
+    font-weight: 500;
+    line-height: 1.2963vh;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.menupad .bgapp1 .appmenufrac .leftacce .btnrank {
+    display: flex;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    width: 33vh;
+    height: 4vh;
+    margin-top: 1vh;
+    border-radius: 0.3704vh;
+    background: rgb(26, 26, 26);
+    margin-left: 1.3889vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.menupad .bgapp1 .appmenufrac .leftacce .btnrank:hover {
+    background: #fff;
+    color: rgb(26,26,26);
+}
+
+.menupad .bgapp1 .appmenufrac .rightacce .btnsranks {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-left: 2vh;
+    margin-top: 2vh;
+}
+
+.menupad .bgapp1 .appmenufrac .rightacce .btnsranks .btnappfр {
+    display: flex;
+    height: 3.7037vh;
+    border-radius: 0.3704vh;
+    background: rgb(26, 26, 26);
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.7407vh;
+}
+
+.menupad .bgapp1 .appmenufrac .rightacce .btnsranks .btnappfр p {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    padding: 0vh 1.9444vh;
+    margin-right: 0vh;
+}
+
+.menupad .bgapp1 .appmenufrac .rightacce .btnsranks .btnappfр:hover {
+    background: #fff;
+}
+
+.menupad .bgapp1 .appmenufrac .rightacce .btnsranks .btnappfр:hover p {
+    color: rgb(26,26,26);
+}
+
+.menupad .bgapp1 .appmenufrac .rightacce .btnsranks .btnappfр.active {
+    background: #fff;
+}
+
+.menupad .bgapp1 .appmenufrac .rightacce .btnsranks .btnappfр.active p {
+    color: rgb(26,26,26);
+}
+
+.gta5devpad .menupad div#fractionscreate {
+    position: relative;
+    border-radius: 1.8519vh;
+}
+
+.menupad .bgapp1 .appmenufrac.squad {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac.squad .squadnav p {
+    width: 25.5556vh;
+}
+
+.menupad .bgapp1 .appmenufrac.squad .squadnav {
+    margin-top: 0.7593vh;
+}
+
+.menupad .bgapp1 .appmenufrac.squad .squadlist .squaduser {
+    width: 109vh;
+    height: 5.5556vh;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    border: 0.0926vh solid rgb(37, 37, 37);
+    border-radius: 0.3704vh;
+    background: rgb(16, 16, 16);
+    margin-bottom: 0.25vh;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac.squad .squadlist {}
+
+.menupad .bgapp1 .appmenufrac.squad .squadlist .squaduser p {
+    width: 25.5556vh;
+    height: 5.5556vh;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menupad .bgapp1 .appmenufrac.squad .squadlist .squaduser b {
+    width: 25.5556vh;
+    height: 5.5556vh;
+    color: rgb(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menupad .bgapp1 .appmenufrac.squad .squadinfo {
+    width: 109vh;
+    height: 5.5556vh;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac.squad .squadinfo .leftinfo {
+    width: 12.037vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac.squad .squadinfo .blinfo {
+    width: 12.037vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menupad .bgapp1 .appmenufrac.squad .squadinfo .rightinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-left: auto;
+}
+
+.menupad .bgapp1 .appmenufrac.squad .squadinfo p {
+    color: rgb(255,255,255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.8519vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.menupad .bgapp1 .appmenufrac.squad .squadinfo span {
+    color: rgb(255, 255, 255,0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.8519vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.menupad .bgapp1 .appmenufrac.squad .onliuser {
+    margin-top: 0.7vh;
+}
+
+.menupad .bgapp1 .appmenufrac.squad .squadlist .squaduser .btninfo {
+    background: #1A1A1A;
+    border-radius: 0.3704vh;
+    width: 12.037vh;
+    height: 3.7037vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 500;
+    line-height: 1.5741vh;
+    letter-spacing: 0vh;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menupad .bgapp1 .appmenufrac.squad .squadlist .squaduser .btninfo:hover {
+    background: #fff;
+    color: rgb(26,26,26);
+}
+
+.gta5devpad .menupad .myhomeapp {
+    background: rgb(243, 243, 243);
+    width: 100%;
+    height: 100%;
+    border-radius: 2.2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.gta5devpad .menupad .myhomeapp .myhomeapp__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 2.037vh 2.593vh;
+    margin-bottom: 2.778vh;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0vh 2.593vh;
+}
+
+.gta5devpad .menupad .myhomeapp .myhomeapp__header svg {
+    width: 2.037vh;
+    height: 2.037vh;
+    margin-right: 1.574vh;
+}
+
+.gta5devpad .menupad .myhomeapp .myhomeapp__header h1 {
+    color: #292929;
+    font-family: Proxima Nova;
+    font-size: 2.315vh;
+    font-weight: 700;
+    line-height: 2.778vh;
+    letter-spacing: 0%;
+    text-align: left;
+    margin-right: 2.315vh;
+}
+
+.gta5devpad .menupad .myhomeapp .myhomeapp__header .btnmyhome {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 4.074vh;
+    border-radius: 0.556vh;
+    padding: 0vh 1.944vh;
+    box-sizing: border-box;
+    border: 0.093vh solid rgba(0, 0, 0, 0.04);
+    background: rgba(41, 41, 41, 0.02);
+    margin-right: 0.926vh;
+}
+
+.gta5devpad .menupad .myhomeapp .myhomeapp__header .myhomeinfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    margin-left: auto;
+}
+
+.gta5devpad .menupad .myhomeapp .myhomeapp__header .appiconhead {
+    margin: 0vh 1.204vh;
+    width: 5.556vh;
+    height: 5.556vh;
+}
+
+.gta5devpad .menupad .myhomeapp .myhomeapp__header .clossed {
+    width: 2.222vh;
+    height: 2.222vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border: 0.093vh solid rgba(41, 41, 41, 0.1);
+    border-radius: 0.370vh;
+    background: rgb(251, 251, 251);
+}
+
+.gta5devpad .menupad .myhomeapp .myhomeapp__header .btnmyhome svg {
+    fill: #292929;
+    fill-opacity: 0.4;
+    width: 1.296vh;
+    height: 1.296vh;
+    margin-right: 0.833vh;
+}
+
+.gta5devpad .menupad .myhomeapp .myhomeapp__header .btnmyhome p {
+    color: rgb(41, 41, 41, 0.4);
+    font-family: Proxima Nova;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+.gta5devpad .menupad .myhomeapp .myhomeapp__header .myhomeinfo p {
+    color: rgb(41, 41, 41);
+    font-family: Proxima Nova;
+    font-size: 1.481vh;
+    font-weight: 700;
+    line-height: 1.759vh;
+    letter-spacing: 0vh;
+    text-align: right;
+}
+
+.gta5devpad .menupad .myhomeapp .myhomeapp__header .myhomeinfo span {
+    color: rgba(41, 41, 41, 0.4);
+    font-family: Proxima Nova;
+    font-size: 1.296vh;
+    font-weight: 600;
+    line-height: 1.574vh;
+    letter-spacing: 0vh;
+    text-align: right;
+}
+
+.gta5devpad .menupad .myhomeapp .myhomeapp__header .appiconhead img {
+    width: 5.556vh;
+    height: 5.556vh;
+}
+
+.gta5devpad .menupad .myhomeapp .myhomeapp__header .clossed p {
+    color: rgba(41, 41, 41, 0.4);
+    font-family: Proxima Nova;
+    font-size: 1.389vh;
+    font-weight: 400;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu {
+    width: 68.981vh;
+    height: 65vh;
+    border-radius: 0.741vh;
+    background: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .rightmenu {
+    width: 37.981vh;
+    height: 65vh;
+    border-radius: 0.741vh;
+    background: rgb(255, 255, 255);
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .rightmenu .headmenu {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1vh 1.8vh;
+    border-bottom: 0.09vh solid rgb(41,41,41, 0.1);
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .rightmenu .blockjitel {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1vh 1.8vh;
+    border-bottom: 0.09vh solid rgb(41, 41, 41, 0.1);
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .rightmenu .blockjitel p {
+    color: rgb(41, 41, 41);
+    font-family: Proxima Nova;
+    font-size: 1.552vh;
+    font-weight: 600;
+    line-height: 1.552vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    width: 50%;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .rightmenu .headmenu h1 {
+    color: rgb(41, 41, 41);
+    font-family: Proxima Nova;
+    font-size: 1.852vh;
+    font-weight: 700;
+    line-height: 2.222vh;
+    letter-spacing: 0vh;
+}
+
+.gta5devpad .menupad .myhomeapp .myhomeapp__header .btnmyhome:hover {
+    box-shadow: 0vh 0vh 0.648vh 0vh rgba(252, 192, 66, 0.25);
+    background: rgb(252, 192, 66);
+}
+
+.gta5devpad .menupad .myhomeapp .myhomeapp__header .btnmyhome:hover svg {
+    fill-opacity: 1;
+}
+
+.gta5devpad .menupad .myhomeapp .myhomeapp__header .btnmyhome:hover p {
+    color: #292929;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .menuheader {
+    width: 100%;
+    height: 26.019vh;
+    margin-bottom: 1.759vh;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .infomenu {
+    width: 100%;
+    padding: 0vh 1.759vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 2vh;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .menuheader img {
+    width: 100%;
+    height: 26.019vh;
+    border-radius: 0.741vh 0.741vh 0vh 0vh;
+    background-size: cover !important;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .infomenu .gpsinfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-right: auto;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .infomenu .priceinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .infomenu .priceinfo p {
+    color: rgb(41, 41, 41);
+    font-family: Proxima Nova;
+    font-size: 1.852vh;
+    font-weight: 700;
+    line-height: 2.222vh;
+    letter-spacing: 0vh;
+    text-align: right;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .infomenu .priceinfo b {
+    color: rgba(41, 41, 41, 0.4);
+    font-family: Proxima Nova;
+    font-size: 1.481vh;
+    font-weight: 600;
+    line-height: 1.759vh;
+    letter-spacing: 0vh;
+    text-align: right;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .infomenu .gpsinfo svg {
+    width: 4.444vh;
+    height: 4.444vh;
+    margin-right: 1.944vh;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .infomenu .gpsinfo .infohome {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .infomenu .gpsinfo .infohome p {
+    color: rgb(41, 41, 41);
+    font-family: Proxima Nova;
+    font-size: 1.852vh;
+    font-weight: 600;
+    line-height: 2.222vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .infomenu .gpsinfo .infohome b {
+    color: rgba(41, 41, 41, 0.4);
+    font-family: Proxima Nova;
+    font-size: 1.481vh;
+    font-weight: 600;
+    line-height: 1.759vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .infomenu .infoblock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-right: 4vh;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .infomenu .infoblock p {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: rgba(41, 41, 41);
+    font-family: Proxima Nova;
+    font-size: 1.481vh;
+    font-weight: 600;
+    line-height: 1.759vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .infomenu .infoblock b {
+    color: rgb(41, 41, 41);
+    font-family: Proxima Nova;
+    font-size: 1.552vh;
+    font-weight: 700;
+    line-height: 2.222vh;
+    letter-spacing: 0vh;
+    margin-top: 0.5vh;
+    margin-left: 0.3vh;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .infomenu .infoblock p svg {
+    width: 1.852vh;
+    height: 1.852vh;
+    margin-right: 0.5vh;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .rightmenu .blockjitel span {
+    color: rgb(41, 41, 41);
+    font-family: Proxima Nova;
+    font-size: 1.552vh;
+    font-weight: 600;
+    line-height: 1.552vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    width: 9%;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomefur {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0vh 2.396vh;
+    flex-wrap: wrap;
+    gap: 1vh;
+    height: 65vh;
+    border-radius: 0.741vh;
+    align-content: flex-start;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomefur .blockitem {
+    width: 26.29vh;
+    height: 19.444vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    border: 0.093vh solid rgba(0, 0, 0, 0.04);
+    background: rgba(41, 41, 41, 0.02);
+    border-radius: 0.5vh;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomefur .blockitem .btnsell {
+    height: 3vh;
+    width: 3vh;
+    border-radius: 0.556vh;
+    box-sizing: border-box;
+    border: 0.093vh solid rgba(0, 0, 0, 0.04);
+    background: rgba(41, 41, 41, 0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -2vh;
+    margin-left: auto;
+    margin-top: 0.5vh;
+    margin-right: 0.5vh;
+    z-index: 1;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomefur .blockitem img {
+    height: 9.537vh;
+    margin: 0vh auto;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomefur .blockitem span {
+    color: rgb(41, 41, 41);
+    font-family: Proxima Nova;
+    font-size: 1.552vh;
+    font-weight: 700;
+    line-height: 2.222vh;
+    letter-spacing: 0vh;
+    margin: auto;
+    text-align: center;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomefur .blockitem .btnuse {
+    height: 3vh;
+    padding: 0vh 0.8vh;
+    border-radius: 0.556vh;
+    box-sizing: border-box;
+    border: 0.093vh solid rgba(0, 0, 0, 0.04);
+    background: rgba(41, 41, 41, 0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5vh;
+    margin-right: 0.5vh;
+    margin-left: auto;
+    margin-top: auto;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomefur .blockitem .btnuse p {
+    color: rgba(41, 41, 41, 0.4);
+    font-family: Proxima Nova;
+    font-size: 1.5741vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomefur .blockitem .btnsell p {
+    color: rgba(41, 41, 41, 0.4);
+    font-family: Proxima Nova;
+    font-size: 1.5741vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomefur .blockitem .btnsell:hover {
+    background: #83BA40;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomefur .blockitem .btnsell:hover p {
+    color: #ffffffbd;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomefur .blockitem .btnuse:hover {
+    box-shadow: 0vh 0vh 0.648vh 0vh rgba(252, 192, 66, 0.25);
+    background: rgb(252, 192, 66);
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomefur .blockitem .btnuse:hover p {
+    color: #292929;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .infomenu .btnsell {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 4.074vh;
+    border-radius: 0.556vh;
+    padding: 0vh 1.944vh;
+    box-sizing: border-box;
+    border: 0.093vh solid rgba(0, 0, 0, 0.04);
+    background: rgba(41, 41, 41, 0.02);
+    margin-left: auto;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .infomenu .btnsell p {
+    color: rgba(41, 41, 41, 0.4);
+    font-family: Proxima Nova;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .infomenu .btnsell:hover {
+    background: #F44336;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhome .leftmenu .infomenu .btnsell:hover p {
+    color: #fff;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomeupgrade {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0vh 2.396vh;
+    flex-wrap: wrap;
+    gap: 1vh;
+    height: 65vh;
+    border-radius: 0.741vh;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomeupgrade .upgradeblock {
+    width: 35.39vh;
+    height: 100%;
+    border-radius: 0.741vh;
+    background: rgb(255, 255, 255);
+    box-sizing: border-box;
+    border: 0.093vh solid rgba(41, 41, 41, 0.13);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomeupgrade .upgradeblock .headupblock {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2vh;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomeupgrade .upgradeblock .infoupblock {
+    width: 100%;
+    padding: 2vh;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomeupgrade .upgradeblock .btnupblock {
+    width: 30vh;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 4.074vh;
+    border-radius: 0.556vh;
+    padding: 0vh 1.944vh;
+    box-sizing: border-box;
+    border: 0.093vh solid rgba(0, 0, 0, 0.04);
+    background: rgba(41, 41, 41, 0.02);
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomeupgrade .upgradeblock .btnupblock p {
+    color: rgba(41, 41, 41, 0.4);
+    font-family: Proxima Nova;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomeupgrade .upgradeblock .infoupblock p {
+    color: rgb(41, 41, 41);
+    font-family: Proxima Nova;
+    font-size: 1.852vh;
+    font-weight: 600;
+    line-height: 2.222vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomeupgrade .upgradeblock .infoupblock span {
+    color: rgba(41, 41, 41, 0.4);
+    font-family: Proxima Nova;
+    font-size: 1.481vh;
+    font-weight: 600;
+    line-height: 1.759vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomeupgrade .upgradeblock .headupblock h1 {
+    color: rgb(41, 41, 41);
+    font-family: Proxima Nova;
+    font-size: 1.5vh;
+    font-weight: 700;
+    line-height: 1.5vh;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomeupgrade .upgradeblock .headupblock span {
+    color: rgb(41, 41, 41);
+    font-family: Proxima Nova;
+    font-size: 1.3vh;
+    font-weight: 700;
+    background: rgb(252, 192, 66);
+    height: 2vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0vh 1vh;
+    border-radius: 0.37vh;
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomeupgrade .upgradeblock .btnupblock:hover {
+    box-shadow: 0vh 0vh 0.648vh 0vh rgba(252, 192, 66, 0.25);
+    background: rgb(252, 192, 66);
+}
+
+.gta5devpad .menupad .myhomeapp .menuhyhomeupgrade .upgradeblock .btnupblock:hover p {
+    color: #292929;
+}
+
+.gta5devpad .menupad .mybizapp {
+    background: #181A1E;
+    width: 100%;
+    height: 100%;
+    border-radius: 2.2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.gta5devpad .menupad .mybizapp .mybizapp__header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1.5vh 2vh;
+    margin-bottom: 1vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu {
+    width: 100%;
+    height: 69vh;
+    padding: 0vh 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__head {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.926vh;
+    margin-bottom: 3vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_left {
+    width: 54vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_right {
+    width: 54vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_right h1 {
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 2vh;
+    font-weight: 700;
+    line-height: 1.5vh;
+    margin-bottom: 2vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_right .listhead {
+    width: 100%;
+    background: rgb(255, 255, 255, 0.02);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1.4vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_right .listblock {
+    width: 100%;
+    background: rgb(255, 255, 255, 0.03);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1.4vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_right .listblock span {
+    color: #83BA41;
+    font-family: Proxima Nova;
+    font-size: 1.5vh;
+    font-weight: 700;
+    line-height: 1.5vh;
+    width: 4vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_right .listblock p {
+    color: #fff;
+    font-family: Proxima Nova;
+    font-size: 1.5vh;
+    font-weight: 700;
+    line-height: 1.5vh;
+    text-align: left;
+    width: 15vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_right .listblock b {
+    color: #fff;
+    font-family: Proxima Nova;
+    font-size: 1.5vh;
+    font-weight: 700;
+    line-height: 1.5vh;
+    text-align: left;
+    margin-left: auto;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_right .listhead span {
+    color: #83BA41;
+    font-family: Proxima Nova;
+    font-size: 1.5vh;
+    font-weight: 700;
+    line-height: 1.5vh;
+    width: 4vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_right .listhead p {
+    color: #83BA41;
+    font-family: Proxima Nova;
+    font-size: 1.5vh;
+    font-weight: 700;
+    line-height: 1.5vh;
+    text-align: left;
+    width: 15vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_right .listhead b {
+    color: #83BA41;
+    font-family: Proxima Nova;
+    font-size: 1.5vh;
+    font-weight: 700;
+    line-height: 1.5vh;
+    text-align: right;
+    margin-left: auto;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_left h1 {
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 2vh;
+    font-weight: 700;
+    line-height: 1.5vh;
+    margin-bottom: 2vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_left .listhead {
+    width: 100%;
+    background: rgb(255, 255, 255, 0.02);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1.4vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_left .listblock {
+    width: 100%;
+    background: rgb(255, 255, 255, 0.03);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1.4vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_left .listblock span {
+    color: #83BA41;
+    font-family: Proxima Nova;
+    font-size: 1.5vh;
+    font-weight: 700;
+    line-height: 1.5vh;
+    width: 4vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_left .listblock p {
+    color: #fff;
+    font-family: Proxima Nova;
+    font-size: 1.5vh;
+    font-weight: 700;
+    line-height: 1.5vh;
+    text-align: left;
+    width: 15vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_left .listblock b {
+    color: #fff;
+    font-family: Proxima Nova;
+    font-size: 1.5vh;
+    font-weight: 700;
+    line-height: 1.5vh;
+    text-align: left;
+    margin-left: auto;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_left .listhead span {
+    color: #83BA41;
+    font-family: Proxima Nova;
+    font-size: 1.5vh;
+    font-weight: 700;
+    line-height: 1.5vh;
+    width: 4vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_left .listhead p {
+    color: #83BA41;
+    font-family: Proxima Nova;
+    font-size: 1.5vh;
+    font-weight: 700;
+    line-height: 1.5vh;
+    text-align: left;
+    width: 15vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_left .listhead b {
+    color: #83BA41;
+    font-family: Proxima Nova;
+    font-size: 1.5vh;
+    font-weight: 700;
+    line-height: 1.5vh;
+    text-align: right;
+    margin-left: auto;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__head .blockinfo {
+    height: 10.556vh;
+    width: 35.67vh;
+    background: rgb(255,255,255,0.03);
+    padding: 2vh 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__head .blockinfo p {
+    color: rgba(255,255,255);
+    font-family: Proxima Nova;
+    font-size: 1.481vh;
+    font-weight: 600;
+    line-height: 1.759vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__head .blockinfo p span {}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__head .blockinfo p span b {}
+
+.gta5devpad .menupad .mybizapp .mybizapp__header .btnhead {
+    height: 4vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0vh 3vh;
+    background: rgb(255,255,255, 0.03);
+    margin-right: 0.4vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizapp__header h1 {
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 1.481vh;
+    font-weight: 700;
+    line-height: 1.759vh;
+    letter-spacing: 0vh;
+    text-align: right;
+    margin-left: auto;
+}
+
+.gta5devpad .menupad .mybizapp .mybizapp__header .appiconhead {
+    width: 2.870vh;
+    height: 2.870vh;
+    margin: 0vh 1.504vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizapp__header .clossed {
+    width: 2.222vh;
+    height: 2.222vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border: 0.093vh solid rgba(41, 41, 41, 0.1);
+    border-radius: 0.37vh;
+    background: rgb(251, 251, 251, 0.1);
+}
+
+.gta5devpad .menupad .mybizapp .mybizapp__header .clossed p {
+    color: rgba(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 1.389vh;
+    font-weight: 400;
+    letter-spacing: 0vh;
+    text-align: center;
+}
+
+.gta5devpad .menupad .mybizapp .mybizapp__header .appiconhead img {
+    width: 2.870vh;
+    height: 2.870vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizapp__header .btnhead svg {
+    fill: #fff;
+    fill-opacity: 0.1;
+    width: 1.481vh;
+    height: 1.481vh;
+    margin-right: 0.833vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizapp__header .btnhead p {
+    color: rgba(255, 255, 255, 0.2);
+    font-family: Proxima Nova;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+.gta5devpad .menupad .mybizapp .mybizapp__header .btnhead:hover {
+    background: #83BA41;
+}
+
+.gta5devpad .menupad .mybizapp .mybizapp__header .btnhead:hover svg {
+    fill-opacity: 1;
+}
+
+.gta5devpad .menupad .mybizapp .mybizapp__header .btnhead:hover p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__head .blockinfo span {
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 2vh;
+    font-weight: 700;
+    line-height: 2.222vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__head .blockinfo span b {
+    color: #83BA41;
+    font-family: Proxima Nova;
+    font-size: 2vh;
+    font-weight: 700;
+    line-height: 2.222vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    margin-right: 0.5vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_left .listblock:hover {
+    background: rgb(255, 255, 255, 0.04);
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenu .mybizappmenu__dop .dop_right .listblock:hover {
+    background: rgb(255, 255, 255, 0.04);
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitems {
+    width: 100%;
+    height: 69vh;
+    overflow: auto;
+    padding: 0vh 2vh;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.926vh;
+    align-content: flex-start;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitems .blockitem {
+    width: 26.547vh;
+    height: 19.444vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitems .blockitem img {
+    height: 9.537vh;
+    margin-top: 1vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitems .blockitem p {
+    color: rgba(255,255,255);
+    font-family: Proxima Nova;
+    font-size: 1.281vh;
+    font-weight: 600;
+    line-height: 1.281vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    margin: auto 0vh;
+    width: 100%;
+    padding: 0vh 1vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitems .blockitem .blockbottom {
+    width: 100%;
+    padding: 0vh 1vh;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitems .blockitem .blockbottom b {
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 1.852vh;
+    font-weight: 600;
+    line-height: 2.222vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitems .blockitem .blockbottom span {
+    color: rgba(255, 255, 255, 0.3);
+    font-family: Proxima Nova;
+    font-size: 1.281vh;
+    font-weight: 500;
+    line-height: 1.281vh;
+    letter-spacing: 0vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitems::-webkit-scrollbar {
+    width: 0vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitem .mybizappmenuitem__item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitem {
+    width: 100%;
+    height: 69vh;
+    overflow: auto;
+    padding: 0vh 2vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.926vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitem .mybizappmenuitem__item .headitem {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitem .mybizappmenuitem__item .btnsitem {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1vh;
+    margin-top: 1vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitem .mybizappmenuitem__item .btnsitem .btnsitem__item {
+    height: 4vh;
+    width: 40.556vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitem .mybizappmenuitem__item .btnsitem .btnsitem__item p {
+    color: rgba(255, 255, 255, 0.2);
+    font-family: Proxima Nova;
+    font-size: 1.2963vh;
+    font-weight: 600;
+    line-height: 1.5741vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitem .mybizappmenuitem__item .headitem .leftitem {
+    width: 40.556vh;
+    height: 37.593vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitem .mybizappmenuitem__item .headitem .rightitem {
+    width: 40.556vh;
+    height: 37.593vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.4vh 2vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitem .mybizappmenuitem__item .headitem .rightitem h1 {
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 1.852vh;
+    font-weight: 600;
+    line-height: 2.222vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    margin-bottom: 1vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitem .mybizappmenuitem__item .headitem .rightitem p {
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 1.452vh;
+    font-weight: 600;
+    line-height: 1.952vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitem .mybizappmenuitem__item .headitem .rightitem span {
+    color: rgb(255, 255, 255,0.3);
+    font-family: Proxima Nova;
+    font-size: 1.252vh;
+    font-weight: 500;
+    line-height: 1.552vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitem .mybizappmenuitem__item .headitem .rightitem .iteminfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    margin-top: auto;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitem .mybizappmenuitem__item .headitem .rightitem .iteminfo p {
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 2.222vh;
+    font-weight: 600;
+    line-height: 2.222vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    margin-bottom: 0.5vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitem .mybizappmenuitem__item .headitem .rightitem .iteminfo span {
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 1.252vh;
+    font-weight: 400;
+    line-height: 1.952vh;
+    letter-spacing: 0vh;
+    text-align: left;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitem .mybizappmenuitem__item .headitem .rightitem .iteminfo span b {
+    color: rgb(255, 255, 255, 0.4);
+    font-family: Proxima Nova;
+    font-size: 1.252vh;
+    font-weight: 400;
+    line-height: 1.952vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    margin-left: 0.3vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitem .mybizappmenuitem__item .headitem .leftitem img {
+    height: 15vh;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitem .mybizappmenuitem__item .btnsitem .btnsitem__item:hover {
+    background: #83BA41;
+}
+
+.gta5devpad .menupad .mybizapp .mybizappmenuitem .mybizappmenuitem__item .btnsitem .btnsitem__item:hover p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.gta5devpad .menupad .mybizapp .dialogmenu {
+    position: absolute;
+    width: 112.963vh;
+    height: 79.6296vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0,0,0,0.5);
+    border-radius: 1.8519vh;
+}
+
+.gta5devpad .menupad .mybizapp .dialogmenu .dmenu {
+    background: #17191D;
+    width: 50.926vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 4vh 0vh;
+}
+
+.gta5devpad .menupad .mybizapp .dialogmenu .dmenu h1 {
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 1.852vh;
+    font-weight: 600;
+    line-height: 2.222vh;
+    letter-spacing: 0vh;
+}
+
+.gta5devpad .menupad .mybizapp .dialogmenu .dmenu .infoitem {
+    width: 41.481vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+}
+
+.gta5devpad .menupad .mybizapp .dialogmenu .dmenu .input {
+    width: 41.481vh;
+}
+
+.gta5devpad .menupad .mybizapp .dialogmenu .dmenu .btnsitem {
+    margin-top: 1.5vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 5.000vh;
+    width: 41.481vh;
+}
+
+.gta5devpad .menupad .mybizapp .dialogmenu .dmenu .btnsitem .btni {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.gta5devpad .menupad .mybizapp .dialogmenu .dmenu .btnsitem .btni p {
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 1.452vh;
+    font-weight: 600;
+    line-height: 1.952vh;
+    letter-spacing: 0vh;
+}
+
+.gta5devpad .menupad .mybizapp .dialogmenu .dmenu .input p {
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 1.452vh;
+    font-weight: 600;
+    line-height: 1.952vh;
+    letter-spacing: 0vh;
+    text-align: left;
+    margin-bottom: 0.5vh;
+}
+
+.gta5devpad .menupad .mybizapp .dialogmenu .dmenu .input input#price {
+    width: 41.481vh;
+    height: 4.630vh;
+    background: #111315;
+    padding: 1vh 2vh;
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 1.452vh;
+    font-weight: 600;
+    line-height: 1.952vh;
+    letter-spacing: 0vh;
+}
+
+.gta5devpad .menupad .mybizapp .dialogmenu .dmenu .infoitem p {
+    color: rgb(255, 255, 255, 0.8);
+    font-family: Proxima Nova;
+    font-size: 1.452vh;
+    font-weight: 600;
+    line-height: 1.952vh;
+    letter-spacing: 0vh;
+}
+
+.gta5devpad .menupad .mybizapp .dialogmenu .dmenu .infoitem b {
+    color: rgb(255, 255, 255);
+    font-family: Proxima Nova;
+    font-size: 1.452vh;
+    font-weight: 600;
+    line-height: 1.952vh;
+    letter-spacing: 0vh;
+}
+
+.gta5devpad .menupad .mybizapp .dialogmenu .dmenu .btnsitem .btni:hover {
+    background: #83BA41;
+}

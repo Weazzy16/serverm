@@ -1,0 +1,1187 @@
+
+.crash {
+    width: 100%;
+    height: 92.4074074074vh;
+    overflow: hidden;
+    background-color: hsla(0,0%,7%,.9);
+    mix-blend-mode: normal
+}
+
+.crash  {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover
+}
+
+.crash ::-webkit-scrollbar {
+    display: none
+}
+
+.crash .no-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%
+}
+
+.crash .no-content h1 {
+    font-family: ProximaNova;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 3.2407407407vh;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff
+}
+
+.crash .info {
+    margin-bottom: 1.4814814815vh;
+    padding: 1.8518518519vh 2.2222222222vh;
+    height: 7.7777777778vh;
+    background: #171717;
+    border-radius: 1.6666666667vh
+}
+
+.crash .info .minigamesIcon {
+    margin-right: 1.2037037037vh;
+    width: 2.7777777778vh;
+    height: 2.2222222222vh;
+    fill: url(#paint0_linear_55_3401)
+}
+
+.crash .info .title {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2.2222222222vh;
+    line-height: 2.5925925926vh;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-right: .7407407407vh
+}
+
+.crash .info .gameID {
+    min-width: 4.1666666667vh;
+    min-height: 3.6111111111vh;
+    padding: .9259259259vh 1.1111111111vh;
+    background: #2d2d2d;
+    border-radius: .7407407407vh
+}
+
+.crash .info .gameID span {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    line-height: 1.7592592593vh;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    background: linear-gradient(180deg,#fff,#9a9a9a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent
+}
+
+.crash .info .history {
+    margin-right: 2.2222222222vh;
+    padding: .8333333333vh 1.6666666667vh .8333333333vh 1.2962962963vh;
+    border: none;
+    background-color: #2d2d2d;
+    border-radius: .7407407407vh;
+    min-width: 11.3888888889vh;
+    height: 3.6111111111vh;
+    cursor: pointer
+}
+
+.crash .info .history .icon {
+    margin-right: .5555555556vh;
+    width: 1.9444444444vh;
+    height: 1.9444444444vh;
+    fill: url(#paint0_linear_55_3401)
+}
+
+.crash .info .history span {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    line-height: 1.7592592593vh;
+    text-transform: uppercase;
+    background: linear-gradient(180deg,#fff,#9a9a9a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent
+}
+
+.crash .info .players {
+    margin-right: 3.4685185185vh
+}
+
+.crash .info .players .icon {
+    margin-right: 1.2962962963vh;
+    width: 2.2222222222vh;
+    height: 2.7777777778vh;
+    fill: url(#paint0_linear_55_3401)
+}
+
+.crash .info .players .count {
+    font-size: 1.6666666667vh;
+    line-height: 1.9444444444vh;
+    color: #fff
+}
+
+.crash .info .players .count .crash .info .players .text {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: -.02em;
+    text-transform: uppercase
+}
+
+.crash .info .players .text {
+    font-size: 1.4814814815vh;
+    line-height: 1.7592592593vh;
+    color: #616161
+}
+
+.crash .info .bank .icon {
+    margin-right: 1.2537037037vh;
+    width: 3.0555555556vh;
+    height: 1.9444444444vh;
+    fill: url(#paint0_linear_55_3401)
+}
+
+.crash .info .bank .count {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.6666666667vh;
+    line-height: 1.9444444444vh;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #fff
+}
+
+.crash .info .bank .count .coins {
+    width: 1.5435185185vh;
+    height: 1.5435185185vh;
+    margin-left: .3703703704vh
+}
+
+.crash .info .bank .text {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    line-height: 1.7592592593vh;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #616161
+}
+
+.crash .empty {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center
+}
+
+.crash .empty .emptyBets .icon {
+    margin-bottom: 1.1574074074vh;
+    width: 2.5vh;
+    height: 2.5vh;
+    fill: #616161
+}
+
+.crash .empty .emptyBets .text {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.6666666667vh;
+    line-height: 1.9444444444vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #616161
+}
+
+.crash .betsWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: .7407407407vh;
+    padding-bottom: 1.4814814815vh;
+    height: 78.0555555556vh;
+    overflow-y: auto
+}
+
+.crash .betsWrapper.empty {
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0;
+    height: 75.2777777778vh;
+    border: .0925925926vh solid #1e1e1e;
+    border-radius: 1.6666666667vh
+}
+
+.crash .betsWrapper .betItem {
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .9259259259vh;
+    padding: 1.7592592593vh 1.6666666667vh;
+    background-color: #171717;
+    border-radius: 1.8518518519vh;
+    transition: background-color .2s ease;
+    overflow: hidden
+}
+
+.crash .betsWrapper .betItem:after,.crash .betsWrapper .betItem:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,rgba(61,231,165,0) 54.23%,rgba(61,231,165,.2)),#171717;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease
+}
+
+.crash .betsWrapper .betItem:before {
+    background: linear-gradient(90deg,rgba(237,29,79,0) 54.23%,rgba(237,29,79,.2)),#171717
+}
+
+.crash .betsWrapper .betItem:last-child {
+    margin-bottom: 0
+}
+
+.crash .betsWrapper .betItem .avatar-wrapper {
+    position: relative;
+    z-index: 2;
+    margin-right: auto
+}
+
+.crash .betsWrapper .betItem .amountWrapper .crash .betsWrapper .betItem .inGame .crash .betsWrapper .betItem .winner .amountWrapper .crash .betsWrapper .betItem .winner .multiplierExit {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5555555556vh;
+    padding: 0 1.4814814815vh;
+    height: 4.9074074074vh;
+    border-radius: 1.1111111111vh;
+    background-color: hsla(0,0%,100%,.1);
+    transition: background-color .2s ease
+}
+
+.crash .betsWrapper .betItem .inGameWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .9259259259vh
+}
+
+.crash .betsWrapper .betItem .amountWrapper>span {
+    color: #fff;
+    font-family: ProximaNova-Condensed,serif;
+    font-size: 1.6666666667vh;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 100%
+}
+
+.crash .betsWrapper .betItem .amountWrapper>img {
+    flex-shrink: 0;
+    width: 1.8518518519vh;
+    height: 1.8518518519vh;
+    -o-object-fit: contain;
+    object-fit: contain
+}
+
+.crash .betsWrapper .betItem .inGame>span {
+    color: hsla(0,0%,100%,.5);
+    font-family: ProximaNova-Condensed,serif;
+    font-size: 1.6666666667vh;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 100%;
+    text-transform: uppercase;
+    transition: color .2s ease
+}
+
+.crash .betsWrapper .betItem .inGame.crashed {
+    background-color: rgba(237,29,79,.25)
+}
+
+.crash .betsWrapper .betItem .inGame.crashed>span {
+    color: #fff
+}
+
+.crash .betsWrapper .betItem .winner .amountWrapper {
+    background-color: #2e463d
+}
+
+.crash .betsWrapper .betItem.crashed:before,.crash .betsWrapper .betItem.winnerBack:after {
+    opacity: 1
+}
+
+.crash .betsWrapper .betItem .winner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .9259259259vh
+}
+
+.crash .betsWrapper .betItem .winner .multiplierExit {
+    background-color: #3de7a5
+}
+
+.crash .betsWrapper .betItem .winner .multiplierExit>span {
+    color: #125239;
+    font-family: ProximaNova-Condensed,serif;
+    font-size: 1.7592592593vh;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 100%;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    text-align: center
+}
+
+.crash .betsWrapper .betItem .winner>svg {
+    z-index: 1;
+    position: absolute;
+    top: -5.6935185185vh;
+    right: -7.7305555556vh;
+    width: 29.8592592593vh;
+    height: 17.9731481481vh;
+    pointer-events: none
+}
+
+.crash .inputWrapper {
+    margin-right: 1.4814814815vh;
+    width: 30.5555555556vh;
+    position: relative;
+    background: #171717;
+    border-radius: 1.6666666667vh;
+    transition: opacity .2s ease
+}
+
+.crash .inputWrapper input {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2.2222222222vh;
+    line-height: 28px;
+    letter-spacing: -.02em;
+    color: #616161;
+    padding: 1.6666666667vh;
+    padding-right: 5.5555555556vh;
+    background: #111;
+    border: .0925925926vh solid #1e1e1e;
+    border-radius: 1.1111111111vh
+}
+
+.crash .inputWrapper .coins {
+    position: absolute;
+    top: 1.8981481481vh;
+    right: 1.8518518519vh;
+    width: 1.8518518519vh;
+    height: 1.8518518519vh
+}
+
+.crash .inputWrapper.disabled {
+    opacity: .5
+}
+
+.crash .main .historyWrapper {
+    margin-bottom: 1.4814814815vh;
+    padding-left: 2.7777777778vh;
+    height: 3.6111111111vh
+}
+
+.crash .main .historyWrapper .openHistoryBtn {
+    flex-shrink: 0;
+    margin-right: .5555555556vh;
+    padding: .8333333333vh 1.6666666667vh .8333333333vh 1.2962962963vh;
+    background: linear-gradient(180deg,#171717,#a3a3a3 676.39%);
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: #2d2d2d
+}
+
+.crash .main .historyWrapper .openHistoryBtn .icon {
+    margin-right: .7166666667vh;
+    width: 1.6203703704vh;
+    height: 1.6203703704vh;
+    fill: url(#paint0_linear_55_3401)
+}
+
+.crash .main .historyWrapper .openHistoryBtn span {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    line-height: 1.7592592593vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    background: linear-gradient(180deg,#fff,#9a9a9a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent
+}
+
+.crash .main .historyWrapper .historyItemScrollWrapper {
+    overflow-x: scroll
+}
+
+.crash .main .historyWrapper .historyItemScrollWrapper .historyItem {
+    flex-shrink: 0;
+    width: 5.2777777778vh;
+    margin-right: .5555555556vh;
+    padding: .9259259259vh 1.2962962963vh;
+    background: linear-gradient(180deg,#171717,#a3a3a3 676.39%);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    line-height: 1.7592592593vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #616161
+}
+
+.crash .main .historyWrapper .historyItemScrollWrapper.emptyHistoryItem {
+    overflow-x: hidden
+}
+
+.crash .main .historyWrapper .historyItemScrollWrapper.emptyHistoryItem .historyItem {
+    opacity: .5;
+    cursor: default
+}
+
+.crash .main .gameWrapper {
+    padding: 0 2.7777777778vh
+}
+
+.crash .main .gameWrapper .game {
+    position: relative;
+    margin-right: 2.7777777778vh;
+    max-width: 82.4074074074vh;
+    min-width: 59.2592592593vh;
+    width: 57.051282%
+}
+
+.crash .main .gameWrapper .game .gameInfo {
+    position: relative;
+    width: 100%;
+    min-height: 52.7777777778vh;
+    border-radius: 1.6666666667vh;
+    overflow: hidden
+}
+
+.crash .main .gameWrapper .game .gameInfo .back {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    -o-object-fit: cover;
+    object-fit: cover
+}
+
+.crash .main .gameWrapper .game .gameInfo .waitGame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1
+}
+
+.crash .main .gameWrapper .game .gameInfo .waitGame .title {
+    margin-bottom: 1.4814814815vh;
+    font-family: ProximaNova;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 3.7037037037vh;
+    color: #fbfbfb
+}
+
+.crash .main .gameWrapper .game .gameInfo .waitGame .sub-title {
+    margin-bottom: 1.0185185185vh;
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    color: hsla(0,0%,98%,.5)
+}
+
+.crash .main .gameWrapper .game .gameInfo .waitGame .time {
+    transform: translateX(-.6944444444vh);
+    position: relative;
+    margin-bottom: 2.037037037vh;
+    font-family: ProximaNova;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 1.8518518519vh;
+    color: #fbfbfb
+}
+
+.crash .main .gameWrapper .game .gameInfo .waitGame .time .sec {
+    position: absolute;
+    width: 4.6296296296vh;
+    left: -4.6296296296vh;
+    text-align: end
+}
+
+.crash .main .gameWrapper .game .gameInfo .waitGame .time .ms {
+    position: absolute;
+    width: 2.3148148148vh;
+    left: .462962963vh;
+    text-align: left
+}
+
+.crash .main .gameWrapper .game .gameInfo .waitGame .time .symbol {
+    position: absolute;
+    left: 2.7777777778vh;
+    text-align: left
+}
+
+.crash .main .gameWrapper .game .gameInfo .waitGame .airplane {
+    width: 12.962962963vh;
+    height: 4.8148148148vh;
+    animation: swaying-9e4482ae 3s ease infinite
+}
+
+@keyframes swaying-9e4482ae {
+    0% {
+        transform: rotate(-5deg) translateY(-5px)
+    }
+
+    50% {
+        transform: rotate(5deg) translateY(5px)
+    }
+
+    to {
+        transform: rotate(-5deg) translateY(-5px)
+    }
+}
+
+.crash .main .gameWrapper .game .gameInfo .game-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1
+}
+
+.crash .main .gameWrapper .game .gameInfo .game-wrapper .top {
+    position: absolute;
+    top: 4.6296296296vh;
+    margin: 0 auto
+}
+
+.crash .main .gameWrapper .game .gameInfo .game-wrapper .top .multiplierX {
+    height: 8.4259259259vh;
+    margin-bottom: .6481481481vh
+}
+
+.crash .main .gameWrapper .game .gameInfo .game-wrapper .top .multiplierX span {
+    font-family: ProximaNova;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 7.4074074074vh;
+    color: #fbfbfb;
+    line-height: 8.4259259259vh;
+    text-align: center
+}
+
+.crash .main .gameWrapper .game .gameInfo .game-wrapper .top .multiplierX .crash-value {
+    position: absolute;
+    left: calc(50% - .94907vh)
+}
+
+.crash .main .gameWrapper .game .gameInfo .game-wrapper .top .multiplierX .crash-value .int {
+    position: absolute;
+    right: 1.8518518519vh;
+    text-align: end
+}
+
+.crash .main .gameWrapper .game .gameInfo .game-wrapper .top .multiplierX .crash-value .fractional {
+    position: absolute;
+    left: 1.8518518519vh;
+    text-align: left;
+    width: 9.2592592593vh
+}
+
+.crash .main .gameWrapper .game .gameInfo .game-wrapper .top .multiplierX .crash-value .symbol {
+    position: absolute;
+    left: 11.1111111111vh;
+    text-align: left
+}
+
+.crash .main .gameWrapper .game .gameInfo .game-wrapper .top .multiplierX.crashed span {
+    color: #e81c5a
+}
+
+.crash .main .gameWrapper .game .gameInfo .game-wrapper .top .text {
+    font-family: ProximaNova;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2962962963vh;
+    line-height: 1.4814814815vh;
+    text-align: center;
+    color: hsla(0,0%,98%,.5)
+}
+
+.crash .main .gameWrapper .game .gameInfo .game-wrapper .top .winnig {
+    margin-top: 1.0185185185vh
+}
+
+.crash .main .gameWrapper .game .gameInfo .game-wrapper .top .winnig div {
+    font-family: ProximaNova;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 1.8518518519vh;
+    color: #fbfbfb
+}
+
+.crash .main .gameWrapper .game .gameInfo .game-wrapper .top .winnig .plus {
+    margin-right: .3703703704vh
+}
+
+.crash .main .gameWrapper .game .gameInfo .game-wrapper .top .winnig .value {
+    margin-right: .2777777778vh
+}
+
+.crash .main .gameWrapper .game .gameInfo .game-wrapper .top .winnig .coins {
+    width: 1.2962962963vh;
+    height: 1.2962962963vh
+}
+
+.crash .main .gameWrapper .game .gameInfo .game-wrapper canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0
+}
+
+.crash .main .gameWrapper .game .gameInfo .game-wrapper .flashbang {
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent
+}
+
+.crash .main .gameWrapper .game .placeBet {
+    margin: auto;
+    width: 59.2592592593vh;
+    height: 25.462962963vh
+}
+
+.crash .main .gameWrapper .game .placeBet .betWrapper {
+    margin-bottom: .5555555556vh;
+    padding: 1.6666666667vh;
+    height: 11.7592592593vh;
+    background: #171717;
+    border-radius: 1.6666666667vh
+}
+
+.crash .main .gameWrapper .game .placeBet .betWrapper .bet {
+    margin-right: .9259259259vh
+}
+
+.crash .main .gameWrapper .game .placeBet .betWrapper .bet .betInput {
+    background: #111;
+    border-radius: 1.1111111111vh;
+    width: 27.5vh;
+    height: 5.9259259259vh;
+    margin-right: 0;
+    transition: opacity .2s ease
+}
+
+.crash .main .gameWrapper .game .placeBet .betWrapper .bet .betInput input {
+    color: #616161;
+    transition: color .2s ease
+}
+
+.crash .main .gameWrapper .game .placeBet .betWrapper .bet .betInput input.focus {
+    color: #fff
+}
+
+.crash .main .gameWrapper .game .placeBet .betWrapper .bet .betInput.disabled {
+    opacity: .5;
+    cursor: default
+}
+
+.crash .main .gameWrapper .game .placeBet .betWrapper .winnig {
+    width: 27.5vh
+}
+
+.crash .main .gameWrapper .game .placeBet .betWrapper .winnig .winnigValue {
+    position: relative;
+    padding: 1.6666666667vh;
+    height: 5.9259259259vh;
+    background: #2d2d2d;
+    border-radius: 12px;
+    transition: opacity .2s ease
+}
+
+.crash .main .gameWrapper .game .placeBet .betWrapper .winnig .winnigValue .value {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2.2222222222vh;
+    line-height: 2.5925925926vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #fff
+}
+
+.crash .main .gameWrapper .game .placeBet .betWrapper .winnig .winnigValue .coins {
+    position: absolute;
+    top: 1.8981481481vh;
+    right: 1.8518518519vh;
+    width: 1.8518518519vh;
+    height: 1.8518518519vh
+}
+
+.crash .main .gameWrapper .game .placeBet .betWrapper .winnig .winnigValue.disabled {
+    opacity: .5
+}
+
+.crash .main .gameWrapper .game .placeBet .betWrapper .title {
+    margin-bottom: .7407407407vh;
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    line-height: 1.7592592593vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #747474
+}
+
+.crash .main .gameWrapper .game .placeBet .multiplier {
+    padding: 1.1111111111vh;
+    height: 13.1481481481vh;
+    background: #171717;
+    border-radius: 1.6666666667vh
+}
+
+.crash .main .gameWrapper .game .placeBet .multiplier .multiplierInput {
+    position: relative;
+    background: #111;
+    border-radius: 1.1111111111vh;
+    width: 18.5185185185vh;
+    height: 4.3518518519vh;
+    margin-right: .5555555556vh;
+    transition: opacity .2s ease
+}
+
+.crash .main .gameWrapper .game .placeBet .multiplier .multiplierInput .value {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1.2962962963vh;
+    border: .0925925926vh solid #1e1e1e;
+    border-radius: 1.1111111111vh;
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    line-height: 1.7592592593vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #616161
+}
+
+.crash .main .gameWrapper .game .placeBet .multiplier .multiplierInput input {
+    padding: 1.2962962963vh;
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    text-align: center;
+    line-height: 1.7592592593vh;
+    color: #616161;
+    opacity: 0;
+    transition: color .2s ease
+}
+
+.crash .main .gameWrapper .game .placeBet .multiplier .multiplierInput input.focus {
+    color: #fff
+}
+
+.crash .main .gameWrapper .game .placeBet .multiplier .multiplierInput.disabled {
+    opacity: .5;
+    cursor: default
+}
+
+.crash .main .gameWrapper .game .placeBet .multiplier .multiplierItem {
+    margin-right: .5555555556vh;
+    width: 7.1481481481vh;
+    height: 4.3518518519vh;
+    background: #2d2d2d;
+    border-radius: 1.1111111111vh;
+    border: none;
+    cursor: pointer;
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    line-height: 1.7592592593vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #fff;
+    transition: background .2s ease,color .2s ease,opacity .2s ease
+}
+
+.crash .main .gameWrapper .game .placeBet .multiplier .multiplierItem:last-child {
+    margin-right: 0
+}
+
+.crash .main .gameWrapper .game .placeBet .multiplier .multiplierItem.selected {
+    background: rgba(232,28,90,.25);
+    color: #e81c5a
+}
+
+.crash .main .gameWrapper .game .placeBet .multiplier .multiplierItem.disabled {
+    opacity: .5;
+    cursor: default
+}
+
+.crash .main .gameWrapper .game .placeBet .multiplier .makeBet {
+    margin-top: .9259259259vh;
+    height: 5.6481481481vh;
+    background: linear-gradient(180deg,#e81c5a,#9f1d44);
+    border-radius: 1.1111111111vh;
+    border: none;
+    cursor: pointer;
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.6666666667vh;
+    line-height: 1.9444444444vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #fff;
+    transition: opacity .2s ease
+}
+
+.crash .main .gameWrapper .game .placeBet .multiplier .makeBet.disabled {
+    opacity: .5;
+    cursor: default
+}
+
+.crash .main .gameWrapper .game .placeBet .multiplier .makeBet.take {
+    background: linear-gradient(180deg,#3de7a5,#22a874);
+    color: #125239
+}
+
+.crash .main .gameWrapper .bets {
+    width: 59.2592592593vh
+}
+
+.crash .historyList {
+    padding: 0 2.7777777778vh
+}
+
+.crash .historyList .title {
+    margin-bottom: .9259259259vh;
+    padding: 2.2222222222vh;
+    height: 7.7777777778vh;
+    background: #171717;
+    border-radius: 1.6666666667vh
+}
+
+.crash .historyList .title .icon {
+    margin-right: 1.2037037037vh;
+    width: 2.7777777778vh;
+    height: 2.7777777778vh;
+    fill: url(#paint0_linear_55_3401)
+}
+
+.crash .historyList .title .text {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2.2222222222vh;
+    line-height: 2.5925925926vh;
+    display: flex;
+    align-items: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #fff
+}
+
+.crash .historyList .list {
+    padding-left: .7407407407vh;
+    height: 83.7037037037vh;
+    padding-bottom: .1851851852vh;
+    overflow-y: auto;
+    flex-wrap: wrap
+}
+
+.crash .historyList .list::-webkit-scrollbar {
+    display: none
+}
+
+.crash .historyList .list .historyGameItem {
+    margin: 0 .7407407407vh .7407407407vh 0;
+    padding: 1.6666666667vh;
+    width: 23.1481481481vh;
+    height: 17.4074074074vh;
+    background: #171717;
+    border-radius: 1.6666666667vh;
+    border: none;
+    cursor: pointer
+}
+
+.crash .historyList .list .historyGameItem .gameID {
+    margin-bottom: .7407407407vh;
+    height: 3.6111111111vh;
+    background: #2d2d2d;
+    border-radius: 1.1111111111vh
+}
+
+.crash .historyList .list .historyGameItem .gameID span {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    line-height: 1.7592592593vh;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    background: linear-gradient(180deg,#fff,#9a9a9a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent
+}
+
+.crash .historyList .list .historyGameItem .amountWrapper {
+    margin-bottom: .7407407407vh;
+    height: 4.4444444444vh;
+    background: #2d2d2d;
+    border-radius: 1.1111111111vh
+}
+
+.crash .historyList .list .historyGameItem .amountWrapper .amount {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.4814814815vh;
+    line-height: 1.7592592593vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #fff
+}
+
+.crash .historyList .list .historyGameItem .amountWrapper .amount .coins {
+    margin-left: .525vh;
+    width: 1.5435185185vh;
+    height: 1.5435185185vh
+}
+
+.crash .historyList .list .historyGameItem .crashAndPlayers {
+    height: 4.537037037vh
+}
+
+.crash .historyList .list .historyGameItem .crashAndPlayers .crashed .crash .historyList .list .historyGameItem .crashAndPlayers .players {
+    height: 100%;
+    width: 9.6296296296vh;
+    background: #2d2d2d;
+    border-radius: 1.1111111111vh;
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.6666666667vh;
+    line-height: 1.9444444444vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase
+}
+
+.crash .historyList .list .historyGameItem .crashAndPlayers .crashed {
+    margin-right: .8333333333vh
+}
+
+.crash .historyList .list .historyGameItem .crashAndPlayers .players {
+    color: #fff
+}
+
+.crash .historyList .list .historyGameItem .crashAndPlayers .players .icon {
+    margin-right: .462962963vh;
+    width: 1.1111111111vh;
+    height: 1.3888888889vh;
+    fill: url(#paint0_linear_55_3401)
+}
+
+.crash .historyList .empty-list {
+    font-family: Roboto-Condensed,sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.6666666667vh;
+    line-height: 1.9444444444vh;
+    text-align: center;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+    color: #616161;
+    margin: auto
+}
+
+.crash .historyItem {
+    padding: 0 2.7777777778vh
+}
+
+.avatar-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.2962962963vh
+}
+
+.avatar-wrapper .avatar {
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5vh;
+    height: 5vh;
+    border: .0925925926vh solid hsla(0, 0%, 100%, .05);
+    background-color: hsla(0, 0%, 7%, .5);
+    border-radius: .9259259259vh
+}
+
+.avatar-wrapper .avatar>img,
+.avatar-wrapper .avatar>svg {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    fill: #353535;
+    -o-object-fit: contain;
+    object-fit: contain
+}
+
+.avatar-wrapper .avatar .you {
+    position: absolute;
+    bottom: -.6481481481vh;
+    left: 0;
+    right: 0
+}
+
+.avatar-wrapper .content .main-info,
+.avatar-wrapper .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: .9259259259vh
+}
+
+.avatar-wrapper .content .main-info>p {
+    color: #fff;
+    font-family: ProximaNova-Condensed, serif;
+    font-size: 1.4814814815vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    text-transform: uppercase
+}
+
+.avatar-wrapper .content .main-info .more-info .static,
+.avatar-wrapper .content .main-info .more-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .5555555556vh
+}
+
+.avatar-wrapper .content .main-info .more-info .static>p {
+    color: hsla(0, 0%, 100%, .5);
+    font-family: ProximaNova-Condensed, serif;
+    font-size: 1.2962962963vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%
+}
+
+.avatar-wrapper .content .main-info .more-info .serverName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .2777777778vh .3703703704vh;
+    border-radius: .5555555556vh;
+    background-color: #24583b
+}
+
+.avatar-wrapper .content .main-info .more-info .serverName>p {
+    color: #fff;
+    font-family: ProximaNova-Condensed, serif;
+    font-size: .9259259259vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    text-transform: uppercase
+}
+
+.avatar-wrapper .content>p {
+    color: hsla(0, 0%, 100%, .5);
+    font-family: ProximaNova-Condensed, serif;
+    font-size: 1.4814814815vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    text-transform: uppercase
+}
+
+.avatar-wrapper .you {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 .3703703704vh;
+    margin: 0 auto;
+    height: 1.2962962963vh;
+    width: -moz-fit-content;
+    width: fit-content;
+    border-radius: .5555555556vh;
+    background-color: #5d75ed
+}
+
+.avatar-wrapper .you>p {
+    color: hsla(0, 0%, 100%, .75);
+    font-family: ProximaNova-Condensed, serif;
+    font-size: .9259259259vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
+    text-transform: uppercase
+}

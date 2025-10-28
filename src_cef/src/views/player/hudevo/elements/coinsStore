@@ -1,0 +1,9 @@
+import { writable } from 'svelte/store';
+
+export const coins = writable('500');
+export const time = writable('04:59');
+export const received = writable(0);
+export const opened = writable(false);
+
+export const open = () => opened.set(true);
+export const close = () => opened.set(false);

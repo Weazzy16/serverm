@@ -1,0 +1,88 @@
+.petrol-menu {
+    position: absolute;
+    background-image: url('../images/background.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: -375px;
+    height: 550px;
+    width: 750px;
+    left: 50%;
+    bottom: 0;
+}
+
+.petrol-menu input {
+    text-align: center;
+    margin-left: 290px;
+    margin-top: 180px;
+    background: none;
+    font-size: 25pt;
+    border: none;
+    height: 30px;
+    width: 140px;
+    float: left;
+}
+
+.petrol-menu .btns {
+    margin-left: 60px;
+    margin-top: 365px;
+    height: 136px;
+    width: 120px;
+    float: left;
+}
+
+.petrol-menu .btn-gov {
+    margin-left: -160px;
+    margin-top: 265px;
+    height: 34px;
+    width: 120px;
+    float: left;
+}
+
+.petrol-menu .btn-full {
+    margin-left: -10px;
+    margin-top: 265px;
+    height: 34px;
+    width: 120px;
+    float: left;
+}
+
+.petrol-menu .btn-yes {
+    margin-left: -250px;
+    margin-top: 330px;
+    height: 90px;
+    width: 90px;
+    float: left;
+}
+
+.petrol-menu .btn-no {
+    margin-left: -105px;
+    margin-top: 330px;
+    height: 90px;
+    width: 90px;
+    float: left;
+}
+
+.petrol-menu .btn {
+    cursor: pointer;
+    height: 34px;
+    width: 120px;
+}
+
+.petrol-menu .btn2 {
+    cursor: pointer;
+    height: 90px;
+    width: 90px;
+}
+
+.petrol-menu .no {
+    margin-top: 0px;
+}
+
+.petrol-menu input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+.petrol-menu input::-webkit-outer-spin-button,
+.petrol-menu input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}

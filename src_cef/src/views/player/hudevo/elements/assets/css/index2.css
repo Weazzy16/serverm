@@ -1,0 +1,1003 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+  }
+  body {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+  }
+  .animateOpacityOn {
+    opacity: 0;
+    animation: open-hud 1s;
+    animation-fill-mode: forwards;
+  }  
+  .animateOpacityBeh{ 
+    opacity: 1;
+    animation: beh .7s;
+    animation-fill-mode: forwards;
+  }
+  .hud_wrapper {
+    font-family: ProximaNova;
+  }
+  .top-right {
+    position: absolute;
+    top: 0vw;
+    gap:0.1vh;
+    right:1vw
+  }
+  .hud_wrapper .right {
+    right: 1vw;
+  }
+  .hud_wrapper .right .logotype img{
+    right: 1vw;
+    position: fixed;
+  }
+  .logotype img{
+    right: 0vh;
+    position: absolute;
+    width:6vw;
+  }
+  .info_users{
+    margin-top: 1.9vw;
+    display: flex;
+    gap:1vw;
+  }
+  .hud_wrapper .right .server{
+    color: white;
+    display: flex;
+    float: left;
+    /* width: 12vw; */
+    margin: 0 -4vw .6vw -4.3vw;
+    align-items: center;
+  }
+  .hud_wrapper .right .server p{
+    width: 6.6vw;
+    font-size: .813vw;
+    margin: 0 .3vw 0 .4vw;
+    text-align: end;
+  }
+  .hud_wrapper .right .server span{
+    font-size: .55vw;
+    background: #0000005c;
+    padding: .1vw .6vw;
+    font-weight: 100;
+    border-radius: .5vw;
+  }
+  .hud_wrapper .right .player{
+    text-align: end;
+    float: right;
+    opacity: 0.9;
+    margin: 0 0 0 3.5vw;
+  }
+  .hud_wrapper .right .player p{
+    color: white;
+    font-size: .8vw;
+  }
+  .hud_wrapper .mappings {
+    position: absolute;
+    bottom: .4vw;
+    padding: 0 .6vw;
+  }
+  .hud_wrapper .text-map {
+    color: white;
+    font-size: 1.02vw;
+    width: 22vw;
+  }
+  .hud_wrapper .mappings .wrapper {
+    margin: 0 0 .65vw;
+  }
+  .hud_wrapper .mappings .wrapper .time{
+    display: flex;
+    align-items: center;
+  }
+  .hud_wrapper .mappings .wrapper .time p{
+    width: 3vw;
+  }
+  .hud_wrapper .mappings .wrapper .time span{
+    font-size: .78vw;
+    opacity: .7;
+  }
+  .hud_wrapper .mappings .wrapper .date p{
+    font-size: .84vw;
+    opacity: .7;
+  }
+  .hud_wrapper .mappings .wrapper .gps p:nth-child(1){
+    font-size: 1.08vw;
+  }
+  .hud_wrapper .mappings .wrapper .gps p:nth-child(2){
+    font-size: .867vw;
+    opacity: .7;
+  }
+  .hud_wrapper .mappings .wrapper .money p:nth-child(1){
+    display: flex;
+    align-items: center;
+    font-size: 1.05vw;
+  }
+  .hud_wrapper .mappings .wrapper .money p:nth-child(2){
+    display: flex;
+    align-items: center;
+    font-size: .867vw;
+    opacity: .7;
+  }
+  .hud_wrapper .mappings .wrapper .money p img{
+    width: 1vw;
+    margin: 0 .5vw 0 0;
+  }
+  .hud_wrapper .mappings .microphone {
+    margin: 0 0 -1.6vw 8.4vw;
+  }
+  .hud_wrapper .mappings .microphone img{
+    width: 1.5vw;
+  }
+  .hud_wrapper .carhud-container-content .car-status .fuel-status__text-fuel ,
+  .hud_wrapper .carhud-container-content .car-status .fuel-status__text-maxFuel ,
+  .hud_wrapper .carhud-container-content .car-status .oil-status__text ,
+  .hud_wrapper .carhud-container-simple .hud_container.additional-info ,
+  .hud_wrapper .carhud-container .progress-ring-wrapper .progress-ring-container svg {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center
+  }
+  
+  .hud_wrapper .carhud-container-content ,
+  .main-cover {
+      position: absolute;
+      left: 0;
+      top: 0
+  }
+  .hud_wrapper .carhud {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      -webkit-transform-origin: right bottom;
+      transform-origin: right bottom;
+      margin-right: 1.94444vh;
+      padding-bottom: 1.01852vh
+  }
+  
+  .hud_wrapper .carhud-container {
+      position: relative;
+      inline-size: 25.09259vh;
+      block-size: 25.09259vh
+  }
+  
+  .hud_wrapper .carhud-container-background {
+      position: absolute;
+      inline-size: 24.4488vh;
+      block-size: 24.34898vh;
+      left: .98%;
+      top: 1.07%;
+      background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(rgba(0, 0, 0, .3)), to(transparent));
+      background: linear-gradient(180deg, transparent, rgba(0, 0, 0, .3), transparent);
+      border-radius: 50%
+  }
+  
+  .hud_wrapper .carhud-container-content {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      inline-size: 100%;
+      block-size: 100%;
+      padding: 3.33333vh;
+      z-index: 4
+  }
+  
+  .hud_wrapper .carhud-container-content__picture-attention {
+      inline-size: 1.94444vh;
+      min-block-size: 1.2963vh;
+      fill: hsla(0, 0%, 100%, .25)
+  }
+  
+  .hud_wrapper .carhud-container-content__picture-attention.active {
+      fill: #e51a22
+  }
+  
+  .hud_wrapper .carhud-container-content .velocities {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+      -webkit-margin-before: 1.01852vh;
+      margin-block-start: 1.01852vh
+  }
+  .hud_wrapper .carhud-container-content .velocities-arrow__picture {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      inline-size: 1.2963vh;
+      block-size: 1.38889vh;
+      fill: hsla(0, 0%, 100%, .1)
+  }
+  .hud_wrapper .carhud-container-content .velocities-arrow.active svg {
+      -webkit-animation: blink-arrow-data-v-da12c228 .5s ease infinite alternate;
+      animation: blink-arrow-data-v-da12c228 .5s ease infinite alternate
+  }
+  @-webkit-keyframes blink-arrow-data-v-da12c228 {
+      0% {
+          fill: hsla(0, 0%, 100%, .1)
+      }
+      to {
+          fill: #ffc130
+      }
+  }
+  @keyframes blink-arrow-data-v-da12c228 {
+      0% {
+          fill: hsla(0, 0%, 100%, .1)
+      }
+      to {
+          fill: #ffc130
+      }
+  }
+  .hud_wrapper .carhud-container-content .velocities__picture-arrowRight {
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg)
+  }
+  .hud_wrapper .carhud-container-content .velocities-content {
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+      -webkit-margin-end: 1.48148vh;
+      margin-inline-end: 1.48148vh;
+      -webkit-margin-start: 1.48148vh;
+      margin-inline-start: 1.48148vh;
+      inline-size: 7.40741vh;
+      block-size: 2.40741vh;
+      overflow: hidden
+  }
+  .hud_wrapper .carhud-container-content .velocities-content-animated {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      inline-size: 100%;
+      block-size: 100%;
+      -webkit-margin-start: 0;
+      margin-inline-start: 0;
+      -webkit-transition: margin-left .3s ease;
+      transition: margin-left .3s ease
+  }
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-0 .velocity:nth-child(2),
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-1 .velocity:first-child,
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-1 .velocity:nth-child(3),
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-2 .velocity:nth-child(2),
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-2 .velocity:nth-child(4),
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-3 .velocity:nth-child(3),
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-3 .velocity:nth-child(5),
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-4 .velocity:nth-child(4),
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-4 .velocity:nth-child(6),
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-5 .velocity:nth-child(5),
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-5 .velocity:nth-child(7),
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-6 .velocity:nth-child(6),
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-6 .velocity:nth-child(8),
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-7 .velocity:nth-child(7) {
+      font-size: 1.38889vh;
+      color: hsla(0, 0%, 100%, .6)
+  }
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-0 .velocity:first-child,
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-1 .velocity:nth-child(2),
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-2 .velocity:nth-child(3),
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-3 .velocity:nth-child(4),
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-4 .velocity:nth-child(5),
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-5 .velocity:nth-child(6),
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-6 .velocity:nth-child(7),
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-7 .velocity:nth-child(8) {
+      font-size: 1.94444vh;
+      color: #fff
+  }
+  .hud_wrapper .carhud-container-content .velocities-content-animated .velocity {
+      font-family: ProximaNova-Condensed, sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 1.11852vh;
+      color: hsla(0, 0%, 100%, .6);
+      -webkit-margin-end: 1.2037vh;
+      margin-inline-end: 2.2037vh;
+      -webkit-transition: color .3s ease, font-size .3s ease;
+      transition: color .3s ease, font-size .3s ease
+  }
+  .hud_wrapper .carhud-container-content .velocities-content-animated .velocity:last-child {
+      -webkit-margin-end: 0;
+      margin-inline-end: 0
+  }
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-0 {
+      -webkit-margin-start: 3.33333vh;
+      margin-inline-start: 3.33333vh
+  }
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-1 {
+      -webkit-margin-start: 1.48148vh;
+      margin-inline-start: 1.48148vh
+  }
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-3 {
+      -webkit-margin-start: -1.75926vh;
+      margin-inline-start: -1.75926vh
+  }
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-4 {
+      -webkit-margin-start: -3.14815vh;
+      margin-inline-start: -3.14815vh
+  }
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-5 {
+      -webkit-margin-start: -4.62963vh;
+      margin-inline-start: -4.62963vh
+  }
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-6 {
+      -webkit-margin-start: -6.48148vh;
+      margin-inline-start: -6.48148vh
+  }
+  .hud_wrapper .carhud-container-content .velocities-content-animated.velocity-7 {
+      -webkit-margin-start: -7.87037vh;
+      margin-inline-start: -7.87037vh
+  }
+  .hud_wrapper .carhud-container-content .car-status {
+      -webkit-box-orient: horizontal;
+      -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      inline-size: 19.25926vh;
+      block-size: 9.81481vh
+  }
+  .hud_wrapper .carhud-container-content .car-status .oil-status,
+  .hud_wrapper .carhud-container-content .car-status {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-direction: normal;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center
+  }
+  .hud_wrapper .carhud-container-content .car-status .oil-status {
+      -webkit-box-orient: vertical;
+      -ms-flex-flow: column nowrap;
+      flex-flow: column nowrap;
+      inline-size: 4.81481vh
+  }
+  .hud_wrapper .carhud-container-content .car-status .oil-status svg {
+      inline-size: 1.38889vh;
+      block-size: 1.94444vh;
+      fill: hsla(0, 0%, 100%, .25)
+  }
+  .hud_wrapper .carhud-container-content .car-status .oil-status.warning svg {
+      fill: #ffb300
+  }
+  .hud_wrapper .carhud-container-content .car-status .oil-status.threat svg {
+      fill: #e51a22
+  }
+  .hud_wrapper .carhud-container-content .car-status .oil-status__text {
+      font-family: ProximaNova-Condensed, sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 1.38889vh;
+      color: #fff;
+      -webkit-margin-before: .46296vh;
+      margin-block-start: .46296vh;
+      min-inline-size: 1.48148vh
+  }
+  .hud_wrapper .carhud-container-content .car-status .speed-status {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+      flex-flow: column nowrap;
+      max-inline-size: 7.77778vh
+  }
+  .hud_wrapper .hud_wrapper .carhud-container-content .car-status .speed-status__text-speed {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      font-family: ProximaNova-Condensed, sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      margin-top: 3vh;
+      font-size: 6.57407vh;
+      min-inline-size: 8.61111vh;
+      color: #fff
+  }
+  .hud_wrapper .carhud-container-content .car-status .speed-status__text-speedType {
+      font-family: ProximaNova-Condensed, sans-serif;
+      font-weight: 100;
+      font-style: normal;
+      margin-top: 2vh;
+      font-size: 1.38889vh;
+      color: #fff
+  }
+  .hud_wrapper .carhud-container-content .car-status .fuel-status {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+      flex-flow: column nowrap;
+      min-inline-size: 1.75926vh;
+      inline-size: 4.81481vh
+  }
+  .hud_wrapper .carhud-container-content .car-status .fuel-status svg {
+      inline-size: 1.57407vh;
+      block-size: 1.94444vh;
+      fill: hsla(0, 0%, 100%, .25)
+  }
+  .hud_wrapper .carhud-container-content .car-status .fuel-status.active svg {
+      fill: #e51a22
+  }
+  .hud_wrapper .carhud-container-content .car-status .fuel-status.active .fuel-status__text-fuel {
+      color: #e51a22
+  }
+  .hud_wrapper .carhud-container-content .car-status .fuel-status__text-fuel {
+      font-family: ProximaNova-Condensed, sans-serif;
+      font-weight: 100;
+      font-style: normal;
+      font-size: 1.38889vh;
+      min-inline-size: 1.75926vh;
+      color: #fff;
+      -webkit-border-after: .09259vh solid hsla(0, 0%, 100%, .5);
+      border-block-end: .09259vh solid hsla(0, 0%, 100%, .5);
+      -webkit-margin-before: .46296vh;
+      margin-block-start: .46296vh
+  }
+  .hud_wrapper .carhud-container-content .car-status .fuel-status__text-maxFuel {
+      font-family: ProximaNova-Condensed, sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 1.38889vh;
+      min-inline-size: 1.75926vh;
+      color: #fff
+  }
+  .hud_wrapper .carhud-container-content .mileage {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+      -webkit-margin-before: 1.01852vh;
+      margin-block-start: 1.01852vh
+  }
+  .hud_wrapper .carhud-container-content .mileage__text-value {
+      font-family: ProximaNova-Condensed, sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 1.94444vh;
+      color: #fff
+  }
+  .hud_wrapper .carhud-container-content .mileage__text-mileageType {
+      font-family: ProximaNova-Condensed, sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 1.2037vh;
+      color: #fff;
+      -webkit-margin-start: .27778vh;
+      margin-inline-start: .27778vh
+  }
+  .hud_wrapper .carhud-container-content .designations {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+      -webkit-margin-before: -.74074vh;
+      margin-block-start: -.74074vh
+  }
+  .hud_wrapper .carhud-container .progress-ring-wrapper {
+      inline-size: 100%;
+      block-size: 100%;
+      position: relative;
+      z-index: 20;
+  }
+  .hud_wrapper .carhud-container .progress-ring-wrapper .progress-ring-container {
+      -webkit-transform-origin: center;
+      transform-origin: center;
+      -webkit-transform: rotate(-220deg);
+      transform: rotate(-220deg)
+  }
+  .hud_wrapper .carhud-container .progress-ring-wrapper .progress-ring-container svg {
+      inline-size: 100%;
+      block-size: 100%
+  }
+  .hud_wrapper .carhud-container .progress-ring-wrapper .progress-ring-container svg .progress-ring__circle {
+      stroke: #fff
+  }
+  .hud_wrapper .carhud-container .progress-ring-wrapper .progress-ring-container svg .progress-ring__circle.animated {
+      -webkit-animation: blink-data-v-da12c228 .1s linear infinite alternate;
+      animation: blink-data-v-da12c228 .1s linear infinite alternate
+  }
+  @keyframes blink-data-v-da12c228 {
+      0% {
+          stroke: #fff
+      }
+      to {
+          stroke: #ff3131
+      }
+  }
+  .hud_wrapper .carhud-container .progress-ring-holder-rotating {
+      position: absolute;
+      left: .27778vh;
+      top: .27778vh;
+      -webkit-transform: rotate(-130deg);
+      transform: rotate(-130deg);
+      inline-size: 98.19%;
+      block-size: 98%;
+      -webkit-transform-origin: center;
+      transform-origin: center;
+      z-index: 30
+  }
+  .hud_wrapper .carhud-container .progress-ring-holder-rotating .progress-ring-holder-wrapper {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: start;
+      -ms-flex-align: start;
+      align-items: flex-start;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      inline-size: 100%;
+      block-size: 100%
+  }
+  .hud_wrapper .carhud-container .progress-ring-holder-rotating .progress-ring-holder-wrapper .progress-ring-holder {
+      inline-size: .37037vh;
+      block-size: 2.22222vh;
+      background: #e51a22
+  }
+  .hud_wrapper .carhud-container .progress-ring-info.left {
+      position: absolute;
+      top: 0;
+      left: 0;
+      inline-size: 100%;
+      block-size: 100%;
+      -webkit-transform-origin: center;
+      transform-origin: center;
+      -webkit-mask-image: url(https://cloud.ru/img/main/hud/speedometer/left.svg);
+      mask-image: url(https://cloud.-rp.ru/img/main/hud/speedometer/left.svg);
+      -webkit-transform: translate(.46296vh);
+      transform: translate(.46296vh);
+      z-index: 40
+  }
+  .hud_wrapper .carhud-container .progress-ring-info.left .progress-ring-container {
+      -webkit-transform: rotate(-218deg);
+      transform: rotate(-218deg)
+  }
+  .hud_wrapper .carhud-container .progress-ring-info.right {
+      position: absolute;
+      top: 0;
+      left: 0;
+      inline-size: 100%;
+      block-size: 100%;
+      -webkit-transform-origin: center;
+      transform-origin: center;
+      -webkit-mask-image: url(https://cloud.-rp.ru/img/main/hud/speedometer/right.svg);
+      mask-image: url(https://cloud.-rp.ru/img/main/hud/speedometer/right.svg);
+      -webkit-transform: translate(-vh(5px));
+      transform: translate(-vh(5px));
+      z-index: 40
+  }
+  .hud_wrapper .carhud-container .progress-ring-info.right .progress-ring-container {
+      -webkit-transform: rotate(40deg);
+      transform: rotate(40deg)
+  }
+  .hud_wrapper .carhud-container-simple {
+      display: -webkit-inline-box;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      block-size: 5.09259vh;
+      -webkit-margin-end: 1.01852vh;
+      margin-inline-end: 1.01852vh
+  }
+  .hud_wrapper .carhud-container-simple .hud_container ,
+  .hud_wrapper .carhud-container-simple {
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row
+  }
+  .hud_wrapper .carhud-container-simple .hud_container {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -ms-flex-pack: distribute;
+      justify-content: space-around;
+      background-color: rgba(0, 0, 0, .5);
+      padding: .64815vh 2.31481vh
+  }
+  .hud_wrapper .carhud-container-simple .hud_container.additional-info {
+      padding: 1.38889vh;
+      -webkit-margin-start: 1px;
+      margin-inline-start: 1px
+  }
+  .hud_wrapper .carhud-container-simple .speedometer {
+      font-family: ProximaNova, sans-serif;
+      font-weight: 100;
+      font-style: normal;
+      font-size: 2.31481vh;
+      color: #fbc900;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      inline-size: 17.12963vh;
+      block-size: 100%
+  }
+  .hud_wrapper .carhud-container-simple .speedometer img {
+      inline-size: 2.22222vh
+  }
+  .hud_wrapper .carhud-container-simple .gas {
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-margin-start: 1px;
+      margin-inline-start: 1px;
+      block-size: 100%
+  }
+  .hud_wrapper .carhud-container-simple .gas .fuel {
+      -webkit-margin-start: 1.38889vh;
+      margin-inline-start: 1.38889vh;
+      font-size: 1.94444vh
+  }
+  .hud_wrapper .carhud-container-simple .gas .fuel__text-current {
+      font-family: ProximaNova, sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: auto;
+      color: #fff
+  }
+  .hud_wrapper .carhud-container-simple .gas .fuel__text-max {
+      font-family: ProximaNova, sans-serif;
+      font-weight: 100;
+      font-style: normal;
+      font-size: auto;
+      color: hsla(0, 0%, 100%, .5)
+  }
+  .hud_wrapper .carhud-container-simple .gas img {
+      inline-size: 2.12963vh
+  }
+  .hud_wrapper .progress-ring__circle-background {
+      stroke: hsla(0, 0%, 100%, .05)
+  }
+  .hud_wrapper .highBeam {
+      -webkit-margin-before: .27778vh;
+      margin-block-start: .27778vh;
+      -webkit-margin-end: 1.01852vh;
+      margin-inline-end: 1.01852vh
+  }
+  .hud_wrapper .highBeam svg {
+      inline-size: 1.94444vh;
+      fill: hsla(0, 0%, 100%, .25)
+  }
+  .hud_wrapper .dippedBeam {
+      -webkit-margin-before: 1.2037vh;
+      margin-block-start: 1.2037vh;
+      -webkit-margin-end: 1.11111vh;
+      margin-inline-end: 1.11111vh
+  }
+  .hud_wrapper .dippedBeam svg {
+      inline-size: 1.94444vh;
+      fill: hsla(0, 0%, 100%, .25)
+  }
+  .hud_wrapper .belt {
+      -webkit-margin-before: 1.2037vh;
+      margin-block-start: 1.2037vh;
+      -webkit-margin-end: 1.2037vh;
+      margin-inline-end: 1.2037vh
+  }
+  .hud_wrapper .belt svg {
+      inline-size: 1.48148vh;
+      fill: hsla(0, 0%, 100%, .25)
+  }
+  .hud_wrapper .start {
+      -webkit-margin-before: 1.2037vh;
+      margin-block-start: 1.2037vh;
+      -webkit-margin-end: 1.11111vh;
+      margin-inline-end: 1.11111vh
+  }
+  .hud_wrapper .start svg {
+      inline-size: 1.94444vh;
+      fill: hsla(0, 0%, 100%, .25)
+  }
+  .hud_wrapper .doors {
+      -webkit-margin-before: 0;
+      margin-block-start: 0;
+      -webkit-margin-end: 0;
+      margin-inline-end: 0
+  }
+  .hud_wrapper .doors svg {
+      inline-size: 1.75926vh;
+      fill: hsla(0, 0%, 100%, .25)
+  }
+  .hud_wrapper .dippedBeam.active svg {
+      fill: #44a440
+  }
+  .hud_wrapper .highBeam.active svg {
+      fill: #34c1ff
+  }
+  .hud_wrapper .attention-simple.active svg ,
+  .hud_wrapper .belt-simple.active svg ,
+  .hud_wrapper .belt.active svg ,
+  .hud_wrapper .doors.active svg ,
+  .hud_wrapper .start-simple.active svg ,
+  .hud_wrapper .start.active svg {
+      fill: #e51a22
+  }
+  .hud_wrapper .attention svg {
+      fill: hsla(0, 0%, 100%, .25)
+  }
+  .hud_wrapper .attention.active svg {
+      fill: #e51a22
+  }
+  .hud_wrapper .belt-simple {
+      margin: 0 1.01852vh
+  }
+  .hud_wrapper .attention-simple svg ,
+  .hud_wrapper .belt-simple svg ,
+  .hud_wrapper .start-simple svg {
+      inline-size: 2.22222vh;
+      fill: hsla(0, 0%, 100%, .25)
+  }
+  .hud_wrapper .carhud-container-content .car-status .speed-status__text-speed {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    font-family: ProximaNova-Condensed, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 1vh;
+    font-size: 6.57407vh;
+    min-inline-size: 8.61111vh;
+    color: #fff;
+  }
+.hud_wrapper .right .bonus_wrapper {
+    position: absolute;
+    background: #1F1F25;
+    width: 15.620833333333334vw;
+    right: .15vw;
+    top: 6.8vw;
+}
+.hud_wrapper .right .blockH:first-child {
+    height: 7.96875vw;
+    overflow: hidden;
+}
+.hud_wrapper .right .blockH:first-child header {
+    height: 3.5vw;
+}
+.hud_wrapper .right .blockH header p .coins {
+    
+    background-color: #523185;
+    font-size: .72vw;
+    padding: .2vw .4vw;
+    border-radius: 5vw;
+    margin: 0 0 .12vw .5vw;
+}
+.hud_wrapper .right .blockH header p a {
+    font-size: .93vw;
+    color: #ffffffa6;
+    margin: 0 0 0 .7vw;
+}
+.hud_wrapper .right .blockH header p a span {
+    color: white;
+}
+.hud_wrapper .right .bonus_wrapper header {
+    background: #0E0F12;
+    box-shadow: 0px 3px 0px #b0cb1f;
+    color: white;
+    padding: .5vw .81vw;
+}
+.hud_wrapper .right .bonus_wrapper header p:first-child{
+    font-size: 1.04vw;
+    display: flex;
+    align-items: center;
+}
+.hud_wrapper .right .bonus_wrapper header p:nth-child(2){
+    opacity: .5;
+    font-size: .77vw;
+}
+.hud_wrapper .right .bonus_wrapper .status {
+    padding: .72vw;
+    color: white;
+}
+.hud_wrapper .right .bonus_wrapper .status p:first-child {
+    font-size: .676vw;
+    margin: 0 0 .97vw;
+}
+.hud_wrapper .right .bonus_wrapper .status .check {
+    font-size: .77vw;
+    opacity: .6;
+    display: flex;
+    align-items: center;
+}
+.hud_wrapper .right .bonus_wrapper .status .check .box{
+    background: #010003;
+    width: .8854166666666666vw;
+    height: .8854166666666666vw;
+    margin: 0 .5vw 0 0;
+}
+.hud_wrapper .right .help_wrapper {
+    position: absolute;
+    right: 2.5vw;
+    top: 19.5vw;
+    width: 9.29784025vw;
+}
+.hud_wrapper .right .help_wrapper .info{
+    display: flex;
+    align-items: center;
+    text-align: end;
+    margin: 0 0 .5vw;
+}
+.hud_wrapper .right .help_wrapper .info span:first-child{
+    width: 1.4411649374999997vw;
+    height: 1.4411649374999997vw;
+    background-color: rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: .85vw;
+    margin: 0 .5vw 0 0;
+}
+.hud_wrapper .right .help_wrapper .info span:nth-child(2){
+    color: white;
+    font-size: .78vw;
+}
+.hud_wrapper .right .is-x2 {
+    position: absolute;
+    margin: .2vw 0;
+    width: 1.45vw;
+    height: 1.45vw;
+    padding: .23vw 0;
+    right: 6vw;
+    border-radius: 50%;
+    top: -.15vw;
+}
+.hud_wrapper .right .style {
+    background-color: #523185;
+    box-shadow: 0 1px 0.46296vh rgb(0 0 0 / 30%);
+    border-radius: 50%;
+    top: -.15vw;
+}
+.hud_wrapper .right .text {
+    text-align: center;
+    color: white;
+    font-size: .84vw;
+}
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active Ð´Ð¾ Ð²ÐµÑ€ÑÐ¸Ð¸ 2.1.8 */ {
+    opacity: 0;
+  }
+
+  /* EAT */
+.hud_wrapper .needs {
+    margin: 0 0 .65vw;
+    display: flex;
+}
+.hud_wrapper .needs .eat {
+    margin: 0 .34vw 0 -.5vw;
+    width: 4vw;
+}
+.hud_wrapper .circle-progress {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3.89vw;
+    width: 3.89vw;
+    filter: drop-shadow(0px 0px .8vw black);
+    transform: scale(.75);
+}
+.hud_wrapper .circle-progress .info{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.hud_wrapper .circle-progress .info p{
+    font-size: .75vw;
+}
+.hud_wrapper .circle-progress svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 3.8vw;
+    width: 3.87vw;
+    background: rgba(0, 0, 0, 0.37);
+    border-radius: 50%;
+    z-index: -1;
+}
+.hud_wrapper .circle-progress svg circle {
+    cx: 50%;
+    cy: 50%;
+    fill: none;
+    r: 1.84vw;
+    opacity: 0.4;
+    stroke-width: .17vw;
+    transform-origin: 50% 50%;
+    transform: rotate(-90deg);
+}
+.hud_wrapper .circle-progress img {
+    height: 3.3vw;
+    margin: -.7vw 0 -.86vw;
+    text-align: center;
+    justify-content: center;
+}
+
+/* eat */
+.hud_wrapper .circle-progress .eats {
+    stroke: #F9B608;
+    stroke-width: .15vw;
+    opacity: 1;
+}
+/* water */
+.hud_wrapper .circle-progress .water {
+    stroke: #06F0FF;
+    stroke-width: .15vw;
+    opacity: 1;
+}
+
+.hud_wrapper .bullet {
+    position: absolute;
+    bottom: 0;
+    height: 2.4vw;
+    width: 10vw;
+    right: 1vw;
+    display: flex;
+    align-items: center;
+    transform: scale(1.5);
+}
+.hud_wrapper .bullet svg{
+    width: 2vw;
+    height: 1vw;
+    fill: white;
+}
+
+  
+@keyframes beh {100% {opacity: 0; } }
+@keyframes open-hud {100% {opacity: 1; } }

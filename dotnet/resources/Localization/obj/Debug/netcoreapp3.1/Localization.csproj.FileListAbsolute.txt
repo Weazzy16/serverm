@@ -1,0 +1,50 @@
+C:\redage_v3-main\dotnet\resources\Localization\bin\Debug\netcoreapp3.1\Localization.deps.json
+C:\redage_v3-main\dotnet\resources\Localization\bin\Debug\netcoreapp3.1\Localization.dll
+C:\redage_v3-main\dotnet\resources\Localization\bin\Debug\netcoreapp3.1\Localization.pdb
+C:\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.GeneratedMSBuildEditorConfig.editorconfig
+C:\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.AssemblyInfoInputs.cache
+C:\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.AssemblyInfo.cs
+C:\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.csproj.CoreCompileInputs.cache
+C:\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.dll
+C:\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.pdb
+C:\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\Localization\bin\Debug\netcoreapp3.1\Localization.deps.json
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\Localization\bin\Debug\netcoreapp3.1\Localization.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\Localization\bin\Debug\netcoreapp3.1\Localization.pdb
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.pdb
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\Localization\bin\Debug\netcoreapp3.1\Localization.deps.json
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\Localization\bin\Debug\netcoreapp3.1\Localization.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\Localization\bin\Debug\netcoreapp3.1\Localization.pdb
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.csproj.AssemblyReference.cache
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.GeneratedMSBuildEditorConfig.editorconfig
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.AssemblyInfoInputs.cache
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.AssemblyInfo.cs
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.csproj.CoreCompileInputs.cache
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.pdb
+E:\pic\Majestic-server\dotnet\resources\Localization\bin\Debug\netcoreapp3.1\Localization.deps.json
+E:\pic\Majestic-server\dotnet\resources\Localization\bin\Debug\netcoreapp3.1\Localization.dll
+E:\pic\Majestic-server\dotnet\resources\Localization\bin\Debug\netcoreapp3.1\Localization.pdb
+E:\pic\Majestic-server\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.csproj.AssemblyReference.cache
+E:\pic\Majestic-server\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.GeneratedMSBuildEditorConfig.editorconfig
+E:\pic\Majestic-server\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.AssemblyInfoInputs.cache
+E:\pic\Majestic-server\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.AssemblyInfo.cs
+E:\pic\Majestic-server\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.csproj.CoreCompileInputs.cache
+E:\pic\Majestic-server\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.dll
+E:\pic\Majestic-server\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.pdb
+D:\Majestic-server\dotnet\resources\Localization\bin\Debug\netcoreapp3.1\Localization.deps.json
+D:\Majestic-server\dotnet\resources\Localization\bin\Debug\netcoreapp3.1\Localization.dll
+D:\Majestic-server\dotnet\resources\Localization\bin\Debug\netcoreapp3.1\Localization.pdb
+D:\Majestic-server\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.csproj.AssemblyReference.cache
+D:\Majestic-server\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.GeneratedMSBuildEditorConfig.editorconfig
+D:\Majestic-server\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.AssemblyInfoInputs.cache
+D:\Majestic-server\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.AssemblyInfo.cs
+D:\Majestic-server\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.csproj.CoreCompileInputs.cache
+D:\Majestic-server\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.dll
+D:\Majestic-server\dotnet\resources\Localization\obj\Debug\netcoreapp3.1\Localization.pdb

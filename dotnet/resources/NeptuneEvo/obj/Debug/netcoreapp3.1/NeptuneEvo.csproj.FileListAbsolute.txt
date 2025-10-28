@@ -1,0 +1,339 @@
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvo.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvo.pdb
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\linq2db.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\MySql.Data.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\MySqlBackup.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\MySqlConnector.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Pipelines.Sockets.Unofficial.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\StackExchange.Redis.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\EternalCore.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Localization.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvoSDK.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\meta.xml
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvo.deps.json
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Microsoft.Win32.Registry.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\ZstdNet.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Otp.NET.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Data.SQLite.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Diagnostics.PerformanceCounter.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\Microsoft.Win32.Registry.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\SQLite.Interop.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\SQLite.Interop.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\SQLite.Interop.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\SQLite.Interop.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Bootstrapper.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Localization.pdb
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvoSDK.pdb
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.csproj.AssemblyReference.cache
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.GeneratedMSBuildEditorConfig.editorconfig
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.AssemblyInfoInputs.cache
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.AssemblyInfo.cs
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.csproj.CoreCompileInputs.cache
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.csproj.Up2Date
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.pdb
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Commands.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Core.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Rest.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Webhook.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.WebSocket.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Interactive.Async.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Linq.Async.dll
+C:\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\websocket-sharp-core.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\meta.xml
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvo.deps.json
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvo.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvo.pdb
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Commands.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Core.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Rest.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Webhook.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.WebSocket.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\linq2db.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Microsoft.Win32.Registry.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\MySql.Data.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\ZstdNet.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\MySqlBackup.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\MySqlConnector.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Otp.NET.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Pipelines.Sockets.Unofficial.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\StackExchange.Redis.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Data.SQLite.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Diagnostics.PerformanceCounter.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Interactive.Async.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Linq.Async.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\websocket-sharp-core.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\Microsoft.Win32.Registry.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\SQLite.Interop.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\SQLite.Interop.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\SQLite.Interop.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\SQLite.Interop.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Bootstrapper.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\EternalCore.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Localization.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvoSDK.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Localization.pdb
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvoSDK.pdb
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.csproj.Up2Date
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.dll
+C:\Users\Administrator\Desktop\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.pdb
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.csproj.AssemblyReference.cache
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.GeneratedMSBuildEditorConfig.editorconfig
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.AssemblyInfoInputs.cache
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.AssemblyInfo.cs
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.csproj.CoreCompileInputs.cache
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvo.deps.json
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvo.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvo.pdb
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Commands.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Core.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Rest.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Webhook.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.WebSocket.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\linq2db.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Microsoft.Win32.Registry.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\MySql.Data.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\ZstdNet.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\MySqlBackup.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\MySqlConnector.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Otp.NET.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Pipelines.Sockets.Unofficial.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\StackExchange.Redis.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Data.SQLite.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Diagnostics.PerformanceCounter.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Interactive.Async.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Linq.Async.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\websocket-sharp-core.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\Microsoft.Win32.Registry.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\SQLite.Interop.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\SQLite.Interop.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\SQLite.Interop.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\SQLite.Interop.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Bootstrapper.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\EternalCore.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Localization.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvoSDK.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Localization.pdb
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvoSDK.pdb
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.csproj.Up2Date
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.dll
+E:\pic\DropMeFiles_gQQ16\redage_v3-main_2025 (1)\redage_v3-main\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.pdb
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.csproj.AssemblyReference.cache
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.GeneratedMSBuildEditorConfig.editorconfig
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.AssemblyInfoInputs.cache
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.AssemblyInfo.cs
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.csproj.CoreCompileInputs.cache
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\meta.xml
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvo.deps.json
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvo.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvo.pdb
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Commands.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Core.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Rest.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Webhook.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.WebSocket.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\linq2db.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Microsoft.Win32.Registry.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\MySql.Data.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\ZstdNet.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\MySqlBackup.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\MySqlConnector.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Otp.NET.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Pipelines.Sockets.Unofficial.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\StackExchange.Redis.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Data.SQLite.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Diagnostics.PerformanceCounter.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Interactive.Async.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Linq.Async.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\websocket-sharp-core.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\Microsoft.Win32.Registry.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\SQLite.Interop.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\SQLite.Interop.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\SQLite.Interop.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\SQLite.Interop.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Bootstrapper.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\EternalCore.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Localization.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvoSDK.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Localization.pdb
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvoSDK.pdb
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.csproj.Up2Date
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.dll
+E:\pic\Majestic-server\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.pdb
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\meta.xml
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvo.deps.json
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvo.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvo.pdb
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Commands.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Core.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Rest.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.Webhook.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Discord.Net.WebSocket.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\linq2db.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Microsoft.Win32.Registry.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\MySql.Data.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\ZstdNet.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\MySqlBackup.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\MySqlConnector.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Otp.NET.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Pipelines.Sockets.Unofficial.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\StackExchange.Redis.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Data.SQLite.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Diagnostics.PerformanceCounter.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Interactive.Async.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Linq.Async.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\System.Windows.Extensions.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\websocket-sharp-core.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\Microsoft.Win32.Registry.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\SQLite.Interop.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\SQLite.Interop.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\SQLite.Interop.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\SQLite.Interop.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Bootstrapper.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\EternalCore.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Localization.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvoSDK.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\Localization.pdb
+D:\Majestic-server\dotnet\resources\NeptuneEvo\bin\Debug\netcoreapp3.1\NeptuneEvoSDK.pdb
+D:\Majestic-server\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.csproj.AssemblyReference.cache
+D:\Majestic-server\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.GeneratedMSBuildEditorConfig.editorconfig
+D:\Majestic-server\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.AssemblyInfoInputs.cache
+D:\Majestic-server\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.AssemblyInfo.cs
+D:\Majestic-server\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.csproj.CoreCompileInputs.cache
+D:\Majestic-server\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.csproj.Up2Date
+D:\Majestic-server\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.dll
+D:\Majestic-server\dotnet\resources\NeptuneEvo\obj\Debug\netcoreapp3.1\NeptuneEvo.pdb

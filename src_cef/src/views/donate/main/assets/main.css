@@ -1,0 +1,1159 @@
+.donathax {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(https://imgur.com/FUbVYh6.png);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.donathax .donathead {
+    position: absolute;
+    top: 3.889vh;
+    left: 3.889vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.donathax .doantback {
+    position: absolute;
+    top: 1.852vh;
+    display: flex;
+    width: 17.818vh;
+    height: 5.833vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 0.1vh solid #ffffff0f;
+    background: radial-gradient(79.26% 93.97% at 50% 50%, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.00) 100%);
+}
+
+.donathax .donatclosed {
+    position: absolute;
+    top: 2.222vh;
+    right: 3.519vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 1;
+}
+
+.donathax .donatblance {
+    position: absolute;
+    right: 3.889vh;
+    top: 7.130vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.donathax .donathmenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 19.074vh;
+    width: 107.963vh;
+}
+
+.donathax .donathead .left {
+    width: 8.333vh;
+    height: 9.074vh;
+    background: url(https://imgur.com/IT1b9Fn.png);
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donathax .donathead .right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.donathax .donathead .left img.loadhead {
+    width: 4.444vh;
+    height: 4.444vh;
+}
+
+.donathax .donathead .right h1 {
+    color: #0a4bff;
+    text-shadow: 0px 0px 0.926vh rgba(0, 89, 255, 0.5);
+    font-family: SF Pro Display;
+    font-size: 2.685vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donathead .right span {
+    width: 12.222vh;
+    height: 2.593vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 0.185vh;
+    border: 0px solid rgba(255, 255, 255, 0.12);
+    background: linear-gradient(89deg, rgba(0, 89, 255, 0.5) 14.94%, rgba(249, 96, 30, 0.06) 75.26%, rgba(249, 96, 30, 0.01) 81.45%, rgba(57, 58, 75, 0.00) 93.46%, rgba(249, 96, 30, 0.00) 93.47%, rgba(57, 58, 75, 0.00) 99.49%, rgba(249, 96, 30, 0.00) 99.49%);
+    color: #FFF;
+    font-family: SF Pro Display;
+    font-size: 1.481vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    padding-left: 0.556vh;
+}
+
+.donathax .doantback p {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.852vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donatclosed p {
+    color: #FFF;
+    text-align: right;
+    text-shadow: 0px 0px 0.648vh rgba(255, 255, 255, 0.25);
+    font-family: Gilroy;
+    font-size: 1.111vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.389vh; /* 125% */
+    letter-spacing: 0.067vh;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donatclosed .btncl {
+    display: flex;
+    width: 2.778vh;
+    height: 2.778vh;
+    border-radius: 0.278vh;
+    background: #C92A2A;
+    box-shadow: 0px 0.556vh 2.037vh 0px rgba(201, 42, 42, 0.50);
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.833vh;
+}
+
+.donathax .donatclosed .btncl p {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.096vh;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.389vh; /* 107.143% */
+    letter-spacing: 0.078vh;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donatblance p {
+    color: #fff;
+    font-family: Gilroy;
+    font-size: 2.963vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donatblance p b {
+    color: #0a4bff;
+    font-family: Gilroy;
+    font-size: 2.963vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-left: 0.8vh;
+}
+
+.donathax .donathmenu .hmenutop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.donathax .donathmenu .lefttop {
+    display: flex;
+    width: 52.593vh;
+    height: 24.630vh;
+    border: 0.1vh solid #ffffff0f;
+    background: radial-gradient(79.26% 93.97% at 50% 50%, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.00) 100%);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.donathax .donathmenu .righttop {
+    display: flex;
+    width: 52.593vh;
+    height: 24.63vh;
+    border: 0.1vh solid #ffffff0f;
+    background: radial-gradient(79.26% 93.97% at 50% 50%, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.00) 100%);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.donathax .donathmenu .hmenulist {
+    width: 100%;
+    margin-top: 2.778vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.donathax .donathmenu .lefttop .left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donathax .donathmenu .lefttop .right {
+    width: 24.167vh;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.donathax .donathmenu .lefttop .left .bgiconseas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donathax .donathmenu .lefttop .left .bgiconseas img.iconseas {
+    position: absolute;
+    width: 7.407vh;
+    height: 7.407vh;
+}
+
+.donathax .donathmenu .lefttop .right .headseas {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: -0.278vh;
+    margin-top: 1.574vh;
+}
+
+.donathax .donathmenu .lefttop .right .infoseas {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-top: 3.704vh;
+}
+
+.donathax .donathmenu .lefttop .right .headseas .lineh {
+    width: 0.556vh;
+    height: 3.611vh;
+    background: rgba(255, 255, 255, 0.03);
+    margin-right: 0.278vh;
+}
+
+.donathax .donathmenu .lefttop .right .headseas .head {
+    margin-right: 0.278vh;
+    display: flex;
+    width: 16.759vh;
+    height: 3.611vh;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(178.85% 90.03% at 50% 50%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.00) 100%);
+}
+
+.donathax .donathmenu .lefttop .right .headseas .head p {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.296vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donathmenu .lefttop .right .infoseas p {
+    color: #FFF;
+    font-family: Gilroy;
+    font-size: 1vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2.130vh; /* 164.286% */
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donathmenu .righttop .left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donathax .donathmenu .righttop .right {
+    width: 24.167vh;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.donathax .donathmenu .righttop .left .bgiconday {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donathax .donathmenu .righttop .left .bgiconday img.iconday {
+    position: absolute;
+    width: 7.407vh;
+    height: 7.407vh;
+}
+
+.donathax .donathmenu .righttop .right .headday {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: -0.278vh;
+    margin-top: 1.574vh;
+}
+
+.donathax .donathmenu .righttop .right .infoday {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
+    margin-top: 1.704vh;
+}
+
+.donathax .donathmenu .righttop .right .headday .lineh {
+    width: 0.556vh;
+    height: 3.611vh;
+    background: rgba(255, 255, 255, 0.03);
+    margin-right: 0.278vh;
+}
+
+.donathax .donathmenu .righttop .right .headday .head {
+    margin-right: 0.278vh;
+    display: flex;
+    width: 16.759vh;
+    height: 3.611vh;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(178.85% 90.03% at 50% 50%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.00) 100%);
+}
+
+.donathax .donathmenu .righttop .right .headday .head p {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.296vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donathmenu .righttop .right .infoday .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.donathax .donathmenu .righttop .right .infoday .container .bgitem {
+    background: url(https://imgur.com/IT1b9Fn.png);
+    background-size: cover;
+    width: 10.185vh;
+    height: 10.926vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donathax .donathmenu .righttop .right .infoday .container p {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.111vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donathmenu .righttop .right .infoday .container .bgitem img.item {
+    width: 4.167vh;
+    height: 4.167vh;
+}
+
+.donathax .donathmenu .hmenulist .block {
+    display: flex;
+    width: 24.907vh;
+    height: 34.537vh;
+    border: 0.1vh solid #ffffff0f;
+    background: radial-gradient(79.26% 93.97% at 50% 50%, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.00) 100%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 1.389vh;
+}
+
+.donathax .donathmenu .hmenulist .block .bgitem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donathax .donathmenu .hmenulist .block .headblock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: -0.278vh;
+    margin-top: auto;
+    margin-bottom: 1.574vh;
+}
+
+.donathax .donathmenu .hmenulist .block .headblock .lineh {
+    width: 0.556vh;
+    height: 3.611vh;
+    background: rgba(255, 255, 255, 0.03);
+    margin-right: 0.278vh;
+}
+
+.donathax .donathmenu .hmenulist .block .headblock .head {
+    margin-right: 0.278vh;
+    display: flex;
+    width: 16.759vh;
+    height: 3.611vh;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(178.85% 90.03% at 50% 50%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.00) 100%);
+}
+
+.donathax .donathmenu .hmenulist .block .headblock .head p {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.296vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donatblance .btnp {
+    margin-top: 1vh;
+    display: flex;
+    width: 11.296vh;
+    height: 3.611vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 0.1vh solid #ffffff0f;
+    background: radial-gradient(79.26% 93.97% at 50% 50%, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.00) 100%);
+}
+
+.donathax .donatblance .btnp p {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.389vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donathmenu .lefttop .left .bgiconseas svg {
+    width: 25.093vh;
+    height: 26.944vh;
+}
+
+.donathax .donathmenu .righttop .left .bgiconday svg {
+    width: 25.093vh;
+    height: 26.944vh;
+}
+
+.donathax .donathmenu .hmenulist .block .bgitem svg {
+    width: 25.093vh;
+    height: 26.944vh;
+}
+
+.donathax .donathmenu .lefttop:hover {
+    border: 0.1vh solid #0a4bff42;
+    background: radial-gradient(79.26% 93.97% at 50% 50%, rgba(0, 89, 255, 0.5) 0%, rgba(249, 96, 30, 0.00) 100%);
+}
+
+.donathax .donathmenu .hmenulist .block:hover {
+    border: 0.1vh solid #0a4bff42;
+    background: radial-gradient(79.26% 93.97% at 50% 50%, rgba(0, 89, 255, 0.5) 0%, rgba(249, 96, 30, 0.00) 100%);
+}
+
+.donathax .donathmenu .righttop .right .infoday .container:hover {
+    transform: scale(1.05);
+}
+
+.donathax .donatblance .btnp:hover {
+    border: 0.1vh solid #0a4bff42;
+    background: radial-gradient(79.26% 93.97% at 50% 50%, rgba(0, 89, 255, 0.5) 0%, rgba(249, 96, 30, 0.00) 100%);
+}
+
+.donathax .doantback:hover {
+    border: 0.1vh solid #0a4bff42;
+    background: radial-gradient(79.26% 93.97% at 50% 50%, rgba(0, 89, 255, 0.5) 0%, rgba(249, 96, 30, 0.00) 100%);
+}
+
+.donathax .donathmenu .hmenulist .block .price {
+    display: flex;
+    position: absolute;
+    width: 5.768vh;
+    height: 2.209vh;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.00) 100%);
+    align-items: center;
+    justify-content: center;
+}
+
+.donathax .donathmenu .hmenulist .block .price p {
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+    color: rgba(255, 255, 255, 0.50);
+    text-align: center;
+    text-shadow: 0px 0px 0.648vh rgba(255, 255, 255, 0.25);
+    font-family: Gilroy;
+    font-size: 0.926vh;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.donathax .donathmenuiteminfo {
+    width: 100%;
+    position: absolute;
+    left: 0vh;
+    top: 0vh;
+    height: 100%;
+    background: rgba(16, 21, 24, 0.98);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.donathax .donathmenuiteminfo .blockinfo {
+    display: flex;
+    width: 39.907vh;
+    height: auto;
+    border: 0.1vh solid #ffffff0f;
+    background: radial-gradient(79.26% 93.97% at 50% 50%, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.00) 100%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 1.389vh;
+}
+
+.donathax .donathmenuiteminfo .blockinfo .headblock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: -0.278vh;
+    margin-top: 1.574vh;
+}
+
+.donathax .donathmenuiteminfo .blockinfo .bgitem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -1vh;
+}
+
+.donathax .donathmenuiteminfo .blockinfo .iteminfo {
+    display: flex;
+    width: 85%;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-top: -4.296vh;
+    margin-bottom: 4vh;
+}
+
+.donathax .donathmenuiteminfo .blockinfo .buybtni {
+    margin-top: auto;
+    margin-bottom: 1.574vh;
+    display: flex;
+    width: 21.296vh;
+    height: 3.611vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 0.1vh solid #ffffff0f;
+    background: radial-gradient(79.26% 93.97% at 50% 50%, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.00) 100%);
+}
+
+.donathax .donathmenuiteminfo .blockinfo .headblock .lineh {
+    width: 0.556vh;
+    height: 3.611vh;
+    background: rgba(255, 255, 255, 0.03);
+    margin-right: 0.278vh;
+}
+
+.donathax .donathmenuiteminfo .blockinfo .headblock .head {
+    margin-right: 0.278vh;
+    display: flex;
+    width: 16.759vh;
+    height: 3.611vh;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(178.85% 90.03% at 50% 50%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.00) 100%);
+}
+
+.donathax .donathmenuiteminfo .blockinfo .headblock .head p {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.296vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donathmenuiteminfo .blockinfo .bgitem svg {
+    width: 25.093vh;
+    height: 26.944vh;
+}
+
+.donathax .donathmenuiteminfo .blockinfo .bgitem img.item {
+    position: absolute;
+    height: 7.407vh;
+    width: 7.407vh;
+}
+
+.donathax .donathmenuiteminfo .blockinfo .iteminfo p {
+    color: #FFF;
+    font-family: Gilroy;
+    font-size: 1vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2.130vh;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donathmenuiteminfo .blockinfo .buybtni p {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.389vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donathmenuiteminfo .blockinfo .buybtni:hover {
+    border: 0.1vh solid #0a4bff42;
+    background: radial-gradient(79.26% 93.97% at 50% 50%, rgba(0, 89, 255, 0.5) 0%, rgba(249, 96, 30, 0.00) 100%);
+}
+
+.donathax .donathmenuiteminfo .blockinfo .closed {
+    position: absolute;
+    display: flex;
+    width: 2.778vh;
+    height: 2.778vh;
+    border-radius: 0.278vh;
+    background: #C92A2A;
+    box-shadow: 0px 0.556vh 2.037vh 0px rgba(201, 42, 42, 0.50);
+    align-items: center;
+    justify-content: center;
+    margin-left: 40vh;
+    margin-top: -1.5vh;
+}
+
+.donathax .donathmenuiteminfo .blockinfo .closed p {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.096vh;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.389vh;
+    letter-spacing: 0.078vh;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donathmenu .hmenulist .block1 {
+    display: flex;
+    width: 24.907vh;
+    height: 47.537vh;
+    border: 0.1vh solid #ffffff0f;
+    background: radial-gradient(79.26% 93.97% at 50% 50%, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.00) 100%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 1.389vh;
+}
+
+.donathax .donathmenu .hmenulist .block1 .bgitem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donathax .donathmenu .hmenulist .block1 .bgitem svg {
+    width: 25.093vh;
+    height: 26.944vh;
+}
+
+.donathax .donathmenu .hmenulist .block1 .bgitem img.item {
+    position: absolute;
+    height: 7.407vh;
+    width: 7.407vh;
+    z-index: 0;
+}
+
+.donathax .donathmenu .hmenulist .block1 .headblock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: -0.278vh;
+    margin-top: auto;
+    margin-bottom: 1.574vh;
+}
+
+.donathax .donathmenu .hmenulist .block1 .headblock .lineh {
+    width: 0.556vh;
+    height: 3.611vh;
+    background: rgba(255, 255, 255, 0.03);
+    margin-right: 0.278vh;
+}
+
+.donathax .donathmenu .hmenulist .block1 .headblock .head {
+    margin-right: 0.278vh;
+    display: flex;
+    width: 16.759vh;
+    height: 3.611vh;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(178.85% 90.03% at 50% 50%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.00) 100%);
+}
+
+.donathax .donathmenu .hmenulist .block1 .headblock .head p {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.296vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donathmenu .hmenulist .block1 .price {
+    display: flex;
+    position: absolute;
+    width: 5.768vh;
+    height: 2.209vh;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.00) 100%);
+    align-items: center;
+    justify-content: center;
+}
+
+.donathax .donathmenu .hmenulist .block1 .price p {
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+    color: rgba(255, 255, 255, 0.50);
+    text-align: center;
+    text-shadow: 0px 0px 0.648vh rgba(255, 255, 255, 0.25);
+    font-family: Gilroy;
+    font-size: 0.926vh;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.donathax .donathmenu .hmenulist .block1 .iteminfo {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-top: -4.296vh;
+}
+
+.donathax .donathmenu .hmenulist .block1 .iteminfo p {
+    color: #FFF;
+    font-family: Gilroy;
+    font-size: 1vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2.130vh;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donathmenu .hmenulist .block1:hover {
+    border: 0.1vh solid #0a4bff42;
+    background: radial-gradient(79.26% 93.97% at 50% 50%, rgba(0, 89, 255, 0.5) 0%, rgba(249, 96, 30, 0.00) 100%);
+}
+
+.donathax .donathmenu .hmenutop .btncat {
+    width: 33.056vh;
+    height: 5.833vh;
+    display: flex;
+    border: 0.1vh solid #ffffff0f;
+    background: radial-gradient(79.26% 93.97% at 50% 50%, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.00) 100%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.donathax .donathmenu .hmenutop .btncat p {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.852vh;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donathmenu .hmenutop .btncat:hover {
+    border: 0.1vh solid #0a4bff42;
+    background: radial-gradient(79.26% 93.97% at 50% 50%, rgba(0, 89, 255, 0.5) 0%, rgba(249, 96, 30, 0.00) 100%);
+}
+
+.donathax .donathmenu .hmenutop .btncat.active {
+    border: 0.1vh solid #0a4bff42;
+    background: radial-gradient(79.26% 93.97% at 50% 50%, rgba(0, 89, 255, 0.5) 0%, rgba(249, 96, 30, 0.00) 100%);
+}
+
+.donathax .donathmenu .hmenulist .block .inputblocks {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: absolute;
+    margin-top: 20.978vh;
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.296vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.donathax .donathmenu .hmenulist .block .inputblocks input {
+    outline: none;
+    width: 16.759vh;
+    height: 3.011vh;
+    border: 0.1vh solid rgba(255, 255, 255, 0.10);
+    background: radial-gradient(178.85% 90.03% at 50% 50%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.00) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 0vh;
+    margin-bottom: 1vh;
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.296vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.donathax .donathmenuiteminfo .blockinfo .inputblocks {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 0vh;
+    margin-bottom: 2vh;
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.296vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.donathax .donathmenuiteminfo .blockinfo .inputblocks input {
+    outline: none;
+    width: 16.759vh;
+    height: 3.011vh;
+    border: 0.1vh solid rgba(255, 255, 255, 0.10);
+    background: radial-gradient(178.85% 90.03% at 50% 50%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.00) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 0vh;
+    margin-bottom: 1vh;
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.296vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.donathax .donathmenuiteminfo .blockinfo .inputblocks p {
+    color: #FFF;
+    font-family: Gilroy;
+    font-size: 1.296vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2.130vh;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donathmenu h1 {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 2.963vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donathmenu .caseinfo {
+    margin-top: 2.778vh;
+    width: 63.704vh;
+    height: 7.593vh;
+    background: url(https://imgur.com/5NxNouk.png);
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.donathax .donathmenu .caseitemlist {
+    margin-top: 2.911vh;
+    width: 51.852vh;
+    max-height: 57vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.donathax .donathmenu .caseitemlist::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+}
+
+.donathax .donathmenu .caseinfo .cinfoico {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.926vh;
+}
+
+.donathax .donathmenu .caseinfo .cinfo {
+    margin-left: 1.574vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.donathax .donathmenu .caseinfo .buycase {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 11.944vh;
+    height: 2.963vh;
+    background: linear-gradient(90deg, #386ED7 0%, #45C7FF 100%);
+}
+
+.donathax .donathmenu .caseinfo .cinfoico img.infoico {
+    width: 5.741vh;
+    height: 5.741vh;
+}
+
+.donathax .donathmenu .caseinfo .cinfo h1 {
+    color: #FFF;
+    font-family: Gilroy;
+    font-size: 1.111vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donathmenu .caseinfo .cinfo p {
+    width: 27.778vh;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: Gilroy;
+    font-size: 0.926vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donathmenu .caseinfo .buycase p {
+    color: #FFF;
+    text-align: center;
+    font-family: Gilroy;
+    font-size: 1.019vh;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.donathax .donathmenu .caseitemlist .items {
+    width: 7.407vh;
+    height: 7.407vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.7vh;
+}
+
+.donathax .donathmenu .caseitemlist .items img.icoi {
+    height: 4.167vh;
+}
+
+.donathax .donathmenu .caseinfo .buycase:hover {
+    transform: scale(1.03);
+}
+
+.donathax .donathmenu .caseitemlist .items.blue {
+    width: 7.407vh;
+    height: 7.407vh;
+    background-size: cover !important;
+    background: url(https://imgur.com/rvGh4AU.png);
+}
+
+.donathax .donathmenu .caseitemlist .items.yellow {
+    width: 7.407vh;
+    height: 7.407vh;
+    background-size: cover !important;
+    background: url(https://imgur.com/kDMWlAr.png);
+}
+
+.donathax .donathmenu .caseitemlist .items.pink {
+    width: 7.407vh;
+    height: 7.407vh;
+    background-size: cover !important;
+    background: url(https://imgur.com/IhXFcIS.png);
+}
+
+.donathax .donathmenu .caseitemlist .items.red {
+    width: 7.407vh;
+    height: 7.407vh;
+    background-size: cover !important;
+    background: url(https://imgur.com/1iS4FRz.png);
+}
+
+.donathax .donathmenu .caseitemlist .items p {
+    position: absolute;
+    color: #FFF;
+    font-family: Gilroy;
+    font-size: 1.296vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 2.130vh;
+    margin-top: -10vh;
+    margin-bottom: 0vh;
+    background: radial-gradient(178.85% 90.03% at 50% 50%, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.00) 100%);
+    padding: 0.5vh;
+    z-index: 1;
+    opacity: 0;
+}
+
+.donathax .donathmenu .caseitemlist .items:hover p {
+    opacity: 1;
+}
+
+
+.donathax .donathmenu .hmenulist .block .bgitem1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin-top: -3vh;
+}
+
+.donathax .donathmenu .hmenulist .block .bgitem1 svg {
+    width: 30.370vh;
+    height: 33.148vh;
+}
+
+.donathax .donathmenu .hmenulist .block .bgitem1 img.item {
+    position: absolute;
+    height: 9.248vh;
+}
+
+.donathax .donathmenu .hmenulist .block .bgitem img.item {
+    position: absolute;
+    width: 7.407vh;
+    height: 7.407vh;
+}

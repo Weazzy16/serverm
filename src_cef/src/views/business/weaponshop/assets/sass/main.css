@@ -1,0 +1,500 @@
+.gunshophaxzer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url("../../gunimg/bg2.png");
+    background-size: cover;
+    left: 0vh;
+    top: 0vh;
+    display: flex;
+    align-items: center;
+    align-content: flex-start;
+    flex-direction: column;
+}
+
+.gunshophaxzer .gunshophaxzer_menu {
+    width: 138.9815vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_head {
+    position: absolute;
+    margin-top: 4.6296vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_cat {
+    display: flex;
+    margin-left: auto;
+    margin-top: 1.6667vh;
+    margin-right: 6.5741vh;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_close {
+    margin-left: auto;
+    margin-top: -5.3704vh;
+    width: 2.5926vh;
+    height: 2.5926vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu {
+    width: 138.9815vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 5.6481vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .item_list {
+    margin-top: 2.3148vh;
+    width: 141.1111vh;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_head .ico {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_head .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 1.2037vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_head .info h1 {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.7593vh;
+    font-weight: 500;
+    line-height: 2.1296vh;
+    letter-spacing: 0.0741vh;
+    text-align: left;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_head .info span {
+    color: rgba(255, 255, 255, 0.15);
+    font-family: SF Pro Display;
+    font-size: 1.1111vh;
+    font-weight: 400;
+    line-height: 1.2963vh;
+    letter-spacing: 0.0556vh;
+    text-align: left;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_head .ico img {
+    width: 4.4444vh;
+    height: 4.4444vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_cat .block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 2.6852vh;
+    width: 9.2593vh;
+    height: 9.2593vh;
+    box-sizing: border-box;
+    border-bottom: 0.1852vh solid rgba(255, 255, 255, 0.2);
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_cat .block img {
+    height: 1.1111vh;
+    margin-top: 2.963vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_cat .block p {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 400;
+    line-height: 1.5741vh;
+    letter-spacing: 0.0741vh;
+    text-align: center;
+    margin-top: 0.7407vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_close p {
+    color: rgba(255, 255, 255, 0.25);
+    font-family: SF Pro Display;
+    font-size: 1.4815vh;
+    font-weight: 300;
+    line-height: 1.7593vh;
+    letter-spacing: 0.0741vh;
+    text-align: center;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .iconweapon {
+    margin-top: 2.5926vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info {
+    margin-top: 5.9259vh;
+    width: 138.9815vh;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .name h1 {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.8519vh;
+    font-weight: 400;
+    line-height: 2.2222vh;
+    letter-spacing: 0.0741vh;
+    text-align: center;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .name span {
+    width: 42.5926vh;
+    height: 4.7vh;
+    margin-top: 1.3889vh;
+    color: rgba(255, 255, 255, 0.25);
+    font-family: SF Pro Display;
+    font-size: 1.2963vh;
+    font-weight: 400;
+    line-height: 1.5741vh;
+    letter-spacing: 0.0741vh;
+    text-align: center;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .iconweapon img {
+    height: 18.5185vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .har {
+    height: 9.6296vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 53.1481vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .buy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .har .block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 1.9444vh;
+    margin-right: 4.8148vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .har .block .icon {
+    width: 2.7778vh;
+    height: 2.7778vh;
+    background: rgba(75, 86, 100, 0.17);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .har .block .dop {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 1.2963vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .har .block .icon img {
+    width: 1.4815vh;
+    height: 1.4815vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .har .block .dop h1 {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.2037vh;
+    font-weight: 400;
+    line-height: 1.4815vh;
+    letter-spacing: 0.063vh;
+    text-align: left;
+    margin-bottom: 1.0185vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .har .block .dop .bar {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .har .block .dop .bar .bar {
+    width: 2.963vh;
+    height: 0.2778vh;
+    background: rgba(255, 255, 255, 0.05);
+    margin-right: 0.5556vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .har .block .dop .bar .bar.act {
+    background: rgb(237, 55, 68);
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .buy .price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .buy .infobtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 2.5926vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .buy .price p {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.8519vh;
+    font-weight: 400;
+    line-height: 2.2222vh;
+    letter-spacing: 0.0556vh;
+    text-align: right;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .buy .price span {
+    color: rgb(237, 55, 68);
+    font-family: SF Pro Display;
+    font-size: 1.4815vh;
+    font-weight: 500;
+    line-height: 1.7593vh;
+    letter-spacing: 0.0556vh;
+    text-align: right;
+    margin-top: 0.7407vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .buy .infobtn .icona {
+    width: 3.9815vh;
+    height: 3.9815vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .buy .infobtn input {
+    width: 6.2037vh;
+    height: 3.9815vh;
+    border-radius: 0.3704vh;
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    margin-left: 0.9259vh;
+    outline: none;
+    text-align: center !important;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.4815vh;
+    font-weight: 500;
+    line-height: 1.7593vh;
+    letter-spacing: 0.0556vh;
+    text-align: center;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .buy .infobtn .btnammo {
+    display: flex;
+    height: 3.9815vh;
+    border-radius: 0.3704vh;
+    background: rgb(255, 255, 255);
+    padding: 0vh 1.5278vh;
+    color: rgb(30, 30, 30);
+    font-family: SF Pro Display;
+    font-size: 1.1111vh;
+    font-weight: 500;
+    line-height: 1.2963vh;
+    letter-spacing: 0.0556vh;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.9259vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .buy .infobtn .btn {
+    display: flex;
+    width: 15.463vh;
+    height: 3.9815vh;
+    border-radius: 0.3704vh;
+    background: rgb(255, 255, 255);
+    color: rgb(30, 30, 30);
+    font-family: SF Pro Display;
+    font-size: 1.1111vh;
+    font-weight: 500;
+    line-height: 1.2963vh;
+    letter-spacing: 0.0556vh;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.9259vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .buy .infobtn .icona img {
+    width: 3.9815vh;
+    height: 3.9815vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .item_list .block {
+    width: 21.3889vh;
+    height: 13.7963vh;
+    background: rgba(75, 86, 100, 0.17);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 2.2222vh;
+    margin-right: 2.1296vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .item_list .block h1 {
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.1111vh;
+    font-weight: 400;
+    line-height: 1.2963vh;
+    letter-spacing: 0.0648vh;
+    text-align: left;
+    margin-top: 1.3889vh;
+    margin-left: 1.8519vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .item_list .block img {
+    margin-top: 0.463vh;
+    margin-left: auto;
+    /* height: 6.4815vh; */
+    margin-right: auto;
+    width: 14vw;
+    height: 10vw;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .item_list .block span {
+    height: 2.3148vh;
+    box-sizing: border-box;
+    border: 0.0926vh dashed rgb(237, 55, 68);
+    background: rgb(237, 55, 68);
+    padding: 0vh 0.9259vh;
+    display: flex;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.1111vh;
+    font-weight: 400;
+    line-height: 1.2963vh;
+    letter-spacing: 0.0556vh;
+    text-align: left;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: 1.4815vh;
+    margin-left: 1.4815vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .item_list .block.act {
+    background: rgba(75, 86, 100, 0.37);
+}
+
+.gunshophaxzer p,h1 {
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_cat .block:hover {
+    box-sizing: border-box;
+    border-bottom: 0.1852vh solid rgb(237, 55, 68);
+    background: linear-gradient(180.00deg, rgba(237, 55, 68, 0),rgba(237, 55, 68, 0.04) 100%);
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_cat .block:hover p {
+    color: rgb(255, 255, 255);
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_close:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_close:hover p {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .buy .infobtn .btnammo:hover {
+    background: rgb(237, 55, 68);
+    color: #fff;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .buy .infobtn .btn:hover {
+    background: rgb(237, 55, 68);
+    color: #fff;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .item_list .block:hover {
+    background: rgba(75, 86, 100, 0.37);
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_cat .block.act {
+    box-sizing: border-box;
+    border-bottom: 0.1852vh solid rgb(237, 55, 68);
+    background: linear-gradient(180.00deg, rgba(237, 55, 68, 0),rgba(237, 55, 68, 0.04) 100%);
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_cat .block.act p {
+    color: rgb(255, 255, 255);
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .har .block .dop .bar svg {
+    width: 2.963vh;
+    height: 0.2778vh;
+    margin-right: 0.5556vh;
+    fill: #fff;
+    fill-opacity: 0.05;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .gunshop_menu .info .har .block .dop .bar svg.active {
+    fill: #ED3744;
+    fill-opacity: 1;
+}
+
+.gunshophaxzer .gunshophaxzer_menu .item_list .block p {
+    margin: auto;
+    color: rgb(255, 255, 255);
+    font-family: SF Pro Display;
+    font-size: 1.8519vh;
+    font-weight: 400;
+    line-height: 2.2222vh;
+    letter-spacing: 0.0741vh;
+    text-align: center;
+}
