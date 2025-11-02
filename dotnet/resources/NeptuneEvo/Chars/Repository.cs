@@ -1,4 +1,4 @@
-﻿using GTANetworkAPI;
+using GTANetworkAPI;
 using NeptuneEvo.Handles;
 using Redage.SDK;
 using System;
@@ -49,6 +49,12 @@ namespace NeptuneEvo.Chars
     /// </summary>
     class Repository : Script
     {
+            
+    // ✅ МАКСИМАЛЬНЫЙ ВЕС ИНВЕНТАРЯ (В КИЛОГРАММАХ)
+    public const float MaxInventoryWeight = 50.0f;      // Основной инвентарь
+        public const float MaxBackpackWeight = 30.0f;       // Рюкзак
+        public const float MaxVehicleWeight = 150.0f;       // Багажник машины
+        public const float MaxWarehouseWeight = 1000.0f;    // Склад
         /// <summary>
         /// Логгер
         /// </summary>
@@ -2225,414 +2231,462 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
 
         public static IReadOnlyDictionary<ItemId, ItemsInfo> ItemsInfo = new Dictionary<ItemId, ItemsInfo>()
 {
-    { ItemId.Mask, new ItemsInfo("Маска", "Помогает скрыть личность, но в тоже время служит украшением. Может быть сорвана полицейским.", "inv-item-mask", "Одежда", 3887136870, 1, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Clothes, "gray") },
-    { ItemId.Gloves, new ItemsInfo("Перчатки", "Согреют тебя холодной зимой.", "inv-item-glove", "Одежда", 3125389411, 1, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Clothes, "gray") },
-    { ItemId.Ears, new ItemsInfo("Наушники", ".", "inv-item-ears", "Одежда", 3125389411, 1, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Clothes, "gray") },
-    { ItemId.Leg, new ItemsInfo("Штаны", "Не дадут тебе замёрзнуть.", "inv-item-shorts", "Одежда", 2086911125, 1, new Vector3(0.0,0.0,-0.85), new Vector3(), newItemType.Clothes, "gray") },
+    // ========================================
+    // ОДЕЖДА (2x1, лёгкая 0.2-0.5 кг)
+    // ========================================
+    { ItemId.Mask, new ItemsInfo("Маска", "Помогает скрыть личность, но в тоже время служит украшением. Может быть сорвана полицейским.", "inv-item-mask", "Одежда", 3887136870, 1, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Clothes, "gray", 0.2f, 2, 1) },
+    { ItemId.Gloves, new ItemsInfo("Перчатки", "Согреют тебя холодной зимой.", "inv-item-glove", "Одежда", 3125389411, 1, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Clothes, "gray", 0.1f, 1, 1) },
+    { ItemId.Ears, new ItemsInfo("Наушники", ".", "inv-item-ears", "Одежда", 3125389411, 1, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Clothes, "gray", 0.15f, 1, 1) },
+    { ItemId.Leg, new ItemsInfo("Штаны", "Не дадут тебе замёрзнуть.", "inv-item-shorts", "Одежда", 2086911125, 1, new Vector3(0.0,0.0,-0.85), new Vector3(), newItemType.Clothes, "gray", 0.5f, 2, 1) },
+    { ItemId.Bag, new ItemsInfo("Сумка", "Позволяет переносить в себе любые предметы.", "inv-item-backpack", "Одежда", NAPI.Util.GetHashKey("prop_cs_heist_bag_02"), 1, new Vector3(0, 0, -0.85), new Vector3(), newItemType.Clothes, "gray", 1.0f, 2, 2) },
+    { ItemId.Feet, new ItemsInfo("Обувь", "Современная модель, которая никогда тебя не подведёт.", "inv-item-sneakers", "Одежда", 1682675077, 1, new Vector3(0.0,0.0,-0.95), new Vector3(), newItemType.Clothes, "gray", 0.8f, 2, 1) },
+    { ItemId.Jewelry, new ItemsInfo("Аксессуар", "Позволяет улучшить внешний вид персонажа.", "inv-item-necklace", "Одежда", 2329969874, 1, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.Clothes, "gray", 0.1f, 1, 1) },
+    { ItemId.Undershit, new ItemsInfo("Нижняя одежда", "Может быть надета под верхней одеждой, придаёт стильный вид твоему персонажу.", "inv-item-shirt", "Одежда", 578126062, 1, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.Clothes, "gray", 0.3f, 2, 1) },
+    { ItemId.BodyArmor, new ItemsInfo("Бронежилет", "Служит средством защиты персонажа, способен впитать 100 урона, прежде чем сломается.", "inv-item-armor", "Одежда", 701173564, 1, new Vector3(0.0,0.0,-0.88), new Vector3(90, 90, 0), newItemType.Clothes, "gray", 5.0f, 2, 2) },
+    { ItemId.Decals, new ItemsInfo("Украшения", "Позволяют улучшить внешний вид персонажа.", "inv-item-clock", "Одежда", 0, 1, new Vector3(), new Vector3(), newItemType.Clothes, "gray", 0.05f, 1, 1) },
+    { ItemId.Top, new ItemsInfo("Верхняя одежда", "Может быть надета над нижней одеждой, придаёт стильный вид твоему персонажу.", "inv-item-jacket", "Одежда", 3038378640, 1, new Vector3(0.0,0.0,-0.96), new Vector3(), newItemType.Clothes, "gray", 0.6f, 2, 1) },
+    { ItemId.Hat, new ItemsInfo("Головной убор", "Спасёт тебя от солнечного удара в жаркий день.", "inv-item-cap", "Одежда", 1619813869, 1, new Vector3(0.0,0.0,-0.93), new Vector3(), newItemType.Clothes, "gray", 0.2f, 1, 1) },
+    { ItemId.Glasses, new ItemsInfo("Очки", "Защищат от солнца в самый солнечный день.", "inv-item-glasses", "Одежда", 2329969874, 1, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.Clothes, "gray", 0.1f, 1, 1) },
+    { ItemId.Bracelets, new ItemsInfo("Браслет", "Позволяют улучшить внешний вид персонажа.", "inv-item-bracelet", "Одежда", 2329969874, 1, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.Clothes, "gray", 0.05f, 1, 1) },
+    { ItemId.Watches, new ItemsInfo("Часы", "Показывает статусность твоего персонажа.", "inv-item-clock", "Одежда", 2329969874, 1, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.Clothes, "gray", 0.2f, 1, 1) },
 
-    { ItemId.Bag, new ItemsInfo("Сумка", "Позволяет переносить в себе любые предметы.", "inv-item-backpack", "Одежда", NAPI.Util.GetHashKey("prop_cs_heist_bag_02"), 1, new Vector3(0, 0, -0.85), new Vector3(), newItemType.Clothes, "gray") },
+    // ========================================
+    // ИНСТРУМЕНТЫ И ПРОЧЕЕ (1x1 или 2x2, 0.05-8 кг)
+    // ========================================
+    { ItemId.Debug, new ItemsInfo("None", "", "", "", 0, 0, new Vector3(), new Vector3(), newItemType.None, "gray", 0f, 1, 1) },
+    { ItemId.BagWithDrill, new ItemsInfo("Сумка с дрелью", "Используется для взлома хранилища.", "inv-item-Bag-drill", "Остальное", NAPI.Util.GetHashKey("prop_cs_heist_bag_02"), 1, new Vector3(0, 0, -0.85), new Vector3(), newItemType.None, "gray", 8.0f, 2, 2) },
+    { ItemId.GasCan, new ItemsInfo("Канистра", "Можно заправить транспортное средство.", "inv-item-gasoline", "Инструменты", 786272259, 2, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.None, "gray", 3.0f, 2, 2) },
+    { ItemId.Lockpick, new ItemsInfo("Отмычка для замков", "Инструмент для вскрытия замков без ключа.", "inv-item-picklock", "Инструмент", 977923025, 10, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.None, "gray", 0.1f, 1, 1) },
+    { ItemId.ArmyLockpick, new ItemsInfo("Военная отмычка", "Инструмент для вскрытия замков военных автомобилей.", "inv-item-picklock", "Инструмент", 977923025, 10, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.None, "gray", 0.15f, 1, 1) },
+    { ItemId.Pocket, new ItemsInfo("Мешок", "Обычный мешок. Говорят, его можно надеть кому-то на голову...", "inv-item-bag", "Инструмент", 3887136870, 5, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Cuffs, new ItemsInfo("Стяжки", "Позволяют связать человека с поднятыми руками.", "inv-item-stretching", "Инструмент", 3887136870, 5, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.None, "gray", 0.05f, 1, 1) },
+    { ItemId.CarKey, new ItemsInfo("Ключи от машины", "Инструмент, позволяющий открыть/закрыть автомобиль и завести его.", "inv-item-key", "Инструмент", 977923025, 1, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.None, "gray", 0.05f, 1, 1) },
+    { ItemId.Present, new ItemsInfo("Подарок", "Содержит в себе что-то интересное! Открывай быстрее!", "inv-item-gift", "Инструмент", 1580014892, 1, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.None, "gray", 0.5f, 2, 2) },
+    { ItemId.KeyRing, new ItemsInfo("Связка ключей", "Собирает все ключи в одну большую связку и экономит место в карманах!", "inv-item-key-2", "Инструмент", 977923025, 1, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.None, "gray", 0.1f, 1, 1) },
+    { ItemId.BagWithMoney, new ItemsInfo("Сумка с деньгами", "Туда можно сложить все деньги после ограбления 24/7.", "inv-item-briefcase", "Остальное", NAPI.Util.GetHashKey("p_ld_heist_bag_s_pro"), 1, new Vector3(0, 0, -1.1), new Vector3(0, 30, 110), newItemType.None, "gray", 2.0f, 2, 2) },
+    { ItemId.Material, new ItemsInfo("Материалы", "Нужны для создания оружия и патронов.", "inv-item-fraction", "Остальное", 3045218749, 4000, new Vector3(0.0,0.0,-0.6), new Vector3(), newItemType.None, "gray", 0.5f, 1, 1) },
+    { ItemId.SimCard, new ItemsInfo("Сим-карта", "Сим-карта с номером телефона.", "inv-item-SimCard", "Особое", NAPI.Util.GetHashKey("prop_ld_contact_card"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.01f, 1, 1) },
+    { ItemId.VehicleNumber, new ItemsInfo("Номер на автомобиль", "Номерной знак транспортного средства.", "inv-item-SimCard", "Особое", NAPI.Util.GetHashKey(" "), 1, new Vector3(0.0,0.0,-0.935), new Vector3(-90, 0, 90), newItemType.None, "gray", 0.3f, 2, 1) },
 
-    { ItemId.Feet, new ItemsInfo("Обувь", "Современная модель, которая никогда тебя не подведёт.", "inv-item-sneakers", "Одежда", 1682675077, 1, new Vector3(0.0,0.0,-0.95), new Vector3(), newItemType.Clothes, "gray") },
-    { ItemId.Jewelry, new ItemsInfo("Аксессуар", "Позволяет улучшить внешний вид персонажа.", "inv-item-necklace", "Одежда", 2329969874, 1, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.Clothes, "gray") },
-    { ItemId.Undershit, new ItemsInfo("Нижняя одежда", "Может быть надета под верхней одеждой, придаёт стильный вид твоему персонажу.", "inv-item-shirt", "Одежда", 578126062, 1, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.Clothes, "gray") },
-    { ItemId.BodyArmor, new ItemsInfo("Бронежилет", "Служит средством защиты персонажа, способен впитать 100 урона, прежде чем сломается.", "inv-item-armor", "Одежда", 701173564, 1, new Vector3(0.0,0.0,-0.88), new Vector3(90, 90, 0), newItemType.Clothes, "gray") },
-    { ItemId.Decals, new ItemsInfo("Украшения", "Позволяют улучшить внешний вид персонажа.", "inv-item-clock", "Одежда", 0, 1, new Vector3(), new Vector3(), newItemType.Clothes, "gray") },
-    { ItemId.Top, new ItemsInfo("Верхняя одежда", "Может быть надета над нижней одеждой, придаёт стильный вид твоему персонажу.", "inv-item-jacket", "Одежда", 3038378640, 1, new Vector3(0.0,0.0,-0.96), new Vector3(), newItemType.Clothes, "gray") },
-    { ItemId.Hat, new ItemsInfo("Головной убор", "Спасёт тебя от солнечного удара в жаркий день.", "inv-item-cap", "Одежда", 1619813869, 1, new Vector3(0.0,0.0,-0.93), new Vector3(), newItemType.Clothes, "gray") },
-    { ItemId.Glasses, new ItemsInfo("Очки", "Защищат от солнца в самый солнечный день.", "inv-item-glasses", "Одежда", 2329969874, 1, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.Clothes, "gray") },
-    { ItemId.Bracelets, new ItemsInfo("Браслет", "Позволяют улучшить внешний вид персонажа.", "inv-item-bracelet", "Одежда", 2329969874, 1, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.Clothes, "gray") },
-    { ItemId.Watches, new ItemsInfo("Часы", "Показывает статусность твоего персонажа.", "inv-item-clock", "Одежда", 2329969874, 1, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.Clothes, "gray") },
+    // ========================================
+    // ЕДА И НАПИТКИ (1x1, 0.2-0.5 кг)
+    // ========================================
+    { ItemId.Crisps, new ItemsInfo("Чипсы", "Закуска, восстанавливает 30% здоровья.", "inv-item-Chips", "Еда", 2564432314, 4, new Vector3(0.0,0.0,-1.0), new Vector3(90, 90, 0), newItemType.Eat, "gray", 0.2f, 1, 1) },
+    { ItemId.Beer, new ItemsInfo("Пиво", "Пивка для рывка!", "inv-item-beer", "Вода", 1940235411, 5, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.Water, "gray", 0.5f, 1, 1) },
+    { ItemId.Pizza, new ItemsInfo("Пицца", "Ммм... Пицца... Восстанавливает 30% здоровья.", "inv-item-pizza", "Еда", 0, 3, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Eat, "gray", 0.4f, 2, 1) },
+    { ItemId.Burger, new ItemsInfo("Бургер", "Булка с котлеткой, восстанавливает 30% здоровья.", "inv-item-burger", "Еда", 2240524752, 4, new Vector3(0.0,0.0,-0.97), new Vector3(), newItemType.Eat, "gray", 0.3f, 1, 1) },
+    { ItemId.HotDog, new ItemsInfo("Хот-Дог", "Булка с сосиской, восстанавливает 30% здоровья.", "inv-item-hot-dog", "Еда", 2565741261, 5, new Vector3(0.0,0.0,-0.97), new Vector3(), newItemType.Eat, "gray", 0.25f, 1, 1) },
+    { ItemId.Sandwich, new ItemsInfo("Сэндвич", "Несколько ломтиков хлеба и мяса, восстанавливает 30% здоровья.", "inv-item-sandwich", "Еда", 987331897, 7, new Vector3(0.0,0.0,-0.99), new Vector3(), newItemType.Eat, "gray", 0.3f, 1, 1) },
+    { ItemId.eCola, new ItemsInfo("eCola", "Безалкогольный газированный напиток, восстанавливает 10% здоровья.", "inv-item-eCola", "Вода", 144995201, 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Water, "gray", 0.35f, 1, 1) },
+    { ItemId.Sprunk, new ItemsInfo("Sprunk", "Сильногазированный прохладительный напиток, восстанавливает 10% здоровья.", "inv-item-eCola", "Вода", 2973713592, 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Water, "gray", 0.35f, 1, 1) },
+    { ItemId.PizzaSlice, new ItemsInfo("Пицца", "Имеет 8 кусочков, каждый восстанавливает 50 сытости", "inv-item-pizza", "Еда", 0, 8, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.Eat, "gray", 0.4f, 2, 1) },
+    { ItemId.CannedBeans, new ItemsInfo("Консервированные бобы", "Пополняет 70 сытости и 70 жажды", "inv-item-Chips", "Еда", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.Eat, "gray", 0.3f, 1, 1) },
+    { ItemId.SpoiledBurger, new ItemsInfo("Испорченный бургер", "Аннулирует сытость и жажду", "inv-item-burger", "Еда", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.Eat, "gray", 0.3f, 1, 1) },
 
-    { ItemId.Debug, new ItemsInfo("None", "", "", "", 0, 0, new Vector3(), new Vector3(), newItemType.None, "gray") },
-    { ItemId.BagWithDrill, new ItemsInfo("Сумка с дрелью", "Используется для взлома хранилища.", "inv-item-Bag-drill", "Остальное", NAPI.Util.GetHashKey("prop_cs_heist_bag_02"), 1, new Vector3(0, 0, -0.85), new Vector3(), newItemType.None, "gray") },
-    { ItemId.GasCan, new ItemsInfo("Канистра", "Можно заправить транспортное средство.", "inv-item-gasoline", "Инструменты", 786272259, 2, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Crisps, new ItemsInfo("Чипсы", "Закуска, восстанавливает 30% здоровья.", "inv-item-Chips", "Еда", 2564432314, 4, new Vector3(0.0,0.0,-1.0), new Vector3(90, 90, 0), newItemType.Eat, "gray") },
-    { ItemId.Beer, new ItemsInfo("Пиво", "Пивка для рывка!", "inv-item-beer", "Вода", 1940235411, 5, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.Water, "gray") },
-    { ItemId.Pizza, new ItemsInfo("Пицца", "Ммм... Пицца... Восстанавливает 30% здоровья.", "inv-item-pizza", "Еда", 0, 3, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Eat, "gray") },
-    { ItemId.Burger, new ItemsInfo("Бургер", "Булка с котлеткой, восстанавливает 30% здоровья.", "inv-item-burger", "Еда", 2240524752, 4, new Vector3(0.0,0.0,-0.97), new Vector3(), newItemType.Eat, "gray") },
-    { ItemId.HotDog, new ItemsInfo("Хот-Дог", "Булка с сосиской, восстанавливает 30% здоровья.", "inv-item-hot-dog", "Еда", 2565741261, 5, new Vector3(0.0,0.0,-0.97), new Vector3(), newItemType.Eat, "gray") },
-    { ItemId.Sandwich, new ItemsInfo("Сэндвич", "Несколько ломтиков хлеба и мяса, восстанавливает 30% здоровья.", "inv-item-sandwich", "Еда", 987331897, 7, new Vector3(0.0,0.0,-0.99), new Vector3(), newItemType.Eat, "gray") },
-    { ItemId.eCola, new ItemsInfo("eCola", "Безалкогольный газированный напиток, восстанавливает 10% здоровья.", "inv-item-eCola", "Вода", 144995201, 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Water, "gray") },
-    { ItemId.Sprunk, new ItemsInfo("Sprunk", "Сильногазированный прохладительный напиток, восстанавливает 10% здоровья.", "inv-item-eCola", "Вода", 2973713592, 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Water, "gray") },
-    { ItemId.Lockpick, new ItemsInfo("Отмычка для замков", "Инструмент для вскрытия замков без ключа.", "inv-item-picklock", "Инструмент", 977923025, 10, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.None, "gray") },
-    { ItemId.BagWithMoney, new ItemsInfo("Сумка с деньгами", "Туда можно сложить все деньги после ограбления 24/7.", "inv-item-briefcase", "Остальное", NAPI.Util.GetHashKey("p_ld_heist_bag_s_pro"), 1, new Vector3(0, 0, -1.1), new Vector3(0, 30, 110), newItemType.None, "gray") },
-    { ItemId.Material, new ItemsInfo("Материалы", "Нужны для создания оружия и патронов.", "inv-item-fraction", "Остальное", 3045218749, 4000, new Vector3(0.0,0.0,-0.6), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Drugs, new ItemsInfo("Наркотики", "Волшебный чай накладывает эффект наркотического опьянения.", "inv-item-marijuana", "Остальное", 4293279169, 50, new Vector3(0.0,0.0,-0.95), new Vector3(), newItemType.None, "gray") },
-    { ItemId.HealthKit, new ItemsInfo("Аптечка", "Набор перевязочных материалов, инструментов и приспособлений, предназначенных для оказания первой помощи.", "inv-item-medical-kit", "Медицина", 678958360, 10, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.HealthKit2, new ItemsInfo("Улучшенная аптечка", "Набор перевязочных материалов, инструментов и приспособлений, предназначенных для оказания первой помощи.", "inv-item-medical-kit", "Медицина", 678958360, 10, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
+    // ========================================
+    // МЕДИЦИНА (1x1, 0.3-0.8 кг)
+    // ========================================
+    { ItemId.HealthKit, new ItemsInfo("Аптечка", "Набор перевязочных материалов, инструментов и приспособлений.", "inv-item-medical-kit", "Медицина", 678958360, 10, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.6f, 1, 1) },
+    { ItemId.HealthKit2, new ItemsInfo("Улучшенная аптечка", "Набор перевязочных материалов, инструментов и приспособлений.", "inv-item-medical-kit", "Медицина", 678958360, 10, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.8f, 1, 1) },
+    { ItemId.Bint, new ItemsInfo("Бинт", "Бинт, восстанавливает 40% здоровья. Можно использовать раз в 3 минуты.", "inv-item-SimCard", "Остальное", 678958360, 10, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.1f, 1, 1) },
+    { ItemId.Epinephrine, new ItemsInfo("Адреналин", "Нужна для лечения, можно использовать 1 раз в 5 минут.", "inv-item-medical-kit", "Остальное", NAPI.Util.GetHashKey("p_syringe_01_s"), 10, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.05f, 1, 1) },
+    { ItemId.Defibrillator, new ItemsInfo("Дефибриллятор", "Прибор, использующийся в медицине для электроимпульсной терапии нарушений сердечного ритма.", "inv-item-defik", "Медицина", NAPI.Util.GetHashKey("prop_power_cell"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 2.5f, 2, 2) },
+    { ItemId.RecoveryCapsules, new ItemsInfo("Капсулы восстановления", "При использовании восстанавливает 9 здоровья раз в 2 секунды", "inv-item-medkit", "Медицина", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray", 0.1f, 1, 1) },
+    { ItemId.ImmortalitixPill, new ItemsInfo("Эксперементальная пилюля 'Имморталитикс'", "Имеет шанс 50%", "inv-item-pill", "Медицина", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray", 0.05f, 1, 1) },
+
+    // ========================================
+    // АЛКОГОЛЬ (1x2, 0.5-0.7 кг)
+    // ========================================
+    { ItemId.RusDrink1, new ItemsInfo("<На корке лимона>", "Алкогольный напиток с нотками лимона.", "inv-item-On-lemon-peel", "Спиртное", NAPI.Util.GetHashKey("prop_rum_bottle"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray", 0.6f, 1, 2) },
+    { ItemId.RusDrink2, new ItemsInfo("<На бруснике>", "Алкогольный напиток с легкой ноткой брусники.", "inv-item-The-cranberries", "Спиртное", NAPI.Util.GetHashKey("h4_prop_h4_t_bottle_01a"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray", 0.6f, 1, 2) },
+    { ItemId.RusDrink3, new ItemsInfo("<Русский стандарт>", "Старая добрая Русская водка.", "inv-item-Russian-standard", "Спиртное", NAPI.Util.GetHashKey("prop_vodka_bottle"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray", 0.7f, 1, 2) },
+    { ItemId.YakDrink1, new ItemsInfo("<Asahi>", "Пиво с низким содержанием солода.", "inv-item-Asahi", "Спиртное", NAPI.Util.GetHashKey("prop_bottle_brandy"), 5, new Vector3(0.0,0.0,-0.87), new Vector3(), newItemType.Alco, "gray", 0.5f, 1, 2) },
+    { ItemId.YakDrink2, new ItemsInfo("<Midori>", "Сладкий дынный ликер.", "inv-item-Midori", "Спиртное", NAPI.Util.GetHashKey("prop_bottle_cognac"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray", 0.6f, 1, 2) },
+    { ItemId.YakDrink3, new ItemsInfo("<Yamazaki>", "Японский виски.", "inv-item-Yamazaki", "Спиртное", NAPI.Util.GetHashKey("prop_bottle_macbeth"), 5, new Vector3(0.0,0.0,-0.87), new Vector3(), newItemType.Alco, "gray", 0.7f, 1, 2) },
+    { ItemId.LcnDrink1, new ItemsInfo("<Martini Asti>", "Игристое вино.", "inv-item-Martini-Asti", "Спиртное", NAPI.Util.GetHashKey("p_amb_bag_bottle_01"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray", 0.7f, 1, 2) },
+    { ItemId.LcnDrink2, new ItemsInfo("<Sambuca>", "Крепкий ликер с приятным анисовым вкусом.", "inv-item-Sambuca", "Спиртное", NAPI.Util.GetHashKey("prop_cs_whiskey_bottle"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray", 0.6f, 1, 2) },
+    { ItemId.LcnDrink3, new ItemsInfo("<Campari>", "Горький ликер на основе ароматических трав и фруктов.", "inv-item-Campari", "Спиртное", NAPI.Util.GetHashKey("prop_bottle_richard"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray", 0.7f, 1, 2) },
+    { ItemId.ArmDrink1, new ItemsInfo("<Дживан>", "Армянский коньяк.", "inv-item-alcohol", "Спиртное", NAPI.Util.GetHashKey("h4_prop_h4_t_bottle_02a"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray", 0.7f, 1, 2) },
+    { ItemId.ArmDrink2, new ItemsInfo("<Арарат>", "Армянский коньяк с фруктово-цветочными нотками.", "inv-item-ararat", "Спиртное", NAPI.Util.GetHashKey("p_cs_bottle_01"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray", 0.7f, 1, 2) },
+    { ItemId.ArmDrink3, new ItemsInfo("<Noyan Tapan>", "Армянский винный напиток.", "inv-item-Noyan-Tapan", "Спиртное", NAPI.Util.GetHashKey("prop_tequila_bottle"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray", 0.7f, 1, 2) },
+    { ItemId.Medovuha, new ItemsInfo("Медовуха", "Может сделать вас супергероем!", "inv-item-improvement", "Бафф", 1940235411, 5, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.Improvement, "gray", 0.5f, 1, 2) },
+
+    // ========================================
+    // ОРУЖИЕ: ПИСТОЛЕТЫ (2x1, 1.0-2.0 кг)
+    // ========================================
+    { ItemId.Pistol, new ItemsInfo("Pistol", "Стандартный пистолет, обойма вмещает в себя 12 патронов.", "inv-item-Pistol", "Оружие", 1467525553, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 1.2f, 2, 1) },
+    { ItemId.CombatPistol, new ItemsInfo("Combat Pistol", "Боевой пистолет, обойма вмещает в себя 12 патронов.", "inv-item-Pistol", "Оружие", 403140669, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 1.3f, 2, 1) },
+    { ItemId.Pistol50, new ItemsInfo("Pistol 50", "Мощный пистолет 0.50 калибра, обойма вмещает в себя 9 патронов.", "inv-item-Pistol-50", "Оружие", 4116483281, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 1.8f, 2, 1) },
+    { ItemId.SNSPistol, new ItemsInfo("SNS Pistol", "Карманный пистолет 0.25 калибра, обойма вмещает в себя 6 патронов.", "inv-item-SNS-Pistol", "Оружие", 339962010, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 0.8f, 2, 1) },
+    { ItemId.HeavyPistol, new ItemsInfo("Heavy Pistol", "Тяжелый пистолет, обойма вмещает в себя 18 патронов.", "inv-item-Heavy-Pistol", "Оружие", 1927398017, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 1.5f, 2, 1) },
+    { ItemId.VintagePistol, new ItemsInfo("Vintage Pistol", "Винтажный пистолет, обойма вмещает в себя 7 патронов.", "inv-item-Vintage-Pistol", "Оружие", 3170921020, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 1.1f, 2, 1) },
+    { ItemId.MarksmanPistol, new ItemsInfo("Marksman Pistol", "Марксманский пистолет, обойма вмещает в себя 1 патрон.", "inv-item-Marksman-Pistol", "Оружие", 4191177435, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 1.4f, 2, 1) },
+    { ItemId.Revolver, new ItemsInfo("Revolver", "Револьвер, обойма вмещает в себя 6 патронов.", "inv-item-Heavy-Revolver", "Оружие", 914615883, 1, new Vector3(0.0,0.0,-0.95), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 1.4f, 2, 1) },
+    { ItemId.APPistol, new ItemsInfo("AP Pistol", "Бронебойный пистолет, обойма вмещает в себя 18 патронов.", "inv-item-AP-Pistol", "Оружие", 905830540, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 1.6f, 2, 1) },
+    { ItemId.StunGun, new ItemsInfo("Stun Gun", "Электрошоковое оружие, обойма вмещает в себя 1 заряд.", "inv-item-Stun-Gun", "Оружие ближнего боя", 1609356763, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 0.5f, 2, 1) },
+    { ItemId.FlareGun, new ItemsInfo("Flare Gun", "Сигнальный пистолет.", "inv-item-Flare-Gun", "Оружие", 1349014803, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 0.7f, 2, 1) },
+    { ItemId.DoubleAction, new ItemsInfo("Double Action Revolver", "Самовзводный револьвер, обойма вмещает в себя 6 патронов.", "inv-item-Double-Action-Revolver", "Оружие", 1393678102, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 1.3f, 2, 1) },
+    { ItemId.PistolMk2, new ItemsInfo("Pistol Mk2", "Улучшенная версия обычного пистолета.", "inv-item-Pistol-Mk-II", "Оружие", 995074671, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 1.4f, 2, 1) },
+    { ItemId.SNSPistolMk2, new ItemsInfo("SNSPistol Mk2", "Улучшенная версия карманного пистолета.", "inv-item-SNS-Pistol-Mk-II", "Оружие", 4221916961, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 0.9f, 2, 1) },
+    { ItemId.RevolverMk2, new ItemsInfo("Heavy Revolver Mk2", "Улучшенная версия стандартного револьвера.", "inv-item-Heavy-Revolver-Mk-II", "Оружие", 4065179617, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 1.5f, 2, 1) },
+    { ItemId.RayPistol, new ItemsInfo("Up-n-Atomizer", "Футуристичный пистолет, не требует боеприпасов.", "inv-item-Vintage-Pistol", "Оружие", NAPI.Util.GetHashKey("w_pi_raygun"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 1.0f, 2, 1) },
+    { ItemId.CeramicPistol, new ItemsInfo("Ceramic Pistol", "Керамический пистолет, обойма вмещает в себя 12 патронов.", "inv-item-Combat-Pistol", "Оружие", NAPI.Util.GetHashKey("w_pi_ceramic_pistol"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 0.9f, 2, 1) },
+    { ItemId.NavyRevolver, new ItemsInfo("Navy Revolver", "Армейский револьвер, обойма вмещает в себя 6 патрон.", "inv-item-Heavy-Revolver-Mk-II", "Оружие", NAPI.Util.GetHashKey("w_pi_wep2_gun"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 1.3f, 2, 1) },
+    { ItemId.Glock, new ItemsInfo("Banana Glock", "Банана Глок топ", "inv-item-Carbine-Rifle", "Оружие", 651271362, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 1.1f, 2, 1) },
+
+    // ========================================
+    // ОРУЖИЕ: SMG (2x2 или 2x3, 2.0-3.5 кг)
+    // ========================================
+    { ItemId.MicroSMG, new ItemsInfo("Micro SMG", "Малогабаритный пистолет - пулемёт.", "inv-item-Micro-SMG", "Оружие", 3238253642, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 2.5f, 2, 3) },
+    { ItemId.MachinePistol, new ItemsInfo("Machine Pistol", "Автоматический пистолет.", "inv-item-Machine-Pistol", "Оружие", 3963421467, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 2.2f, 2, 2) },
+    { ItemId.SMG, new ItemsInfo("SMG", "Пистолет - пулемет.", "inv-item-SMG", "Оружие", 3794909300, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 2.8f, 2, 3) },
+    { ItemId.AssaultSMG, new ItemsInfo("Assault SMG", "Штурмовое автоматическое оружие.", "inv-item-Assault-SMG", "Оружие", 3821393119, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 3.0f, 2, 3) },
+    { ItemId.CombatPDW, new ItemsInfo("Combat PDW", "Малогабаритная штурмовая винтовка.", "inv-item-Combat-PDW", "Оружие", 2901952492, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 2.7f, 2, 3) },
+    { ItemId.MG, new ItemsInfo("MG", "Тяжелый пулемет.", "inv-item-MG", "Оружие", 2238602894, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 4.5f, 1, 4) },
+    { ItemId.CombatMG, new ItemsInfo("Combat MG", "Пулемёт специального назначения.", "inv-item-Combat-MG", "Оружие", 3555572849, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 5.0f, 1, 4) },
+    { ItemId.Gusenberg, new ItemsInfo("Gusenberg", "Пистолет - пулемет.", "inv-item-Gusenberg-Sweeper", "Оружие", 574348740, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 3.2f, 2, 3) },
+    { ItemId.MiniSMG, new ItemsInfo("Mini SMG", "Малогабаритный пистолет - пулемёт.", "inv-item-Mini-SMG", "Оружие", 3322144245, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 2.3f, 2, 2) },
+    { ItemId.SMGMk2, new ItemsInfo("SMG Mk2", "Улучшенный пистолет-пулемёт.", "inv-item-SMG-Mk-II", "Оружие", 2547423399, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 2.9f, 2, 3) },
+    { ItemId.CombatMGMk2, new ItemsInfo("Combat MG Mk2", "Обновлённый единый пулемёт.", "inv-item-Combat-MG-Mk-II", "Оружие", 2969831089, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 5.2f, 1, 4) },
+
+    // ========================================
+    // ОРУЖИЕ БЛИЖНЕГО БОЯ (1x2 или 1x3, 0.3-2.5 кг)
+    // ========================================
+    { ItemId.Knife, new ItemsInfo("Нож", "Острый нож, которым можно порезаться.", "inv-item-Knife", "Оружие ближнего боя", 2312523967, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray", 0.3f, 1, 2) },
+    { ItemId.Nightstick, new ItemsInfo("Дубинка", "Нашли нарушителя порядка? Пора воспользоваться дубинкой.", "inv-item-Nightstick", "Оружие ближнего боя", 2659989060, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray", 0.8f, 1, 3) },
+    { ItemId.Hammer, new ItemsInfo("Молоток", "Молоток поможет вам в домашних делах.", "inv-item-Hammer", "Оружие ближнего боя", 64104227, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray", 1.5f, 2, 1) },
+    { ItemId.Bat, new ItemsInfo("Бита", "Бита отлично подходит для игры в бейсбол.", "inv-item-Baseball-Bat", "Оружие ближнего боя", 32653987, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray", 1.2f, 1, 3) },
+    { ItemId.Crowbar, new ItemsInfo("Лом", "Лом один из самых популярных инструментов.", "inv-item-crowbar", "Оружие ближнего боя", 1862268168, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray", 2.0f, 1, 3) },
+    { ItemId.GolfClub, new ItemsInfo("Гольф клюшка", "Позволит отлично провести время на поле для гольфа.", "inv-item-Golf-Club", "Оружие ближнего боя", 3714771050, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray", 1.0f, 1, 3) },
+    { ItemId.Bottle, new ItemsInfo("Бутылка", "Розочка.", "inv-item-Broken-Bottle", "Оружие ближнего боя", 1150762982, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray", 0.5f, 1, 2) },
+    { ItemId.Dagger, new ItemsInfo("Кинжал", "Очень хорошо подходит для коллекционеров редким оружием.", "inv-item-Antique-Cavalry-Dagger", "Оружие ближнего боя", 601713565, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray", 0.4f, 1, 2) },
+    { ItemId.Hatchet, new ItemsInfo("Топор", "Нужно нарубить дров? Топор отличный помощник в этом.", "inv-item-Hatchet", "Оружие ближнего боя", 1653948529, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray", 1.8f, 2, 2) },
+    { ItemId.KnuckleDuster, new ItemsInfo("Кастет", "Отличный помощник в уличных боях.", "inv-item-Brass-Knuckles", "Оружие ближнего боя", 3005998612, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray", 0.3f, 1, 1) },
+    { ItemId.Machete, new ItemsInfo("Мачете", "Одно из самых эффективных оружий для выживания в диких джунглях.", "inv-item-Machete", "Оружие ближнего боя", 2239480765, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray", 0.8f, 1, 3) },
+    { ItemId.Flashlight, new ItemsInfo("Фонарик", "Яркий свет, поможет вам если вы потерялись в темном лесу.", "inv-item-Flashlight", "Оружие ближнего боя", 2278481040, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray", 0.4f, 1, 2) },
+    { ItemId.SwitchBlade, new ItemsInfo("Швейцарский нож", "Складной нож, поможет вам в решении многих проблем.", "inv-item-Switchblade", "Оружие ближнего боя", 3331136096, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray", 0.2f, 1, 1) },
+    { ItemId.PoolCue, new ItemsInfo("Кий", "Отлично подойдет для игры в бильярд", "inv-item-Pool-Cue", "Оружие ближнего боя", 1184113278, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray", 0.7f, 1, 3) },
+    { ItemId.Wrench, new ItemsInfo("Ключ", "Ключ, самый верный помощник если что то сломалось.", "inv-item-Pipe-Wrench", "Оружие ближнего боя", 1959553115, 1, new Vector3(0.0,0.0,-0.985), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray", 1.0f, 2, 1) },
+    { ItemId.BattleAxe, new ItemsInfo("Боевой топор", "Нужно нарубить врагов? Топор отличный помощник в этом.", "inv-item-Battle-Axe", "Оружие ближнего боя", 3406411762, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray", 2.5f, 2, 2) },
+        // ========================================
+    // ОРУЖИЕ: ВИНТОВКИ (1x4, 3.0-4.5 кг)
+    // ========================================
+    { ItemId.AssaultRifle, new ItemsInfo("Assault Rifle", "Штурмовая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-Assault-Rifle", "Оружие", 273925117, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 3.5f, 1, 4) },
+    { ItemId.CarbineRifle, new ItemsInfo("Carbine Rifle", "Американская полуавтоматическая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-Carbine-Rifle", "Оружие", 1026431720, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 3.2f, 1, 4) },
+    { ItemId.AdvancedRifle, new ItemsInfo("Advanced Rifle", "Усовершенствованная штурмовая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-Advanced-Rifle", "Оружие", 2587382322, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 3.8f, 1, 4) },
+    { ItemId.SpecialCarbine, new ItemsInfo("Special Carbine", "Штурмовая винтовка с меньшей отдачей, обойма вмещает в себя 30 патронов.", "inv-item-Special-Carbine", "Оружие", 2549323539, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 3.3f, 1, 4) },
+    { ItemId.BullpupRifle, new ItemsInfo("Bullpup Rifle", "Китайская штурмовая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-Bullpup-Rifle", "Оружие", 3006407723, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 3.3f, 1, 4) },
+    { ItemId.CompactRifle, new ItemsInfo("Compact Rifle", "Укороченная винтовка, обойма вмещает в себя 30 патронов.", "inv-item-Compact-Rifle", "Оружие", 1931114084, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 2.8f, 1, 3) },
+    { ItemId.AssaultRifleMk2, new ItemsInfo("Assault Rifle Mk2", "Улучшенная штурмовая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-Assault-Rifle-Mk-II", "Оружие", 1762764713, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 3.7f, 1, 4) },
+    { ItemId.CarbineRifleMk2, new ItemsInfo("Carbine Rifle Mk2", "Улучшеная полуавтоматическая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-Carbine-Rifle-Mk-II", "Оружие", 1520780799, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 3.4f, 1, 4) },
+    { ItemId.SpecialCarbineMk2, new ItemsInfo("Special Carbine Mk2", "Улучшенная штурмовая винтовка с более коротким стволом, обойма вмещает в себя 30 патронов.", "inv-item-Special-Carbine-Mk-II", "Оружие", 2379721761, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 3.5f, 1, 4) },
+    { ItemId.BullpupRifleMk2, new ItemsInfo("Bullpup Rifle Mk2", "Улучшеная штурмовая винтовка из Китая, обойма вмещает в себя 30 патронов.", "inv-item-Bullpup-Rifle-Mk-II", "Оружие", 1415744902, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 3.5f, 1, 4) },
+    { ItemId.MilitaryRifle, new ItemsInfo("Military Rifle", "Усовершенствованная штурмовая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-militaryrifle", "Оружие", 1415744902, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 4.0f, 1, 4) },
+    { ItemId.RayCarbine, new ItemsInfo("Unholy Hellbringer", "Футуристичная плазменная винтовка, имеет необычный внешний вид.", "NEEDTEXT", "Оружие", NAPI.Util.GetHashKey("w_ar_srifle"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 3.5f, 1, 4) },
+    { ItemId.TacticalRifle, new ItemsInfo("Tactical Rifle", "Усовершенствованная штурмовая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-militaryrifle", "Оружие", 273925117, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 3.9f, 1, 4) },
+    { ItemId.HeavyRifle, new ItemsInfo("Heavy Rifle", "Усовершенствованная штурмовая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-militaryrifle", "Оружие", 2379721761, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 4.2f, 1, 4) },
+    { ItemId.CombatRifle, new ItemsInfo("Combat Rifle", "Сносящая все на своем пути винтовка", "inv-item-Carbine-Rifle", "Оружие", 2379721761, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 3.7f, 1, 4) },
+
+    // ========================================
+    // ОРУЖИЕ: СНАЙПЕРСКИЕ ВИНТОВКИ (1x5, 5.0-7.0 кг)
+    // ========================================
+    { ItemId.SniperRifle, new ItemsInfo("Sniper Rifle", "Снайперская винтовка, обойма вмещает в себя 10 патронов.", "inv-item-Sniper-Rifle", "Оружие", 346403307, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 6.0f, 1, 5) },
+    { ItemId.HeavySniper, new ItemsInfo("Heavy Sniper", "Крупнокалиберная снайперская винтовка, обойма вмещает в себя 6 патронов.", "inv-item-Heavy-Sniper", "Оружие", 3548001216, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 7.0f, 1, 5) },
+    { ItemId.MarksmanRifle, new ItemsInfo("Marksman Rifle", "Марксманская снайперская винтовка, обойма вмещает в себя 8 патронов.", "inv-item-Marksman-Rifle", "Оружие", 2583718658, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 5.5f, 1, 5) },
+    { ItemId.HeavySniperMk2, new ItemsInfo("Heavy Sniper Mk2", "Улучшенная крупнокалиберная снайперская винтовка, обойма вмещает в себя 6 патронов.", "inv-item-Heavy-Sniper-Mk-II", "Оружие", 619715967, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 7.2f, 1, 5) },
+    { ItemId.MarksmanRifleMk2, new ItemsInfo("Marksman Rifle Mk2", "Улучшенная марксманская снайперская винтовка, обойма вмещает в себя 8 патронов.", "inv-item-Marksman-Rifle-Mk-II", "Оружие", 2436666926, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 5.8f, 1, 5) },
+    { ItemId.PrecisionRifle, new ItemsInfo("Precision Rifle", "Усовершенствованная снайперская винтовка, обойма вмещает в себя 6 патронов.", "inv-item-militaryrifle", "Оружие", 346403307, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 6.2f, 1, 5) },
+
+    // ========================================
+    // ОРУЖИЕ: ДРОБОВИКИ (3x2, 3.5-5.5 кг)
+    // ========================================
+    { ItemId.PumpShotgun, new ItemsInfo("Pump Shotgun", "Тактический боевой помповый дробовик, обойма вмещает в себя 8 патронов.", "inv-item-Pump-Shotgun", "Оружие", 689760839, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 4.5f, 3, 2) },
+    { ItemId.SawnOffShotgun, new ItemsInfo("SawnOff Shotgun", "Обрез, обойма вмещает в себя 8 патронов.", "inv-item-Sawed-Off-Shotgun", "Оружие", 3619125910, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 3.5f, 2, 2) },
+    { ItemId.BullpupShotgun, new ItemsInfo("Bullpup Shotgun", "Помповый дробовик, обойма вмещает в себя 14 патронов.", "inv-item-Bullpup-Shotgun", "Оружие", 2696754462, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 4.2f, 3, 2) },
+    { ItemId.AssaultShotgun, new ItemsInfo("Assault Shotgun", "Штурмовой дробовик, обойма вмещает в себя 8 патронов.", "inv-item-Assault-Shotgun", "Оружие", 1255410010, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 5.0f, 3, 2) },
+    { ItemId.Musket, new ItemsInfo("Musket", "Ручное огнестрельное оружие, обойма вмещает в себя 1 патрон.", "inv-item-Musket", "Оружие", 1652015642, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 4.0f, 1, 4) },
+    { ItemId.HeavyShotgun, new ItemsInfo("Heavy Shotgun", "Тяжелый шестизарядный дробовик, обойма вмещает в себя 6 патронов.", "inv-item-Heavy-Shotgun", "Оружие", 3085098415, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 5.5f, 3, 2) },
+    { ItemId.DoubleBarrelShotgun, new ItemsInfo("Double Barrel Shotgun", "Двуствольный дробовик, обойма вмещает в себя 2 патрона.", "inv-item-Double-Barrel-Shotgun", "Оружие", 222483357, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 3.8f, 3, 2) },
+    { ItemId.SweeperShotgun, new ItemsInfo("Sweeper Shotgun", "Компактный скорострельный дробовик, обойма вмещает в себя 10 патронов.", "inv-item-Sweeper-Shotgun", "Оружие", NAPI.Util.GetHashKey("w_sg_sweeper"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 4.3f, 3, 2) },
+    { ItemId.PumpShotgunMk2, new ItemsInfo("Pump Shotgun Mk2", "Улучшенный помповый дробовик, обойма вмещает в себя 8 патронов.", "inv-item-Pump-Shotgun-Mk-II", "Оружие", 3194406291, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 4.7f, 3, 2) },
+    { ItemId.CombatShotgun, new ItemsInfo("Combat Shotgun", "Усовершенствованный дробовик, обойма вмещает в себя 10 патронов.", "inv-item-militaryrifle", "Оружие", 689760839, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 4.8f, 3, 2) },
+
+    // ========================================
+    // ОРУЖИЕ: ТЯЖЕЛОЕ (2x3 или 2x4, 6.0-15.0 кг)
+    // ========================================
+    { ItemId.GrenadeLauncher, new ItemsInfo("Grenade Launcher", "Легкий гранатомёт с полуавтоматическим функционалом, вмещает в себя до 10 боеприпасов.", "", "Оружие", NAPI.Util.GetHashKey("w_lr_grenadelauncher"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 8.0f, 2, 3) },
+    { ItemId.RPG, new ItemsInfo("RPG", "Ручной противотанковый гранатомёт, вмещает в себя 1 боеприпас.", "NEEDTEXT", "Оружие", NAPI.Util.GetHashKey("w_lr_rpg"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 9.0f, 1, 5) },
+    { ItemId.Minigun, new ItemsInfo("Minigun", "6-стовольный пулемет, имеет очень высокую скорострельность, а также вмещает в себя 595 боеприпасов.", "NEEDTEXT", "Оружие", NAPI.Util.GetHashKey("w_mg_minigun"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 15.0f, 2, 4) },
+    { ItemId.Firework, new ItemsInfo("Firework Launcher", "Пусковая установка для запуска фейерверков.", "NEEDTEXT", "Оружие", NAPI.Util.GetHashKey("w_mg_minigun"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 5.0f, 2, 3) },
+    { ItemId.Railgun, new ItemsInfo("Railgun", "Рельсовое тяжелое оружие, имеет большой урон, а также вмещает в себя до 20 боеприпасов.", "NEEDTEXT", "Оружие", NAPI.Util.GetHashKey("w_ar_railgun"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 12.0f, 2, 4) },
+    { ItemId.HomingLauncher, new ItemsInfo("Homing Launcher", "Ракетная установка с инфракрасным наведением на цель, вмещает в себя 1 боеприпас.", "NEEDTEXT", "Оружие", NAPI.Util.GetHashKey("w_lr_homing"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 10.0f, 2, 4) },
+    { ItemId.GrenadeLauncherSmoke, new ItemsInfo("Grenade Launcher Smoke", "Легкий гранатомёт, запускает вместо обычных гранат дымовые.", "NEEDTEXT", "Оружие", NAPI.Util.GetHashKey("w_lr_grenadelauncher"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 7.5f, 2, 3) },
+    { ItemId.CompactGrenadeLauncher, new ItemsInfo("Compact Grenade Launcher", "Компактный гранатомёт, вмещает в себя всего 1 боеприпас.", "NEEDTEXT", "Оружие", NAPI.Util.GetHashKey("w_lr_compactgl"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 6.5f, 2, 3) },
+    { ItemId.Widowmaker, new ItemsInfo("Widowmaker", "Футуристичный плазменый пулемет, вмещает в себя до 9999 боеприпасов.", "NEEDTEXT", "Оружие", NAPI.Util.GetHashKey("w_mg_sminigun"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 14.0f, 2, 4) },
+
+    // ========================================
+    // ПАТРОНЫ (2x1, 0.01-0.03 кг за штуку)
+    // ========================================
+    { ItemId.PistolAmmo, new ItemsInfo("Пистолетный калибр", "Данные патроны отлично подойдут к вашему пистолету.", "inv-item-ammo-pistol", "Патроны", NAPI.Util.GetHashKey("v_ret_gc_ammo5"), 100, new Vector3(0.0,0.0,-0.7), new Vector3(), newItemType.Ammo, "gray", 0.01f, 2, 1) },
+    { ItemId.RiflesAmmo, new ItemsInfo("Автоматный калибр", "Данные патроны отлично подходят для штурмовых винтовок.", "inv-item-ammo-average", "Патроны", NAPI.Util.GetHashKey("prop_ld_ammo_pack_03"), 250, new Vector3(0.0,0.0,-0.7), new Vector3(), newItemType.Ammo, "gray", 0.015f, 2, 1) },
+    { ItemId.ShotgunsAmmo, new ItemsInfo("Дробь", "Подходят для любого вида дробовиков.", "inv-item-ammo-shotgun", "Патроны", NAPI.Util.GetHashKey("prop_ld_ammo_pack_02"), 50, new Vector3(0.0,0.0,-0.7), new Vector3(), newItemType.Ammo, "gray", 0.02f, 2, 1) },
+    { ItemId.SMGAmmo, new ItemsInfo("Малый калибр", "Отлично подойдут к вашему пистолету-пулемёту и другому малокалиберному оружию.", "inv-item-ammo-small", "Патроны", NAPI.Util.GetHashKey("v_ret_gc_ammo1"), 300, new Vector3(0.0,0.0,-0.7), new Vector3(), newItemType.Ammo, "gray", 0.008f, 2, 1) },
+    { ItemId.SniperAmmo, new ItemsInfo("Снайперский калибр", "Подходят для всех снайперских винтовок.", "inv-item-ammo-sniper", "Патроны", NAPI.Util.GetHashKey("v_ret_gc_ammo2"), 48, new Vector3(0.0,0.0,-0.7), new Vector3(), newItemType.Ammo, "gray", 0.03f, 2, 1) },
+
+    // ========================================
+    // МОДИФИКАЦИИ (1x1, 0.1-0.3 кг)
+    // ========================================
+    { ItemId.cVarmod, new ItemsInfo("Раскраска на оружие", "С помощью этого компонента можно разукрасить оружие.", "inv-item-Varmod", "Особое", NAPI.Util.GetHashKey("prop_paint_spray01a"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Modification, "gray", 0.1f, 1, 1) },
+    { ItemId.cClip, new ItemsInfo("Магазин на оружие", "Улучшенный магазин позволит расширить максимальный боезапас патронов в оружии.", "inv-item-Clips", "Особое", NAPI.Util.GetHashKey("w_ar_assaultriflemk2_mag1"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Modification, "gray", 0.2f, 1, 1) },
+    { ItemId.cSuppressor, new ItemsInfo("Глушитель на оружие", "Глушитель, будучи установленным на оружие, приглушает звук выстрелов.", "inv-item-Suppressors", "Особое", NAPI.Util.GetHashKey("w_at_ar_supp"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Modification, "gray", 0.3f, 1, 2) },
+    { ItemId.cScope, new ItemsInfo("Прицел на оружие", "Прицел, будучи установленным, позволит владельцу оружия точнее выцеливать своих врагов.", "inv-item-Scopes", "Особое", NAPI.Util.GetHashKey("w_at_scope_medium"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Modification, "gray", 0.25f, 1, 1) },
+    { ItemId.cMuzzlebrake, new ItemsInfo("Дульный тормоз на оружие", "Данный компонент уменьшает отдачу оружия.", "inv-item-Muzzle-Brakes", "Особое", NAPI.Util.GetHashKey("w_at_muzzle_1"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Modification, "gray", 0.15f, 1, 1) },
+    { ItemId.cBarrel, new ItemsInfo("Ствол на оружие", "Улучшенный ствол на оружие позволяет увеличить точность и урон с оружия.", "inv-item-Barrels", "Особое", NAPI.Util.GetHashKey("w_at_sr_barrel_1"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Modification, "gray", 0.3f, 1, 2) },
+    { ItemId.cFlashlight, new ItemsInfo("Фонарик на оружие", "Фонарик, установленный на оружие - отличный способ найти своих врагов в темноте.", "inv-item-Flashlights", "Особое", NAPI.Util.GetHashKey("w_at_ar_flsh"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Modification, "gray", 0.15f, 1, 1) },
+    { ItemId.cGrip, new ItemsInfo("Рукоять на оружие", "Улучшенная рукоять оружия обеспечивает более комфортную стрельбу.", "inv-item-Grips", "Особое", NAPI.Util.GetHashKey("w_at_afgrip_2"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Modification, "gray", 0.1f, 1, 1) },
+    { ItemId.cCamo, new ItemsInfo("Камуфляж для оружия", "С помощью расцветки можно разнообразить внешний вид оружия.", "inv-item-Varmod", "Особое", NAPI.Util.GetHashKey("prop_paint_spray01a"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Modification, "gray", 0.1f, 1, 1) },
+
+    // ========================================
+    // ОСОБЫЕ ПРЕДМЕТЫ (размеры варьируются, 0.05-5.0 кг)
+    // ========================================
+    { ItemId.Snowball, new ItemsInfo("Снежный шарик", "Кинь в кого-нибудь!", "inv-item-marijuana", "Особое", 1297482736, 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 0.05f, 1, 1) },
+    { ItemId.Ball, new ItemsInfo("Мячик", "Для игр с питомцем", "inv-item-ball", "Особое", 1297482736, 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Weapons, "gray", 0.2f, 1, 1) },
+    { ItemId.Radio, new ItemsInfo("Рация", "С помощью рации можно общаться с другими обладателями рации.", "hud__icon-walkie-talkie", "Особое", NAPI.Util.GetHashKey("prop_cs_hand_radio"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.3f, 1, 2) },
+    { ItemId.Boombox, new ItemsInfo("Бумбокс", "Позволяет проигрывать свою музыку для людей вокруг. Раскачай тусу!", "inv-item-boombox", "Особое", NAPI.Util.GetHashKey("prop_ghettoblast_01"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(0, 0, 0), newItemType.None, "gray", 2.5f, 2, 2) },
+    { ItemId.Hookah, new ItemsInfo("Кальян", "Калюмбас для лютого распыха!", "inv-item-hookah", "Особое", NAPI.Util.GetHashKey("hookah_model"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 3.0f, 2, 3) },
+    { ItemId.Camera, new ItemsInfo("Камера", "Свет... Камера... Мотор!", "inv-item-camera", "Особое", NAPI.Util.GetHashKey("prop_v_cam_01"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 1.2f, 2, 2) },
+    { ItemId.Microphone, new ItemsInfo("Микрофон", "Предмет настоящего оратора.", "inv-item-microphone", "Особое", NAPI.Util.GetHashKey("p_ing_microphonel_01"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.4f, 1, 2) },
+    { ItemId.Guitar, new ItemsInfo("Гитара", "Так и просится в руки... Сыграй что-нибудь!", "inv-item-guitar", "Особое", NAPI.Util.GetHashKey("prop_acc_guitar_01"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 2.0f, 1, 4) },
+    { ItemId.Binoculars, new ItemsInfo("Бинокль", "Позволяет видеть обьекты на дальнем расстоянии.", "inv-item-binoculars", "Особое", NAPI.Util.GetHashKey("prop_binoc_01"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.6f, 1, 1) },
+    { ItemId.Bong, new ItemsInfo("Бонг", "Удобная штучка для употребления травки.", "inv-item-bong", "Особое", NAPI.Util.GetHashKey("prop_bong_01"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.5f, 1, 2) },
+    { ItemId.Umbrella, new ItemsInfo("Зонтик", "Позволит укрыться от дождя и придаст стиля.", "inv-item-umbrella", "Особое", NAPI.Util.GetHashKey("p_amb_brolly_01"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.4f, 1, 3) },
+    { ItemId.Vape, new ItemsInfo("Вейп", "Напас сочного вейпика всегда поднимает настроение.", "inv-item-Vape", "Особое", NAPI.Util.GetHashKey("ba_prop_battle_vape_01"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.1f, 1, 1) },
+    { ItemId.Rose, new ItemsInfo("Роза", "Прекрасный подарок для любимого человека!", "inv-item-rose", "Особое", NAPI.Util.GetHashKey("prop_single_rose"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.05f, 1, 1) },
+    { ItemId.Barbell, new ItemsInfo("Гриф", "Для желающих подравнять свою эстетику.", "inv-item-barbell", "Особое", NAPI.Util.GetHashKey("prop_barbell_02"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 5.0f, 2, 3) },
+    { ItemId.NeonStick, new ItemsInfo("Неоновые палочки", "Палочки красного цвета, которые можно держать в руках.", "inv-item-Assault-Rifle", "Особое", 3455618605, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.None, "gray", 0.1f, 1, 2) },
+    { ItemId.GlowStick, new ItemsInfo("Светящиеся палочки", "Красивые светящиеся палочки.", "inv-item-Assault-Rifle", "Особое", NAPI.Util.GetHashKey("ba_prop_battle_glowstick_01"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.None, "gray", 0.05f, 1, 1) },
+
+    // ========================================
+    // РУДА И ИНСТРУМЕНТЫ (1x1 или 1x3, 0.5-5.0 кг)
+    // ========================================
+    { ItemId.Pickaxe1, new ItemsInfo("Обычная кирка", "С помощью этой штуки можно работать на шахте.", "inv-item-pickaxe1", "Особое", NAPI.Util.GetHashKey("prop_tool_pickaxe"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 2.0f, 1, 3) },
+    { ItemId.Pickaxe2, new ItemsInfo("Усиленная кирка", "С помощью этой штуки можно мощно работать на шахте.", "inv-item-pickaxe2", "Особое", NAPI.Util.GetHashKey("prop_tool_pickaxe"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 2.5f, 1, 3) },
+    { ItemId.Pickaxe3, new ItemsInfo("Профессиональная кирка", "С помощью этой штуки можно профессионально работать на шахте.", "inv-item-pickaxe3", "Особое", NAPI.Util.GetHashKey("prop_tool_pickaxe"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 3.0f, 1, 3) },
+    { ItemId.Coal, new ItemsInfo("Ископаемый уголь", "Ископаемое из шахты.", "inv-item-coal", "Особое", NAPI.Util.GetHashKey("prop_rock_5_smash2"), 250, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.8f, 1, 1) },
+    { ItemId.Iron, new ItemsInfo("Железная руда", "Ископаемое из шахты.", "inv-item-iron", "Особое", NAPI.Util.GetHashKey("prop_rock_5_smash2"), 250, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 1.2f, 1, 1) },
+    { ItemId.Gold, new ItemsInfo("Золотая руда", "Ископаемое из шахты.", "inv-item-gold", "Особое", NAPI.Util.GetHashKey("prop_rock_5_smash2"), 250, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 1.5f, 1, 1) },
+    { ItemId.Sulfur, new ItemsInfo("Серная руда", "Редкое ископаемое из шахты.", "inv-item-sulfur", "Особое", NAPI.Util.GetHashKey("prop_rock_5_smash2"), 250, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 1.0f, 1, 1) },
+    { ItemId.Emerald, new ItemsInfo("Изумруд", "Крайне редкое ископаемое из шахты.", "inv-item-emerald", "Особое", NAPI.Util.GetHashKey("prop_rock_5_smash2"), 250, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.5f, 1, 1) },
+    { ItemId.Ruby, new ItemsInfo("Рубин", "Очень редкое ископаемое из шахты.", "inv-item-ruby", "Особое", NAPI.Util.GetHashKey("prop_rock_5_smash2"), 250, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.5f, 1, 1) },
+    { ItemId.WorkAxe, new ItemsInfo("Рабочий топор", "Инструмент для работы лесорубом.", "inv-item-workaxe", "Особое", NAPI.Util.GetHashKey("prop_ld_fireaxe"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 2.2f, 1, 3) },
+    { ItemId.WoodOak, new ItemsInfo("Дуб", "Древесина.", "inv-item-woodoak", "Особое", NAPI.Util.GetHashKey("prop_fncwood_16e"), 250, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 1.5f, 2, 1) },
+    { ItemId.WoodMaple, new ItemsInfo("Клен", "Древесина.", "inv-item-woodmaple", "Особое", NAPI.Util.GetHashKey("prop_fncwood_16e"), 250, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 1.3f, 2, 1) },
+    { ItemId.WoodPine, new ItemsInfo("Сосна", "Древесина.", "inv-item-woodpine", "Особое", NAPI.Util.GetHashKey("prop_fncwood_16e"), 250, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 1.2f, 2, 1) },
+
+    // ========================================
+    // КЕЙСЫ (2x2, 0.5 кг)
+    // ========================================
+    { ItemId.Case0, new ItemsInfo(RouletteCasesData[0].Name, "Бесплатный кейс, можно получить спустя 3 часа игры.", "inv-item-case0", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case1, new ItemsInfo(RouletteCasesData[1].Name, "Бесплатный кейс с оружием.", "inv-item-case1", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case2, new ItemsInfo(RouletteCasesData[2].Name, "Бесплатный кейс с машинами.", "inv-item-case2", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case3, new ItemsInfo(RouletteCasesData[3].Name, "Стандартный кейс.", "inv-item-case3", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case4, new ItemsInfo(RouletteCasesData[4].Name, "Неплохой кейс для начинающих.", "inv-item-case4", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case5, new ItemsInfo(RouletteCasesData[5].Name, "Сочный кейс.", "inv-item-case5", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case6, new ItemsInfo(RouletteCasesData[6].Name, "Кейс с вещами и автомобилями.", "inv-item-case6", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case7, new ItemsInfo(RouletteCasesData[7].Name, "Очень лютый кейс.", "inv-item-case7", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case8, new ItemsInfo(RouletteCasesData[8].Name, "Кейс с МУЖСКОЙ одеждой.", "inv-item-case8", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case9, new ItemsInfo(RouletteCasesData[9].Name, "Кейс с ЖЕНСКОЙ одеждой.", "inv-item-case9", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case10, new ItemsInfo(RouletteCasesData[10].Name, "Кейс с автомобилями.", "inv-item-case10", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case11, new ItemsInfo(RouletteCasesData[11].Name, "Все или ничего!", "inv-item-case11", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case12, new ItemsInfo(RouletteCasesData[12].Name, "Dodge Charger в этом кейсике!", "inv-item-case12", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case13, new ItemsInfo(RouletteCasesData[13].Name, "Вертолёт!", "inv-item-case13", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case14, new ItemsInfo(RouletteCasesData[14].Name, "Бронированные тачки!", "inv-item-case14", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case15, new ItemsInfo(RouletteCasesData[15].Name, "Размещаемые предметы!", "inv-item-case15", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case16, new ItemsInfo(RouletteCasesData[16].Name, "Эксклюзивный кейс из Battle Pass.", "inv-item-case16", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case17, new ItemsInfo(RouletteCasesData[17].Name, "Эксклюзивный кейс из Battle Pass.", "inv-item-case17", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case18, new ItemsInfo(RouletteCasesData[18].Name, "Эксклюзивный кейс из Battle Pass.", "inv-item-case18", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case19, new ItemsInfo(RouletteCasesData[19].Name, "Эксклюзивный кейс из Battle Pass.", "inv-item-case19", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case20, new ItemsInfo(RouletteCasesData[20].Name, "Эксклюзивный кейс из Battle Pass.", "inv-item-case20", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+    { ItemId.Case21, new ItemsInfo(RouletteCasesData[21].Name, "Эксклюзивный кейс из Battle Pass.", "inv-item-case21", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray", 0.5f, 2, 2) },
+
+    // ========================================
+    // МОНЕТЫ И ИВЕНТОВЫЕ ПРЕДМЕТЫ (1x1, 0.01-0.5 кг)
+    // ========================================
+    { ItemId.HalloweenCoin, new ItemsInfo("Halloween 2020 Coin", "Хеллоуинская монета.", "inv-item-EventCoin", "Особое", NAPI.Util.GetHashKey("ch_prop_arcade_fortune_coin_01a"), 999999, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.01f, 1, 1) },
+    { ItemId.SummerCoin, new ItemsInfo("Jaguar Coin", "Монета, за которую можно получить особые призы.", "inv-item-EventCoin", "Особое", NAPI.Util.GetHashKey("ch_prop_arcade_fortune_coin_01a"), 999999, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.01f, 1, 1) },
+    { ItemId.CandyCane, new ItemsInfo("Новогодний леденец", "Рождественская монета.", "inv-item-EventCoin", "Особое", NAPI.Util.GetHashKey("ch_prop_arcade_fortune_coin_01a"), 999999, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.01f, 1, 1) },
+    { ItemId.MerryChristmasCoin, new ItemsInfo("Christmas 2021 Coin", "Рождественская монета.", "inv-item-EventCoin", "Особое", NAPI.Util.GetHashKey("ch_prop_arcade_fortune_coin_01a"), 999999, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.01f, 1, 1) },
+    { ItemId.AppleCoin, new ItemsInfo("Apple Coin", "Летняя монета.", "inv-item-medical-kit", "Остальное", NAPI.Util.GetHashKey("ch_prop_arcade_fortune_coin_01a"), 999, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.01f, 1, 1) },
+    { ItemId.Giftcoin, new ItemsInfo("Подарок", "Коробка с подарком.", "inv-item-Assault-Rifle", "Особое", NAPI.Util.GetHashKey(""), 999, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.None, "gray", 0.5f, 2, 2) },
+    { ItemId.Candy, new ItemsInfo("Леденцы", "Ивентовый предмет", "inv-item-event", "Остальное", NAPI.Util.GetHashKey("mj_xm_candy"), 15, new Vector3(0, 0, -0.99), new Vector3(90, 0, 0), newItemType.None, "gray", 0.05f, 1, 1) },
+    { ItemId.ChristmasTreeDecoration, new ItemsInfo("Елочная игрушка", "Ивентовый предмет", "inv-item-event", "Остальное", NAPI.Util.GetHashKey("mj_xm_toy_tree6"), 15, new Vector3(0, 0, -0.99), new Vector3(90, 0, 0), newItemType.None, "gray", 0.1f, 1, 1) },
+    { ItemId.ChristmasTreeStar, new ItemsInfo("Елочная звезда", "Ивентовый предмет", "inv-item-event", "Остальное", NAPI.Util.GetHashKey("prop_cs_script_bottle_01"), 15, new Vector3(0, 0, -0.99), new Vector3(90, 0, 0), newItemType.None, "gray", 0.1f, 1, 1) },
+    { ItemId.SmallGift, new ItemsInfo("Маленький подарок", "Сюрприз", "inv-item-gift", "Остальное", NAPI.Util.GetHashKey("mj_xm_box7"), 1, new Vector3(0, 0, -0.99), new Vector3(90, 0, 0), newItemType.None, "gray", 0.3f, 1, 1) },
+    { ItemId.MediumGift, new ItemsInfo("Средний подарок", "Сюрприз", "inv-item-gift", "Остальное", NAPI.Util.GetHashKey("mj_xm_box1"), 1, new Vector3(0, 0, -0.99), new Vector3(90, 0, 0), newItemType.None, "gray", 0.6f, 2, 2) },
+    { ItemId.BigGift, new ItemsInfo("Большой подарок", "Сюрприз", "inv-item-gift", "Остальное", NAPI.Util.GetHashKey("mj_xm_box3"), 1, new Vector3(0, 0, -0.99), new Vector3(90, 0, 0), newItemType.None, "gray", 1.0f, 2, 2) },
 
 
-    { ItemId.ArmyLockpick, new ItemsInfo("Военная отмычка", "Инструмент для вскрытия замков военных автомобилей.", "inv-item-picklock", "Инструмент", 977923025, 10, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Pocket, new ItemsInfo("Мешок", "Обычный мешок. Говорят, его можно надеть кому-то на голову...", "inv-item-bag", "Инструмент", 3887136870, 5, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Cuffs, new ItemsInfo("Стяжки", "Позволяют связать человека с поднятыми руками.", "inv-item-stretching", "Инструмент", 3887136870, 5, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.None, "gray") },
-    { ItemId.CarKey, new ItemsInfo("Ключи от машины", "Инструмент, позволяющий открыть/закрыть автомобиль и завести его.", "inv-item-key", "Инструмент", 977923025, 1, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Present, new ItemsInfo("Подарок", "Содержит в себе что-то интересное! Открывай быстрее!", "inv-item-gift", "Инструмент", 1580014892, 1, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.None, "gray") },
-    { ItemId.KeyRing, new ItemsInfo("Связка ключей", "Собирает все ключи в одну большую связку и экономит место в карманах!", "inv-item-key-2", "Инструмент", 977923025, 1, new Vector3(0.0,0.0,-0.98), new Vector3(), newItemType.None, "gray") },
-    /* Drinks */
-    { ItemId.RusDrink1, new ItemsInfo("<На корке лимона>", "Алкогольный напиток с нотками лимона, накладывает эффект алкогольного опьянения.", "inv-item-On-lemon-peel", "Спиртное", NAPI.Util.GetHashKey("prop_rum_bottle"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray") },
-    { ItemId.RusDrink2, new ItemsInfo("<На бруснике>", "Алкогольный напиток с легкой ноткой брусники, накладывает эффект алкогольного опьянения.", "inv-item-The-cranberries", "Спиртное", NAPI.Util.GetHashKey("h4_prop_h4_t_bottle_01a"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray") },
-    { ItemId.RusDrink3, new ItemsInfo("<Русский стандарт>", "Старая добрая Русская водка, накладывает эффект алкогольного опьянения.", "inv-item-Russian-standard", "Спиртное", NAPI.Util.GetHashKey("prop_vodka_bottle"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray") },
-    { ItemId.YakDrink1, new ItemsInfo("<Asahi>", "Пиво с низким содержанием солода, накладывает эффект алкогольного опьянения.", "inv-item-Asahi", "Спиртное", NAPI.Util.GetHashKey("prop_bottle_brandy"), 5, new Vector3(0.0,0.0,-0.87), new Vector3(), newItemType.Alco, "gray") },
-    { ItemId.YakDrink2, new ItemsInfo("<Midori>", "Сладкий дынный ликер, накладывает эффект алкогольного опьянения.", "inv-item-Midori", "Спиртное", NAPI.Util.GetHashKey("prop_bottle_cognac"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray") },
-    { ItemId.YakDrink3, new ItemsInfo("<Yamazaki>", "Японский виски, накладывает эффект алкогольного опьянения.", "inv-item-Yamazaki", "Спиртное", NAPI.Util.GetHashKey("prop_bottle_macbeth"), 5, new Vector3(0.0,0.0,-0.87), new Vector3(), newItemType.Alco, "gray") },
-    { ItemId.LcnDrink1, new ItemsInfo("<Martini Asti>", "Игристое вино, накладывает эффект алкогольного опьянения.", "inv-item-Martini-Asti", "Спиртное", NAPI.Util.GetHashKey("p_amb_bag_bottle_01"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray") },
-    { ItemId.LcnDrink2, new ItemsInfo("<Sambuca>", "Крепкий ликер с приятным анисовым вкусом, накладывает эффект алкогольного опьянения.", "inv-item-Sambuca", "Спиртное", NAPI.Util.GetHashKey("prop_cs_whiskey_bottle"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray") },
-    { ItemId.LcnDrink3, new ItemsInfo("<Campari>", "Горький ликер на основе ароматических трав и фруктов.", "inv-item-Campari", "Спиртное", NAPI.Util.GetHashKey("prop_bottle_richard"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray") },
-    { ItemId.ArmDrink1, new ItemsInfo("<Дживан>", "Армянский коньяк, накладывает эффект алкогольного опьянения.", "inv-item-alcohol", "Спиртное", NAPI.Util.GetHashKey("h4_prop_h4_t_bottle_02a"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray") },
-    { ItemId.ArmDrink2, new ItemsInfo("<Арарат>", "Армянский коньяк с фруктово-цветочными нотками, накладывает эффект алкогольного опьянения.", "inv-item-ararat", "Спиртное", NAPI.Util.GetHashKey("p_cs_bottle_01"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray") },
-    { ItemId.ArmDrink3, new ItemsInfo("<Noyan Tapan>", "Армянский винный напиток, накладывает эффект алкогольного опьянения.", "inv-item-Noyan-Tapan", "Спиртное", NAPI.Util.GetHashKey("prop_tequila_bottle"), 5, new Vector3(0.0,0.0,-1.0), new Vector3(), newItemType.Alco, "gray") },
-    /* Weapons */
-    /* Pistols */
-    { ItemId.Pistol, new ItemsInfo("Pistol", "Стандартный пистолет, обойма вмещает в себя 12 патронов.", "inv-item-Pistol", "Оружие", 1467525553, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.CombatPistol, new ItemsInfo("Combat Pistol", "Боевой пистолет, обойма вмещает в себя 12 патронов.", "inv-item-Pistol", "Оружие", 403140669, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.Pistol50, new ItemsInfo("Pistol 50", "Мощный пистолет 0.50 калибра, обойма вмещает в себя 9 патронов.", "inv-item-Pistol-50", "Оружие", 4116483281, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.SNSPistol, new ItemsInfo("SNS Pistol", "Карманный пистолет 0.25 калибра, обойма вмещает в себя 6 патронов.", "inv-item-SNS-Pistol", "Оружие", 339962010, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.HeavyPistol, new ItemsInfo("Heavy Pistol", "Тяжелый пистолет, обойма вмещает в себя 18 патронов.", "inv-item-Heavy-Pistol", "Оружие", 1927398017, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.VintagePistol, new ItemsInfo("Vintage Pistol", "Винтажный пистолет, обойма вмещает в себя 7 патронов.", "inv-item-Vintage-Pistol", "Оружие", 3170921020, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.MarksmanPistol, new ItemsInfo("Marksman Pistol", "Марксманский пистолет, обойма вмещает в себя 1 патрон.", "inv-item-Marksman-Pistol", "Оружие", 4191177435, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.Revolver, new ItemsInfo("Revolver", "Револьвер, обойма вмещает в себя 6 патронов.", "inv-item-Heavy-Revolver", "Оружие", 914615883, 1, new Vector3(0.0,0.0,-0.95), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.APPistol, new ItemsInfo("AP Pistol", "Бронебойный пистолет, обойма вмещает в себя 18 патронов.", "inv-item-AP-Pistol", "Оружие", 905830540, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.StunGun, new ItemsInfo("Stun Gun", "Электрошоковое оружие, обойма вмещает в себя 1 заряд.", "inv-item-Stun-Gun", "Оружие ближнего боя", 1609356763, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.FlareGun, new ItemsInfo("Flare Gun", "Сигнальный пистолет.", "inv-item-Flare-Gun", "Оружие", 1349014803, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.DoubleAction, new ItemsInfo("Double Action Revolver", "Самовзводный револьвер, обойма вмещает в себя 6 патронов.", "inv-item-Double-Action-Revolver", "Оружие", 1393678102, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.PistolMk2, new ItemsInfo("Pistol Mk2", "Улучшенная версия обычного пистолета, обойма вмещает в себя 12 патронов.", "inv-item-Pistol-Mk-II", "Оружие", 995074671, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.SNSPistolMk2, new ItemsInfo("SNSPistol Mk2", "Улучшенная версия карманного пистолета, обойма вмещает в себя 6 патронов.", "inv-item-SNS-Pistol-Mk-II", "Оружие", 4221916961, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.RevolverMk2, new ItemsInfo("Heavy Revolver Mk2", "Улучшенная версия стандартного револьвера, обойма вмещает в себя 6 патронов.", "inv-item-Heavy-Revolver-Mk-II", "Оружие", 4065179617, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    /* SMG */
-    { ItemId.MicroSMG, new ItemsInfo("Micro SMG", "Малогабаритный пистолет - пулемёт, обойма вмещает в себя 16 патронов.", "inv-item-Micro-SMG", "Оружие", 3238253642, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.MachinePistol, new ItemsInfo("Machine Pistol", "Автоматический пистолет, обойма вмещает в себя 12 патронов.", "inv-item-Machine-Pistol", "Оружие", 3963421467, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.SMG, new ItemsInfo("SMG", "Пистолет - пулемет, обойма вмещает в себя 30 патронов.", "inv-item-SMG", "Оружие", 3794909300, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.AssaultSMG, new ItemsInfo("Assault SMG", "Штурмовое автоматическое оружие, обойма вмещает в себя 30 патронов.", "inv-item-Assault-SMG", "Оружие", 3821393119, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.CombatPDW, new ItemsInfo("Combat PDW", "Малогабаритная штурмовая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-Combat-PDW", "Оружие", 2901952492, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.MG, new ItemsInfo("MG", "Тяжелый пулемет, обойма вмещает в себя 54 патронов.", "inv-item-MG", "Оружие", 2238602894, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.CombatMG, new ItemsInfo("Combat MG", "Пулемёт специального назначения, обойма вмещает в себя 100 патронов.", "inv-item-Combat-MG", "Оружие", 3555572849, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.Gusenberg, new ItemsInfo("Gusenberg", "Пистолет - пулемет, обойма вмещает в себя 30 патронов.", "inv-item-Gusenberg-Sweeper", "Оружие", 574348740, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.MiniSMG, new ItemsInfo("Mini SMG", "Малогабаритный пистолет - пулемёт, обойма вмещает в себя 20 патронов.", "inv-item-Mini-SMG", "Оружие", 3322144245, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.SMGMk2, new ItemsInfo("SMG Mk2", "Улучшенный пистолет-пулемёт, обойма вмещает в себя 30 патронов.", "inv-item-SMG-Mk-II", "Оружие", 2547423399, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.CombatMGMk2, new ItemsInfo("Combat MG Mk2", "Обновлённый единый пулемёт, вмещает в себя 100 патронов.", "inv-item-Combat-MG-Mk-II", "Оружие", 2969831089, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    /* Rifles */
-    { ItemId.AssaultRifle, new ItemsInfo("Assault Rifle", "Штурмовая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-Assault-Rifle", "Оружие", 273925117, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.CarbineRifle, new ItemsInfo("Carbine Rifle", "Американская полуавтоматическая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-Carbine-Rifle", "Оружие", 1026431720, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.AdvancedRifle, new ItemsInfo("Advanced Rifle", "Усовершенствованная штурмовая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-Advanced-Rifle", "Оружие", 2587382322, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.SpecialCarbine, new ItemsInfo("Special Carbine", "Штурмовая винтовка с меньшей отдачей, обойма вмещает в себя 30 патронов.", "inv-item-Special-Carbine", "Оружие", 2549323539, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.BullpupRifle, new ItemsInfo("Bullpup Rifle", "Китайская штурмовая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-Bullpup-Rifle", "Оружие", 3006407723, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.CompactRifle, new ItemsInfo("Compact Rifle", "Укороченная винтовка, обойма вмещает в себя 30 патронов.", "inv-item-Compact-Rifle", "Оружие", 1931114084, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.AssaultRifleMk2, new ItemsInfo("Assault Rifle Mk2", "Улучшенная штурмовая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-Assault-Rifle-Mk-II", "Оружие", 1762764713, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.CarbineRifleMk2, new ItemsInfo("Carbine Rifle Mk2", "Улучшеная полуавтоматическая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-Carbine-Rifle-Mk-II", "Оружие", 1520780799, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.SpecialCarbineMk2, new ItemsInfo("Special Carbine Mk2", "Улучшенная штурмовая винтовка с более коротким стволом, обойма вмещает в себя 30 патронов.", "inv-item-Special-Carbine-Mk-II", "Оружие", 2379721761, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.BullpupRifleMk2, new ItemsInfo("Bullpup Rifle Mk2", "Улучшеная штурмовая винтовка из Китая, обойма вмещает в себя 30 патронов.", "inv-item-Bullpup-Rifle-Mk-II", "Оружие", 1415744902, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.MilitaryRifle, new ItemsInfo("Military Rifle", "Усовершенствованная штурмовая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-militaryrifle", "Оружие", 1415744902, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    /* Sniper */
-    { ItemId.SniperRifle, new ItemsInfo("Sniper Rifle", "Снайперская винтовка, обойма вмещает в себя 10 патронов.", "inv-item-Sniper-Rifle", "Оружие", 346403307, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.HeavySniper, new ItemsInfo("Heavy Sniper", "Крупнокалиберная снайперская винтовка, обойма вмещает в себя 6 патронов.", "inv-item-Heavy-Sniper", "Оружие", 3548001216, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.MarksmanRifle, new ItemsInfo("Marksman Rifle", "Марксманская снайперская винтовка, обойма вмещает в себя 8 патронов.", "inv-item-Marksman-Rifle", "Оружие", 2583718658, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.HeavySniperMk2, new ItemsInfo("Heavy Sniper Mk2", "Улучшенная крупнокалиберная снайперская винтовка, обойма вмещает в себя 6 патронов.", "inv-item-Heavy-Sniper-Mk-II", "Оружие", 619715967, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.MarksmanRifleMk2, new ItemsInfo("Marksman Rifle Mk2", "Улучшенная марксманская снайперская винтовка, обойма вмещает в себя 8 патронов.", "inv-item-Marksman-Rifle-Mk-II", "Оружие", 2436666926, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    /* Shotguns */
-    { ItemId.PumpShotgun, new ItemsInfo("Pump Shotgun", "Тактический боевой помповый дробовик, обойма вмещает в себя 8 патронов.", "inv-item-Pump-Shotgun", "Оружие", 689760839, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.SawnOffShotgun, new ItemsInfo("SawnOff Shotgun", "Обрез, обойма вмещает в себя 8 патронов.", "inv-item-Sawed-Off-Shotgun", "Оружие", 3619125910, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.BullpupShotgun, new ItemsInfo("Bullpup Shotgun", "Помповый дробовик, обойма вмещает в себя 14 патронов.", "inv-item-Bullpup-Shotgun", "Оружие", 2696754462, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.AssaultShotgun, new ItemsInfo("Assault Shotgun", "Штурмовой дробовик, обойма вмещает в себя 8 патронов.", "inv-item-Assault-Shotgun", "Оружие", 1255410010, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.Musket, new ItemsInfo("Musket", "Ручное огнестрельное оружие, обойма вмещает в себя 1 патрон.", "inv-item-Musket", "Оружие", 1652015642, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.HeavyShotgun, new ItemsInfo("Heavy Shotgun", "Тяжелый шестизарядный дробовик, обойма вмещает в себя 6 патронов.", "inv-item-Heavy-Shotgun", "Оружие", 3085098415, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.DoubleBarrelShotgun, new ItemsInfo("Double Barrel Shotgun", "Двуствольный дробовик, обойма вмещает в себя 2 патрона.", "inv-item-Double-Barrel-Shotgun", "Оружие", 222483357, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.SweeperShotgun, new ItemsInfo("Sweeper Shotgun", "Компактный скорострельный дробовик, обойма вмещает в себя 10 патронов.", "inv-item-Sweeper-Shotgun", "Оружие", NAPI.Util.GetHashKey("w_sg_sweeper"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.PumpShotgunMk2, new ItemsInfo("Pump Shotgun Mk2", "Улучшенный помповый дробовик, обойма вмещает в себя 8 патронов.", "inv-item-Pump-Shotgun-Mk-II", "Оружие", 3194406291, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-     
-    /* NEW WEAPONS */
-    { ItemId.RayPistol, new ItemsInfo("Up-n-Atomizer", "Футуристичный пистолет, по внешнему виду похож на инопланетный пистолет, не требует боеприпасов.", "inv-item-Vintage-Pistol", "Оружие", NAPI.Util.GetHashKey("w_pi_raygun"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.CeramicPistol, new ItemsInfo("Ceramic Pistol", "Керамический пистолет, обойма вмещает в себя 12 патронов.", "inv-item-Combat-Pistol", "Оружие", NAPI.Util.GetHashKey("w_pi_ceramic_pistol"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.NavyRevolver, new ItemsInfo("Navy Revolver", "Армейский револьвер, обойма вмещает в себя 6 патрон.", "inv-item-Heavy-Revolver-Mk-II", "Оружие", NAPI.Util.GetHashKey("w_pi_wep2_gun"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.RayCarbine, new ItemsInfo("Unholy Hellbringer", "Футуристичная плазменная винтовка, имеет необычный внешний вид.", "NEEDTEXT", "Оружие", NAPI.Util.GetHashKey("w_ar_srifle"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.GrenadeLauncher, new ItemsInfo("Grenade Launcher", "Легкий гранатомёт с полуавтоматическим функционалом, вмещает в себя до 10 боеприпасов.", "", "Оружие", NAPI.Util.GetHashKey("w_lr_grenadelauncher"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.RPG, new ItemsInfo("RPG", "Ручной противотанковый гранатомёт, вмещает в себя 1 боеприпас.", "NEEDTEXT", "Оружие", NAPI.Util.GetHashKey("w_lr_rpg"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.Minigun, new ItemsInfo("Minigun", "6-стовольный пулемет, имеет очень высокую скорострельность, а также вмещает в себя 595 боеприпасов.", "NEEDTEXT", "Оружие", NAPI.Util.GetHashKey("w_mg_minigun"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.Firework, new ItemsInfo("Firework Launcher", "Пусковая установка для запуска фейерверков, поможет поднять настроение или устроить праздник.", "NEEDTEXT", "Оружие", NAPI.Util.GetHashKey("w_mg_minigun"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.Railgun, new ItemsInfo("Railgun", "Рельсовое тяжелое оружие, имеет большой урон, а также вмещает в себя до 20 боеприпасов.", "NEEDTEXT", "Оружие", NAPI.Util.GetHashKey("w_ar_railgun"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.HomingLauncher, new ItemsInfo("Homing Launcher", "Ракетная установка с инфракрасным наведением на цель, вмещает в себя 1 боеприпас.", "NEEDTEXT", "Оружие", NAPI.Util.GetHashKey("w_lr_homing"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.GrenadeLauncherSmoke, new ItemsInfo("Grenade Launcher Smoke", "Легкий гранатомёт, запускает вместо обычных гранат дымовые.", "NEEDTEXT", "Оружие", NAPI.Util.GetHashKey("w_lr_grenadelauncher"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.CompactGrenadeLauncher, new ItemsInfo("Compact Grenade Launcher", "Компактный гранатомёт, вмещает в себя всего 1 боеприпас.", "NEEDTEXT", "Оружие", NAPI.Util.GetHashKey("w_lr_compactgl"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.Widowmaker, new ItemsInfo("Widowmaker", "Футуристичный плазменый пулемет, вмещает в себя до 9999 боеприпасов.", "NEEDTEXT", "Оружие", NAPI.Util.GetHashKey("w_mg_sminigun"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
+    // НАРКОТИКИ И ПРОЧЕЕ (1x1, 0.1-0.3 кг)
+    // ========================================
+    { ItemId.Drugs, new ItemsInfo("Наркотики", "Волшебный чай накладывает эффект наркотического опьянения.", "inv-item-marijuana", "Остальное", 4293279169, 50, new Vector3(0.0,0.0,-0.95), new Vector3(), newItemType.None, "gray", 0.1f, 1, 1) },
+    { ItemId.Cocaine, new ItemsInfo("Белый порошок", "Волшебный порошочек накладывает эффект наркотического опьянения.", "inv-item-SimCard", "Остальное", NAPI.Util.GetHashKey("bkr_prop_coke_powder_02"), 10, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.1f, 1, 1) },
+    { ItemId.Spank, new ItemsInfo("SPANK", "Капсула с неизвестным веществом.", "inv-item-medical-kit", "Наркотик", NAPI.Util.GetHashKey("p_syringe_01_s"), 100, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.Eat, "gray", 0.05f, 1, 1) },
 
-    /* MELEE WEAPONS */
-    { ItemId.Knife, new ItemsInfo("Нож", "Острый нож, которым можно порезаться.", "inv-item-Knife", "Оружие ближнего боя", 2312523967, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray") },
-    { ItemId.Nightstick, new ItemsInfo("Дубинка", "Нашли нарушителя порядка? Пора воспользоваться дубинкой.", "inv-item-Nightstick", "Оружие ближнего боя", 2659989060, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray") },
-    { ItemId.Hammer, new ItemsInfo("Молоток", "Молоток поможет вам в домашних делах.", "inv-item-Hammer", "Оружие ближнего боя", 64104227, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray") },
-    { ItemId.Bat, new ItemsInfo("Бита", "Бита отлично подходит для игры в бейсбол.", "inv-item-Baseball-Bat", "Оружие ближнего боя", 32653987, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray") },
-    { ItemId.Crowbar, new ItemsInfo("Лом", "Лом один из самых популярных инструментов.", "inv-item-crowbar", "Оружие ближнего боя", 1862268168, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray") },
-    { ItemId.GolfClub, new ItemsInfo("Гольф клюшка", "Позволит отлично провести время на поле для гольфа.", "inv-item-Golf-Club", "Оружие ближнего боя", 3714771050, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray") },
-    { ItemId.Bottle, new ItemsInfo("Бутылка", "Розочка.", "inv-item-Broken-Bottle", "Оружие ближнего боя", 1150762982, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray") },
-    { ItemId.Dagger, new ItemsInfo("Кинжал", "Очень хорошо подходит для коллекционеров редким оружием.", "inv-item-Antique-Cavalry-Dagger", "Оружие ближнего боя", 601713565, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray") },
-    { ItemId.Hatchet, new ItemsInfo("Топор", "Нужно нарубить дров? Топор отличный помощник в этом.", "inv-item-Hatchet", "Оружие ближнего боя", 1653948529, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray") },
-    { ItemId.KnuckleDuster, new ItemsInfo("Кастет", "Отличный помощник в уличных боях.", "inv-item-Brass-Knuckles", "Оружие ближнего боя", 3005998612, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray") },
-    { ItemId.Machete, new ItemsInfo("Мачете", "Одно из самых эффективных оружий для выживания в диких джунглях. ", "inv-item-Machete", "Оружие ближнего боя", 2239480765, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray") },
-    { ItemId.Flashlight, new ItemsInfo("Фонарик", "Яркий свет, поможет вам если вы потерялись в темном лесу.", "inv-item-Flashlight", "Оружие ближнего боя", 2278481040, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray") },
-    { ItemId.SwitchBlade, new ItemsInfo("Швейцарский нож", "Складной нож, поможет вам в решении многих проблем.", "inv-item-Switchblade", "Оружие ближнего боя", 3331136096, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray") },
-    { ItemId.PoolCue, new ItemsInfo("Кий", "Отлично подойдет для игры в бильярд", "inv-item-Pool-Cue", "Оружие ближнего боя", 1184113278, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray") },
-    { ItemId.Wrench, new ItemsInfo("Ключ", "Ключ, самый верный помощник если что то сломалось.", "inv-item-Pipe-Wrench", "Оружие ближнего боя", 1959553115, 1, new Vector3(0.0,0.0,-0.985), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray") },
-    { ItemId.BattleAxe, new ItemsInfo("Боевой топор", "Нужно нарубить врагов? Топор отличный помощник в этом.", "inv-item-Battle-Axe", "Оружие ближнего боя", 3406411762, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.MeleeWeapons, "gray") },
-    /* Ammo */
-    { ItemId.PistolAmmo, new ItemsInfo("Пистолетный калибр", "Данные патроны отлично подойдут к вашему пистолету.", "inv-item-ammo-pistol", "Патроны", NAPI.Util.GetHashKey("v_ret_gc_ammo5"), 100, new Vector3(0.0,0.0,-0.7), new Vector3(), newItemType.Ammo, "gray") },
-    { ItemId.RiflesAmmo, new ItemsInfo("Автоматный калибр", "Данные патроны отлично подходят для штурмовых винтовок.", "inv-item-ammo-average", "Патроны", NAPI.Util.GetHashKey("prop_ld_ammo_pack_03"), 250, new Vector3(0.0,0.0,-0.7), new Vector3(), newItemType.Ammo, "gray") },
-    { ItemId.ShotgunsAmmo, new ItemsInfo("Дробь", "Подходят для любого вида дробовиков.", "inv-item-ammo-shotgun", "Патроны", NAPI.Util.GetHashKey("prop_ld_ammo_pack_02"), 50, new Vector3(0.0,0.0,-0.7), new Vector3(), newItemType.Ammo, "gray") },
-    { ItemId.SMGAmmo, new ItemsInfo("Малый калибр", "Отлично подойдут к вашему пистолету-пулемёту и другому малокалиберному оружию.", "inv-item-ammo-small", "Патроны", NAPI.Util.GetHashKey("v_ret_gc_ammo1"), 300, new Vector3(0.0,0.0,-0.7), new Vector3(), newItemType.Ammo, "gray") },
-    { ItemId.SniperAmmo, new ItemsInfo("Снайперский калибр", "Подходят для всех снайперских винтовок.", "inv-item-ammo-sniper", "Патроны", NAPI.Util.GetHashKey("v_ret_gc_ammo2"), 48, new Vector3(0.0,0.0,-0.7), new Vector3(), newItemType.Ammo, "gray") },
-    /* NEW */
-    { ItemId.Snowball, new ItemsInfo("Снежный шарик", "Кинь в кого-нибудь!", "inv-item-marijuana", "Особое", 1297482736, 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.Ball, new ItemsInfo("Мячик", "Для игр с питомцем", "inv-item-ball", "Особое", 1297482736, 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    
-    //
-    { ItemId.cVarmod, new ItemsInfo("Раскраска на оружие", "С помощью этого компонента можно разукрасить оружие, сделав его внешне более привлекательным.", "inv-item-Varmod", "Особое", NAPI.Util.GetHashKey("prop_paint_spray01a"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Modification, "gray") },
-    { ItemId.cClip, new ItemsInfo("Магазин на оружие", "Улучшенный магазин позволит расширить максимальный боезапас патронов в оружии.", "inv-item-Clips", "Особое", NAPI.Util.GetHashKey("w_ar_assaultriflemk2_mag1"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Modification, "gray") },
-    { ItemId.cSuppressor, new ItemsInfo("Глушитель на оружие", "Глушитель, будучи установленным на оружие, приглушает звук выстрелов и позволяет совершать бесшумные убийства.", "inv-item-Suppressors", "Особое", NAPI.Util.GetHashKey("w_at_ar_supp"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Modification, "gray") },
-    { ItemId.cScope, new ItemsInfo("Прицел на оружие", "Прицел, будучи установленным, позволит владельцу оружия точнее выцеливать своих врагов (Используйте колёсико мыши)", "inv-item-Scopes", "Особое", NAPI.Util.GetHashKey("w_at_scope_medium"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Modification, "gray") },
-    { ItemId.cMuzzlebrake, new ItemsInfo("Дульный тормоз на оружие", "Данный компонент уменьшает отдачу оружия.", "inv-item-Muzzle-Brakes", "Особое", NAPI.Util.GetHashKey("w_at_muzzle_1"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Modification, "gray") },
-    { ItemId.cBarrel, new ItemsInfo("Ствол на оружие", "Улучшенный ствол на оружие позволяет увеличить точность и урон с оружия.", "inv-item-Barrels", "Особое", NAPI.Util.GetHashKey("w_at_sr_barrel_1"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Modification, "gray") },
-    { ItemId.cFlashlight, new ItemsInfo("Фонарик на оружие", "Фонарик, установленный на оружие - отличный способ найти своих врагов в темноте. (Включается на Е)", "inv-item-Flashlights", "Особое", NAPI.Util.GetHashKey("w_at_ar_flsh"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Modification, "gray") },
-    { ItemId.cGrip, new ItemsInfo("Рукоять на оружие", "Улучшенная рукоять оружия обеспечивает более комфортную стрельбу.", "inv-item-Grips", "Особое", NAPI.Util.GetHashKey("w_at_afgrip_2"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Modification, "gray") },
-    { ItemId.cCamo, new ItemsInfo("Камуфляж для оружия", "С помощью расцветки можно разнообразить внешний вид оружия.", "inv-item-Varmod", "Особое", NAPI.Util.GetHashKey("prop_paint_spray01a"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.Modification, "gray") },
+    // ========================================
+    // ФЕЙЕРВЕРКИ (1x2, 0.5-1.0 кг)
+    // ========================================
+    { ItemId.Firework1, new ItemsInfo("Фейерверк обычный", "Красивый фейерверк.", "inv-item-Firework1", "Развлечение", NAPI.Util.GetHashKey("ind_prop_firework_01"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.5f, 1, 2) },
+    { ItemId.Firework2, new ItemsInfo("Фейерверк звезда", "Красивый фейерверк в виде звезды.", "inv-item-Firework2", "Развлечение", NAPI.Util.GetHashKey("ind_prop_firework_02"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.6f, 1, 2) },
+    { ItemId.Firework3, new ItemsInfo("Фейерверк взрывной", "Красивый фейерверк в виде взрыва.", "inv-item-Firework3", "Развлечение", NAPI.Util.GetHashKey("ind_prop_firework_03"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.7f, 1, 2) },
+    { ItemId.Firework4, new ItemsInfo("Фейерверк фонтан", "Красивый фейерверк в виде фонтана.", "inv-item-Firework4", "Развлечение", NAPI.Util.GetHashKey("ind_prop_firework_04"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.8f, 1, 2) },
 
-    //
-    { ItemId.HalloweenCoin, new ItemsInfo("Halloween 2020 Coin", "Хеллоуинская монета, за которую можно получить особые призы в дни проведения мероприятия.", "inv-item-EventCoin", "Особое", NAPI.Util.GetHashKey("ch_prop_arcade_fortune_coin_01a"), 999999, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Firework1, new ItemsInfo("Фейерверк обычный", "Красивый фейерверк.", "inv-item-Firework1", "Развлечение", NAPI.Util.GetHashKey("ind_prop_firework_01"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Firework2, new ItemsInfo("Фейерверк звезда", "Красивый фейерверк в виде звезды.", "inv-item-Firework2", "Развлечение", NAPI.Util.GetHashKey("ind_prop_firework_02"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Firework3, new ItemsInfo("Фейерверк взрывной", "Красивый фейерверк в виде взрыва.", "inv-item-Firework3", "Развлечение", NAPI.Util.GetHashKey("ind_prop_firework_03"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Firework4, new ItemsInfo("Фейерверк фонтан", "Красивый фейерверк в виде фонтана.", "inv-item-Firework4", "Развлечение", NAPI.Util.GetHashKey("ind_prop_firework_04"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
+    // ========================================
+    // КУПОНЫ И ДОКУМЕНТЫ (1x1, 0.01-0.1 кг)
+    // ========================================
+    { ItemId.CarCoupon, new ItemsInfo("Купон на машину", "Содержит в себе автомобиль.", "inv-item-car", "Купоны", 3125389411, 1, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.None, "gray", 0.05f, 1, 1) },
+    { ItemId.Note, new ItemsInfo("Записка", "С помощью записки можно оставить послание.", "inv-item-Note", "Особое", NAPI.Util.GetHashKey("p_amanda_note_01_s"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.01f, 1, 1) },
+    { ItemId.LoveNote, new ItemsInfo("Любовная записка", "Валентинка поможет описать свои теплые чувства.", "inv-item-LoveNote", "Особое", NAPI.Util.GetHashKey("p_amanda_note_01_s"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.01f, 1, 1) },
+    { ItemId.Qr, new ItemsInfo("QR-код", "QR-код, содержащий в себе информацию о перенесенном заболевании и/или вакцинации.", "inv-item-QR", "Особое", NAPI.Util.GetHashKey("ch_prop_arcade_fortune_coin_01a"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.01f, 1, 1) },
+    { ItemId.QrFake, new ItemsInfo("QR-код", "QR-код, содержащий в себе информацию о перенесенном заболевании и/или вакцинации.", "inv-item-QR", "Особое", NAPI.Util.GetHashKey("ch_prop_arcade_fortune_coin_01a"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.01f, 1, 1) },
+    { ItemId.Bear, new ItemsInfo("Медведь Любви", "Подари приятному человеку!", "inv-item-teddy-bear", "Особое", NAPI.Util.GetHashKey("v_ilev_mr_rasberryclean"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray", 0.3f, 1, 2) },
+    { ItemId.ArmorGift, new ItemsInfo("Бронежилет", "После активации - скин на бронежилет можно выбрать в Меню K", "inv-item-gift", "Особое", NAPI.Util.GetHashKey("mj_xm_box7"), 1, new Vector3(0, 0, -0.99), new Vector3(90, 0, 0), newItemType.None, "gray", 0.5f, 2, 2) },
 
-    { ItemId.CarCoupon, new ItemsInfo("Купон на машину", "Содержит в себе автомобиль, который будет доставлен в гараж после активации.", "inv-item-car", "Купоны", 3125389411, 1, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.None, "gray") },
+    // ========================================
+    // ДЕНЬГИ (1x1, 0.05-0.2 кг)
+    // ========================================
+    { ItemId.Rub100, new ItemsInfo("100 рублей", "Этот предмет ты можешь обменять на реальные деньги у Руководителя проекта!", "inv-item-SimCard", "Остальное", NAPI.Util.GetHashKey("bkr_prop_money_wrapped_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.05f, 1, 1) },
+    { ItemId.Rub200, new ItemsInfo("200 рублей", "Этот предмет ты можешь обменять на реальные деньги у Руководителя проекта!", "inv-item-SimCard", "Остальное", NAPI.Util.GetHashKey("bkr_prop_money_wrapped_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.1f, 1, 1) },
+    { ItemId.Rub500, new ItemsInfo("500 рублей", "Этот предмет ты можешь обменять на реальные деньги у Руководителя проекта!", "inv-item-SimCard", "Остальное", NAPI.Util.GetHashKey("bkr_prop_money_wrapped_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.15f, 1, 1) },
+    { ItemId.Rub1000, new ItemsInfo("1000 рублей", "Этот предмет ты можешь обменять на реальные деньги у Руководителя проекта!", "inv-item-SimCard", "Остальное", NAPI.Util.GetHashKey("bkr_prop_money_wrapped_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
 
-    { ItemId.MerryChristmasCoin, new ItemsInfo("Christmas 2021 Coin", "Рождественская монета, за которую можно получить особые призы в дни проведения мероприятия.", "inv-item-EventCoin", "Особое", NAPI.Util.GetHashKey("ch_prop_arcade_fortune_coin_01a"), 999999, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
+    // ========================================
+    // БАФЫ И УЛУЧШЕНИЯ (1x1, 0.1-0.5 кг)
+    // ========================================
+    { ItemId.Biolink, new ItemsInfo("BIOLINK", "Инновационный продукт, утоляющий жажду и голод.", "inv-item-improvement", "Бафф", 1940235411, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.BioAdditiveLvl1, new ItemsInfo("Биодобавка 1 уровня", "Дает ускорение прокачки навыков в 2 раза. Действует 30 минут", "inv-item-improvement", "Бафф", 1940235411, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray", 0.1f, 1, 1) },
+    { ItemId.BioAdditiveLvl2, new ItemsInfo("Биодобавка 2 уровня", "Дает ускорение прокачки навыков в 2 раза. Действует 60 минут", "inv-item-improvement", "Бафф", 1940235411, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray", 0.15f, 1, 1) },
+    { ItemId.BioAdditiveLvl3, new ItemsInfo("Биодобавка 3 уровня", "Дает ускорение прокачки навыков в 2 раза. Действует 120 минут", "inv-item-improvement", "Бафф", 1940235411, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.HairStyling, new ItemsInfo("Стайлинг для волос", "При применении, защищает вас от машинки для стрижки. Действует 3 часа", "inv-item-hair", "Бафф", 1940235411, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray", 0.1f, 1, 1) },
+    { ItemId.GovernorsLetter, new ItemsInfo("Благодарственное письмо губернатора", "Увеличивает оклад на 50%, действует 5 часов", "inv-item-letter", "Бафф", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray", 0.05f, 1, 1) },
+    { ItemId.ProteinBar, new ItemsInfo("Протеиновый батончик", "Улучшает качество тренировок, ускоряя прокачку спортивных навыков в 2 раза. Длительность 20 минут", "inv-item-improvement", "Бафф", 1940235411, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray", 0.15f, 1, 1) },
+    { ItemId.RedneckCocktail, new ItemsInfo("Непредсказуемый коктейль Реднека", "Имеет случайный эффект.", "inv-item-improvement", "Особое", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray", 0.3f, 1, 1) },
 
-    { ItemId.Bear, new ItemsInfo("Медведь Любви", "Подари приятному человеку!", "inv-item-teddy-bear", "Особое", NAPI.Util.GetHashKey("v_ilev_mr_rasberryclean"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
+    // ========================================
+    // ИНСТРУМЕНТЫ ДЛЯ РЕМОНТА (1x1 или 2x1, 0.5-2.0 кг)
+    // ========================================
+    { ItemId.WeaponRepairKit, new ItemsInfo("Ремонтный набор для оружия", "Позволяет починить оружие на 30%", "inv-item-tools", "Инструменты", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray", 0.5f, 1, 1) },
+    { ItemId.CarRepairKitBig, new ItemsInfo("Большой ремонтный набор для автомобиля", "Имеет 25 использований", "inv-item-tools", "Инструменты", 0, 25, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray", 2.0f, 2, 1) },
+    { ItemId.AdvancedMetalDetector, new ItemsInfo("Улучшенный металлоискатель", "Имеет радиус поиска в 2 раза больше обычного", "inv-item-tool", "Инструменты", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray", 1.5f, 2, 2) },
+    { ItemId.RadioInterceptor, new ItemsInfo("Радиоперехватчик", "Позволяет получать данные о HeliCrash.", "hud__icon-walkie-talkie", "Остальное", NAPI.Util.GetHashKey("prop_cs_mini_tv"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.8f, 2, 1) },
+    { ItemId.CivilDrone, new ItemsInfo("Гражданский дрон", "", "inv-item-drone", "Особое", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray", 1.2f, 2, 2) },
+    { ItemId.ClothesDiscount, new ItemsInfo("Скидка на одежду", "Купон который вы можете применить и получить скидку на одежду в любом магазине", "inv-item-gift", "Особое", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray", 0.05f, 1, 1) },
 
-    { ItemId.Note, new ItemsInfo("Записка", "С помощью записки можно оставить послание, передать какой-то секрет или другую важную информацию.", "inv-item-Note", "Особое", NAPI.Util.GetHashKey("p_amanda_note_01_s"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.LoveNote, new ItemsInfo("Любовная записка", "Валентинка поможет описать свои теплые чувства к человеку.", "inv-item-LoveNote", "Особое", NAPI.Util.GetHashKey("p_amanda_note_01_s"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
+    // ========================================
+    // РАЗМЕЩАЕМЫЕ ПРЕДМЕТЫ (2x2 или больше, 1.0-15.0 кг)
+    // ========================================
+    { ItemId.Fire, new ItemsInfo("Костер", "Подойдет для вечерних посиделок.", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_beach_fire"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 5.0f, 2, 2) },
+    { ItemId.Matras, new ItemsInfo("Надувной матрас", "Для пляжного отдыха.", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_beach_lilo_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 1.0f, 2, 2) },
+    { ItemId.Tent, new ItemsInfo("Палатка", "Для кемпинга, пикника.", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_skid_tent_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 3.0f, 2, 2) },
+    { ItemId.Lezhak, new ItemsInfo("Лежак", "Для пляжного отдыха.", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_patio_lounger_3"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 4.0f, 2, 2) },
+    { ItemId.Towel, new ItemsInfo("Свернутое полотенце", "Для пляжного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_beach_towel_04"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.5f, 1, 1) },
+    { ItemId.Flag, new ItemsInfo("Флаг", "Российский флаг, не забудьте приобрести флагшток", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_us_yt"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.3f, 1, 2) },
+    { ItemId.Barrell, new ItemsInfo("Бочка", "Подойдет для различных нужд", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_wooden_barrel"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 10.0f, 2, 2) },
+    { ItemId.Surf, new ItemsInfo("Доска для сёрфа", "Для пляжного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_surf_board_03"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 2.5f, 1, 4) },
+    { ItemId.Vedro, new ItemsInfo("Ведро", "Подойдет для пляжного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_buck_spade_03"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 1.0f, 1, 1) },
+    { ItemId.Flagstok, new ItemsInfo("Флаг Sprunk с флагштоком", "Флагшток с прикрепленным большим флагом Sprunk", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("stt_prop_flagpole_1b"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 8.0f, 2, 3) },
+    { ItemId.Tenttwo, new ItemsInfo("Палатка", "Для кемпинга, пикника.", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_skid_tent_01b"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 3.0f, 2, 2) },
+    { ItemId.Polotence, new ItemsInfo("Пляжное полотенце", "Для пляжного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("p_cs_beachtowel_01_s"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.6f, 2, 1) },
+    { ItemId.Beachbag, new ItemsInfo("Пляжная сумка", "Для пляжного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_beach_bag_03"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.8f, 1, 1) },
+    { ItemId.Zontik, new ItemsInfo("Зонтик", "Защитит от солнца", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_beach_parasol_04"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 2.0f, 2, 2) },
+    { ItemId.Zontiktwo, new ItemsInfo("Зонтик", "Защитит от солнца", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_beach_parasol_02"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 2.0f, 2, 2) },
+    { ItemId.Zontikthree, new ItemsInfo("Зонтик", "Защитит от солнца", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_parasol_04c"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 2.0f, 2, 2) },
+    { ItemId.Closedzontik, new ItemsInfo("Закрытый зонтик", "Не защитит от солнца", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_parasol_04e"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 1.5f, 1, 3) },
+    { ItemId.Vball, new ItemsInfo("Воллейбольный мяч", "Для веселых игр", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_beach_volball01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.3f, 1, 1) },
+    { ItemId.Bball, new ItemsInfo("Пляжный мяч", "Для веселых игр", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_beachball_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Boomboxxx, new ItemsInfo("Бумбокс", "Подойдет для посиделок", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_boombox_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 2.0f, 2, 1) },
+    { ItemId.Table, new ItemsInfo("Стол", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("bkr_prop_coke_table01a"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 8.0f, 2, 2) },
+    { ItemId.Tabletwo, new ItemsInfo("Стол", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_ld_farm_table02"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 8.0f, 2, 2) },
+    { ItemId.Tablethree, new ItemsInfo("Стол", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_proxy_chateau_table"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 8.0f, 2, 2) },
+    { ItemId.Tablefour, new ItemsInfo("Стол", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_table_03b"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 7.0f, 2, 2) },
+    { ItemId.Chair, new ItemsInfo("Стул", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("hei_prop_hei_skid_chair"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 3.0f, 1, 2) },
+    { ItemId.Chairtwo, new ItemsInfo("Стул", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_chair_01b"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 3.0f, 1, 2) },
+    { ItemId.Chaierthree, new ItemsInfo("Стул", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_direct_chair_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 3.0f, 1, 2) },
+    { ItemId.Chaierfour, new ItemsInfo("Стул", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_table_03_chr"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 3.0f, 1, 2) },
+    { ItemId.Chairtable, new ItemsInfo("Стол и стул", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_picnictable_01_lod"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 12.0f, 3, 2) },
+    { ItemId.Korzina, new ItemsInfo("Корзина", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_fruit_basket"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 1.5f, 1, 1) },
+    { ItemId.Light, new ItemsInfo("Освещение", "Освещение, которое пригодится в темное время суток", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_worklight_03b"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 5.0f, 2, 2) },
+    { ItemId.Alco, new ItemsInfo("Бутылка бренди", "Дорогая бутылка бренди", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_bottle_brandy"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.7f, 1, 2) },
+    { ItemId.Alcotwo, new ItemsInfo("Бутылка коньяка", "Дорогая бутылка коньяка", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_bottle_cognac"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.7f, 1, 2) },
+    { ItemId.Alcothree, new ItemsInfo("Бутылка текилы", "Дорогая бутылка текилкы", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_tequila_bottle"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.7f, 1, 2) },
+    { ItemId.Alcofour, new ItemsInfo("Бутылка пива", "Дешевое пиво", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_beer_am"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.5f, 1, 1) },
+    { ItemId.Cocktail, new ItemsInfo("Коктейль", "Смесь цитрусовых фруктов и алкоголя", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_cocktail"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.3f, 1, 1) },
+    { ItemId.Cocktailtwo, new ItemsInfo("Коктейль", "Смесь цитрусовых фруктов и алкоголя", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_cocktail_glass"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.3f, 1, 1) },
+    { ItemId.Fruit, new ItemsInfo("Тарелка с фруктами", "Вкусная и ароматная тарелка с фруктами", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("ex_mp_h_acc_fruitbowl_02"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 1.0f, 1, 1) },
+    { ItemId.Fruittwo, new ItemsInfo("Тарелка с фруктами", "Вкусная и ароматная тарелка с фруктами", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_bar_fruit"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 1.0f, 1, 1) },
+    { ItemId.Packet, new ItemsInfo("Пакет", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("ng_proc_food_bag01a"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Buter, new ItemsInfo("Бутерброд", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_food_bs_burg3"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.3f, 1, 1) },
+    { ItemId.Patatoes, new ItemsInfo("Картошка фри", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_food_bs_chips"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Coffee, new ItemsInfo("Горячий кофе", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_food_bs_coffee"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.3f, 1, 1) },
+    { ItemId.Podnosfood, new ItemsInfo("Поднос с едой", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_food_bs_tray_02"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 2.0f, 2, 1) },
+    { ItemId.Bbqtwo, new ItemsInfo("Барбекю", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_bbq_4_l1"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 15.0f, 2, 2) },
+    { ItemId.Bbq, new ItemsInfo("Большое барбекю", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_bbq_5"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 18.0f, 2, 3) },
+    { ItemId.Flowerrr, new ItemsInfo("Букет цветов", "Красивый букет", "prop_snow_flower_02", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_snow_flower_02"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.3f, 1, 1) },
+    { ItemId.Vaza, new ItemsInfo("Ваза с цветами", "Ваза с красивыми белыми цветами", "vw_prop_flowers_vase_01a", "Размещаемые предметы", NAPI.Util.GetHashKey("vw_prop_flowers_vase_01a"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 1.5f, 1, 2) },
+    { ItemId.Flagwtokk, new ItemsInfo("Флагшток", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_flagpole_2a"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 10.0f, 1, 4) },
 
-    { ItemId.Vape, new ItemsInfo("Вейп", "Напас сочного вейпика всегда поднимает настроение.", "inv-item-Vape", "Особое", NAPI.Util.GetHashKey("ba_prop_battle_vape_01"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
+    // ========================================
+    // ФЛАГИ (1x1, 0.1-0.3 кг)
+    // ========================================
+    { ItemId.Flagau, new ItemsInfo("Флаг Австралии", "Флаг среднего размера", "apa_prop_flag_australia", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_australia"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagbr, new ItemsInfo("Флаг Бразилии", "Флаг среднего размера", "apa_prop_flag_brazil", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_brazil"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagch, new ItemsInfo("Флаг Китая", "Флаг среднего размера", "apa_prop_flag_china", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_china"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagcz, new ItemsInfo("Флаг Чехии", "Флаг среднего размера", "apa_prop_flag_czechrep", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_czechrep"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flageng, new ItemsInfo("Флаг Англии", "Флаг среднего размера", "apa_prop_flag_england", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_england"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flageu, new ItemsInfo("Флаг Евросоюза", "Флаг среднего размера", "apa_prop_flag_eu_yt", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_eu_yt"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagfin, new ItemsInfo("Флаг Финляндии", "Флаг среднего размера", "apa_prop_flag_finland", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_finland"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagfr, new ItemsInfo("Флаг Франции", "Флаг среднего размера", "apa_prop_flag_france", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_france"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagger, new ItemsInfo("Флаг Германии", "Флаг среднего размера", "apa_prop_flag_german_yt", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_german_yt"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagire, new ItemsInfo("Флаг Ирландии", "Флаг среднего размера", "apa_prop_flag_ireland", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_ireland"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagisr, new ItemsInfo("Флаг Израиля", "Флаг среднего размера", "apa_prop_flag_israel", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_israel"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagit, new ItemsInfo("Флаг Италии", "Флаг среднего размера", "apa_prop_flag_italy", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_italy"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagjam, new ItemsInfo("Флаг Ямайки", "Флаг среднего размера", "apa_prop_flag_jamaica", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_jamaica"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagjap, new ItemsInfo("Флаг Японии", "Флаг среднего размера", "apa_prop_flag_japan_yt", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_japan_yt"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagmex, new ItemsInfo("Флаг Мексики", "Флаг среднего размера", "apa_prop_flag_mexico_yt", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_mexico_yt"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagnet, new ItemsInfo("Флаг Нидерландов", "Флаг среднего размера", "apa_prop_flag_netherlands", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_netherlands"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagnig, new ItemsInfo("Флаг Нигерии", "Флаг среднего размера", "apa_prop_flag_nigeria", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_nigeria"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagnorw, new ItemsInfo("Флаг Норвегии", "Флаг среднего размера", "apa_prop_flag_norway", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_norway"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagpol, new ItemsInfo("Флаг Польши", "Флаг среднего размера", "apa_prop_flag_poland", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_poland"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagrus, new ItemsInfo("Флаг России", "Флаг среднего размера", "apa_prop_flag_russia_yt", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_russia_yt"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagbel, new ItemsInfo("Флаг Бельгии", "Флаг среднего размера", "apa_prop_flag_belgium", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_belgium"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagscot, new ItemsInfo("Флаг Шотландии", "Флаг среднего размера", "apa_prop_flag_scotland_yt", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_scotland_yt"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagscr, new ItemsInfo("Флаг Скрипт", "Флаг среднего размера", "apa_prop_flag_script", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_script"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagslov, new ItemsInfo("Флаг Словакии", "Флаг среднего размера", "apa_prop_flag_slovakia", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_slovakia"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagslovak, new ItemsInfo("Флаг Словении", "Флаг среднего размера", "apa_prop_flag_slovenia", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_slovenia"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagsou, new ItemsInfo("Флаг Кореи", "Флаг среднего размера", "apa_prop_flag_southkorea", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_southkorea"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagspain, new ItemsInfo("Флаг Испании", "Флаг среднего размера", "apa_prop_flag_spain", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_spain"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagswede, new ItemsInfo("Флаг Швеции", "Флаг среднего размера", "apa_prop_flag_sweden", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_sweden"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagswitz, new ItemsInfo("Флаг Швейцарии", "Флаг среднего размера", "apa_prop_flag_switzerland", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_switzerland"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagturk, new ItemsInfo("Флаг Турции", "Флаг среднего размера", "apa_prop_flag_turkey", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_turkey"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flaguk, new ItemsInfo("Флаг Великобритании", "Флаг среднего размера", "apa_prop_flag_uk_yt", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_uk_yt"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagus, new ItemsInfo("Флаг Америки", "Флаг среднего размера", "apa_prop_flag_us_yt", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_us_yt"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
+    { ItemId.Flagwales, new ItemsInfo("Флаг Уэльса", "Флаг среднего размера", "apa_prop_flag_wales", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_wales"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 0.2f, 1, 1) },
 
-    { ItemId.Rose, new ItemsInfo("Роза", "Прекрасный подарок для любимого человека!", "inv-item-rose", "Особое", NAPI.Util.GetHashKey("prop_single_rose"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Barbell, new ItemsInfo("Гриф", "Для желающих подравнять свою эстетику.", "inv-item-barbell", "Особое", NAPI.Util.GetHashKey("prop_barbell_02"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Binoculars, new ItemsInfo("Бинокль", "Позволяет видеть обьекты на дальнем расстоянии.", "inv-item-binoculars", "Особое", NAPI.Util.GetHashKey("prop_binoc_01"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Bong, new ItemsInfo("Бонг", "Удобная штучка для употребления травки.", "inv-item-bong", "Особое", NAPI.Util.GetHashKey("prop_bong_01"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Umbrella, new ItemsInfo("Зонтик", "Позволит укрыться от дождя и придаст стиля.", "inv-item-umbrella", "Особое", NAPI.Util.GetHashKey("p_amb_brolly_01"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Camera, new ItemsInfo("Камера", "Свет... Камера... Мотор!", "inv-item-camera", "Особое", NAPI.Util.GetHashKey("prop_v_cam_01"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Microphone, new ItemsInfo("Микрофон", "Предмет настоящего оратора.", "inv-item-microphone", "Особое", NAPI.Util.GetHashKey("p_ing_microphonel_01"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Guitar, new ItemsInfo("Гитара", "Так и просится в руки... Сыграй что-нибудь!", "inv-item-guitar", "Особое", NAPI.Util.GetHashKey("prop_acc_guitar_01"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-
-    { ItemId.Pickaxe1, new ItemsInfo("Обычная кирка", "С помощью этой штуки можно работать на шахте.", "inv-item-pickaxe1", "Особое", NAPI.Util.GetHashKey("prop_tool_pickaxe"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Pickaxe2, new ItemsInfo("Усиленная кирка", "С помощью этой штуки можно мощно работать на шахте.", "inv-item-pickaxe2", "Особое", NAPI.Util.GetHashKey("prop_tool_pickaxe"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Pickaxe3, new ItemsInfo("Профессиональная кирка", "С помощью этой штуки можно профессионально работать на шахте.", "inv-item-pickaxe3", "Особое", NAPI.Util.GetHashKey("prop_tool_pickaxe"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Coal, new ItemsInfo("Ископаемый уголь", "Ископаемое из шахты.", "inv-item-coal", "Особое", NAPI.Util.GetHashKey("prop_rock_5_smash2"), 250, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Iron, new ItemsInfo("Железная руда", "Ископаемое из шахты.", "inv-item-iron", "Особое", NAPI.Util.GetHashKey("prop_rock_5_smash2"), 250, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Gold, new ItemsInfo("Золотая руда", "Ископаемое из шахты.", "inv-item-gold", "Особое", NAPI.Util.GetHashKey("prop_rock_5_smash2"), 250, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Sulfur, new ItemsInfo("Серная руда", "Редкое ископаемое из шахты.", "inv-item-sulfur", "Особое", NAPI.Util.GetHashKey("prop_rock_5_smash2"), 250, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Emerald, new ItemsInfo("Изумруд", "Крайне редкое ископаемое из шахты.", "inv-item-emerald", "Особое", NAPI.Util.GetHashKey("prop_rock_5_smash2"), 250, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Ruby, new ItemsInfo("Рубин", "Очень редкое ископаемое из шахты.", "inv-item-ruby", "Особое", NAPI.Util.GetHashKey("prop_rock_5_smash2"), 250, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-
-    { ItemId.Radio, new ItemsInfo("Рация", "С помощью рации можно общаться с другими обладателями рации, или даже подслушать полицейскую или другую секретную волну.", "hud__icon-walkie-talkie", "Особое", NAPI.Util.GetHashKey("prop_cs_hand_radio"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-
-    { ItemId.WorkAxe, new ItemsInfo("Рабочий топор", "Инструмент для работы лесорубом.", "inv-item-workaxe", "Особое", NAPI.Util.GetHashKey("prop_ld_fireaxe"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.WoodOak, new ItemsInfo("Дуб", "Древесина.", "inv-item-woodoak", "Особое", NAPI.Util.GetHashKey("prop_fncwood_16e"), 250, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.WoodMaple, new ItemsInfo("Клен", "Древесина.", "inv-item-woodmaple", "Особое", NAPI.Util.GetHashKey("prop_fncwood_16e"), 250, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.WoodPine, new ItemsInfo("Сосна", "Древесина.", "inv-item-woodpine", "Особое", NAPI.Util.GetHashKey("prop_fncwood_16e"), 250, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-
-    { ItemId.Boombox, new ItemsInfo("Бумбокс", "Позволяет проигрывать свою музыку для людей вокруг. Раскачай тусу!", "inv-item-boombox", "Особое", NAPI.Util.GetHashKey("prop_ghettoblast_01"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(0, 0, 0), newItemType.None, "gray") },
-    { ItemId.Hookah, new ItemsInfo("Кальян", "Калюмбас для лютого распыха! Двойное яблочко и полетели...", "inv-item-hookah", "Особое", NAPI.Util.GetHashKey("hookah_model"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-
-    { ItemId.Case0, new ItemsInfo(RouletteCasesData[0].Name, "Бесплатный кейс, можно получить спустя 3 часа игры.", "inv-item-case0", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case1, new ItemsInfo(RouletteCasesData[1].Name, "Бесплатный кейс с оружием, можно получить спустя 5 часов игры.", "inv-item-case1", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case2, new ItemsInfo(RouletteCasesData[2].Name, "Бесплатный кейс с машинами, можно получить спустя 8 часов игры.", "inv-item-case2", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case3, new ItemsInfo(RouletteCasesData[3].Name, "Стандартный кейс со стандартными призами.", "inv-item-case3", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case4, new ItemsInfo(RouletteCasesData[4].Name, "Неплохой кейс для начинающих.", "inv-item-case4", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case5, new ItemsInfo(RouletteCasesData[5].Name, "Сочный кейс, есть возможность серьёзно окупиться!", "inv-item-case5", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case6, new ItemsInfo(RouletteCasesData[6].Name, "Кейс с вещами и автомобилями повышенной редкости.", "inv-item-case6", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case7, new ItemsInfo(RouletteCasesData[7].Name, "Очень лютый кейс. Суперприз - Bugatti, самый быстрый автомобиль.", "inv-item-case7", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case8, new ItemsInfo(RouletteCasesData[8].Name, "Кейс с МУЖСКОЙ одеждой из донатного магазина одежды. Испытай удачу и будь стильным, или продай кому-то и будь богатым. А можешь и подарить...", "inv-item-case8", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case9, new ItemsInfo(RouletteCasesData[9].Name, "Кейс с ЖЕНСКОЙ одеждой из донатного магазина одежды. Отличный вариант, если хочется что-нибудь подарить.", "inv-item-case9", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case10, new ItemsInfo(RouletteCasesData[10].Name, "Кейс с автомобилями из Exotic DonateRoom. Доната Редбаксовна одобряет!", "inv-item-case10", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case11, new ItemsInfo(RouletteCasesData[11].Name, "Все или ничего! Хочешь рискнуть и стать обладателем легендарной кофты Aria? Тогда крути кейс!", "inv-item-case11", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case12, new ItemsInfo(RouletteCasesData[12].Name, "Давно хочешь себе уникальную машину которая нигде не продается? Dodge Charger в этом кейсике!", "inv-item-case12", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case13, new ItemsInfo(RouletteCasesData[13].Name, "Любишь смотреть на людей свысока? Пожалуй, для этого идеально подойдет вертолёт!", "inv-item-case13", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case14, new ItemsInfo(RouletteCasesData[14].Name, "Классный новый кейс с модными бронированными тачками!", "inv-item-case14", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case15, new ItemsInfo(RouletteCasesData[15].Name, "Крутой новый кейс с размещаемыми предметами!", "inv-item-case15", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case16, new ItemsInfo(RouletteCasesData[16].Name, "Эксклюзивный кейс из Battle Pass, в нем находится несколько комплектов одежды с одинаковым шансов выпадения. ", "inv-item-case16", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case17, new ItemsInfo(RouletteCasesData[17].Name, "Эксклюзивный кейс из Battle Pass, в нем находится несколько комплектов одежды с одинаковым шансов выпадения. ", "inv-item-case17", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case18, new ItemsInfo(RouletteCasesData[18].Name, "Эксклюзивный кейс из Battle Pass, в нем находится несколько комплектов одежды с одинаковым шансов выпадения. ", "inv-item-case18", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case19, new ItemsInfo(RouletteCasesData[19].Name, "Эксклюзивный кейс из Battle Pass, в нем находится несколько комплектов одежды с одинаковым шансов выпадения. ", "inv-item-case19", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case20, new ItemsInfo(RouletteCasesData[20].Name, "Эксклюзивный кейс из Battle Pass, в нем находится несколько комплектов одежды с одинаковым шансов выпадения. ", "inv-item-case20", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-    { ItemId.Case21, new ItemsInfo(RouletteCasesData[21].Name, "Эксклюзивный кейс из Battle Pass, в нем находится несколько комплектов одежды с одинаковым шансов выпадения. ", "inv-item-case21", "Особое", NAPI.Util.GetHashKey("prop_idol_case_02"), 100, new Vector3(0.0,0.0,-1.0), new Vector3(90, 0, 0), newItemType.Cases, "gray") },
-
-    { ItemId.SummerCoin, new ItemsInfo("Jaguar Coin", "Монета, за которую можно получить особые призы в дни проведения мероприятия. НЕ ЯВЛЯЕТСЯ ДОНАТ ВАЛЮТОЙ!", "inv-item-EventCoin", "Особое", NAPI.Util.GetHashKey("ch_prop_arcade_fortune_coin_01a"), 999999, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.CandyCane, new ItemsInfo("Новогодний леденец", "Новогодний леденец, за который можно получить особые призы в дни проведения мероприятия.", "inv-item-EventCoin", "Особое", NAPI.Util.GetHashKey("ch_prop_arcade_fortune_coin_01a"), 999999, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.Qr, new ItemsInfo("QR-код", "QR-код, содержащий в себе информацию о перенесенном заболевании и/или вакцинации. Предъявить по требованию.", "inv-item-QR", "Особое", NAPI.Util.GetHashKey("ch_prop_arcade_fortune_coin_01a"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.QrFake, new ItemsInfo("QR-код", "QR-код, содержащий в себе информацию о перенесенном заболевании и/или вакцинации. Предъявить по требованию.", "inv-item-QR", "Особое", NAPI.Util.GetHashKey("ch_prop_arcade_fortune_coin_01a"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.SimCard, new ItemsInfo("Сим-карта", "Сим-карта с номером телефона. Её можно вставить в любой современный смартфон и пользоваться сотовой сетью: писать смс, звонить и многое другое.", "inv-item-SimCard", "Особое", NAPI.Util.GetHashKey("prop_ld_contact_card"), 1, new Vector3(0.0,0.0,-0.92), new Vector3(90, 0, 0), newItemType.None, "gray") }, /// SIMCARD NEWPHONE
-    { ItemId.VehicleNumber, new ItemsInfo("Номер на автомобиль", "Номерной знак транспортного средства. Можно установить на свою машину, продать или подарить кому-нибудь!", "inv-item-SimCard", "Особое", NAPI.Util.GetHashKey(" "), 1, new Vector3(0.0,0.0,-0.935), new Vector3(-90, 0, 90), newItemType.None, "gray") }, //p_num_plate_02
-    { ItemId.Bint, new ItemsInfo("Бинт", "Бинт, восстанавливает 40% здоровья. Можно использовать раз в 3 минуты. ", "inv-item-SimCard", "Остальное", 678958360, 10, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") }, //
-    { ItemId.Cocaine, new ItemsInfo("Белый порошок", "Волшебный порошочек накладывает эффект наркотического опьянения.", "inv-item-SimCard", "Остальное", NAPI.Util.GetHashKey("bkr_prop_coke_powder_02"), 10, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Rub100, new ItemsInfo("100 рублей", "Этот предмет ты можешь обменять на реальные деньги у Руководителя проекта! ", "inv-item-SimCard", "Остальное", NAPI.Util.GetHashKey("bkr_prop_money_wrapped_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Rub200, new ItemsInfo("200 рублей", "Этот предмет ты можешь обменять на реальные деньги у Руководителя проекта! ", "inv-item-SimCard", "Остальное", NAPI.Util.GetHashKey("bkr_prop_money_wrapped_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Rub500, new ItemsInfo("500 рублей", "Этот предмет ты можешь обменять на реальные деньги у Руководителя проекта! ", "inv-item-SimCard", "Остальное", NAPI.Util.GetHashKey("bkr_prop_money_wrapped_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Rub1000, new ItemsInfo("1000 рублей", "Этот предмет ты можешь обменять на реальные деньги у Руководителя проекта!", "inv-item-SimCard", "Остальное", NAPI.Util.GetHashKey("bkr_prop_money_wrapped_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    //
-    { ItemId.RadioInterceptor, new ItemsInfo("Радиоперехватчик", "Позволяет получать данные о HeliCrash.", "hud__icon-walkie-talkie", "Остальное", NAPI.Util.GetHashKey("prop_cs_mini_tv"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Epinephrine, new ItemsInfo("Адреналин", "Нужна для лечения, можно использовать 1 раз в 5 минут.", "inv-item-medical-kit", "Остальное", NAPI.Util.GetHashKey("p_syringe_01_s"), 10, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.AppleCoin, new ItemsInfo("Apple Coin", "Летняя монета, которую можно получить в дни проведения мероприятия. F за Apple Pay.", "inv-item-medical-kit", "Остальное", NAPI.Util.GetHashKey("ch_prop_arcade_fortune_coin_01a"), 999, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    //
-
-    { ItemId.Spank, new ItemsInfo("SPANK", "Капсула с неизвестным веществом.", "inv-item-medical-kit", "Наркотик", NAPI.Util.GetHashKey("p_syringe_01_s"), 100, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.Eat, "gray") },
-    { ItemId.Fire, new ItemsInfo("Костер", "Подойдет для вечерних посиделок, не обожгитесь!", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_beach_fire"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Matras, new ItemsInfo("Надувной матрас", "Для пляжного отдыха и чтобы не утонуть", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_beach_lilo_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Tent, new ItemsInfo("Палатка", "Для кемпинга, пикника и бурной ночи", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_skid_tent_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Lezhak, new ItemsInfo("Лежак", "Для пляжного отдыха, можно лечь и думать о светлом будущем", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_patio_lounger_3"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Towel, new ItemsInfo("Свернутое полотенце", "Для пляжного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_beach_towel_04"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flag, new ItemsInfo("Флаг", "Российский флаг, не забудьте приобрести флагшток", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_us_yt"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Barrell, new ItemsInfo("Бочка", "Подойдет для различных нужд", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_wooden_barrel"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Surf, new ItemsInfo("Доска для сёрфа", "Для пляжного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_surf_board_03"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Vedro, new ItemsInfo("Ведро", "Такое же большое, как киска твоей бывшей, подойдет для пляжного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_buck_spade_03"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagstok, new ItemsInfo("Флаг Sprunk с флагштоком", "Флагшток с прикрепленным большим флагом Sprunk", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("stt_prop_flagpole_1b"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Tenttwo, new ItemsInfo("Палатка", "Для кемпинга, пикника и бурной ночи", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_skid_tent_01b"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Polotence, new ItemsInfo("Пляжное полотенце", "Для пляжного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("p_cs_beachtowel_01_s"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Beachbag, new ItemsInfo("Пляжная сумка", "Для пляжного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_beach_bag_03"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Zontik, new ItemsInfo("Зонтик", "Защитит от солнца и подойдет для пляжного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_beach_parasol_04"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Zontiktwo, new ItemsInfo("Зонтик", "Защитит от солнца и подойдет для пляжного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_beach_parasol_02"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Zontikthree, new ItemsInfo("Зонтик", "Защитит от солнца и подойдет для пляжного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_parasol_04c"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Closedzontik, new ItemsInfo("Закрытый зонтик", "Не защитит от солнца, но подойдет для пляжного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_parasol_04e"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Vball, new ItemsInfo("Воллейбольный мяч", "Для веселых игр и пляжного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_beach_volball01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Bball, new ItemsInfo("Пляжный мяч", "Для веселых игр и пляжного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_beachball_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Boomboxxx, new ItemsInfo("Бумбокс", "Подойдет для посиделок с друзьями", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_boombox_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Table, new ItemsInfo("Стол", "Подойдет для пикника или обычного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("bkr_prop_coke_table01a"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Tabletwo, new ItemsInfo("Стол", "Подойдет для пикника или обычного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_ld_farm_table02"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Tablethree, new ItemsInfo("Стол", "Подойдет для пикника или обычного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_proxy_chateau_table"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Tablefour, new ItemsInfo("Стол", "Подойдет для пикника или обычного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_table_03b"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Chair, new ItemsInfo("Стул", "Подойдет для пикника или обычного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("hei_prop_hei_skid_chair"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Chairtwo, new ItemsInfo("Стул", "Подойдет для пикника или обычного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_chair_01b"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Chaierthree, new ItemsInfo("Стул", "Подойдет для пикника или обычного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_direct_chair_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Chaierfour, new ItemsInfo("Стул", "Подойдет для пикника или обычного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_table_03_chr"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Chairtable, new ItemsInfo("Стол и стул", "Подойдет для пикника или обычного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_picnictable_01_lod"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Korzina, new ItemsInfo("Корзина", "Подойдет для пикника или обычного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_fruit_basket"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Light, new ItemsInfo("Освещение", "Освещение, которое пригодится в темное время суток", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_worklight_03b"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Alco, new ItemsInfo("Бутылка бренди", "Дорогая бутылка бренди для веселья и хорошей ночи с девушкой или парнем", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_bottle_brandy"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Alcotwo, new ItemsInfo("Бутылка коньяка", "Дорогая бутылка коньяка для веселья и хорошей ночи с девушкой или парнем", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_bottle_cognac"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Alcothree, new ItemsInfo("Бутылка текилы", "Дорогая бутылка текилкы для веселья и хорошей ночи с девушкой или парнем", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_tequila_bottle"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Alcofour, new ItemsInfo("Бутылка пива", "Дешевое пиво, подойдет для посиделок с друзьями на природе", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_beer_am"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Cocktail, new ItemsInfo("Коктейль", "Смесь цитрусовых фруктов и алкоголя, идеально подойдет для твоей девушки", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_cocktail"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Cocktailtwo, new ItemsInfo("Коктейль", "Смесь цитрусовых фруктов и алкоголя, идеально подойдет для твоей девушки", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_cocktail_glass"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Fruit, new ItemsInfo("Тарелка с фруктами", "Вкусная и ароматная тарелка с фруктами", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("ex_mp_h_acc_fruitbowl_02"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Fruittwo, new ItemsInfo("Тарелка с фруктами", "Вкусная и ароматная тарелка с фруктами", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_bar_fruit"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Packet, new ItemsInfo("Пакет", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("ng_proc_food_bag01a"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Buter, new ItemsInfo("Бутерброд", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_food_bs_burg3"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Patatoes, new ItemsInfo("Картошка фри", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_food_bs_chips"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Coffee, new ItemsInfo("Горячий кофе", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_food_bs_coffee"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Podnosfood, new ItemsInfo("Поднос с едой", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_food_bs_tray_02"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Bbqtwo, new ItemsInfo("Барбекю", "Подойдет для пикника или обычного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_bbq_4_l1"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Bbq, new ItemsInfo("Большое барбекю", "Подойдет для пикника или обычного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_bbq_5"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flowerrr, new ItemsInfo("Букет цветов", "Красивый букет с разноцветными цветами, который понравится вашей даме", "prop_snow_flower_02", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_snow_flower_02"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Vaza, new ItemsInfo("Ваза с цветами", "Ваза с красивыми белыми цветами, которая понравится вашей даме", "vw_prop_flowers_vase_01a", "Размещаемые предметы", NAPI.Util.GetHashKey("vw_prop_flowers_vase_01a"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagwtokk, new ItemsInfo("Флагшток", "Подойдет для пикника или обычного отдыха", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_flagpole_2a"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-
-    { ItemId.Flagau, new ItemsInfo("Флаг Австралии", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_australia", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_australia"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagbr, new ItemsInfo("Флаг Бразилии", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_brazil", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_brazil"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagch, new ItemsInfo("Флаг Китая", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_china", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_china"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagcz, new ItemsInfo("Флаг Чехии", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_czechrep", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_czechrep"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flageng, new ItemsInfo("Флаг Англии", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_england", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_england"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-
-    { ItemId.Flageu, new ItemsInfo("Флаг Евросоюза", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_eu_yt", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_eu_yt"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-
-    { ItemId.Flagfin, new ItemsInfo("Флаг Финляндии", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_finland", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_finland"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagfr, new ItemsInfo("Флаг Франции", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_france", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_france"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagger, new ItemsInfo("Флаг Германии", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_german_yt", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_german_yt"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagire, new ItemsInfo("Флаг Ирландии", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_ireland", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_ireland"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagisr, new ItemsInfo("Флаг Израиля", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_israel", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_israel"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagit, new ItemsInfo("Флаг Италии", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_italy", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_italy"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagjam, new ItemsInfo("Флаг Ямайки", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_jamaica", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_jamaica"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagjap, new ItemsInfo("Флаг Японии", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_japan_yt", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_japan_yt"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagmex, new ItemsInfo("Флаг Мексики", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_mexico_yt", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_mexico_yt"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagnet, new ItemsInfo("Флаг Нидерландов", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_netherlands", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_netherlands"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagnig, new ItemsInfo("Флаг Нигерии", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_nigeria", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_nigeria"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagnorw, new ItemsInfo("Флаг Норвегии", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_norway", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_norway"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagpol, new ItemsInfo("Флаг Польши", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_poland", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_poland"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagrus, new ItemsInfo("Флаг России", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_russia_yt", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_russia_yt"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagbel, new ItemsInfo("Флаг Бельгии", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_belgium", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_belgium"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-
-    { ItemId.Flagscot, new ItemsInfo("Флаг Шотландии", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_scotland_yt", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_scotland_yt"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagscr, new ItemsInfo("Флаг Скрипт", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_script", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_script"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-
-    { ItemId.Flagslov, new ItemsInfo("Флаг Словакии", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_slovakia", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_slovakia"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagslovak, new ItemsInfo("Флаг Словении", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_slovenia", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_slovenia"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagsou, new ItemsInfo("Флаг Кореи", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_southkorea", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_southkorea"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagspain, new ItemsInfo("Флаг Испании", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_spain", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_spain"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagswede, new ItemsInfo("Флаг Швеции", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_sweden", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_sweden"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagswitz, new ItemsInfo("Флаг Швейцарии", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_switzerland", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_switzerland"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagturk, new ItemsInfo("Флаг Турции", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_turkey", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_turkey"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    //
-    { ItemId.Flaguk, new ItemsInfo("Флаг Великобритании", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_uk_yt", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_uk_yt"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagus, new ItemsInfo("Флаг Америки", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_us_yt", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_us_yt"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Flagwales, new ItemsInfo("Флаг Уэльса", "Флаг среднего размера, для крепления необходим флагшток", "apa_prop_flag_wales", "Размещаемые предметы", NAPI.Util.GetHashKey("apa_prop_flag_wales"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    //
-		    { ItemId.Konus, new ItemsInfo("Конус", "Подойдет в качестве ограждения", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_byard_net02"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Konuss, new ItemsInfo("Светящийся конус", "Подойдет в качестве ограждения", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_air_conelight"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Otboynik1, new ItemsInfo("Отбойник", "Подойдет в качестве ограждения", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_barrier_wat_03a"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Otboynik2, new ItemsInfo("Отбойник", "Подойдет в качестве ограждения", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_barrier_wat_03b"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Dontcross, new ItemsInfo("Перекрытие", "Подойдет в качестве ограждения", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_barrier_work05"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Stop, new ItemsInfo("Знак STOP", "Подойдет для ПДД", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_sign_road_01a"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.NetProezda, new ItemsInfo("Знак НЕТ ПРОЕЗДА", "Подойдет для ПДД", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_sign_road_03a"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Zabor1, new ItemsInfo("Большой забор", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("xm_prop_base_fence_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Kpp, new ItemsInfo("КПП", "Подойдет в качестве установки блок-поста", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_air_sechut_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Zabor2, new ItemsInfo("Маленький забор", "Подойдет в качестве ограждения", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("xm_prop_base_fence_02"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Airlight, new ItemsInfo("Ночной свет", "Подойдет в качестве ограждения", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_air_lights_02b"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Camera1, new ItemsInfo("Камера видеонаблюдения", "Подойдет для наблюдения", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_cctv_cam_05a"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-    { ItemId.Camera2, new ItemsInfo("Камера видеонаблюдения", "Подойдет для наблюдения", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_snow_cam_03a"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-
-    { ItemId.TacticalRifle, new ItemsInfo("Tactical Rifle", "Усовершенствованная штурмовая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-militaryrifle", "Оружие", 273925117, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-
-    { ItemId.PrecisionRifle, new ItemsInfo("Precision Rifle", "Усовершенствованная снайперская  винтовка, обойма вмещает в себя 6 патронов.", "inv-item-militaryrifle", "Оружие", 346403307, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-
-    { ItemId.CombatShotgun, new ItemsInfo("Combat Shotgun", "Усовершенствованный  дробовик, обойма вмещает в себя 10 патронов.", "inv-item-militaryrifle", "Оружие", 689760839, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-
-    { ItemId.HeavyRifle, new ItemsInfo("Heavy Rifle", "Усовершенствованная штурмовая винтовка, обойма вмещает в себя 30 патронов.", "inv-item-militaryrifle", "Оружие", 2379721761, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-
-    { ItemId.NeonStick, new ItemsInfo("Неоновые палочки", "Палочки красного цвета, которые можно держать в руках.", "inv-item-Assault-Rifle", "Особое", 3455618605, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.None, "gray") },
-
-    { ItemId.GlowStick, new ItemsInfo("Светящиеся палочки", "Красивые светящиеся палочки, которые можно держать в руках.", "inv-item-Assault-Rifle", "Особое", NAPI.Util.GetHashKey("ba_prop_battle_glowstick_01"), 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.None, "gray") },
-
-    { ItemId.Giftcoin, new ItemsInfo("Подарок", "Коробка с подарком, которую запрятал для тебя Хоакин Феникс!", "inv-item-Assault-Rifle", "Особое", NAPI.Util.GetHashKey(""), 999, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.None, "gray") },
-
-    { ItemId.CombatRifle, new ItemsInfo("Combat Rifle", "Сносящая все на своем пути винтовка", "inv-item-Carbine-Rifle", "Оружие", 2379721761, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-
-    { ItemId.Glock, new ItemsInfo("Banana Glock", "Банана Глок топ", "inv-item-Carbine-Rifle", "Оружие", 651271362, 1, new Vector3(0.0,0.0,-0.99), new Vector3(90, 0, 0), newItemType.Weapons, "gray") },
-    { ItemId.Biolink, new ItemsInfo("BIOLINK", "Инновационный продукт, утоляющий жажду и голод. Революционное решение для управления потребностями организма.", "inv-item-improvement", "Бафф", 1940235411, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray") },
-    { ItemId.BioAdditiveLvl1, new ItemsInfo("Биодобавка 1 уровня", "Дает ускорение прокачки навыков в 2 раза. Действует 30 минут", "inv-item-improvement", "Бафф", 1940235411, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray") },
-    { ItemId.BioAdditiveLvl2, new ItemsInfo("Биодобавка 2 уровня", "Дает ускорение прокачки навыков в 2 раза. Действует 60 минут", "inv-item-improvement", "Бафф", 1940235411, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray") },
-    { ItemId.BioAdditiveLvl3, new ItemsInfo("Биодобавка 3 уровня", "Дает ускорение прокачки навыков в 2 раза. Действует 120 минут", "inv-item-improvement", "Бафф", 1940235411, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray") },
-    { ItemId.PizzaSlice, new ItemsInfo("Пицца", "Имеет 8 кусочков, каждый восстанавливает 50 сытости", "inv-item-pizza", "Еда", 0, 8, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.Eat, "gray") },
-    { ItemId.WeaponRepairKit, new ItemsInfo("Ремонтный набор для оружия", "Позволяет починить оружие на 30%", "inv-item-tools", "Инструменты", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray") },
-    { ItemId.CarRepairKitBig, new ItemsInfo("Большой ремонтный набор для автомобиля", "Имеет 25 использований", "inv-item-tools", "Инструменты", 0, 25, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray") },
-    { ItemId.ImmortalitixPill, new ItemsInfo("Эксперементальная пилюля 'Имморталитикс'", "Имеет шанс 50% что вас излечит от всех болезней, в противном случае -50 здоровья", "inv-item-pill", "Медицина", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray") },
-    { ItemId.CannedBeans, new ItemsInfo("Консервированные бобы", "Пополняет 70 сытости и 70 жажды", "inv-item-Chips", "Еда", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.Eat, "gray") },
-    { ItemId.HairStyling, new ItemsInfo("Стайлинг для волос", "При применении, защищает вас от машинки для стрижки. Действует 3 часа", "inv-item-hair", "Бафф", 1940235411, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray") },
-    { ItemId.GovernorsLetter, new ItemsInfo("Благодарственное письмо губернатора", "Увеличивает оклад на 50%, действует 5 часов", "inv-item-letter", "Бафф", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray") },
-    { ItemId.SpoiledBurger, new ItemsInfo("Испорченный бургер", "Аннулирует сытость и жажду", "inv-item-burger", "Еда", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.Eat, "gray") },
-    { ItemId.CivilDrone, new ItemsInfo("Гражданский дрон", "", "inv-item-drone", "Особое", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray") },
-    { ItemId.RecoveryCapsules, new ItemsInfo("Капсулы восстановления", "При использовании восстанавливает 9 здоровья раз в 2 секунды", "inv-item-medkit", "Медицина", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray") },
-    { ItemId.ProteinBar, new ItemsInfo("Протеиновый батончик", "Улучшает качество тренировок, ускоряя прокачку спортивных навыков в 2 раза. Длительность 20 минут", "inv-item-improvement", "Бафф", 1940235411, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray") },
-    { ItemId.AdvancedMetalDetector, new ItemsInfo("Улучшенный металлоискатель", "Имеет радиус поиска в 2 раза больше обычного", "inv-item-tool", "Инструменты", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray") },
-    { ItemId.ClothesDiscount, new ItemsInfo("Скидка на одежду", "Купон который вы можете применить и получить скидку на одежду в любом магазине", "inv-item-gift", "Особое", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray") },
-    { ItemId.RedneckCocktail, new ItemsInfo("Непредсказуемый коктейль Реднека", "Имеет случайный эффект: 1) Может ослепить на 1 минуту 2) Пополняет 100 здоровья, 100 сытости, 100 жажды 3) Может вызвать отравление", "inv-item-improvement", "Особое", 0, 1, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.None, "gray") },
-
-    { ItemId.Defibrillator, new ItemsInfo("Дефибриллятор", "Прибор, использующийся в медицине для электроимпульсной терапии нарушений сердечного ритма.", "inv-item-defik", "Медицина", NAPI.Util.GetHashKey("prop_power_cell"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray") },
-
-    { ItemId.Medovuha, new ItemsInfo("Медовуха", "Может сделать вас супергероем!", "inv-item-improvement", "Бафф", 1940235411, 5, new Vector3(0.0,0.0,-0.97), new Vector3(-80, 0, 0), newItemType.Improvement, "gray") },
-    { ItemId.ArmorGift, new ItemsInfo("Бронежилет", "После активации - скин на бронежилет можно выбрать в Меню K", "inv-item-gift", "Особое", NAPI.Util.GetHashKey("mj_xm_box7"), 1, new Vector3(0, 0, -0.99), new Vector3(90, 0, 0), newItemType.None, "gray") },
-
-    //НОВЫЙ ГОД
-    { ItemId.Candy, new ItemsInfo("Леденцы", "Ивентовый предмет", "inv-item-event", "Остальное", NAPI.Util.GetHashKey("mj_xm_candy"), 15, new Vector3(0, 0, -0.99), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.ChristmasTreeDecoration, new ItemsInfo("Елочная игрушка", "Ивентовый предмет", "inv-item-event", "Остальное", NAPI.Util.GetHashKey("mj_xm_toy_tree6"), 15, new Vector3(0, 0, -0.99), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.ChristmasTreeStar, new ItemsInfo("Елочная звезда", "Ивентовый предмет", "inv-item-event", "Остальное", NAPI.Util.GetHashKey("prop_cs_script_bottle_01"), 15, new Vector3(0, 0, -0.99), new Vector3(90, 0, 0), newItemType.None, "gray") },
-
-    { ItemId.SmallGift, new ItemsInfo("Маленький подарок", "Сюрприз", "inv-item-gift", "Остальное", NAPI.Util.GetHashKey("mj_xm_box7"), 1, new Vector3(0, 0, -0.99), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.MediumGift, new ItemsInfo("Средний подарок", "Сюрприз", "inv-item-gift", "Остальное", NAPI.Util.GetHashKey("mj_xm_box1"), 1, new Vector3(0, 0, -0.99), new Vector3(90, 0, 0), newItemType.None, "gray") },
-    { ItemId.BigGift, new ItemsInfo("Большой подарок", "Сюрприз", "inv-item-gift", "Остальное", NAPI.Util.GetHashKey("mj_xm_box3"), 1, new Vector3(0, 0, -0.99), new Vector3(90, 0, 0), newItemType.None, "gray") },
+    // ========================================
+    // ДОРОЖНЫЕ ЗНАКИ И ОГРАЖДЕНИЯ (1x2 или 2x2, 2.0-8.0 кг)
+    // ========================================
+    { ItemId.Konus, new ItemsInfo("Конус", "Подойдет в качестве ограждения", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_byard_net02"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 2.0f, 1, 1) },
+    { ItemId.Konuss, new ItemsInfo("Светящийся конус", "Подойдет в качестве ограждения", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_air_conelight"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 2.5f, 1, 1) },
+    { ItemId.Otboynik1, new ItemsInfo("Отбойник", "Подойдет в качестве ограждения", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_barrier_wat_03a"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 5.0f, 2, 1) },
+    { ItemId.Otboynik2, new ItemsInfo("Отбойник", "Подойдет в качестве ограждения", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_barrier_wat_03b"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 5.0f, 2, 1) },
+    { ItemId.Dontcross, new ItemsInfo("Перекрытие", "Подойдет в качестве ограждения", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_barrier_work05"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 6.0f, 2, 1) },
+    { ItemId.Stop, new ItemsInfo("Знак STOP", "Подойдет для ПДД", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_sign_road_01a"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 3.0f, 1, 2) },
+    { ItemId.NetProezda, new ItemsInfo("Знак НЕТ ПРОЕЗДА", "Подойдет для ПДД", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_sign_road_03a"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 3.0f, 1, 2) },
+    { ItemId.Zabor1, new ItemsInfo("Большой забор", "Подойдет для пикника", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("xm_prop_base_fence_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 8.0f, 2, 2) },
+    { ItemId.Kpp, new ItemsInfo("КПП", "Подойдет в качестве установки блок-поста", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_air_sechut_01"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 12.0f, 2, 3) },
+    { ItemId.Zabor2, new ItemsInfo("Маленький забор", "Подойдет в качестве ограждения", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("xm_prop_base_fence_02"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 6.0f, 2, 1) },
+    { ItemId.Airlight, new ItemsInfo("Ночной свет", "Подойдет в качестве ограждения", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_air_lights_02b"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 4.0f, 1, 2) },
+    { ItemId.Camera1, new ItemsInfo("Камера видеонаблюдения", "Подойдет для наблюдения", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_cctv_cam_05a"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 1.5f, 1, 1) },
+    { ItemId.Camera2, new ItemsInfo("Камера видеонаблюдения", "Подойдет для наблюдения", "placingprop", "Размещаемые предметы", NAPI.Util.GetHashKey("prop_snow_cam_03a"), 1, new Vector3(0.0,0.0,-0.9), new Vector3(), newItemType.None, "gray", 1.5f, 1, 1) },
 };
 
 
@@ -2782,7 +2836,69 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                 Log.Write($"LoadOtherItemsData Exception: {e.ToString()}");
             }
         }
+        public static float GetCurrentWeight(string locationName, string location)
+        {
+            try
+            {
+                float totalWeight = 0f;
 
+                if (ItemsData.ContainsKey(locationName) && ItemsData[locationName].ContainsKey(location))
+                {
+                    foreach (var item in ItemsData[locationName][location].Values)
+                    {
+                        if (item.ItemId == ItemId.Debug) continue;
+
+                        var itemInfo = ItemsInfo[item.ItemId];
+                        totalWeight += itemInfo.Weight * item.Count;
+                    }
+                }
+
+                return totalWeight;
+            }
+            catch (Exception e)
+            {
+                Log.Write($"GetCurrentWeight Exception: {e.ToString()}");
+                return 0f;
+            }
+        }
+
+        // ✅ МЕТОД ДЛЯ ПРОВЕРКИ МОЖНО ЛИ ДОБАВИТЬ ПРЕДМЕТ
+        public static bool CanAddItemByWeight(ExtPlayer player, string location, ItemId itemId, int count)
+        {
+            try
+            {
+                var characterData = player.GetCharacterData();
+                if (characterData == null) return false;
+
+                string locationName = $"char_{characterData.UUID}";
+
+                float maxWeight = location switch
+                {
+                    "inventory" => MaxInventoryWeight,
+                    "backpack" => MaxBackpackWeight,
+                    "warehouse" => MaxWarehouseWeight,
+                    "vehicle" => MaxVehicleWeight,
+                    _ => MaxInventoryWeight
+                };
+
+                float currentWeight = GetCurrentWeight(locationName, location);
+                float itemWeight = ItemsInfo[itemId].Weight * count;
+
+                if (currentWeight + itemWeight > maxWeight)
+                {
+                    Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter,
+                        $"Слишком тяжело! ({currentWeight + itemWeight:F1}/{maxWeight} кг)", 3000);
+                    return false;
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Log.Write($"CanAddItemByWeight Exception: {e.ToString()}");
+                return false;
+            }
+        }
         public static void LoadCharItemsData(ExtPlayer player)
         {
             try
@@ -3173,6 +3289,7 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                     Data = Convert.ToString(Row["item_data"]);
                     Location = Convert.ToString(Row["location"]);
                     SlotId = Convert.ToInt32(Row["slotId"]);
+                    bool IsTurn = Convert.ToBoolean(Row["is_turn"]);
                     if (ItemId == ItemId.Debug)
                         continue;
 
@@ -3194,7 +3311,12 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                         if (!AddWarehouseLocal.ContainsKey(locationName)) AddWarehouseLocal.Add(locationName, new List<InventoryItemData>());
                         AddWarehouseLocal[locationName].Add(new InventoryItemData(SqlID, ItemId, Count, Data, SlotId));
                     }
+                    var itemData = new InventoryItemData(SqlID, ItemId, Count, Data, SlotId)
+                    {
+                        IsTurn = IsTurn // ✅ УСТАНАВЛИВАЕМ ПОВОРОТ
+                    };
 
+                    ItemsData[locationName][Location].TryAdd(SlotId, itemData);
                     OnAddItem(ItemId, Data);
                 }
                 Log.Write($"[{DateTime.Now - TestSpeedLoad}] Inventory system loaded ({count})");
@@ -3803,6 +3925,8 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
             try
             {
                 if (player != null && !player.IsCharacterData()) return -1;
+                if (!CanAddItemByWeight(player, Location, ItemId, count))
+                    return -1;
                 int success = -1;
                 AddInventoryArray(locationName, Location);
 
@@ -4531,7 +4655,6 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
             if (itemId == ItemId.VehicleNumber)
                 VehicleManager.RemoveVehicleNumber(data);
         }
-
         public static void UpdateSqlItemDataThread(string locationName, string Location, int SlotId, InventoryItemData item, ItemId ItemIdDell)
         {
             try
@@ -4541,50 +4664,23 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                 {
                     GameLog.Items($"deletedItem({item.SqlId})", locationName, (int)ItemIdDell, item.Count, item.Data);
                     Database.Models.Items.AddItemDelete(item.SqlId);
-
                     OnDellItem(ItemIdDell, item.Data);
-
-                    /*using (var db = new ServerBD("MainDB"))
-                    {
-                        db.ItemsData
-                            .Where(v => v.AutoId == item.SqlId)
-                            .Delete();
-
-                        db.Notes
-                            .Where(v => v.ItemId == item.SqlId)
-                            .Delete();
-                    }*/
                 }
                 else
                 {
                     if (!Database.Models.Items.IsItemUpdate(item.SqlId))
                         GameLog.Items($"updatedItem({item.SqlId})", locationName, (int)item.ItemId, item.Count, item.Data);
 
-                    Database.Models.Items.AddItemUpdate(item.SqlId, locationName, item.Count, item.Data, Location, SlotId);
-
-                    /*using MySqlCommand cmd = new MySqlCommand
-                    {
-                        CommandText = "CALL `UpdateItemData`(@data_id, @item_count, @item_data, @location, @slotId, @auto_id)"
-                    };
-                    cmd.Parameters.AddWithValue("@data_id", locationName);
-                    cmd.Parameters.AddWithValue("@item_count", item.Count);
-                    cmd.Parameters.AddWithValue("@item_data", item.Data);
-                    cmd.Parameters.AddWithValue("@location", Location);
-                    cmd.Parameters.AddWithValue("@slotId", SlotId);
-                    cmd.Parameters.AddWithValue("@auto_id", item.SqlId);
-                    MySQL.Query(cmd);*/
-
-                    /*using (var db = new ServerBD("MainDB"))
-                    {
-                        db.ItemsData
-                            .Where(v => v.AutoId == item.SqlId)
-                            .Set(v => v.DataId, locationName)
-                            .Set(v => v.ItemCount, Convert.ToInt16(item.Count))
-                            .Set(v => v.ItemData, item.Data)
-                            .Set(v => v.Location, Location)
-                            .Set(v => v.SlotId, Convert.ToInt16(SlotId))
-                            .Update();
-                    }*/
+                    // ✅ ПЕРЕДАЁМ ПОВОРОТ В БАЗУ
+                    Database.Models.Items.AddItemUpdate(
+                        item.SqlId,
+                        locationName,
+                        item.Count,
+                        item.Data,
+                        Location,
+                        SlotId,
+                        item.IsTurn // <-- НОВЫЙ ПАРАМЕТР
+                    );
                 }
             }
             catch (Exception e)
@@ -4592,6 +4688,7 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                 Log.Write($"UpdateSqlItemData Exception: {e.ToString()}");
             }
         }
+        
         public static void UpdatePlayerItemData(ExtPlayer player, string locationName, string Location, int SlotId, InventoryItemData item, bool isInfo = false)
         {
             try
@@ -4797,18 +4894,11 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
             {
                 var sessionData = player.GetSessionData();
                 if (sessionData == null) return;
-                /*if(hoverLocation == "backpack") // Не фиксит передачу в рюкзак, которого нет, хоть сообщение и выдаёт.
-                {
-                    InventoryItemData _Item = GetItemData(player, "accessories", 8);
-                    if (_Item.ItemId != ItemId.Bag) 
-                    {
-                        Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter, "У Вас нет рюкзака", 1000);
-                        return;
-                    }
-                }*/
+
                 InventoryItemData _sItem = GetItemData(player, selectLocation, selectSlotId);
                 InventoryItemData _hItem = GetItemData(player, hoverLocation, hoverSlotId);
                 ItemsInfo _hInfoItem = ItemsInfo[_hItem.ItemId];
+
                 if (_sItem.ItemId == _hItem.ItemId && _hInfoItem.Stack > 1 && _hInfoItem.Stack > _sItem.Count && _hInfoItem.Stack > _hItem.Count)
                 {
                     int count = _hItem.Count < 2 ? 1 : _hItem.Count;
@@ -4827,19 +4917,26 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                 int slotUpdate = 0;
                 if (hoverLocation == "accessories" && hoverSlotId == 7)
                 {
-                    if (sessionData.ArmorHealth != -1 && player.Armor > sessionData.ArmorHealth) WeaponRepository.PlayerKickAntiCheat(player, 3, true);
+                    if (sessionData.ArmorHealth != -1 && player.Armor > sessionData.ArmorHealth)
+                        WeaponRepository.PlayerKickAntiCheat(player, 3, true);
                     _hItem.Data = player.Armor.ToString();
                     slotUpdate = 2;
                 }
                 else if (selectLocation == "accessories" && selectSlotId == 7)
                 {
-                    if (sessionData.ArmorHealth != -1 && player.Armor > sessionData.ArmorHealth) WeaponRepository.PlayerKickAntiCheat(player, 3, true);
+                    if (sessionData.ArmorHealth != -1 && player.Armor > sessionData.ArmorHealth)
+                        WeaponRepository.PlayerKickAntiCheat(player, 3, true);
                     _sItem.Data = player.Armor.ToString();
                     slotUpdate = 1;
                 }
 
-                SetItemData(player, hoverLocation, hoverSlotId, _sItem, slotUpdate == 1 ? true : false);
-                SetItemData(player, selectLocation, selectSlotId, _hItem, slotUpdate == 2 ? true : false);
+                // ✅ СОХРАНЯЕМ ПОВОРОТ ПРИ ОБМЕНЕ
+                bool tempTurn = _sItem.IsTurn;
+                _sItem.IsTurn = _hItem.IsTurn;
+                _hItem.IsTurn = tempTurn;
+
+                SetItemData(player, hoverLocation, hoverSlotId, _sItem, slotUpdate == 1);
+                SetItemData(player, selectLocation, selectSlotId, _hItem, slotUpdate == 2);
             }
             catch (Exception e)
             {
@@ -8228,10 +8325,29 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                 charData.Add(targetCharacterData.SpentMoneyDay);//49
                 charData.Add(targetCharacterData.SpentMoneyMonth);//50
                 charData.Add(targetCharacterData.SpentMoney);//51
-                
+
                 //charData.Add(Reports.Count);//52
-                
-                var statsData = JsonConvert.SerializeObject(charData);
+                string locationName = $"char_{targetCharacterData.UUID}";
+
+                // Подсчёт веса инвентаря
+                float inventoryWeight = GetCurrentWeight(locationName, "inventory");
+                charData.Add(inventoryWeight);//52 - Текущий вес инвентаря
+                charData.Add(MaxInventoryWeight);//53 - Максимальный вес инвентаря (50 кг)
+
+                // Подсчёт веса рюкзака
+                InventoryItemData bagItem = GetItemData(getPlayer, "accessories", 8);
+                if (bagItem.ItemId == ItemId.Bag)
+                {
+                    float backpackWeight = GetCurrentWeight($"backpack_{bagItem.SqlId}", "backpack");
+                    charData.Add(backpackWeight);//54 - Текущий вес рюкзака
+                    charData.Add(MaxBackpackWeight);//55 - Максимальный вес рюкзака (30 кг)
+                }
+                else
+                {
+                    charData.Add(0f);//54 - Рюкзака нет
+                    charData.Add(0f);//55
+                }
+                    var statsData = JsonConvert.SerializeObject(charData);
 
                 var sessionData = player.GetSessionData();
                 if (sessionData == null) return;
