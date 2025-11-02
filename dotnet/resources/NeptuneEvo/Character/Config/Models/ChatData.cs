@@ -20,6 +20,7 @@ namespace NeptuneEvo.Character.Config.Models
         public byte FacialEmotion { get; set; } = 0;
         public bool Deaf { get; set; } = false;
         public bool TagsHead { get; set; } = true;
+
         public bool HudToggled { get; set; } = true;
         public bool HudStats { get; set; } = true;
         public bool HudSpeed { get; set; } = true;
@@ -27,7 +28,7 @@ namespace NeptuneEvo.Character.Config.Models
         public bool HudLocation { get; set; } = true;
         public bool HudKey { get; set; } = true;
         public bool HudMap { get; set; } = true;
-        public bool HudCompass { get; set; } = true;
+
         public byte VolumeInterface { get; set; } = 100;
         public byte VolumeQuest { get; set; } = 50;
         public byte VolumeAmbient { get; set; } = 50;

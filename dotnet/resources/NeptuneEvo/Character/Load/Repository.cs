@@ -131,7 +131,14 @@ namespace NeptuneEvo.Character.Load
                         SelectedQuest = character.SelectedQuest,
                         IsForbesShow = character.IsForbesShow,
                         IsLucky = character.IsLucky
-
+                        ,
+                        InventoryWeight = 0 // Рассчитаем позже
+    ,
+                        MaxInventoryWeight = 50
+    ,
+                        BackpackWeight = 0 // Рассчитаем позже
+    ,
+                        MaxBackpackWeight = 30
                     };
                     try
                     {
@@ -383,7 +390,9 @@ namespace NeptuneEvo.Character.Load
                             Players.Phone.Repository.Init(player, phoneData);
 
                             //
-
+                            // ✅ РАССЧИТЫВАЕМ ВЕС ИНВЕНТАРЯ
+                            characterData.InventoryWeight = Chars.Repository.CalculateInventoryWeight(characterData.UUID);
+                            characterData.BackpackWeight = Chars.Repository.CalculateBackpackWeight(characterData.UUID);
                             Spawn.Repository.Spawn(player);
 
                             //
@@ -465,6 +474,79 @@ namespace NeptuneEvo.Character.Load
                 Log.Write($"Load({uuid}) Custom Exception: {e.ToString()}");
             }
             return null;
+        }
+        private static float CalculateInventoryWeight(int uuid)
+        {
+            try
+            {
+                float totalWeight = 0f;
+
+                string locationName = $"char_{uuid}";
+
+                if (Chars.Repository.ItemsData.ContainsKey(locationName) &&
+                    Chars.Repository.ItemsData[locationName].ContainsKey("inventory"))
+                {
+                    var items = Chars.Repository.ItemsData[locationName]["inventory"];
+
+                    foreach (var item in items.Values)
+                    {
+                        // ✅ ПРОПУСКАЕМ ПУСТЫЕ СЛОТЫ (ItemId = 0 или отрицательные)
+                        if (item.ItemId <= 0) continue;
+
+                        // ✅ ПОЛУЧАЕМ ИНФО О ПРЕДМЕТЕ ИЗ СЛОВАРЯ
+                        if (!Chars.Repository.ItemsInfo.ContainsKey(item.ItemId)) continue;
+
+                        var itemInfo = Chars.Repository.ItemsInfo[item.ItemId];
+                        if (itemInfo == null) continue;
+
+                        totalWeight += itemInfo.Weight * item.Count;
+                    }
+                }
+
+                return totalWeight;
+            }
+            catch (Exception e)
+            {
+                Log.Write($"CalculateInventoryWeight({uuid}) Exception: {e.ToString()}");
+                return 0f;
+            }
+        }
+
+        private static float CalculateBackpackWeight(int uuid)
+        {
+            try
+            {
+                float totalWeight = 0f;
+
+                string locationName = $"char_{uuid}";
+
+                if (Chars.Repository.ItemsData.ContainsKey(locationName) &&
+                    Chars.Repository.ItemsData[locationName].ContainsKey("backpack"))
+                {
+                    var items = Chars.Repository.ItemsData[locationName]["backpack"];
+
+                    foreach (var item in items.Values)
+                    {
+                        // ✅ ПРОПУСКАЕМ ПУСТЫЕ СЛОТЫ (ItemId = 0 или отрицательные)
+                        if (item.ItemId <= 0) continue;
+
+                        // ✅ ПОЛУЧАЕМ ИНФО О ПРЕДМЕТЕ ИЗ СЛОВАРЯ
+                        if (!Chars.Repository.ItemsInfo.ContainsKey(item.ItemId)) continue;
+
+                        var itemInfo = Chars.Repository.ItemsInfo[item.ItemId];
+                        if (itemInfo == null) continue;
+
+                        totalWeight += itemInfo.Weight * item.Count;
+                    }
+                }
+
+                return totalWeight;
+            }
+            catch (Exception e)
+            {
+                Log.Write($"CalculateBackpackWeight({uuid}) Exception: {e.ToString()}");
+                return 0f;
+            }
         }
     }
 }

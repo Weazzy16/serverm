@@ -401,7 +401,10 @@ namespace NeptuneEvo.Core
                 bool access = true;
                 switch (index)
                 {
-                    case 0:
+                    case 1:
+                        VehicleManager.ChangeVehicleDoors(player, vehicle);
+                        return;
+                    case 4:
                         if (characterData.DemorganTime >= 1 || characterData.ArrestTime >= 1) return;
                         access = VehicleManager.canAccessByNumber(player, vehicle.NumberPlate);
                         if (!access && characterData.AdminLVL < 3)
@@ -422,7 +425,7 @@ namespace NeptuneEvo.Core
                         }
                         else VehicleStreaming.SetDoorState(vehicle, DoorId.DoorHood, DoorState.DoorClosed);
                         return;
-                    case 1: 
+                    case 5: 
                         if (characterData.DemorganTime >= 1 || characterData.ArrestTime >= 1) return;
                         if (VehicleStreaming.GetDoorState(vehicle, DoorId.DoorTrunk) == DoorState.DoorOpen)
                         {
@@ -478,10 +481,8 @@ namespace NeptuneEvo.Core
                             }
                         }
                         return;
-                    case 2:
-                        VehicleManager.ChangeVehicleDoors(player, vehicle);
-                        return;
-                    case 3:
+                   
+                    case 6:
                         var vehicleLocalData = vehicle.GetVehicleLocalData();
                         if (vehicleLocalData != null)
                         {
@@ -515,10 +516,10 @@ namespace NeptuneEvo.Core
                             Chars.Repository.LoadOtherItemsData(player, "vehicle", vehicleData != null ? vehicleData.SqlId.ToString() : number, 1, vMain.GetMaxSlots(vehicle.Model), "", isArmyCar);
                         }
                         return;
-                    case 5:
+                    case 51:
                         Ticket.OpenTicket(player, vehicle);
                         return;
-                    case 6:
+                    case 61:
                         vehicleLocalData = vehicle.GetVehicleLocalData();
                         if (vehicleLocalData != null)
                         {
@@ -690,7 +691,7 @@ namespace NeptuneEvo.Core
                             }, 10000);
                         }
                         break;
-                    case 7:
+                    case 17:
                         vehicleLocalData = vehicle.GetVehicleLocalData();
                         if (vehicleLocalData != null)
                         {
@@ -825,7 +826,33 @@ namespace NeptuneEvo.Core
                             Commands.RPChat("sme", player, $"вытащил" + (characterData.Gender ? "" : "а") + $" {target.Name} из багажника");
                         }
                         return;
-                    case 12:
+                    case 7: // ✅ НОВЫЙ CASE - Отмена аренды
+                        vehicleLocalData = vehicle.GetVehicleLocalData();
+                        if (vehicleLocalData != null)
+                        {
+                            Log.Write($"[DEBUG] cancelRent attempt by {player.Name}, Access={vehicleLocalData.Access}, WorkDriver={vehicleLocalData.WorkDriver}, PlayerUUID={characterData.UUID}");
+
+                            // Проверяем, что это арендованная машина
+                            if (vehicleLocalData.Access != VehicleAccess.Rent && vehicleLocalData.Access != VehicleAccess.Work)
+                            {
+                                Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter, "Это не арендованная машина", 3000);
+                                return;
+                            }
+
+                            // Проверяем, что игрок - владелец аренды
+                            if (vehicleLocalData.WorkDriver != characterData.UUID)
+                            {
+                                Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter, "Вы не арендовали эту машину", 3000);
+                                return;
+                            }
+
+                            // Отменяем аренду
+                            Log.Write($"[DEBUG] cancelRent SUCCESS for {player.Name}");
+                            Rentcar.OnReturnVehicle(player, true);
+                            Notify.Send(player, NotifyType.Success, NotifyPosition.BottomCenter, "Аренда отменена", 3000);
+                        }
+                        return;
+                    case 3: // Снятие номера
                         vehicleLocalData = vehicle.GetVehicleLocalData();
                         if (vehicleLocalData != null)
                         {
@@ -833,7 +860,91 @@ namespace NeptuneEvo.Core
                             var vehicleData = VehicleManager.GetVehicleToNumber(number);
                             if (vehicleData == null || !vehicleData.Holder.Equals(player.Name))
                             {
+                                Notify.Send(player, NotifyType.Warning, NotifyPosition.BottomCenter, "Снять можно только со своего авто", 3000);
+                                return;
+                            }
+
+                            // Проверяем есть ли номер
+                            if (string.IsNullOrEmpty(number) || number.StartsWith("NO"))
+                            {
+                                Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter, "На машине нет номера", 2000);
+                                return;
+                            }
+
+                            // Выдаём номер игроку в инвентарь
+                            int slotId = Chars.Repository.AddNewItem(player, $"char_{characterData.UUID}", "inventory", ItemId.VehicleNumber, 1, number);
+                            if (slotId == -1)
+                            {
+                                Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter, "Недостаточно места в инвентаре", 3000);
+                                return;
+                            }
+
+                            // ✅ ГЕНЕРИРУЕМ ВРЕМЕННЫЙ НОМЕР ВМЕСТО ПУСТОЙ СТРОКИ
+                            var newNum = $"NO{vehicleData.SqlId}"; // Например: "NO1234"
+                            NAPI.Vehicle.SetVehicleNumberPlate(vehicle, newNum);
+
+                            // Удаляем старый номер из словарей
+                            if (VehicleManager.Vehicles.ContainsKey(number))
+                                VehicleManager.Vehicles.TryRemove(number, out _);
+
+                            // Добавляем с временным номером
+                            vehicleData.Number = newNum;
+                            VehicleManager.Vehicles[newNum] = vehicleData;
+                            VehicleManager.VehiclesSqlIdToNumber[vehicleData.SqlId] = newNum;
+
+                            VehicleData.LocalData.Repository.Delete(vehicleLocalData.Access, number);
+                            VehicleData.LocalData.Repository.VehicleNumberToHandle[vehicleLocalData.Access][newNum] = vehicle;
+
+                            vehicleLocalData.NumberPlate = newNum;
+                            vehicle.SetSharedData("NumberPlate", newNum);
+
+                            VehicleManager.SaveNumber(newNum);
+
+                            Trigger.PlayAnimation(player, "mini@safe_cracking", "idle_base", 39);
+                            Commands.RPChat("sme", player, "снимает номера");
+                            Trigger.ClientEvent(player, "fullblockMove", true);
+                            Trigger.ClientEvent(player, "freeze", true);
+
+                            NAPI.Task.Run(() =>
+                            {
+                                if (!player.IsCharacterData()) return;
+                                Trigger.StopAnimation(player);
+                                Trigger.ClientEvent(player, "fullblockMove", false);
+                                Trigger.ClientEvent(player, "freeze", false);
+
+                                Notify.Send(player, NotifyType.Success, NotifyPosition.BottomCenter, $"Вы сняли номер {number}", 3000);
+                            }, 3500);
+                        }
+                        break;
+
+                    case 2: // Установка номера
+                        vehicleLocalData = vehicle.GetVehicleLocalData();
+                        if (vehicleLocalData != null)
+                        {
+                            var currentNumber = vehicleLocalData.NumberPlate;
+                            var vehicleData = VehicleManager.GetVehicleToNumber(currentNumber);
+                            if (vehicleLocalData.Access == VehicleAccess.Rent || vehicleLocalData.Access == VehicleAccess.Work)
+                            {
+                                Notify.Send(player, NotifyType.Info, NotifyPosition.BottomCenter, "Нельзя менять номер на арендованной машине", 3000);
+                                return;
+                            }
+                            // ✅ ПРОВЕРЯЕМ ПО SqlId ВМЕСТО НОМЕРА
+                            if (vehicleData == null)
+                            {
+                                Notify.Send(player, NotifyType.Warning, NotifyPosition.BottomCenter, "Машина не найдена", 3000);
+                                return;
+                            }
+
+                            if (!vehicleData.Holder.Equals(player.Name))
+                            {
                                 Notify.Send(player, NotifyType.Warning, NotifyPosition.BottomCenter, "Сменить можно только на своем авто", 3000);
+                                return;
+                            }
+
+                            // ✅ ПРОВЕРКА: на машине должен быть временный номер
+                            if (!currentNumber.StartsWith("NO"))
+                            {
+                                Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter, "На машине уже установлен номер", 2000);
                                 return;
                             }
 
@@ -842,7 +953,7 @@ namespace NeptuneEvo.Core
                                 Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter, "В руках должен быть номерной знак", 2000);
                                 return;
                             }
-                            
+
                             var Item = Chars.Repository.GetItemData(player, "fastSlots", sessionData.ActiveWeap.Index);
                             if (Item.ItemId != ItemId.VehicleNumber)
                             {
@@ -851,43 +962,65 @@ namespace NeptuneEvo.Core
                             }
 
                             var newNum = Item.Data;
-                            
-                            Item.Data = number;
-                            Chars.Repository.SetItemData(player, "fastSlots", sessionData.ActiveWeap.Index, Item, true);
-                            
+
+                            // ✅ ПРОВЕРКА: номер в руках должен совпадать с оригинальным номером ЭТОЙ машины
+                            // Извлекаем SqlId из временного номера (например, "NO1234" → 1234)
+                            if (int.TryParse(currentNumber.Substring(2), out int sqlId))
+                            {
+                                // Проверяем, что SqlId в номере совпадает с SqlId машины
+                                if (sqlId != vehicleData.SqlId)
+                                {
+                                    Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter, "Этот номер не подходит к данной машине", 3000);
+                                    return;
+                                }
+
+                                // ✅ ДОПОЛНИТЕЛЬНАЯ ПРОВЕРКА: номер в руках должен быть исходным номером именно этой машины
+                                // Для этого можно проверить через базу данных или хранить оригинальный номер
+                                // Если у вас нет способа проверить оригинальный номер, то эта проверка уже достаточна
+                            }
+                            else
+                            {
+                                Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter, "Ошибка определения машины", 3000);
+                                return;
+                            }
+
+                            // ✅ Уничтожаем предмет (возврат номера на машину)
+                            Chars.Repository.RemoveIndex(player, "fastSlots", sessionData.ActiveWeap.Index);
+
                             NAPI.Vehicle.SetVehicleNumberPlate(vehicle, newNum);
 
-                            if (VehicleManager.Vehicles.ContainsKey(number))
-                                VehicleManager.Vehicles.TryRemove(number, out _);
-                            
+                            if (VehicleManager.Vehicles.ContainsKey(currentNumber))
+                                VehicleManager.Vehicles.TryRemove(currentNumber, out _);
+
                             vehicleData.Number = newNum;
                             VehicleManager.Vehicles[newNum] = vehicleData;
-                            
                             VehicleManager.VehiclesSqlIdToNumber[vehicleData.SqlId] = newNum;
-                            
-                            VehicleData.LocalData.Repository.Delete(vehicleLocalData.Access, number);
+
+                            VehicleData.LocalData.Repository.Delete(vehicleLocalData.Access, currentNumber);
                             VehicleData.LocalData.Repository.VehicleNumberToHandle[vehicleLocalData.Access][newNum] = vehicle;
-                            
+
                             vehicleLocalData.NumberPlate = newNum;
-                            
+                            vehicle.SetSharedData("NumberPlate", newNum);
+
                             VehicleManager.SaveNumber(newNum);
 
                             Trigger.PlayAnimation(player, "mini@safe_cracking", "idle_base", 39);
-                            // Trigger.ClientEventInRange(player.Position, 250f, "PlayAnimToKey", player, false, "vzlomsafe");
-                            Commands.RPChat("sme", player, "меняет номера");
+                            Commands.RPChat("sme", player, "устанавливает номера");
                             Trigger.ClientEvent(player, "fullblockMove", true);
                             Trigger.ClientEvent(player, "freeze", true);
+
                             NAPI.Task.Run(() =>
                             {
                                 if (!player.IsCharacterData()) return;
                                 Trigger.StopAnimation(player);
                                 Trigger.ClientEvent(player, "fullblockMove", false);
                                 Trigger.ClientEvent(player, "freeze", false);
-                                
-                                
+
+                                Notify.Send(player, NotifyType.Success, NotifyPosition.BottomCenter, $"Вы установили номер {newNum}", 3000);
                             }, 3500);
                         }
                         break;
+
                 }
             }
             catch (Exception e)

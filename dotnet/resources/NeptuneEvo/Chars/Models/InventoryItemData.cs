@@ -34,6 +34,8 @@ namespace NeptuneEvo.Chars.Models
         /// Цена
         /// </summary>
         public int Price { get; set; } = 0;
+        public bool IsTurn { get; set; } = false;
+
 
         #endregion
 
@@ -45,13 +47,15 @@ namespace NeptuneEvo.Chars.Models
         /// <param name="Count"><see cref="Count"/></param>
         /// <param name="Data"><see cref="Data"/></param
         /// <param name="Index"><see cref="Index"/></param>
-        public InventoryItemData(int SqlId = 0, ItemId ItemId = ItemId.Debug, int Count = 0, string Data = "-1_-1_none", int Index = 0)
+        public InventoryItemData(int SqlId = 0, ItemId ItemId = ItemId.Debug, int Count = 0, string Data = "-1_-1_none", int Index = 0, bool IsTurn = false)
         {
             this.SqlId = SqlId;
             this.ItemId = ItemId;
             this.Count = Count;
             this.Data = Data;
             this.Index = Index;
+            this.IsTurn = IsTurn; // ✅ ДОБАВЬ
+
         }
 
         public Dictionary<string, int> GetData()

@@ -212,6 +212,7 @@ namespace NeptuneEvo.Core
                 veh.SetSharedData("MILEAGE", (int)(totalKm * 100));
                 // сохраняем основные shared-data
                 veh.SetSharedData("SIRENSOUND", false);
+                veh.SetSharedData("NumberPlate", numberPlate);
                 veh.SetSharedData("vehradio", 255);
                 veh.SetSharedData("PETROL", (petrol == 9999 && VehicleManager.VehicleTank.ContainsKey(veh.Class))
                                                   ? VehicleManager.VehicleTank[veh.Class]
@@ -456,11 +457,11 @@ namespace NeptuneEvo.Core
             }
         }
         [RemoteEvent("server.vehicle.syncLights")]
-        public void SyncLights(ExtPlayer player, object vehicleId, object lightsState)
+        public void SyncLights(ExtPlayer player, int lightsState)
         {
             try
             {
-                Log.Write($"🔦 [SyncLights] RAW - vehicleId={vehicleId}, lightsState={lightsState}");
+                Log.Write($"🔦 [SyncLights] Player={player.Name}, State={lightsState}");
 
                 if (!player.IsInVehicle)
                 {
@@ -475,16 +476,14 @@ namespace NeptuneEvo.Core
                     return;
                 }
 
-                // Преобразуем в int
-                int state = Convert.ToInt32(lightsState);
-
-                veh.SetSharedData("LIGHTS_STATE", state);
-                Log.Write($"🔦 [SyncLights] SUCCESS - Vehicle={veh.NumberPlate}, State={state}");
+                veh.SetSharedData("LIGHTS_STATE", lightsState);
+                Log.Write($"🔦 [SyncLights] SUCCESS - Vehicle={veh.NumberPlate}, State={lightsState}");
             }
             catch (Exception e)
             {
                 Log.Write($"🔦 [SyncLights] ERROR: {e}");
             }
+        
         }
 
 

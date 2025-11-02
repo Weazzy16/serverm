@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Database;
 using LinqToDB;
+using MySqlConnector;
 using Redage.SDK;
 
 namespace NeptuneEvo.Database.Models
@@ -55,21 +56,32 @@ namespace NeptuneEvo.Database.Models
         
         private static Dictionary<int, List<object>> ItemsUpdate = new Dictionary<int, List<object>>();
         public static bool IsItemUpdate(int sqlId) => ItemsUpdate.ContainsKey(sqlId);
-        
-        public static void AddItemUpdate(int sqlId, string locationName, int count, string data, string location, int slotId)
+
+        public static void AddItemUpdate(int sqlId, string locationName, int count, string data, string location, int slotId, bool isTurn = false)
         {
-            var saveData = new List<object>();
-
-            saveData.Add(sqlId);
-            saveData.Add(locationName);
-            saveData.Add(count);
-            saveData.Add(data);
-            saveData.Add(location);
-            saveData.Add(slotId);
-
-            ItemsUpdate[sqlId] = saveData;
+            // ✅ SQL с новым полем
+            using MySqlCommand cmd = new MySqlCommand
+            {
+                CommandText = @"
+            UPDATE `items_data` 
+            SET `data_id` = @data_id, 
+                `item_count` = @item_count, 
+                `item_data` = @item_data, 
+                `location` = @location, 
+                `slotId` = @slotId, 
+                `is_turn` = @is_turn
+            WHERE `auto_id` = @auto_id"
+            };
+            cmd.Parameters.AddWithValue("@data_id", locationName);
+            cmd.Parameters.AddWithValue("@item_count", count);
+            cmd.Parameters.AddWithValue("@item_data", data);
+            cmd.Parameters.AddWithValue("@location", location);
+            cmd.Parameters.AddWithValue("@slotId", slotId);
+            cmd.Parameters.AddWithValue("@is_turn", isTurn ? 1 : 0); // ✅ НОВЫЙ ПАРАМЕТР
+            cmd.Parameters.AddWithValue("@auto_id", sqlId);
+            MySQL.Query(cmd);
         }
-        
+
         private static async Task ItemUpdate(ServerBD db, List<List<object>> listData)
         {
             try

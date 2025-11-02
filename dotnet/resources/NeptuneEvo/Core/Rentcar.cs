@@ -958,6 +958,8 @@ namespace NeptuneEvo.Core
 
                 if (vehicleCreate == null)
                     return;
+                vehicleCreate.SetSharedData("isRent", true);
+                Log.Write($"[DEBUG] Set isRent=true for {number}"); // ← Для отладки
 
                 //
 
@@ -1183,6 +1185,8 @@ namespace NeptuneEvo.Core
 
                 if (sessionData.RentData != null)
                 {
+                    if (sessionData.RentData.Vehicle != null && sessionData.RentData.Vehicle.Exists)
+                        sessionData.RentData.Vehicle.ResetSharedData("isRent");
                     VehicleStreaming.DeleteVehicle(sessionData.RentData.Vehicle);
 
                     sessionData.RentData = null;

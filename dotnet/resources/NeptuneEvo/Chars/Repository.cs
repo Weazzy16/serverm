@@ -3665,6 +3665,13 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                                     UpdateClothes = true;
                                 }
                                 ItemsData[locationName][ItemStruct.Location].TryRemove(ItemStruct.Index, out _);
+                                // ✅ Обновляем вес после удаления
+                               
+                                    {
+                                        characterData.InventoryWeight = CalculateInventoryWeight(characterData.UUID);
+                                        characterData.BackpackWeight = CalculateBackpackWeight(characterData.UUID);
+                                    }
+                                
                                 if (ItemsData[locationName][ItemStruct.Location].Count < 1)
                                     ItemsData[locationName].TryRemove(ItemStruct.Location, out _);
                             }
@@ -3971,6 +3978,16 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                         {
                             AddSqlItem(player, locationName, Location, ItemId, i, count, ItemData, price);
                             count = 0;
+                            // ✅ Обновляем вес после добавления
+                            if (player != null && player.IsCharacterData())
+                            {
+                                var characterData = player.GetCharacterData();
+                                if (characterData != null)
+                                {
+                                    characterData.InventoryWeight = CalculateInventoryWeight(characterData.UUID);
+                                    characterData.BackpackWeight = CalculateBackpackWeight(characterData.UUID);
+                                }
+                            }
                         }
                         if (count == 0) return i;
                         else success = i;
@@ -4175,6 +4192,7 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                     ItemData = ItemData,
                     Location = Location,
                     SlotId = (short)Index,
+                    IsTurn = 0
                 });
                 var itemData = ItemsData[locationName][Location][Index];
                 itemData.SqlId = itemSqlID;
@@ -4727,7 +4745,7 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                 {
                     InventoryItemData Item = ItemsData[locationName][Location][SlotId];
 
-                    var newItem = new InventoryItemData(Item.SqlId, Item.ItemId, Item.Count, Item.Data, Item.Index);
+                    var newItem = new InventoryItemData(Item.SqlId, Item.ItemId, Item.Count, Item.Data, Item.Index, Item.IsTurn);
                     newItem.Price = Item.Price;
 
                     return newItem;
@@ -8970,5 +8988,76 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
             return locationItems.Values.FirstOrDefault(x => x.SqlId == sqlId);
         }
         #endregion
+        public static float CalculateInventoryWeight(int uuid)
+        {
+            try
+            {
+                float totalWeight = 0f;
+                string locationName = $"char_{uuid}";
+
+                if (ItemsData.ContainsKey(locationName) && ItemsData[locationName].ContainsKey("inventory"))
+                {
+                    var items = ItemsData[locationName]["inventory"];
+
+                    foreach (var item in items.Values)
+                    {
+                        if (item.ItemId <= 0) continue; // ✅ Пропускаем пустые слоты
+
+                        if (!ItemsInfo.ContainsKey(item.ItemId)) continue;
+
+                        var itemInfo = ItemsInfo[item.ItemId];
+                        totalWeight += itemInfo.Weight * item.Count;
+                    }
+                }
+
+                return totalWeight;
+            }
+            catch (Exception e)
+            {
+                Log.Write($"CalculateInventoryWeight({uuid}) Exception: {e.ToString()}");
+                return 0f;
+            }
+        }
+
+        public static float CalculateBackpackWeight(int uuid)
+        {
+            try
+            {
+                float totalWeight = 0f;
+                string locationName = $"char_{uuid}";
+
+                // ✅ Ищем рюкзак у игрока
+                if (ItemsData.ContainsKey(locationName) && ItemsData[locationName].ContainsKey("accessories"))
+                {
+                    var bagItem = ItemsData[locationName]["accessories"].Values.FirstOrDefault(x => x.ItemId == ItemId.Bag);
+                    if (bagItem != null)
+                    {
+                        string backpackLocation = $"backpack_{bagItem.SqlId}";
+
+                        if (ItemsData.ContainsKey(backpackLocation) && ItemsData[backpackLocation].ContainsKey("backpack"))
+                        {
+                            var items = ItemsData[backpackLocation]["backpack"];
+
+                            foreach (var item in items.Values)
+                            {
+                                if (item.ItemId <= 0) continue;
+
+                                if (!ItemsInfo.ContainsKey(item.ItemId)) continue;
+
+                                var itemInfo = ItemsInfo[item.ItemId];
+                                totalWeight += itemInfo.Weight * item.Count;
+                            }
+                        }
+                    }
+                }
+
+                return totalWeight;
+            }
+            catch (Exception e)
+            {
+                Log.Write($"CalculateBackpackWeight({uuid}) Exception: {e.ToString()}");
+                return 0f;
+            }
+        }
     }
 }

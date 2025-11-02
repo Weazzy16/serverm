@@ -886,6 +886,7 @@ namespace NeptuneEvo.Core
                 Log.Write($"Create Task Exception: {e.ToString()}");
             }
         }
+
         public static void Remove(string number)
         {
             try
@@ -986,6 +987,7 @@ namespace NeptuneEvo.Core
                 return 0;
             }
         }
+
         public static void SaveNumber(string number)
         {
             Trigger.SetTask(async () =>

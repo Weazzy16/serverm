@@ -484,79 +484,51 @@ namespace NeptuneEvo.Chars.Models
     /// </summary>
     public class ItemsInfo
     {
-        #region Свойства
-
-        /// <summary>
-        /// Колличество
-        /// </summary>
         public string Name { get; set; }
-        /// <summary>
-        /// Колличество
-        /// </summary>
         public string Description { get; set; }
-        /// <summary>
-        /// Колличество
-        /// </summary>
         public string Icon { get; set; }
-        /// <summary>
-        /// Колличество
-        /// </summary>
-        public string Type { get; set; }
-        /// <summary>
-        /// Дополнительная дата
-        /// </summary>
-        [JsonIgnore]
+        public string Category { get; set; } // ← БЫЛО "Type", СТАЛО "Category"
         public uint Model { get; set; }
-        /// <summary>
-        /// Дополнительная дата
-        /// </summary>
         public int Stack { get; set; }
-        /// <summary>
-        /// Дополнительная дата
-        /// </summary>
-        [JsonIgnore]
         public Vector3 PosOffset { get; set; }
-        /// <summary>
-        /// Дополнительная дата
-        /// </summary>
-        [JsonIgnore]
         public Vector3 RotOffset { get; set; }
-        /// <summary>
-        /// Дополнительная дата
-        /// </summary>
         public newItemType functionType { get; set; }
         public string Color { get; set; }
 
+        // ✅ НОВЫЕ ПОЛЯ
+        public float Weight { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
 
-        #endregion
-
-        /// <summary>
-        /// Конструктор данных пользователя
-        /// </summary>
-        /// <param name="Name"><see cref="Name"/></param>
-        /// <param name="Description"><see cref="Description"/></param>
-
-        /// <param name="Icon"><see cref="Icon"/></param>
-        /// <param name="Type"><see cref="Type"/></param>
-
-        /// <param name="Model"><see cref="Model"/></param>
-        /// <param name="Stack"><see cref="Stack"/></param>
-        /// <param name="PosOffset"><see cref="PosOffset"/></param>
-        /// <param name="RotOffset"><see cref="RotOffset"/></param>
-        /// <param name="functionType"><see cref="functionType"/></param>
-        /// <param name="Color"><see cref="Color"/></param>
-        public ItemsInfo(string Name, string Description, string Icon, string Type, uint Model, int Stack, Vector3 PosOffset, Vector3 RotOffset, newItemType functionType, string Color)
+        public ItemsInfo(
+            string name,
+            string description,
+            string icon,
+            string category, // ← БЫЛО type
+            uint model,
+            int stack,
+            Vector3 posOffset,
+            Vector3 rotOffset,
+            newItemType functionType,
+            string color,
+            float weight,    // ← НОВЫЙ
+            int width,       // ← НОВЫЙ
+            int height       // ← НОВЫЙ
+        )
         {
-            this.Name = Name;
-            this.Description = Description;
-            this.Icon = Icon;
-            this.Type = Type;
-            this.Model = Model;
-            this.Stack = Stack;
-            this.PosOffset = PosOffset;
-            this.RotOffset = RotOffset;
+            Name = name;
+            Description = description;
+            Icon = icon;
+            Category = category; // ← БЫЛО Type
+            Model = model;
+            Stack = stack;
+            PosOffset = posOffset;
+            RotOffset = rotOffset;
             this.functionType = functionType;
-            this.Color = Color;
+            Color = color;
+            Weight = weight;   // ← НОВЫЙ
+            Width = width;     // ← НОВЫЙ
+            Height = height;   // ← НОВЫЙ
         }
     }
 }

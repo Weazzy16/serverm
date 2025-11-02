@@ -736,6 +736,8 @@ namespace Database
 		[Column("item_data"),  Nullable            ] public string ItemData  { get; set; } // varchar(46)
 		[Column("location"),   Nullable            ] public string Location  { get; set; } // varchar(24)
 		[Column("slotId"),     Nullable            ] public short? SlotId    { get; set; } // smallint(6)
+	    [Column("is_turn"),    Nullable            ] public sbyte? IsTurn    { get; set; } // tinyint(1)
+
 	}
 
 	[Table("livingcity")]

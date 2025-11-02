@@ -358,6 +358,12 @@ namespace NeptuneEvo.Character.Models
         /// 
         /// </summary>
         public int maxcars { get; set; } = 0;
+
+        // ✅ ПРАВИЛЬНО (float для веса в килограммах)
+        public float InventoryWeight { get; set; } = 0;
+        public float MaxInventoryWeight { get; set; } = 50;
+        public float BackpackWeight { get; set; } = 0;
+        public float MaxBackpackWeight { get; set; } = 30;
         /// <summary>
         /// 
         /// </summary>
