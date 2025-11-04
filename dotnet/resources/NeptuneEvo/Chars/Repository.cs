@@ -1,4 +1,4 @@
-using GTANetworkAPI;
+﻿using GTANetworkAPI;
 using NeptuneEvo.Handles;
 using Redage.SDK;
 using System;
@@ -2944,7 +2944,6 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                 List<InventoryItemData> _JsonAccessoriesItemData = new List<InventoryItemData>();
                 List<InventoryItemData> _JsonInventoryItemData = new List<InventoryItemData>();
                 List<InventoryItemData> _JsonFastSlotsItemData = new List<InventoryItemData>();
-                //List<InventoryItemData> jsonBackPackItemData = new List<InventoryItemData>();
 
                 string locationName = $"char_{targetCharacterData.UUID}";
 
@@ -2970,18 +2969,16 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                     }
                 }
                 string _ItemsData = JsonConvert.SerializeObject(new Dictionary<string, List<InventoryItemData>>
-                {
-                    { "accessories", _JsonAccessoriesItemData },
-                    { "inventory", _JsonInventoryItemData },
-                    { "fastSlots", _JsonFastSlotsItemData },
-                    //{ "backpack", jsonBackPackItemData },
-                });
+        {
+            { "accessories", _JsonAccessoriesItemData },
+            { "inventory", _JsonInventoryItemData },
+            { "fastSlots", _JsonFastSlotsItemData },
+        });
 
                 Trigger.ClientEvent(player, "client.inventory.InitData", _ItemsData, Target == null ? true : false);
                 if (Target == null)
                 {
                     isRadio(player);
-                    //isBackpackItemsData(player, true);
                 }
                 else if (Target != null)
                 {
@@ -2997,6 +2994,22 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                     else Trigger.ClientEvent(player, "client.inventory.InitBackpack", 0, "[]", false);
                 }
                 PlayerStats(player, Target);
+
+                // ✅ ДОБАВЛЕНО: Отправляем вес при открытии инвентаря
+                if (Target == null && player.IsCharacterData())
+                {
+                    var characterData = player.GetCharacterData();
+                    if (characterData != null)
+                    {
+                        float inventoryWeight = CalculateInventoryWeight(characterData.UUID);
+                        float backpackWeight = CalculateBackpackWeight(characterData.UUID);
+
+                        characterData.InventoryWeight = inventoryWeight;
+                        characterData.BackpackWeight = backpackWeight;
+
+                        Trigger.ClientEvent(player, "client.inventory.UpdateWeight", inventoryWeight, backpackWeight);
+                    }
+                }
             }
             catch (Exception e)
             {
@@ -3830,9 +3843,9 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
         public static IReadOnlyDictionary<string, int> InventoryMaxSlots = new Dictionary<string, int>()
         {
             { "accessories", 15 },
-            { "inventory", 35 },
-            { "backpack", 21 },
-            { "fastSlots", 5 },
+            { "inventory", 102 },
+            { "backpack", 48 },
+            { "fastSlots", 3 },
             { "trade", 8 },
             { "vehicle", 25 },//76
             { "CarKey", 38 },
@@ -3842,7 +3855,7 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
             { "tent", 16 },
             { "marketStorage", EternalDev.MarketPlace.Manager.Config.MaxSlotsInStorage },
         };
-        public const int MaxSlotsInventory = 35;
+        public const int MaxSlotsInventory = 102;
         public static int GetMaxSlots(ExtPlayer player, string Location)
         {
             if (Location == "backpack" && player.IsCharacterData())
@@ -3851,7 +3864,7 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                 InventoryItemData Bags = GetItemData(player, "accessories", 8);
                 if (Bags.ItemId == ItemId.Bag)
                 {
-                    int maxSlots = 20;
+                    int maxSlots = 48;
                     Dictionary<string, int> PlayerBugData = Bags.GetData();
                     ConcurrentDictionary<int, ClothesData> ShoesData = ClothesComponents.ClothesBugsData;
                     if (ShoesData.ContainsKey(PlayerBugData["Variation"]) && ShoesData[PlayerBugData["Variation"]].MaxSlots > 0) maxSlots = ShoesData[PlayerBugData["Variation"]].MaxSlots;
@@ -3871,14 +3884,19 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                 if (!player.IsCharacterData()) return -1;
                 int success = -1;
                 AddInventoryArray(locationName, Location);
+
+                // ✅ СТАКАНИЕ: Проверяем, можно ли объединить с существующим предметом
                 if (ItemsInfo[Item.ItemId].Stack > 1)
                 {
                     foreach (int SlotId in ItemsData[locationName][Location].Keys)
                     {
                         InventoryItemData item = ItemsData[locationName][Location][SlotId];
-                        if (item.ItemId == Item.ItemId && ItemsInfo[Item.ItemId].Stack > item.Count)
+                        if (item.ItemId == Item.ItemId && ItemsInfo[Item.ItemId].Stack > item.Count) // ✅ Ищем только НЕ полные стаки
                         {
                             if (item.Price != Item.Price) continue;
+
+                            // ✅ ДОБАВЛЕНО: Проверка поворота
+                            if (item.IsTurn != Item.IsTurn) continue;
 
                             if (ItemsInfo[Item.ItemId].Stack >= (item.Count + Item.Count))
                             {
@@ -3890,35 +3908,104 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                                 Item.Count = (item.Count + Item.Count) - ItemsInfo[Item.ItemId].Stack;
                                 item.Count = ItemsInfo[Item.ItemId].Stack;
                             }
+
                             ItemId ItemIdDell = Item.ItemId;
                             Item.ItemId = ItemId.Debug;
                             UpdateSqlItemData(locationName, Location, Item.Index, Item, ItemIdDell);
                             UpdateSqlItemData(locationName, Location, SlotId, item);
                             UpdatePlayerItemData(player, locationName, Location, SlotId, item);
                             ItemsOtherUpdate(player, locationName, Location, SlotId, item);
-                            if (Item.Count == 0) return SlotId;
-                            else success = SlotId;
+
+                            if (Item.Count == 0) return SlotId; // ✅ Всё объединено
+                            else success = SlotId; // ✅ Частично объединено, продолжаем
                         }
                     }
                 }
 
+                // ✅ ПОИСК СВОБОДНОГО МЕСТА С УЧЁТОМ РАЗМЕРА
+                int itemWidth = ItemsInfo[Item.ItemId].Width;
+                int itemHeight = ItemsInfo[Item.ItemId].Height;
+
+                int maxCols = Location switch
+                {
+                    "inventory" => 6,   // ✅ Основной инвентарь 6x17
+                    "backpack" => 6,    // ✅ Рюкзак 6x8
+                    "other" => 6,       // ✅ Другие хранилища
+                    _ => 5
+                };
+
+                int maxRows = MaxSlots / maxCols;
+
                 for (int i = 0; i < MaxSlots; i++)
                 {
+                    // ✅ ПРОВЕРЯЕМ ТОЛЬКО СТАРТОВЫЙ СЛОТ
                     if (!ItemsData[locationName][Location].ContainsKey(i) || ItemsData[locationName][Location][i].ItemId == ItemId.Debug)
                     {
-                        if (Location == "fastSlots" && i == 4 && Item.ItemId != ItemId.Mask) continue;
-                        if (isWarehouse && isFreeSlots(player, Item.ItemId, Item.Count, send: false) != 0) continue;
-                        ItemsData[locationName][Location][i] = new InventoryItemData(Item.SqlId, Item.ItemId, Item.Count, Item.Data, i);
-                        ItemsData[locationName][Location][i].Price = Item.Price;
+                        // ✅ ВЫЧИСЛЯЕМ КООРДИНАТЫ СЛОТА
+                        int startX = i % maxCols;
+                        int startY = i / maxCols;
 
-                        UpdateSqlItemData(locationName, Location, i, ItemsData[locationName][Location][i]);
-                        UpdatePlayerItemData(player, locationName, Location, i, ItemsData[locationName][Location][i]);
-                        ItemsOtherUpdate(player, locationName, Location, i, ItemsData[locationName][Location][i]);
-                        return i;
+                        // ✅ ПРОВЕРКА: ПОМЕЩАЕТСЯ ЛИ ПРЕДМЕТ?
+                        bool canPlace = true;
+
+                        // Проверка выхода за границы
+                        if (startX + itemWidth > maxCols || startY + itemHeight > maxRows)
+                        {
+                            canPlace = false;
+                        }
+                        else
+                        {
+                            // Проверка занятости всех необходимых слотов
+                            for (int y = 0; y < itemHeight; y++)
+                            {
+                                for (int x = 0; x < itemWidth; x++)
+                                {
+                                    int checkIndex = (startY + y) * maxCols + (startX + x);
+
+                                    if (ItemsData[locationName][Location].ContainsKey(checkIndex) &&
+                                        ItemsData[locationName][Location][checkIndex].ItemId != ItemId.Debug)
+                                    {
+                                        canPlace = false;
+                                        break;
+                                    }
+                                }
+                                if (!canPlace) break;
+                            }
+                        }
+
+                        // ✅ ЕСЛИ МОЖНО РАЗМЕСТИТЬ - ДОБАВЛЯЕМ
+                        if (canPlace)
+                        {
+                            if (Location == "fastSlots" && i == 4 && Item.ItemId != ItemId.Mask) continue;
+                            if (isWarehouse && isFreeSlots(player, Item.ItemId, Item.Count, send: false) != 0) continue;
+
+                            ItemsData[locationName][Location][i] = new InventoryItemData(Item.SqlId, Item.ItemId, Item.Count, Item.Data, i);
+                            ItemsData[locationName][Location][i].Price = Item.Price;
+                            ItemsData[locationName][Location][i].IsTurn = Item.IsTurn; // ✅ СОХРАНЯЕМ ПОВОРОТ
+
+                            UpdateSqlItemData(locationName, Location, i, ItemsData[locationName][Location][i]);
+                            UpdatePlayerItemData(player, locationName, Location, i, ItemsData[locationName][Location][i]);
+                            ItemsOtherUpdate(player, locationName, Location, i, ItemsData[locationName][Location][i]);
+
+                            // ✅ Обновляем вес после добавления
+                            if (player.IsCharacterData())
+                            {
+                                var characterData = player.GetCharacterData();
+                                if (characterData != null)
+                                {
+                                    characterData.InventoryWeight = CalculateInventoryWeight(characterData.UUID);
+                                    characterData.BackpackWeight = CalculateBackpackWeight(characterData.UUID);
+                                }
+                            }
+
+                            return i;
+                        }
                     }
                 }
+
                 if (isWarehouse)
                     AddItemWarehouse(player, Item, 10000);
+
                 return success;
             }
             catch (Exception e)
@@ -3934,17 +4021,22 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                 if (player != null && !player.IsCharacterData()) return -1;
                 if (!CanAddItemByWeight(player, Location, ItemId, count))
                     return -1;
+
                 int success = -1;
                 AddInventoryArray(locationName, Location);
 
+                // ✅ СТАКАНИЕ: Проверяем, можно ли объединить с существующим предметом
                 if (ItemsInfo[ItemId].Stack > 1 && stack)
                 {
                     foreach (int SlotId in ItemsData[locationName][Location].Keys)
                     {
                         InventoryItemData item = ItemsData[locationName][Location][SlotId];
-                        if (item.ItemId == ItemId && ItemsInfo[ItemId].Stack > item.Count)
+                        if (item.ItemId == ItemId && ItemsInfo[ItemId].Stack > item.Count) // ✅ Ищем только НЕ полные стаки
                         {
                             if (price != item.Price) continue;
+
+                            // ✅ Проверка поворота (новые предметы не повёрнуты)
+                            if (item.IsTurn != false) continue;
 
                             if (ItemsInfo[ItemId].Stack >= (item.Count + count))
                             {
@@ -3956,28 +4048,96 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                                 count = (item.Count + count) - ItemsInfo[ItemId].Stack;
                                 item.Count = ItemsInfo[ItemId].Stack;
                             }
+
                             UpdateSqlItemData(locationName, Location, SlotId, item);
                             if (player != null) UpdatePlayerItemData(player, locationName, Location, SlotId, item, isInfo);
                             else if (ItemId == ItemId.Bag) UpdatePlayerItemData(player, locationName, "backpack", SlotId, item, isInfo);
                             ItemsOtherUpdate(player, locationName, Location, SlotId, item);
-                            if (count == 0) return SlotId;
-                            else success = SlotId;
+
+                            // ✅ Обновляем вес
+                            if (player != null && player.IsCharacterData())
+                            {
+                                var characterData = player.GetCharacterData();
+                                if (characterData != null)
+                                {
+                                    characterData.InventoryWeight = CalculateInventoryWeight(characterData.UUID);
+                                    characterData.BackpackWeight = CalculateBackpackWeight(characterData.UUID);
+                                }
+                            }
+
+                            if (count == 0) return SlotId; // ✅ Всё объединено
+                            else success = SlotId; // ✅ Частично объединено, продолжаем искать
                         }
                     }
                 }
+
+                    // ✅ ПОИСК СВОБОДНОГО МЕСТА С УЧЁТОМ РАЗМЕРА
+                    int itemWidth = ItemsInfo[ItemId].Width;
+                int itemHeight = ItemsInfo[ItemId].Height;
+
+                // ✅ ОПРЕДЕЛЯЕМ РАЗМЕРЫ ИНВЕНТАРЯ
+                // ✅ ИСПРАВЛЕНО: Правильные размеры
+                int maxCols = Location switch
+                {
+                    "inventory" => 6,
+                    "backpack" => 6,
+                    "other" => 6,
+                    _ => 5
+                };
+
+                int maxRows = MaxSlots / maxCols;
+
                 for (int i = 0; i < MaxSlots; i++)
                 {
+                    // ✅ ПРОВЕРЯЕМ ТОЛЬКО СТАРТОВЫЙ СЛОТ
                     if (!ItemsData[locationName][Location].ContainsKey(i) || ItemsData[locationName][Location][i].ItemId == ItemId.Debug)
                     {
-                        if (count > ItemsInfo[ItemId].Stack)
+                        // ✅ ВЫЧИСЛЯЕМ КООРДИНАТЫ СЛОТА
+                        int startX = i % maxCols;
+                        int startY = i / maxCols;
+
+                        // ✅ ПРОВЕРКА: ПОМЕЩАЕТСЯ ЛИ ПРЕДМЕТ?
+                        bool canPlace = true;
+
+                        // Проверка выхода за границы
+                        if (startX + itemWidth > maxCols || startY + itemHeight > maxRows)
                         {
-                            AddSqlItem(player, locationName, Location, ItemId, i, ItemsInfo[ItemId].Stack, ItemData, price);
-                            count -= ItemsInfo[ItemId].Stack;
+                            canPlace = false;
                         }
                         else
                         {
-                            AddSqlItem(player, locationName, Location, ItemId, i, count, ItemData, price);
-                            count = 0;
+                            // Проверка занятости всех необходимых слотов
+                            for (int y = 0; y < itemHeight; y++)
+                            {
+                                for (int x = 0; x < itemWidth; x++)
+                                {
+                                    int checkIndex = (startY + y) * maxCols + (startX + x);
+
+                                    if (ItemsData[locationName][Location].ContainsKey(checkIndex) &&
+                                        ItemsData[locationName][Location][checkIndex].ItemId != ItemId.Debug)
+                                    {
+                                        canPlace = false;
+                                        break;
+                                    }
+                                }
+                                if (!canPlace) break;
+                            }
+                        }
+
+                        // ✅ ЕСЛИ МОЖНО РАЗМЕСТИТЬ - ДОБАВЛЯЕМ
+                        if (canPlace)
+                        {
+                            if (count > ItemsInfo[ItemId].Stack)
+                            {
+                                AddSqlItem(player, locationName, Location, ItemId, i, ItemsInfo[ItemId].Stack, ItemData, price);
+                                count -= ItemsInfo[ItemId].Stack;
+                            }
+                            else
+                            {
+                                AddSqlItem(player, locationName, Location, ItemId, i, count, ItemData, price);
+                                count = 0;
+                            }
+
                             // ✅ Обновляем вес после добавления
                             if (player != null && player.IsCharacterData())
                             {
@@ -3988,9 +4148,10 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                                     characterData.BackpackWeight = CalculateBackpackWeight(characterData.UUID);
                                 }
                             }
+
+                            if (count == 0) return i;
+                            else success = i;
                         }
-                        if (count == 0) return i;
-                        else success = i;
                     }
                 }
 
@@ -4376,7 +4537,7 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
 
         public static int maxItemCount = 3;
 
-        public static int isFreeSlots(ExtPlayer player, ItemId ItemId, int count = 1, bool send = true, string Location = "inventory")
+        public static int isFreeSlots(ExtPlayer player, ItemId ItemId, int count = 1, bool send = true, string Location = "inventory", int ignoreSqlId = -1)
         {
             try
             {
@@ -4385,105 +4546,164 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                 string locationName = $"char_{characterData.UUID}";
                 AddInventoryArray(locationName, Location);
 
-                var maxStack = ItemsInfo[ItemId].Stack;
-                int rData = 0;
-                if (ItemsInfo[ItemId].Stack <= 1)
+                // ✅ 1. ПРОВЕРКА ВЕСА
+                float maxWeight = Location switch
                 {
-                    if (ItemsData[locationName][Location].Count(w => w.Value.ItemId != ItemId.Debug) >= InventoryMaxSlots[Location]) rData = -1;
-                    //else if (BackpackSqlId != 0 && ItemsData[locationName][Location].Count >= InventoryMaxSlots[Location] && ItemsData[$"backpack_{BackpackSqlId}"]["backpack"].Count >= InventoryMaxSlots["backpack"]) rData = -1;
-                    else if (ItemsInfo[ItemId].functionType == newItemType.Weapons && ItemId != ItemId.StunGun && ItemId != ItemId.RayPistol && WeaponRepository.WeaponsAmmoTypes.ContainsKey(ItemId))
-                    {
-                        var ammoType = WeaponRepository.WeaponsAmmoTypes[ItemId];
+                    "inventory" => MaxInventoryWeight,
+                    "backpack" => MaxBackpackWeight,
+                    "warehouse" => MaxWarehouseWeight,
+                    "vehicle" => MaxVehicleWeight,
+                    _ => MaxInventoryWeight
+                };
 
-                        var countItems = ItemsData[locationName].Sum(l => l.Key != "trade" ?
-                                                                          l.Value.Count(l => WeaponRepository.WeaponsAmmoTypes.ContainsKey(l.Value.ItemId) && WeaponRepository.WeaponsAmmoTypes[l.Value.ItemId] == ammoType) : 0);
-                        if (countItems >= maxItemCount)
-                            rData = -2;
-                    }
-                    else if (ItemId == ItemId.BodyArmor)
-                    {
-                        var countItems = ItemsData[locationName].Sum(l => l.Key != "trade" ?
-                                                                          l.Value.Count(l => l.Value.ItemId == ItemId) : 0);
-                        if (countItems >= maxItemCount)
-                            rData = -3;
-                    }
-                    else if (ItemsInfo[ItemId].functionType == newItemType.MeleeWeapons || ItemId == ItemId.Bag || ItemId == ItemId.KeyRing || ItemId == ItemId.StunGun || ItemId == ItemId.RayPistol)
-                    {
-                        var countItems = ItemsData[locationName].Sum(l => l.Key != "trade" ?
-                            l.Value.Count(l => l.Value.ItemId == ItemId) : 0);
+                float currentWeight = GetCurrentWeight(locationName, Location);
+                float itemWeight = ItemsInfo[ItemId].Weight * count;
 
-                        if (countItems > 0)
-                            rData = -3;
-                    }
-                    else if (ItemId == ItemId.BagWithDrill || ItemId == ItemId.BagWithMoney)
-                    {
-                        var countItems = ItemsData[locationName].Values.Sum(l =>
-                            l.Values.Count(l => (l.ItemId == ItemId.BagWithDrill || l.ItemId == ItemId.BagWithMoney)));
+                if (currentWeight + itemWeight > maxWeight)
+                {
+                    if (send)
+                        Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter,
+                            $"Слишком тяжело! ({currentWeight + itemWeight:F1}/{maxWeight} кг)", 3000);
+                    return -1;
+                }
 
-                        if (countItems > 0)
-                            rData = -3;
-                    }
-                }
-                else
-                {
-                    int allCount = 0;
-                    foreach (var _Location in ItemsData[locationName])
-                    {
-                        if (_Location.Key == "trade") continue;
-                        foreach (var itemData in _Location.Value)
-                        {
-                            if (itemData.Value.ItemId != ItemId) continue;
-                            allCount += itemData.Value.Count == 0 ? 1 : itemData.Value.Count;
-                        }
-                    }
+                // ✅ 2. ПРОВЕРКА СВОБОДНЫХ КЛЕТОК (С МАТРИЦЕЙ!)
+                int itemWidth = ItemsInfo[ItemId].Width;
+                int itemHeight = ItemsInfo[ItemId].Height;
 
-                    if (ItemsInfo[ItemId].functionType == newItemType.Ammo)
-                        maxStack *= maxItemCount;
+                int slotsNeeded = 1;
+                if (ItemsInfo[ItemId].Stack > 1 && count > ItemsInfo[ItemId].Stack)
+                {
+                    slotsNeeded = (int)Math.Ceiling((double)count / ItemsInfo[ItemId].Stack);
+                }
 
-                    if (allCount > 0)
-                    {
-                        if (maxStack == allCount)
-                        {
-                            if (send) Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter, LangFunc.GetText(LangType.Ru, DataName.AlreadyHaveItemStack, ItemsInfo[ItemId].Name, maxStack), 3000);
-                            return -1;
-                        }
-                        if (maxStack >= (allCount + count)) rData = 0;
-                        else rData = maxStack - allCount;
+                // ✅ ИСПОЛЬЗУЕМ МАТРИЦУ ДЛЯ ПРОВЕРКИ
+                if (!HasFreeSlotsWithMatrix(locationName, Location, itemWidth, itemHeight, slotsNeeded, ignoreSqlId))
+                {
+                    if (send)
+                        Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter,
+                            LangFunc.GetText(LangType.Ru, DataName.NoSpaceInventory), 3000);
+                    return -1;
+                }
 
-                    }
-                    else
-                    {
-                        if (count > maxStack) rData = count - maxStack;
-                        else if (ItemsData[locationName][Location].Count >= MaxSlotsInventory) rData = -1;
-                    }
-                }
-                if (send && rData == -1)
-                {
-                    Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter, LangFunc.GetText(LangType.Ru, DataName.NoSpaceInventory), 3000);// "Недостаточно места в инвентаре"
-                }
-                else if (send && rData == -2)
-                {
-                    Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter, LangFunc.GetText(LangType.Ru, DataName.AlreadyHaveWeapon, ItemsInfo[ItemId].Name), 3000); //"Невозможно взять {0}, потому что в инвентаре уже есть {0}"
-                }
-                else if (send && rData == -3)
-                {
-                    Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter, LangFunc.GetText(LangType.Ru, DataName.AlreadyHaveItem, ItemsInfo[ItemId].Name), 3000); //"У Вас уже есть {0}
-                }
-                else if (send && rData != 0)
-                {
-                    Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter, LangFunc.GetText(LangType.Ru, DataName.AlreadyHaveItemStack, ItemsInfo[ItemId].Name, maxStack), 3000); // Нет места для {0}, максимум можно иметь при себе - {1} шт.
-                }
-                /*else if(send && rData != 0)
-                {
-                    Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter, $"Ошибка работы с предметом #{rData}, передайте администрации!", 3000);
-                }*/
-                return rData;
+                return 0;
             }
             catch (Exception e)
             {
                 Log.Write($"isFreeSlots Exception: {e.ToString()}");
                 return 0;
             }
+        }
+
+        // ✅ НОВАЯ ФУНКЦИЯ: ПРОВЕРКА СВОБОДНЫХ КЛЕТОК
+        private static bool HasFreeSlotsWithMatrix(string locationName, string location, int itemWidth, int itemHeight, int slotsNeeded, int ignoreSqlId)
+        {
+            int maxCols = 6;
+            int maxRows = location switch
+            {
+                "inventory" => 17,
+                "backpack" => 6,
+                "other" => 19,
+                _ => 17
+            };
+
+            // ✅ СОЗДАЁМ МАТРИЦУ ЗАНЯТОСТИ
+            bool[,] matrix = new bool[maxRows, maxCols];
+
+            // ✅ ИСПРАВЛЕНО: InventoryData → ItemsData
+            var items = ItemsData.GetValueOrDefault(locationName)?.GetValueOrDefault(location);
+
+            if (items != null)
+            {
+                foreach (var item in items.Values)
+                {
+                    if (item.ItemId == 0 || item.SqlId == ignoreSqlId) continue;
+
+                    var itemInfo = ItemsInfo.GetValueOrDefault(item.ItemId);
+                    if (itemInfo == null) continue;
+
+                    int x = item.Index % maxCols;
+                    int y = item.Index / maxCols;
+
+                    int width = itemInfo.Width;
+                    int height = itemInfo.Height;
+
+                    // ✅ ПОМЕЧАЕМ ЗАНЯТЫЕ КЛЕТКИ
+                    for (int dy = 0; dy < height; dy++)
+                    {
+                        for (int dx = 0; dx < width; dx++)
+                        {
+                            int checkY = y + dy;
+                            int checkX = x + dx;
+                            if (checkY < maxRows && checkX < maxCols)
+                            {
+                                matrix[checkY, checkX] = true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // ✅ ИЩЕМ СВОБОДНОЕ МЕСТО ДЛЯ НОВОГО ПРЕДМЕТА
+            int foundSlots = 0;
+            for (int y = 0; y < maxRows && foundSlots < slotsNeeded; y++)
+            {
+                for (int x = 0; x < maxCols && foundSlots < slotsNeeded; x++)
+                {
+                    // ✅ ПРОВЕРЯЕМ, ПОМЕСТИТСЯ ЛИ ПРЕДМЕТ
+                    if (x + itemWidth <= maxCols && y + itemHeight <= maxRows)
+                    {
+                        bool canPlace = true;
+                        for (int dy = 0; dy < itemHeight && canPlace; dy++)
+                        {
+                            for (int dx = 0; dx < itemWidth && canPlace; dx++)
+                            {
+                                if (matrix[y + dy, x + dx])
+                                {
+                                    canPlace = false;
+                                }
+                            }
+                        }
+
+                        if (canPlace)
+                        {
+                            foundSlots++;
+                            // ✅ ПОМЕЧАЕМ КАК ЗАНЯТОЕ (для следующих слотов)
+                            for (int dy = 0; dy < itemHeight; dy++)
+                            {
+                                for (int dx = 0; dx < itemWidth; dx++)
+                                {
+                                    matrix[y + dy, x + dx] = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return foundSlots >= slotsNeeded;
+        }
+
+       
+
+        // ✅ ВСПОМОГАТЕЛЬНАЯ ФУНКЦИЯ: МОЖНО ЛИ РАЗМЕСТИТЬ ПРЕДМЕТ
+        private static bool CanPlaceItem(bool[,] matrix, int startX, int startY, int width, int height, int maxCols, int maxRows)
+        {
+            // Проверка границ
+            if (startX + width > maxCols || startY + height > maxRows)
+                return false;
+
+            // Проверка занятости клеток
+            for (int dy = 0; dy < height; dy++)
+            {
+                for (int dx = 0; dx < width; dx++)
+                {
+                    if (matrix[startY + dy, startX + dx])
+                        return false;
+                }
+            }
+
+            return true;
         }
 
         public static int getCountToLacationItem(string locationName, string Location, ItemId ItemId, string data = null)
@@ -4706,7 +4926,7 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                 Log.Write($"UpdateSqlItemData Exception: {e.ToString()}");
             }
         }
-        
+
         public static void UpdatePlayerItemData(ExtPlayer player, string locationName, string Location, int SlotId, InventoryItemData item, bool isInfo = false)
         {
             try
@@ -4722,6 +4942,20 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                 if (newItem.ItemId == ItemId.CarKey) newItem.Data = GetVehicleName(newItem.Data);
 
                 Trigger.ClientEvent(player, "client.inventory.UpdateSlot", Location, SlotId, JsonConvert.SerializeObject(newItem), isInfo);
+
+                // ✅ ДОБАВЛЕНО: Отправляем обновленный вес на клиент
+                var characterData = player.GetCharacterData();
+                if (characterData != null)
+                {
+                    float inventoryWeight = CalculateInventoryWeight(characterData.UUID);
+                    float backpackWeight = CalculateBackpackWeight(characterData.UUID);
+
+                    characterData.InventoryWeight = inventoryWeight;
+                    characterData.BackpackWeight = backpackWeight;
+
+                    // Отправляем вес на клиент
+                    Trigger.ClientEvent(player, "client.inventory.UpdateWeight", inventoryWeight, backpackWeight);
+                }
 
                 if (Location == "inventory")
                     isRadio(player);

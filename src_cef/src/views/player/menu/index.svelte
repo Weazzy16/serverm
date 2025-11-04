@@ -31,111 +31,230 @@
     import { spring } from 'svelte/motion';
     import './fonts/newinv/style.css'
     import { getPng } from './getPng.js'
-
+// ✅ ПОДПИСКА НА ВЕС ИЗ charData
+$: {
+    if ($charData) {
+        inventoryWeight = $charData.InventoryWeight || 0;
+        maxInventoryWeight = $charData.MaxInventoryWeight || 50;
+        backpackWeight = $charData.BackpackWeight || 0;
+        maxBackpackWeight = $charData.MaxBackpackWeight || 30;
+    }
+}
     
     let activeItem = null; 
+    let cdn = "https://cdn.majestic-files.com/public/master/static";
 
     import inventoryWeapons from 'json/inventoryweapons.js'
     
 
     let useVisible = -1;
 
-export let selectCharData;
+    export let selectCharData;
 
-$: {
-    if (useVisible != visible) {
-        if (visible && $otherStatsData.Name/* && $otherStatsData.UUID !== selectCharData.UUID*/) {
-            selectCharData = $otherStatsData;
-        } else if (visible && !$otherStatsData.Name && selectCharData !== $charData) {
-            selectCharData = $charData;
-        } else if (!visible && $otherStatsData.Name) {
-            selectCharData = $charData;
-            window.accountStore.otherStatsData ('{}');
+    $: {
+        if (useVisible != visible) {
+            if (visible && $otherStatsData.Name) {
+                selectCharData = $otherStatsData;
+            } else if (visible && !$otherStatsData.Name && selectCharData !== $charData) {
+                selectCharData = $charData;
+            } else if (!visible && $otherStatsData.Name) {
+                selectCharData = $charData;
+                window.accountStore.otherStatsData ('{}');
+            }
+            useVisible = visible;
         }
-        useVisible = visible;
     }
-}
 
-
-
-let selcetinv = false;
-
-const onSelectedInv = (type) => {
-    selcetinv = type;
-}
-
-let searchText = "";
-
-let itemsWithDataCount = 0;
-
-$: itemsWithDataCount = ItemsData["other"].filter(item => item.ItemId && window.getItem(item.ItemId)).length;
-
-
-let
-    fastSlots = [1, 2, 3, 4, 5],
-    clickTime = 0,
-    invOpacity = 1,
-    invOldOpacity = -1,
-    ItemStack = -1,
-    StackValue = 1,
-    tradeMoney = "",
-    useInventoryArea = false,
-    mouseLeaveSelectedItem = false,
-    mainInventoryArea = false,
-    selectItem = defaulSelectItem,
-    hoverItem = defaulHoverItem,
-    infoItem = defaulHoverItem,
-    isMoveBlock = false,
-    moveBlock = {
-        accessories: [null, null],
-        inventory: [null, null],
-        backpack: [null, null],
-        other: [null, null],
-        fastSlots: [null, null],
-        trade: [null, null],
-        with_trade: [null, null],
-    },
-    ItemsData = {
-        accessories: Array(maxSlots.accessories).fill(clearSlot),
-        inventory: Array(maxSlots.inventory).fill(clearSlot),
-        backpack: Array(maxSlots.backpack).fill({ ...clearSlot, use: false }),
-        other: Array(maxSlots.other).fill(clearSlot),
-        fastSlots: Array(maxSlots.fastSlots).fill(clearSlot),
-        trade: Array(maxSlots.trade).fill(clearSlot),
-        with_trade: Array(maxSlots.with_trade).fill(clearSlot),
-    },
-    SlotToPrice = [],
-    tradeInfo = {
-        Active: false,
+    // ========================
+    // ✅ ФУНКЦИЯ РАЗМЕРА ПРЕДМЕТА
+    // ========================
+    function getItemSize(item, turnRotation = false) {
+        const baseSize = 5.02778; // vh
         
-        YourStatus: false,		 	// Статус готовности обмена
-        YourStatusChange: false, 	// Нажата кнопка "Обмен"
-        YourMoney: 0,
+        if (!item || !item.ItemId) {
+            return `width: ${baseSize}vh; height: ${baseSize}vh;`;
+        }
+        
+        const itemConfig = itemsInfo[item.ItemId] || {};
+        const width = itemConfig.Width || 1;
+        const height = itemConfig.Height || 1;
+        const isTurned = item.isTurn || false;
+        
+        let resultWidth = width;
+        let resultHeight = height;
+        let transform = '';
+        
+        if (isTurned) {
+            resultWidth = height;
+            resultHeight = width;
+            if (turnRotation) {
+                transform = 'transform: rotate(90deg);';
+            }
+        }
+        
+        return `width: ${baseSize * resultWidth}vh; height: ${baseSize * resultHeight}vh; ${transform}`;
+    }
 
-        WithName: "Deluxe",			// Имя игрока, с которым вы обмениваетесь
-        WithStatus: false,			// Статус готовности обмена игрока, с которым вы обмениваетесь
-        WithStatusChange: false, 	// Нажата кнопка "Обмен"
-        WithMoney: 0
-    },
-    PlayerInfo = {
-        Sex: 0,
-        Name: "",
-        Backpack: false
-    },
-    OtherInfo = {
-        Id: 0,
-        Name: "",
-    },
-    OtherItemId = 0,
-    OtherSqlId = 0,
-    isArmyCar = false,
-    isInVehicle = false;
+    // ========================
+    // ✅ ПРОВЕРКА МОЖНО ЛИ ПОЛОЖИТЬ
+    // ========================
+    function checkSlot(matrix, item, startX, startY) {
+        if (!item || !matrix || !item.ItemId) return false;
+        
+        const itemConfig = itemsInfo[item.ItemId] || {};
+        
+        // ✅ УЧИТЫВАЕМ ПОВОРОТ
+        const width = item.isTurn ? (itemConfig.Height || 1) : (itemConfig.Width || 1);
+        const height = item.isTurn ? (itemConfig.Width || 1) : (itemConfig.Height || 1);
+        
+        // Проверяем границы
+        if (startY + height > matrix.length || startX + width > (matrix[0]?.length || 0)) {
+            return false;
+        }
+        
+        // Проверяем занятость слотов
+        for (let y = startY; y < startY + height; y++) {
+            for (let x = startX; x < startX + width; x++) {
+                const slotItem = matrix[y]?.[x];
+                // Слот занят другим предметом (проверяем по SqlId чтобы игнорировать сам предмет)
+                if (slotItem && slotItem.SqlId && slotItem.SqlId !== item.SqlId) {
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
+    // ========================
+    // ✅ СОЗДАНИЕ МАТРИЦЫ
+    // ========================
+    function createMatrix(arrayName) {
+        let rows = 17, cols = 5;
+        
+        switch(arrayName) {
+            case "other":
+                rows = 19;
+                break;
+            case "backpack":
+                rows = 6;
+                break;
+            case "inventory":
+                rows = 17;
+                break;
+        }
+        
+        const matrix = Array(rows).fill(null).map(() => Array(cols).fill(null));
+        
+        const items = ItemsData[arrayName] || [];
+        items.forEach((item, index) => {
+            if (!item || !item.ItemId || item.ItemId === 0) return;
+            
+            const x = index % cols;
+            const y = Math.floor(index / cols);
+            
+            const itemConfig = itemsInfo[item.ItemId] || {};
+            const width = item.isTurn ? (itemConfig.Height || 1) : (itemConfig.Width || 1);
+            const height = item.isTurn ? (itemConfig.Width || 1) : (itemConfig.Height || 1);
+            
+            for (let dy = 0; dy < height; dy++) {
+                for (let dx = 0; dx < width; dx++) {
+                    if (y + dy < rows && x + dx < cols) {
+                        matrix[y + dy][x + dx] = item;
+                    }
+                }
+            }
+        });
+        
+        return matrix;
+    }
 
-/* Functions */
-let coords = spring({ x: 0, y: 0 }, {
-    stiffness: 1.0,
-    damping: 1.0
-});
+    let slotSize = 0;
+    let handler = {
+        width: 0,
+        height: 0,
+        offsetX: 0,
+        offsetY: 0
+    };
+
+    let selcetinv = false;
+
+    const onSelectedInv = (type) => {
+        selcetinv = type;
+    }
+
+    let searchText = "";
+
+    let itemsWithDataCount = 0;
+
+    $: itemsWithDataCount = ItemsData["other"].filter(item => item.ItemId && window.getItem(item.ItemId)).length;
+
+
+    let
+        fastSlots = [1, 2, 3, 4, 5],
+        clickTime = 0,
+        invOpacity = 1,
+        invOldOpacity = -1,
+        ItemStack = -1,
+        StackValue = 1,
+        tradeMoney = "",
+        useInventoryArea = false,
+        mouseLeaveSelectedItem = false,
+        mainInventoryArea = false,
+        selectItem = defaulSelectItem,
+        hoverItem = defaulHoverItem,
+        infoItem = defaulHoverItem,
+        isMoveBlock = false,
+        isDragging = false,
+        moveBlock = {
+            accessories: [null, null],
+            inventory: [null, null],
+            backpack: [null, null],
+            other: [null, null],
+            fastSlots: [null, null],
+            trade: [null, null],
+            with_trade: [null, null],
+        },
+        ItemsData = {
+            accessories: Array(maxSlots.accessories).fill(clearSlot),
+            inventory: Array(maxSlots.inventory).fill(clearSlot),
+            backpack: Array(maxSlots.backpack).fill({ ...clearSlot, use: false }),
+            other: Array(maxSlots.other).fill(clearSlot),
+            fastSlots: Array(maxSlots.fastSlots).fill(clearSlot),
+            trade: Array(maxSlots.trade).fill(clearSlot),
+            with_trade: Array(maxSlots.with_trade).fill(clearSlot),
+        },
+        SlotToPrice = [],
+        tradeInfo = {
+            Active: false,
+            
+            YourStatus: false,
+            YourStatusChange: false,
+            YourMoney: 0,
+
+            WithName: "Deluxe",
+            WithStatus: false,
+            WithStatusChange: false,
+            WithMoney: 0
+        },
+        PlayerInfo = {
+            Sex: 0,
+            Name: "",
+            Backpack: false
+        },
+        OtherInfo = {
+            Id: 0,
+            Name: "",
+        },
+        OtherItemId = 0,
+        OtherSqlId = 0,
+        isArmyCar = false,
+        isInVehicle = false;
+
+    /* Functions */
+    let coords = spring({ x: 0, y: 0 }, {
+        stiffness: 1.0,
+        damping: 1.0
+    });
 
 const Close = () => {
     tradeInfo = {
@@ -206,14 +325,24 @@ const Bool = (text) => {
 const InitData = (json, use = true) => {
     let itemsArray = JSON.parse(json);
     for (let arrayName in itemsArray) {
-        ItemsData[arrayName] = LoadData (maxSlots [arrayName], itemsArray [arrayName], use);
+        const result = LoadData(maxSlots[arrayName], itemsArray[arrayName], use);
+        ItemsData[arrayName] = result.items;
+        
+        // ✅ ОБНОВЛЯЕМ ВЕС ИНВЕНТАРЯ
+        if (arrayName === "inventory") {
+            inventoryWeight = result.weight;
+        }
     }
 }
 
 let maxSlotBackpack = 30;
 const InitMyData = (maxSlot, json, use = true) => {
     maxSlotBackpack = maxSlot;
-    ItemsData["backpack"] = LoadData (maxSlot, JSON.parse(json), use);
+    const result = LoadData(maxSlot, JSON.parse(json), use);
+    ItemsData["backpack"] = result.items;
+    
+    // ✅ ОБНОВЛЯЕМ ВЕС РЮКЗАКА
+    backpackWeight = result.weight;
 }
 
 const UpdateSpecialVars = (isInVehicle_info = false) => {
@@ -226,6 +355,9 @@ const LoadData = (maxSlot, json, use = true) => {
     let itemsIndex = 0;
     let itemsArray = json;
     
+    // ✅ ПЕРЕМЕННАЯ ДЛЯ ПОДСЧЁТА ВЕСА
+    let totalWeight = 0;
+    
     Array(maxSlot).fill(0).forEach((item, index) => {
         if (itemsArray && itemsArray.length && itemsArray[itemsIndex]) {
             item = itemsArray[itemsIndex];
@@ -236,6 +368,15 @@ const LoadData = (maxSlot, json, use = true) => {
 
         if (indexItem === index) {
             itemsIndex++;
+            
+            // ✅ РАССЧИТЫВАЕМ ВЕС ПРЕДМЕТА
+            if (item.ItemId && item.ItemId !== 0) {
+                const itemConfig = itemsInfo[item.ItemId] || {};
+                const itemWeight = itemConfig.Weight || 0;
+                const count = item.Count || 1;
+                totalWeight += itemWeight * count;
+            }
+            
             returnArray = [ ...returnArray, {
                 ...clearSlot,
                 ...item,
@@ -249,7 +390,7 @@ const LoadData = (maxSlot, json, use = true) => {
         }
     });
     
-    return returnArray;
+    return { items: returnArray, weight: totalWeight }; // ✅ ВОЗВРАЩАЕМ МАССИВ + ВЕС
 }
 
 const InitSlotToPrice = (json = "[]") => {
@@ -456,48 +597,212 @@ onDestroy(() => {
 });
 
 const onKeyDown = (event) => {
-    if (!visible) return;
-    if (event.which === 17 && invOldOpacity === -1) {
-        invOldOpacity = invOpacity;
-        invOpacity = 0;
+        if (!visible) return;
+        
+        // CTRL (прозрачность)
+        if (event.which === 17 && invOldOpacity === -1) {
+            invOldOpacity = invOpacity;
+            invOpacity = 0;
+        }
+        
+        // ✅ ПРОБЕЛ (ПОВОРОТ ПРЕДМЕТА)
+        if (event.which === 32 && isDragging && selectItem.ItemId) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            const itemConfig = itemsInfo[selectItem.ItemId] || {};
+            const width = itemConfig.Width || 1;
+            const height = itemConfig.Height || 1;
+            
+            // Если предмет квадратный (1x1, 2x2 и т.д.) - не поворачиваем
+            if (width === height) return;
+            
+            // ✅ ПЕРЕКЛЮЧАЕМ ПОВОРОТ (РЕАКТИВНОСТЬ!)
+            selectItem = {
+                ...selectItem,
+                isTurn: !selectItem.isTurn
+            };
+            
+            // ✅ МЕНЯЕМ МЕСТАМИ РАЗМЕРЫ HANDLER
+            const oldWidth = handler.width;
+            const oldHeight = handler.height;
+            handler = {
+                ...handler,
+                width: oldHeight,
+                height: oldWidth,
+                offsetX: oldHeight / 2,
+                offsetY: oldWidth / 2
+            };
+            
+            // ✅ ОБНОВЛЯЕМ КООРДИНАТЫ ЧТОБЫ ПРЕДМЕТ НЕ "ПРЫГАЛ"
+            coords.update(c => ({
+                x: c.x,
+                y: c.y
+            }));
+        }
     }
-}
 
-const onKeyUp = (event) => {  
-    if (!visible) return;
-    if (event.which === 17 && invOldOpacity != -1) {
-        invOpacity = invOldOpacity;
-        invOldOpacity = -1;
+    const onKeyUp = (event) => {  
+        if (!visible) return;
+        
+        // CTRL (возврат прозрачности)
+        if (event.which === 17 && invOldOpacity != -1) {
+            invOpacity = invOldOpacity;
+            invOldOpacity = -1;
+        }
     }
-}
 // Слот
-const handleSlotMouseEnter = (event, index, arrayName) => {
-    if (selectItem.use === stageItem.move && hoverItem === defaulHoverItem) {            
-        hoverItem = {
-            index: index,
-            arrayName: arrayName
+   const handleSlotMouseEnter = (event, index, arrayName) => {
+        if (selectItem.use === stageItem.move && hoverItem === defaulHoverItem) {
+            hoverItem = {
+                index: index,
+                arrayName: arrayName
+            };
+        }
+        
+        // ✅ HIGHLIGHT С ПРАВИЛЬНОЙ ПОЗИЦИЕЙ
+        if (isDragging && selectItem.ItemId) {
+            // Очищаем все предыдущие highlights
+            document.querySelectorAll('.highlight').forEach(el => {
+                el.style.backgroundColor = "";
+                el.style.width = "0";
+                el.style.height = "0";
+            });
+            
+            const slot = event.currentTarget;
+            if (!slot) return;
+            
+            // ✅ ПОЛУЧАЕМ КООРДИНАТЫ ТЕКУЩЕГО СЛОТА
+            const slotX = parseInt(slot.dataset.x || 0);
+            const slotY = parseInt(slot.dataset.y || 0);
+            
+            // ✅ ПОЛУЧАЕМ РАЗМЕРЫ ПРЕДМЕТА
+            const itemConfig = itemsInfo[selectItem.ItemId] || {};
+            const itemWidth = selectItem.isTurn ? (itemConfig.Height || 1) : (itemConfig.Width || 1);
+            const itemHeight = selectItem.isTurn ? (itemConfig.Width || 1) : (itemConfig.Height || 1);
+            
+            // ✅ ВЫЧИСЛЯЕМ OFFSET ОТ МЕСТА ЗАХВАТА (в слотах)
+            const offsetSlotX = Math.floor(handler.offsetX / slotSize);
+            const offsetSlotY = Math.floor(handler.offsetY / slotSize);
+            
+            // ✅ СТАРТОВАЯ ПОЗИЦИЯ ПРЕДМЕТА = ТЕКУЩИЙ СЛОТ - OFFSET
+            const startX = slotX - offsetSlotX;
+            const startY = slotY - offsetSlotY;
+            
+            // ✅ ОПРЕДЕЛЯЕМ РАЗМЕРЫ ИНВЕНТАРЯ
+            let maxCols = 5;
+            let maxRows = 17;
+            
+            switch(arrayName) {
+                case "other":
+                    maxRows = 19;
+                    break;
+                case "backpack":
+                    maxRows = 6;
+                    break;
+                case "inventory":
+                    maxRows = 17;
+                    break;
+                case "accessories":
+                    return; // В одежду нельзя так класть
+                case "fastSlots":
+                    maxCols = 5;
+                    maxRows = 1;
+                    break;
+            }
+            
+            // ✅ ПРОВЕРКА ВЫХОДА ЗА ГРАНИЦЫ СЛЕВА/СВЕРХУ
+            if (startX < 0 || startY < 0) {
+                // Показываем красный на текущем слоте
+                const highlight = slot.querySelector('.highlight');
+                if (highlight) {
+                    highlight.style.backgroundColor = "rgba(247, 20, 43, 0.3)";
+                    highlight.style.width = `${handler.width}px`;
+                    highlight.style.height = `${handler.height}px`;
+                }
+                return;
+            }
+            
+            // ✅ ПРОВЕРКА ВЫХОДА ЗА ГРАНИЦЫ СПРАВА/СНИЗУ
+            const exceedsRight = (startX + itemWidth) > maxCols;
+            const exceedsBottom = (startY + itemHeight) > maxRows;
+            
+            if (exceedsRight || exceedsBottom) {
+                const highlight = slot.querySelector('.highlight');
+                if (highlight) {
+                    highlight.style.backgroundColor = "rgba(247, 20, 43, 0.3)";
+                    highlight.style.width = `${handler.width}px`;
+                    highlight.style.height = `${handler.height}px`;
+                }
+                return;
+            }
+            
+            // ✅ НАХОДИМ СТАРТОВЫЙ СЛОТ (ГДЕ НАЧИНАЕТСЯ ПРЕДМЕТ)
+            const startSlot = document.querySelector(
+                `.slot[data-position="${getPositionId(arrayName)}"][data-x="${startX}"][data-y="${startY}"]`
+            );
+            
+            if (!startSlot) {
+                const highlight = slot.querySelector('.highlight');
+                if (highlight) {
+                    highlight.style.backgroundColor = "rgba(247, 20, 43, 0.3)";
+                    highlight.style.width = `${handler.width}px`;
+                    highlight.style.height = `${handler.height}px`;
+                }
+                return;
+            }
+            
+            const startHighlight = startSlot.querySelector('.highlight');
+            if (!startHighlight) return;
+            
+            // ✅ ПРОВЕРЯЕМ МОЖНО ЛИ ПОЛОЖИТЬ (ЗАНЯТОСТЬ СЛОТОВ)
+            const matrix = createMatrix(arrayName);
+            const canPlace = checkSlot(matrix, selectItem, startX, startY);
+            
+            // 🟢 Зелёный / 🔴 Красный
+            if (canPlace) {
+                startHighlight.style.backgroundColor = "rgba(105, 240, 108, 0.3)";
+            } else {
+                startHighlight.style.backgroundColor = "rgba(247, 20, 43, 0.3)";
+            }
+            
+            startHighlight.style.width = `${handler.width}px`;
+            startHighlight.style.height = `${handler.height}px`;
+        }
+        
+        // Инфо о предмете
+        if (selectItem.use !== stageItem.useItem && 
+            selectItem.use !== stageItem.move && 
+            getItemToIndex(index, arrayName).ItemId) {
+            
+            const target = event.target.getBoundingClientRect();
+            coords.set({ x: (target.x + target.width/2), y: target.y });
+            infoItem = {
+                ...getItemToIndex(index, arrayName),
+                index: index,
+                arrayName: arrayName
+            };
         }
     }
     
-    if (selectItem.use !== stageItem.useItem && selectItem.use !== stageItem.move && getItemToIndex (index, arrayName).ItemId) {
-        const target = event.target.getBoundingClientRect();
-        coords.set({ x: (target.x + target.width/2), y: target.y });
-        infoItem = {
-            ...getItemToIndex(index, arrayName),
-            index: index,
-            arrayName: arrayName
-        };
-    }
-}
+    // ✅ ВСПОМОГАТЕЛЬНАЯ ФУНКЦИЯ (если её ещё нет)
+    
 
 // Когда выходим из зоны ячейки
-const handleSlotMouseLeave = (e) => {
-    if (hoverItem !== defaulHoverItem) hoverItem = defaulHoverItem;
-    if (infoItem !== defaulHoverItem) infoItem = defaulHoverItem;
-    
-    if (mouseLeaveSelectedItem === false) mouseLeaveSelectedItem = true;
-    
-}
+const handleSlotMouseLeave = (event) => {
+        // Сброс highlight
+        const slot = event.currentTarget;
+        const highlight = slot.querySelector('.highlight');
+        if (highlight) {
+            highlight.style.backgroundColor = "";
+            highlight.style.width = "0";
+            highlight.style.height = "0";
+        }
+        
+        if (hoverItem !== defaulHoverItem) hoverItem = defaulHoverItem;
+        if (infoItem !== defaulHoverItem) infoItem = defaulHoverItem;
+        if (mouseLeaveSelectedItem === false) mouseLeaveSelectedItem = true;
+    }
 //
 
 const closeOther = () => {
@@ -610,98 +915,127 @@ const UpdateClothes = (event, componentId, drawableId, textureId) => {
 }
 
 const handleMouseDown = (event, index, arrayName) => {
-    if (event.which == 1) {
-        executeClient ("sounds.playInterface", "inventory/keys", 0.005);
-        
-        const item = getItemToIndex(index, arrayName);
+        if (event.which == 1) {
+            executeClient("sounds.playInterface", "inventory/keys", 0.005);
+            
+            const item = getItemToIndex(index, arrayName);
 
-        if (((selectItem.use === stageItem.info && (selectItem.index !== index || selectItem.arrayName !== arrayName)) ||
-            selectItem.use !== stageItem.info) && item.ItemId != 0 && item.use) {
+            if (((selectItem.use === stageItem.info && 
+                 (selectItem.index !== index || selectItem.arrayName !== arrayName)) ||
+                 selectItem.use !== stageItem.info) && 
+                 item.ItemId != 0 && item.use) {
 
-            if (arrayName === "other" && OtherInfo.Id === otherType.Nearby) {
-                if (OtherInfo.Id === otherType.Nearby && item.remoteId) 
-                    return executeClient ("client.gamemenu.inventory.nearby", item.remoteId);
-            } else if (arrayName === "other" && OtherInfo.Id === otherType.Tent) {
+                if (arrayName === "other" && OtherInfo.Id === otherType.Nearby) {
+                    if (OtherInfo.Id === otherType.Nearby && item.remoteId) 
+                        return executeClient ("client.gamemenu.inventory.nearby", item.remoteId);
+                } else if (arrayName === "other" && OtherInfo.Id === otherType.Tent) {
+                    let _infoItem = window.getItem (item.ItemId);
 
-                let _infoItem = window.getItem (item.ItemId);
+                    const _selectItem = {
+                        ...item,
+                        use: stageItem.useItem,
+                        index: index,
+                        arrayName: arrayName,
+                        tent: true,
+                        info: _infoItem
+                    }
 
-                const _selectItem = {
-                    ...item,
-                    use: stageItem.useItem,
+                    unHoverAll ();
+                    updateItem(index, arrayName, "hover", true);
+                    infoItem = defaulHoverItem;
+                    
+                    coords.set({ x: event.clientX, y: event.clientY });
+                    clickTime = new Date().getTime() + 200;
+                    StackValue = 1;
+                    selectItem = _selectItem;
+                    
+                    if (item.Count > 1) {
+                        rangeslidercreate (item.Count);
+                    }
+
+                    return;
+                }
+                
+                if (OtherSqlId && Number (OtherSqlId) === Number (getItemToIndex(index, arrayName).SqlId)) {
+                    closeOther ();
+                }
+
+                itemNoUse(9);
+
+                const target = event.target.getBoundingClientRect();
+                const offsetInElementX = (target.width - (target.right - event.clientX));
+                const offsetInElementY = (target.height - (target.bottom - event.clientY));
+
+                coords.set({ x: event.clientX, y: event.clientY });
+                clickTime = new Date().getTime() + 1000;
+                
+                isDragging = true;
+                selectItem = {
+                    ...getItemToIndex(index, arrayName),
+                    use: stageItem.get,
+                    width: target.width,
+                    height: target.height,
+                    offsetInElementX: offsetInElementX,
+                    offsetInElementY: offsetInElementY,
+                    clientX: event.clientX,
+                    clientY: event.clientY,
                     index: index,
                     arrayName: arrayName,
-                    tent: true,
-                    info: _infoItem
+                    isTurn: item.isTurn || false
                 }
 
-                unHoverAll ();
-                updateItem(index, arrayName, "hover", true);
-                infoItem = defaulHoverItem;
+                const itemConfig = itemsInfo[item.ItemId] || {};
+                const width = selectItem.isTurn ? (itemConfig.Height || 1) : (itemConfig.Width || 1);
+                const height = selectItem.isTurn ? (itemConfig.Width || 1) : (itemConfig.Height || 1);
                 
-                coords.set({ x: event.clientX, y: event.clientY });
+                handler.width = width * slotSize;
+                handler.height = height * slotSize;
+                handler.offsetX = offsetInElementX;
+                handler.offsetY = offsetInElementY;
 
-                clickTime = new Date().getTime() + 200;
+                mouseLeaveSelectedItem = false;
                 
-                StackValue = 1;
-
-                selectItem = _selectItem;
-                if (item.Count > 1) {
-                    rangeslidercreate (item.Count);
-                }
-
-                return;
+                // ✅ СКРЫВАЕМ ИСХОДНЫЙ ПРЕДМЕТ
+                setTimeout(() => {
+                    const fillElement = document.querySelector(
+                        `.slot[data-position="${getPositionId(arrayName)}"][data-x="${index % 5}"][data-y="${Math.floor(index / 5)}"] .fill`
+                    );
+                    if (fillElement) {
+                        fillElement.style.opacity = '0.3'; // Полупрозрачный
+                    }
+                }, 0);
             }
-            if (OtherSqlId && Number (OtherSqlId) === Number (getItemToIndex(index, arrayName).SqlId)) {
-                closeOther ();
-            }
+            
+        } else if (event.which == 3 && (arrayName !== "other" || (arrayName === "other" && OtherInfo.Id !== otherType.Nearby && OtherInfo.Id !== otherType.Tent)) && ItemsData[arrayName][index].ItemId != 0 && getItemToIndex(index, arrayName).use) {
+            const item = getItemToIndex(index, arrayName);
 
-            itemNoUse (9);
-
-            const target = event.target.getBoundingClientRect();
-
-            const offsetInElementX = (target.width - (target.right - event.clientX));
-            const offsetInElementY = (target.height - (target.bottom - event.clientY));
-
-            coords.set({ x: event.clientX, y: event.clientY });
-
-            clickTime = new Date().getTime() + 1000;
-            selectItem = {
-                ...getItemToIndex(index, arrayName),
-                use: stageItem.get,
-                width: target.width,
-                height: target.height,
-                offsetInElementX: offsetInElementX,
-                offsetInElementY: offsetInElementY,
-                clientX: event.clientX,
-                clientY: event.clientY,
+            const _selectItem = {
+                ...item,
+                use: stageItem.useItem,
                 index: index,
                 arrayName: arrayName
             }
+            
+            if (getItemsUse (selectItem) === false && OtherInfo.Id <= otherType.None && item.Count <= 0 && getDropItem (arrayName, item.ItemId) === false) return;
 
-            mouseLeaveSelectedItem = false;
-
+            unHoverAll ();
+            updateItem(index, arrayName, "hover", true);
+            infoItem = defaulHoverItem;
+            
+            coords.set({ x: event.clientX, y: event.clientY });
+            selectItem = _selectItem;
         }
-    } else if (event.which == 3 && (arrayName !== "other" || (arrayName === "other" && OtherInfo.Id !== otherType.Nearby && OtherInfo.Id !== otherType.Tent)) && ItemsData[arrayName][index].ItemId != 0 && getItemToIndex(index, arrayName).use) {
-        const item = getItemToIndex(index, arrayName);
-
-        const _selectItem = {
-            ...item,
-            use: stageItem.useItem,
-            index: index,
-            arrayName: arrayName
-        }
-        if (getItemsUse (selectItem) === false && OtherInfo.Id <= otherType.None && item.Count <= 0 && getDropItem (arrayName, item.ItemId) === false) return;
-
-        unHoverAll ();
-        updateItem(index, arrayName, "hover", true);
-        infoItem = defaulHoverItem;
-        
-        coords.set({ x: event.clientX, y: event.clientY });
-
-        selectItem = _selectItem;
     }
-}
-
+function getPositionId(arrayName) {
+        const positions = {
+            'inventory': '1',
+            'other': '7',
+            'backpack': '18',
+            'accessories': '9',
+            'fastSlots': '20'
+        };
+        return positions[arrayName] || '1';
+    }
 const handleInputChange = (name, value) => {
     value = Math.round(value.replace(/\D+/g, ""));
     if (value < 0) value = 0;
@@ -1171,175 +1505,221 @@ const getMaxStakcItems = (item, itemInfo) => {
     return 0;
 }
 
-const handleGlobalMouseUp = (event) => {
+         const handleGlobalMouseUp = (event) => {
     if (!visible) return;
     else if (event.which !== 1) return;
+    
     if (isMoveBlock) {
         selectItem = defaulSelectItem;
         isMoveBlock = false;
         return;
     }
     else if (selectItem.use === stageItem.move) {
-        if (hoverItem === defaulHoverItem && tradeInfo.Active === false && selectItem !== defaulSelectItem && getDropItem (selectItem.arrayName, selectItem.ItemId) !== false) {
+        if (hoverItem === defaulHoverItem && tradeInfo.Active === false && selectItem !== defaulSelectItem && getDropItem(selectItem.arrayName, selectItem.ItemId) !== false) {
             const selectIndex = selectItem.index;
             const selectArrayName = selectItem.arrayName;
-            //const _Item = window.getItem (id, arrayName);
             
-            // Если мышка покинула первоначальную ячейку, и перенос был в несуществубщую ячейку, то дропаем
-            if (mouseLeaveSelectedItem === true && mainInventoryArea === false/* && (selectArrayName === "inventory" || selectArrayName === "backpack")*/) {
-                
-                executeClient ("client.gamemenu.inventory.drop", selectArrayName, selectIndex);                    
+            if (mouseLeaveSelectedItem === true && mainInventoryArea === false) {
+                // ✅ ПЕРЕДАЁМ ПОВОРОТ ПРИ ДРОПЕ
+                executeClient("client.gamemenu.inventory.drop", selectArrayName, selectIndex, selectItem.isTurn ? 1 : 0);
             }
             itemNoUse(18);
-        } else if (hoverItem !== defaulHoverItem && (hoverItem.index !== selectItem.index || hoverItem.arrayName !== selectItem.arrayName)) {
-            //Item на который наводимся
+        } 
+        else if (hoverItem !== defaulHoverItem && (hoverItem.index !== selectItem.index || hoverItem.arrayName !== selectItem.arrayName)) {
+            // ✅ ВЫЧИСЛЯЕМ ПРАВИЛЬНУЮ ПОЗИЦИЮ С УЧЁТОМ OFFSET
             let hoverIndex = hoverItem.index;
             const hoverArrayName = hoverItem.arrayName;
-            let _hItem = getItemToIndex (hoverIndex, hoverArrayName);
-            let _hInfoItem = window.getItem (_hItem.ItemId);
-            //Выбранный
+            
+            const itemConfig = itemsInfo[selectItem.ItemId] || {};
+            const itemWidth = selectItem.isTurn ? (itemConfig.Height || 1) : (itemConfig.Width || 1);
+            const itemHeight = selectItem.isTurn ? (itemConfig.Width || 1) : (itemConfig.Height || 1);
+            
+            let maxCols = 5;
+            let maxRows = 17;
+            
+            switch(hoverArrayName) {
+                case "other":
+                    maxRows = 19;
+                    break;
+                case "backpack":
+                    maxRows = 6;
+                    break;
+                case "inventory":
+                    maxRows = 17;
+                    break;
+            }
+            
+            const hoverSlotX = hoverIndex % maxCols;
+            const hoverSlotY = Math.floor(hoverIndex / maxCols);
+            
+            // ✅ ВЫЧИСЛЯЕМ OFFSET
+            const offsetSlotX = Math.floor(handler.offsetX / slotSize);
+            const offsetSlotY = Math.floor(handler.offsetY / slotSize);
+            
+            // ✅ РЕАЛЬНАЯ ПОЗИЦИЯ ПРЕДМЕТА
+            const realX = hoverSlotX - offsetSlotX;
+            const realY = hoverSlotY - offsetSlotY;
+            
+            // ✅ ПРЕОБРАЗУЕМ ОБРАТНО В INDEX
+            const realIndex = realY * maxCols + realX;
+            
+            // ✅ ПРОВЕРЯЕМ ГРАНИЦЫ
+            if (realX < 0 || realY < 0 || (realX + itemWidth) > maxCols || (realY + itemHeight) > maxRows) {
+                itemNoUse(35);
+                window.notificationAdd(4, 9, translateText('player1', 'Предмет не помещается в это место!'), 3000);
+                return;
+            }
+            
+            // ✅ ТЕПЕРЬ ИСПОЛЬЗУЕМ realIndex ВМЕСТО hoverIndex
+            hoverIndex = realIndex;
+            
+            let _hItem = getItemToIndex(hoverIndex, hoverArrayName);
+            let _hInfoItem = window.getItem(_hItem.ItemId);
+            
             let selectIndex = selectItem.index;
             const selectArrayName = selectItem.arrayName;
-            let _sItem = getItemToIndex (selectIndex, selectArrayName);
-            let _sInfoItem = window.getItem (_sItem.ItemId);
+            let _sItem = getItemToIndex(selectIndex, selectArrayName);
+            let _sInfoItem = window.getItem(_sItem.ItemId);
 
             let returnMove = -1;
             if (!_hItem.use || hoverArrayName === "with_trade") {
-                itemNoUse (19);
+                itemNoUse(19);
                 window.notificationAdd(4, 9, translateText('player1', 'Данный слот не доступен!'), 3000);
                 return;
             } else if ((hoverArrayName === "accessories" || hoverArrayName === "fastSlots") && selectArrayName !== "inventory") {
-                itemNoUse (20);
+                itemNoUse(20);
                 window.notificationAdd(4, 9, translateText('player1', 'Сначала переложите предмет в собственный инвентарь!'), 3000);
                 return;
             } else if ((selectArrayName === "accessories" || selectArrayName === "fastSlots") && hoverArrayName !== "inventory") {
-                itemNoUse (21);
+                itemNoUse(21);
                 window.notificationAdd(4, 9, translateText('player1', 'Сначала переложите предмет в собственный инвентарь!'), 3000);
                 return;
             } else if (hoverArrayName === "other" && OtherInfo.Id === otherType.Nearby) {
-                executeClient ("client.gamemenu.inventory.drop", selectArrayName, selectIndex);   
+                executeClient("client.gamemenu.inventory.drop", selectArrayName, selectIndex);   
                 itemNoUse(18);
                 return;
             }          
             
-            if (hoverArrayName !== selectArrayName && (returnMove = isMove (hoverIndex, hoverArrayName, _sItem, _sInfoItem)) == -2) {
-                itemNoUse (22);
+            if (hoverArrayName !== selectArrayName && (returnMove = isMove(hoverIndex, hoverArrayName, _sItem, _sInfoItem)) == -2) {
+                itemNoUse(22);
                 return;
             }
             
             if (hoverArrayName === "other" && OtherInfo.Id === otherType.Tent && OtherInfo.IsMyTent) {
-                executeClient ("client.gamemenu.inventory.stack", selectArrayName, selectIndex, 2, _sItem.Count);
+                executeClient("client.gamemenu.inventory.stack", selectArrayName, selectIndex, 2, _sItem.Count);
                 itemNoUse(18);
                 return;
             }  
 
             if (returnMove !== -1) {
                 hoverIndex = returnMove;
-                _hItem = getItemToIndex (hoverIndex, hoverArrayName);
-                _hInfoItem = window.getItem (_hItem.ItemId);
-                if (isMove (hoverIndex, hoverArrayName, _sItem, _sInfoItem) == -2) {
-                    itemNoUse (23);
+                _hItem = getItemToIndex(hoverIndex, hoverArrayName);
+                _hInfoItem = window.getItem(_hItem.ItemId);
+                if (isMove(hoverIndex, hoverArrayName, _sItem, _sInfoItem) == -2) {
+                    itemNoUse(23);
                     return;
                 }
             }
             returnMove = -1;
             
-            if (hoverArrayName !== selectArrayName && (returnMove = isMove (selectIndex, selectArrayName, _hItem, _hInfoItem)) == -2) {
-                itemNoUse (24);
+            if (hoverArrayName !== selectArrayName && (returnMove = isMove(selectIndex, selectArrayName, _hItem, _hInfoItem)) == -2) {
+                itemNoUse(24);
                 return;
             }
 
             if (returnMove !== -1) {
                 selectIndex = returnMove;
-                _sItem = getItemToIndex (selectIndex, selectArrayName);
-                _sInfoItem = window.getItem (_sItem.ItemId);
+                _sItem = getItemToIndex(selectIndex, selectArrayName);
+                _sInfoItem = window.getItem(_sItem.ItemId);
             
-                if (isMove (selectIndex, selectArrayName, _hItem, _hInfoItem) == -2) {
-                    itemNoUse (25);
+                if (isMove(selectIndex, selectArrayName, _hItem, _hInfoItem) == -2) {
+                    itemNoUse(25);
                     return;
                 }
             }
 
             let MaxStakcItems = 0;
-            if ((hoverArrayName !== "other" && hoverArrayName !== "backpack") && (selectArrayName === "other" || selectArrayName === "backpack") && ![0, 237, 238, 239, 240, 241, 242, 245, 246, 247].includes (_sItem.ItemId) && (MaxStakcItems = getMaxStakcItems (_sItem, _sInfoItem)) == -1) {
-                //window.notificationAdd(4, 9, `Нет места для ${itemInfo.Name}, максимум можно иметь при себе - ${itemInfo.Stack} шт. | У вас ${count + item.Count} шт.`, 3000);
-                itemNoUse (26);
+            if ((hoverArrayName !== "other" && hoverArrayName !== "backpack") && (selectArrayName === "other" || selectArrayName === "backpack") && ![0, 237, 238, 239, 240, 241, 242, 245, 246, 247].includes(_sItem.ItemId) && (MaxStakcItems = getMaxStakcItems(_sItem, _sInfoItem)) == -1) {
+                itemNoUse(26);
                 return;
             }
 
             if (MaxStakcItems > 0) {
                 if (_hItem.ItemId === _sItem.ItemId || _hItem.ItemId === 0) {
-                    executeClient ("client.gamemenu.inventory.move.stack", selectArrayName, selectIndex, hoverArrayName, hoverIndex, MaxStakcItems);
-                    /*if (_hItem.ItemId === _sItem.ItemId && _hItem.Count === _sInfoItem.Stack) {                            
-                        setItem (hoverIndex, hoverArrayName, _sItem);
-                        setItem (selectIndex, selectArrayName, _hItem);
-                    }
-                    else */if (_hItem.ItemId === _sItem.ItemId) {
+                    executeClient("client.gamemenu.inventory.move.stack", selectArrayName, selectIndex, hoverArrayName, hoverIndex, MaxStakcItems);
+                    if (_hItem.ItemId === _sItem.ItemId) {
                         _hItem.Count += MaxStakcItems;
                         _sItem.Count -= MaxStakcItems;
-                        setItem (hoverIndex, hoverArrayName, _hItem);
-                        setItem (selectIndex, selectArrayName, _sItem);
-                        executeClient ("sounds.playInterface", "inventory/drag_drop", 0.05);
+                        setItem(hoverIndex, hoverArrayName, _hItem);
+                        setItem(selectIndex, selectArrayName, _sItem);
+                        executeClient("sounds.playInterface", "inventory/drag_drop", 0.05);
                     } else {
                         _sItem.Count -= MaxStakcItems;
-                        setItem (selectIndex, selectArrayName, _sItem);
-                        _hItem = _sItem;
+                        setItem(selectIndex, selectArrayName, _sItem);
+                        _hItem = {..._sItem};
                         _hItem.Count = MaxStakcItems;
-                        setItem (hoverIndex, hoverArrayName, _hItem);
-                        executeClient ("sounds.playInterface", "inventory/drag_drop", 0.05);
+                        setItem(hoverIndex, hoverArrayName, _hItem);
+                        executeClient("sounds.playInterface", "inventory/drag_drop", 0.05);
                     }
+                } else {
+                    window.notificationAdd(4, 9, `${translateText('player1', 'Нет места для')} ${_sInfoItem.Name}, ${translateText('player1', 'максимум можно иметь при себе')} - ${_sInfoItem.Stack} ${translateText('player1', 'шт.')}`, 3000);
                 }
-                else window.notificationAdd(4, 9, `${translateText('player1', 'Нет места для')} ${_sInfoItem.Name}, ${translateText('player1', 'максимум можно иметь при себе')} - ${_sInfoItem.Stack} ${translateText('player1', 'шт.')}`, 3000);
-                itemNoUse (27);
+                itemNoUse(27);
                 return;
             }
 
             MaxStakcItems = 0;
-            if ((selectArrayName !== "other" && selectArrayName !== "backpack") && (hoverArrayName === "other" || hoverArrayName === "backpack") && ![0, 237, 238, 239, 240, 241, 242, 245, 246, 247].includes (_hItem.ItemId) && _hItem.ItemId != _sItem.ItemId && (MaxStakcItems = getMaxStakcItems (_hItem, _hInfoItem)) == -1) {
-                itemNoUse (28);
+            if ((selectArrayName !== "other" && selectArrayName !== "backpack") && (hoverArrayName === "other" || hoverArrayName === "backpack") && ![0, 237, 238, 239, 240, 241, 242, 245, 246, 247].includes(_hItem.ItemId) && _hItem.ItemId != _sItem.ItemId && (MaxStakcItems = getMaxStakcItems(_hItem, _hInfoItem)) == -1) {
+                itemNoUse(28);
                 return;
             }
 
             if (MaxStakcItems > 0) {
-                /*if (_hItem.Count === _hInfoItem.Stack) {      
-                    executeClient ("client.gamemenu.inventory.move.stack", selectArrayName, selectIndex, hoverArrayName, hoverIndex, MaxStakcItems);                      
-                    setItem (hoverIndex, hoverArrayName, _sItem);
-                    setItem (selectIndex, selectArrayName, _hItem);
-                } else */if (_hItem.ItemId === _sItem.ItemId) {
-                    executeClient ("client.gamemenu.inventory.move.stack", selectArrayName, selectIndex, hoverArrayName, hoverIndex, MaxStakcItems);
+                if (_hItem.ItemId === _sItem.ItemId) {
+                    executeClient("client.gamemenu.inventory.move.stack", selectArrayName, selectIndex, hoverArrayName, hoverIndex, MaxStakcItems);
                     _sItem.Count += MaxStakcItems;
                     _hItem.Count -= MaxStakcItems;
-                    setItem (hoverIndex, hoverArrayName, _hItem);
-                    setItem (selectIndex, selectArrayName, _sItem);
-                    executeClient ("sounds.playInterface", "inventory/drag_drop", 0.05);
+                    setItem(hoverIndex, hoverArrayName, _hItem);
+                    setItem(selectIndex, selectArrayName, _sItem);
+                    executeClient("sounds.playInterface", "inventory/drag_drop", 0.05);
+                } else {
+                    window.notificationAdd(4, 9, `${translateText('player1', 'Нет места для')} ${_sInfoItem.Name}, ${translateText('player1', 'максимум можно иметь при себе')} - ${_sInfoItem.Stack} ${translateText('player1', 'шт.')}`, 3000);
                 }
-                else window.notificationAdd(4, 9, `${translateText('player1', 'Нет места для')} ${_sInfoItem.Name}, ${translateText('player1', 'максимум можно иметь при себе')} - ${_sInfoItem.Stack} ${translateText('player1', 'шт.')}`, 3000);
-                itemNoUse (29);
+                itemNoUse(29);
                 return;
             }
-            executeClient ("client.gamemenu.inventory.move", selectArrayName, selectIndex, hoverArrayName, hoverIndex);
+            
+            // ✅ ПЕРЕДАЁМ isTurn ПРИ ПЕРЕМЕЩЕНИИ
+            executeClient("client.gamemenu.inventory.move", 
+                selectArrayName, selectIndex, 
+                hoverArrayName, hoverIndex, 
+                selectItem.isTurn ? 1 : 0
+            );
 
-            //{"Name":"Маска","Description":"","Icon":"item-pizza","Type":"Одежда","Model":3887136870,"Stack":1,"functionType":1}                
-            if (_hItem.ItemId === _sItem.ItemId && Number (_hInfoItem.Stack) > 1 && Number (_hInfoItem.Stack) > _sItem.Count && Number (_hInfoItem.Stack) > _hItem.Count) {
+            if (_hItem.ItemId === _sItem.ItemId && Number(_hInfoItem.Stack) > 1 && Number(_hInfoItem.Stack) > _sItem.Count && Number(_hInfoItem.Stack) > _hItem.Count) {
                 const amount = (_hItem.Count === undefined || _hItem.Count < 2 || !isNumber(_hItem.Count)) ? 1 : _hItem.Count;
 
-                if (Number (_hInfoItem.Stack) >= (amount + _sItem.Count)) {
+                if (Number(_hInfoItem.Stack) >= (amount + _sItem.Count)) {
                     _sItem.Count += amount;
-                    setItem (hoverIndex, hoverArrayName, _sItem);
-                    setItem (selectIndex, selectArrayName, clearSlot);
+                    _sItem.isTurn = selectItem.isTurn;
+                    setItem(hoverIndex, hoverArrayName, _sItem);
+                    setItem(selectIndex, selectArrayName, clearSlot);
                 } else {
                     _hItem.Count = (amount + _sItem.Count) - _hInfoItem.Stack;
                     _sItem.Count = _hInfoItem.Stack;
-                    setItem (hoverIndex, hoverArrayName, _sItem);
-                    setItem (selectIndex, selectArrayName, _hItem);
+                    _sItem.isTurn = selectItem.isTurn;
+                    setItem(hoverIndex, hoverArrayName, _sItem);
+                    setItem(selectIndex, selectArrayName, _hItem);
                 }
             } else {
-                setItem (hoverIndex, hoverArrayName, _sItem);
-                setItem (selectIndex, selectArrayName, _hItem);
+                _sItem.isTurn = selectItem.isTurn;
+                setItem(hoverIndex, hoverArrayName, _sItem);
+                setItem(selectIndex, selectArrayName, _hItem);
             }
-            executeClient ("sounds.playInterface", "inventory/drag_drop", 0.05);
+            
+            executeClient("sounds.playInterface", "inventory/drag_drop", 0.05);
         }
-        itemNoUse (30, true);
+        itemNoUse(30, true);
     }
 }
 
@@ -1379,48 +1759,77 @@ const updateItem = (index, arrayName, name, value = null) => {
 }
 
 // Обновление полного массива item`а
-const setItem = (index, arrayName, item) => {
-    if (item.active) item.active = false;
-    ItemsData[arrayName][index] = {
-        ...item,
-        index: index
-    };
-    
-    //window.CallServer("UpdateSlotData", getInfo[arrayName], index, item.item_id, item.ItemId, item.item_amount, item.item_trade, item.item_money);
-}
+  const setItem = (index, arrayName, item) => {
+        if (item.active) item.active = false;
+        
+        // ✅ СОХРАНЯЕМ isTurn ЕСЛИ ОН БЫЛ
+        ItemsData[arrayName][index] = {
+            ...item,
+            index: index,
+            isTurn: item.isTurn || false // ← ВАЖНО!
+        };
+    }
 
 const itemNoUse = (hash, toggled = false) => {
-    let hoverIndex = -1,
-        hoverArrayName = -1;
-    if (selectItem !== defaulSelectItem) updateItem(selectItem.index, selectItem.arrayName, "hover", false);
+        let hoverIndex = -1,
+            hoverArrayName = -1;
+            
+        if (selectItem !== defaulSelectItem) {
+            updateItem(selectItem.index, selectItem.arrayName, "hover", false);
+            
+            // ✅ ВОЗВРАЩАЕМ ВИДИМОСТЬ
+            const fillElement = document.querySelector(
+                `.slot[data-position="${getPositionId(selectItem.arrayName)}"][data-x="${selectItem.index % 5}"][data-y="${Math.floor(selectItem.index / 5)}"] .fill`
+            );
+            if (fillElement) {
+                fillElement.style.opacity = '1';
+            }
+        }
 
-    clickTime = 0;
-    
-    selectItem = defaulSelectItem;
+        clickTime = 0;
+        selectItem = defaulSelectItem;
+        isDragging = false;
 
-    if (hoverItem !== defaulHoverItem) {
-        hoverIndex = hoverItem.index;
-        hoverArrayName = hoverItem.arrayName;
+        if (hoverItem !== defaulHoverItem) {
+            hoverIndex = hoverItem.index;
+            hoverArrayName = hoverItem.arrayName;
+        }
+        
+        if (hoverIndex === -1 && hoverArrayName === -1) {
+            infoItem = defaulHoverItem;
+        } else {            
+            const _Item = getItemToIndex(hoverIndex, hoverArrayName);
+            if (_Item.ItemId != 0) {
+                infoItem = {
+                    ..._Item,
+                    index: hoverIndex,
+                    arrayName: hoverArrayName
+                };
+            } else {
+                infoItem = defaulHoverItem;
+            }
+        }
+
+        ItemStack = -1;
+        StackValue = 1;
+        
+        document.querySelectorAll('.highlight').forEach(el => {
+            el.style.backgroundColor = "";
+            el.style.width = "0";
+            el.style.height = "0";
+        });
     }
-    //hoverItem = defaulHoverItem;
-    if (hoverIndex === -1 && hoverArrayName === -1) infoItem = defaulHoverItem;
-    else {            
-        const _Item = getItemToIndex (hoverIndex, hoverArrayName);
-        if (_Item.ItemId != 0) {
-            infoItem = {
-                ..._Item,
-                index: hoverIndex,
-                arrayName: hoverArrayName
-            };
-        } else infoItem = defaulHoverItem;
-    }
-    //toggledSplitter = false;
-
-    ItemStack = -1;
-    StackValue = 1;
-    
-}
-
+ onMount(() => {
+        // ... (твой существующий onMount код) ...
+        
+        // ✅ ПОЛУЧАЕМ РАЗМЕР СЛОТА ДЛЯ HIGHLIGHT
+        setTimeout(() => {
+            const slot = document.querySelector('.slot');
+            if (slot) {
+                slotSize = slot.getBoundingClientRect().width;
+            }
+        }, 100);
+    });
 const fixOutToX = (coordsX, element) => {
     if (!element) return coordsX;
     else if (document.querySelector('.box-inventory')) {
@@ -1850,6 +2259,18 @@ let opened = true;
 let hp = 100;
 let eat = 100;
 let water = 100;
+let inventoryWeight = 0;
+let maxInventoryWeight = 50;
+let backpackWeight = 0;
+let maxBackpackWeight = 30;
+
+// ✅ РЕАКТИВНЫЕ ВЫЧИСЛЕНИЯ ПРОЦЕНТОВ
+$: inventoryPercent = (inventoryWeight / maxInventoryWeight) * 100;
+$: backpackPercent = maxBackpackWeight > 0 ? (backpackWeight / maxBackpackWeight) * 100 : 0;
+
+// ✅ ЦВЕТА ИНДИКАТОРОВ
+$: inventoryColor = inventoryPercent > 90 ? '#ff0000' : inventoryPercent > 70 ? '#ffaa00' : '#00ff00';
+$: backpackColor = backpackPercent > 90 ? '#ff0000' : backpackPercent > 70 ? '#ffaa00' : '#00ff00';
 
 const open = () => opened = true;
 const close = () => opened = false;
@@ -1857,6 +2278,85 @@ const updateHealth = (val) => hp = val;
 const updateEat = (val) => eat = val;
 const updateWater = (val) => water = val;
 
+let clickMenu = {
+    visible: false,
+    x: 0,
+    y: 0,
+    buttons: {
+        wear: false,
+        putInBackpack: false,
+        drop: false,
+        use: false,
+        split: false
+    }
+};
+
+function handleAction(action) {
+    console.log('Action:', action);
+    // Здесь будет логика действий
+    clickMenu.visible = false;
+}
+function handleSlotClick(event, index, arrayName) {
+    event.preventDefault();
+    event.stopPropagation();
+    
+    const item = ItemsData[arrayName][index];
+    
+    // Если слот пустой, не показываем меню
+    if (!item || item.ItemId === 0) {
+        clickMenu.visible = false;
+        return;
+    }
+    
+    // Определяем доступные действия в зависимости от типа предмета и местоположения
+    const itemInfo = itemsInfo[item.ItemId];
+    
+    clickMenu.visible = true;
+    clickMenu.x = event.clientX;
+    clickMenu.y = event.clientY;
+    
+    // Сбрасываем все кнопки
+    clickMenu.buttons = {
+        wear: false,
+        putInBackpack: false,
+        drop: false,
+        use: false,
+        split: false
+    };
+    
+    // Логика для определения доступных действий
+    if (itemInfo.Category === 'cloth') {
+        clickMenu.buttons.wear = true;
+    }
+    
+    if (arrayName === 'inventory' && maxSlotBackpack > 0) {
+        clickMenu.buttons.putInBackpack = true;
+    }
+    
+    clickMenu.buttons.drop = true;
+    
+    if (itemInfo.Category === 'food' || itemInfo.Category === 'medical') {
+        clickMenu.buttons.use = true;
+    }
+    
+    if (item.Count > 1) {
+        clickMenu.buttons.split = true;
+    }
+    
+    // Сохраняем выбранный предмет для действий
+    clickMenu.selectedItem = {
+        item: item,
+        index: index,
+        arrayName: arrayName
+    };
+}
+
+// Закрытие меню при клике вне его
+function handleGlobalClick(event) {
+    if (clickMenu.visible && !event.target.closest('.click-block')) {
+        clickMenu.visible = false;
+    }
+}
 onMount(() => {
     window.events.addEvent('cef.hp.Open', open);
     window.events.addEvent('cef.hp.Close', close);
@@ -1870,684 +2370,565 @@ onMount(() => {
 
     window.mp.trigger("cefReady");
 });
-
+$: {
+    if ($charData) {
+        console.log("=== CHAR DATA ===");
+        console.log("Full charData:", $charData);
+        console.log("InventoryWeight:", $charData.InventoryWeight);
+        console.log("MaxInventoryWeight:", $charData.MaxInventoryWeight);
+        console.log("BackpackWeight:", $charData.BackpackWeight);
+        console.log("MaxBackpackWeight:", $charData.MaxBackpackWeight);
+        console.log("==================");
+        
+        inventoryWeight = $charData.InventoryWeight || 0;
+        maxInventoryWeight = $charData.MaxInventoryWeight || 50;
+        backpackWeight = $charData.BackpackWeight || 0;
+        maxBackpackWeight = $charData.MaxBackpackWeight || 30;
+    }
+}
 </script>
-<style>
-.hud {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    color: white;
-    padding-top: 50px;
-}
-
-.hud .indicator {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-}
-.hud .indicatorimg {
-    display: flex;
-    align-items: center;
-    color: #417ff3;
-    gap: 18px;
-}
-
-.hud .indicator img {
-    width: 24px;
-    height: 24px;
-}
-
-.hud .indicator .bar {
-background-color: rgb(116, 116, 116);
-    webkit-appearance: none;
--moz-appearance: none;
-appearance: none;
-border: none;
-width: 25rem;
-height: .25rem
-}
-
-.hud .indicator .bar .fill {
-    background: linear-gradient(to right, #FF4040, #FF4040);
-    height: 100%;
-    transition: width 0.3s ease;
-}
-
-.hud .indicator .bar .fill2 {
-    background: linear-gradient(to right, #40B6FF, #40B6FF);
-    height: 100%;
-    transition: width 0.3s ease;
-}
-.hud .indicator .bar .fill3 {
-    background: linear-gradient(to right, #FFC640, #FFC640);
-    height: 100%;
-    transition: width 0.3s ease;
-}
-
-
-.hud .indicator span {
-    min-width: 30px;
-    text-align: right;
-    font-size: 1.3889vh;
-    font-weight: 600;
-}
-
-
-/* Растягиваем фон на весь экран */
-
-</style>
-
-<!-- Ваш контент здесь -->
-
 
 <svelte:window on:mousemove={handleGlobalMouseMove} on:mousemove={handleMouseMove} on:mouseup={handleGlobalMouseUp} on:mousedown={handleGlobalMouseDown} on:keyup={onKeyUp} on:keydown={onKeyDown} />
 
 {#if visible}
-
-    <div class="invhax_menu">
-        <div id="box-menu">
-            
-<div class="box-inventory">
-
-{#if (selectItem.use === stageItem.move)}
-
-    <div class="dragonDrop" style="width: {selectItem.width}px;height: {selectItem.height}px;top: {$coords.y - selectItem.offsetInElementY}px;left: {$coords.x - selectItem.offsetInElementX}px;">
-        <Slot
-            item={selectItem}
-            iconInfo={window.getItem (selectItem.ItemId)} />
-    </div>
-{/if}
-
-{#if (infoItem !== defaulHoverItem && selectItem.use !== stageItem.move)} 
-    <div class="magiciteminfo" style="top: {fixOutToY (cursorY)}px;left: {fixOutToX (cursorX + 20)}px;" bind:this={boxPopup}>
-        <h1>{@html getName (infoItem, infoItem.arrayName)}</h1>
-        <p>{itemsInfo [infoItem.ItemId].Description}</p>
-        {#if itemsInfo [infoItem.ItemId].functionType === ItemType.Weapons && inventoryWeapons [infoItem.ItemId]}
-            <span style="color: #EE6269"> | Урон: {inventoryWeapons [infoItem.ItemId].damage}% </span>
-            <span style="color: #EE6269"> | Скорость: {inventoryWeapons [infoItem.ItemId].firerate}% </span>
-            {#if inventoryWeapons [infoItem.ItemId].accuracy}
-                <span style="color: #EE6269"> | Точность: {inventoryWeapons [infoItem.ItemId].accuracy}% </span>
-            {/if}
-            <span style="color: #EE6269"> | Дальность: {inventoryWeapons [infoItem.ItemId].range}% </span>
-            {#if inventoryWeapons [infoItem.ItemId].ammo}
-                <span style="color: #EE6269"> | Патронов в магазине: {inventoryWeapons [infoItem.ItemId].ammo}% </span>
-            {/if}
-        {/if}
-        {#if wMaxHP [infoItem.ItemId] && infoItem.Data && infoItem.Data.split("_") && infoItem.Data.split("_").length > 1 && infoItem.Data.split("_")[1] != undefined}
-            <span style="color: #EE6269"> | Состояние: {weaponCondition (infoItem.Data.split("_")[1], wMaxHP [infoItem.ItemId])}% </span>
-        {/if}
-        {#if OtherInfo.Id == otherType.Tent && infoItem.Price}
-            <span style="color: #EE6269">Цена за 1 ед. $ {format("money", infoItem.Price)}</span>
-        {/if}
-    </div>
-{/if}
-
-{#if selectItem.use === stageItem.useItem && selectItem.tent && !OtherInfo.IsMyTent}
-    <div bind:this={boxPopup} class="box-stack" 
-        style="top: {fixOutToY ($coords.y, boxPopup)}px;left: {fixOutToX ($coords.x, boxPopup)}px;"
-        on:mouseenter={e => useInventoryArea = true} on:mouseleave={e => useInventoryArea = false}>
-        <div class="box-text">
-            <span class='icon {selectItem.info.Icon}' />{@html getName (selectItem, selectItem.arrayName)}
-        </div>
-        <div class="box-number">
-            {translateText('player1', 'Кол-во')}: <input type="number" bind:value={StackValue} class="box-number-input" on:input={(event) => handleInputStackChange (event.target.value)} onBlur={onBlurStack} />
-        </div>
-        {#if selectItem.Count > 1}
-        <div class="slider box-slider">
-            <input type="range" id="stack" />
-        </div>
-        {/if}
-        <div class="btn-slap" on:click={onBuy}>Купить</div>
-        <div class="box-cancel"><span class='icon inv-close' on:click={e => selectItem = defaulSelectItem} /></div>
-    </div>
-{:else if selectItem.use === stageItem.useItem && ItemStack === -1}
-<div bind:this={boxPopup} class="magicitemuse" 
-    style="top: {fixOutToY ($coords.y)}px;left: {fixOutToX ($coords.x + 10)}px;"
-    on:mouseenter={e => useInventoryArea = true} on:mouseleave={e => useInventoryArea = false}>
-    
-    {#if OtherInfo.Id == otherType.Tent && OtherInfo.IsMyTent && selectItem.arrayName === "other"}
-        <p on:keypress={() => {}}  on:click={onTransfer}>{translateText('player1', 'забрать')}</p>
-    {:else}
-        {#if getItemsUse (selectItem) !== false}
-            <p on:keypress={() => {}}  on:click={onUseItem}>{@html getItemsClickInfo (selectItem)}</p>
-        {/if}
-        {#if getToPut (selectItem.ItemId) !== false && getDropItem (selectItem.arrayName, selectItem.ItemId) !== false && selectItem.arrayName === "inventory"}
-            <p on:keypress={() => {}}  on:click={onToPut}>{translateText('player1', 'поставить')}</p>
-        {/if}
-        {#if OtherInfo.Id != otherType.Tent && (OtherInfo.Id > otherType.None || (maxSlotBackpack > 0 && ItemsData["backpack"].length) || tradeInfo.Active === true) && selectItem.arrayName !== "fastSlots" && selectItem.arrayName !== "accessories"}
-            <p on:keypress={() => {}}  on:click={onTransfer}>{(selectItem.arrayName === "other" || selectItem.arrayName === "backpack" || selectItem.arrayName === "trade") ? translateText('player1', 'взять') : translateText('player1', 'передать')}</p>
-        {:else if OtherInfo.Id == otherType.Tent && OtherInfo.IsMyTent && (selectItem.arrayName === "inventory" || selectItem.arrayName === "backpack" )}
-            <p on:keypress={() => {}}  on:click={onTransfer}>{translateText('player1', 'продать')}</p>
-        {/if}
-        {#if selectItem.Count > 1 && selectItem.arrayName !== "fastSlots"}
-            <p on:keypress={() => {}}  on:click={e => {ItemStack = 0; rangeslidercreate (selectItem.Count - 1);}}>{translateText('player1', 'разделить')}</p>
-        {/if}
-        {#if getDropItem (selectItem.arrayName, selectItem.ItemId) !== false}
-            <p on:keypress={() => {}}  on:click={onDropItem}>{translateText('player1', 'выбросить')}</p>
-        {/if}
-    {/if}
-</div>
-{:else if selectItem.use === stageItem.useItem && ItemStack !== -1}
-<div bind:this={boxPopup} class="magiciteminput" 
-    style="top: {fixOutToY ($coords.y, boxPopup)}px;left: {fixOutToX ($coords.x, boxPopup)}px;"
-    on:mouseenter={e => useInventoryArea = true} on:mouseleave={e => useInventoryArea = false}>
-    <h1>{!ItemStack ? translateText('player1', 'Разделить') : ItemStack == 1 ? translateText('player1', 'Выбросить') : translateText('player1', 'Передать')}</h1>
-    <div class="closedinp" on:keypress={() => {}} on:click={e => ItemStack = -1}>
-        <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 1L4.00033 4M7.00065 7L4.00033 4M4.00033 4L7.00065 1L1 7" stroke="#949494" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
-    </div>
-    <div class="dopinput">
-        <input pattern="\d*" bind:value={StackValue} on:input={(event) => handleInputStackChange (event.target.value)} onBlur={onBlurStack}>
-        {#if selectItem.Count > 2}
-            <input bind:value={StackValue} on:input={(event) => handleInputStackChange (event.target.value)} onBlur={onBlurStack} type="range" id="dopi" min="0" max={selectItem.Count - 1} />
-        {/if}
-    </div>
-    <div class="btninput" on:keypress={() => {}} on:click={onStack}>
-        <p>Принять</p>
-    </div>
-</div>
-{/if}
-<div class="magicinv">
-    {#if OtherInfo.Id == "1" || OtherInfo.Id == "2" || OtherInfo.Id == "3" || OtherInfo.Id == "4" || OtherInfo.Id == "5" || OtherInfo.Id == "6" || OtherInfo.Id == "10" || OtherInfo.Id == "12" || OtherInfo.Id == "13"}
-    <div class="minvdop">
-        <div class="mainleft">
-            <div class="mhead">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_2_25)">
-                    <path d="M19.0827 0.0390625H9.84602C9.36176 0.0390625 8.96773 0.433086 8.96773 0.917344V8.75125C8.96773 9.23555 9.36176 9.62957 9.84602 9.62957H19.0827C19.5669 9.62957 19.9609 9.23555 19.9609 8.75125V0.917383C19.9609 0.433086 19.5669 0.0390625 19.0827 0.0390625ZM19.3359 8.75129C19.3359 8.81845 19.3092 8.88283 19.2617 8.93032C19.2142 8.97781 19.1498 9.00453 19.0827 9.00461H9.84602C9.77886 9.00453 9.71448 8.97781 9.667 8.93032C9.61951 8.88283 9.59281 8.81845 9.59273 8.75129V0.917383C9.59282 0.850234 9.61953 0.785859 9.66701 0.738377C9.71449 0.690896 9.77887 0.664184 9.84602 0.664102H12.4754V2.57195C12.4754 2.7918 12.5988 2.98672 12.7972 3.08063C12.8727 3.11658 12.9553 3.1353 13.0389 3.13543C13.1659 3.13543 13.2912 3.0918 13.3946 3.00695L14.4643 2.13L15.5339 3.00695C15.704 3.14637 15.933 3.17453 16.1314 3.08063C16.3298 2.98672 16.4532 2.79176 16.4532 2.57195V0.664062H19.0826C19.1498 0.664145 19.2141 0.690857 19.2616 0.738338C19.3091 0.78582 19.3358 0.850195 19.3359 0.917344V8.75129H19.3359ZM4.85133 16.5422V17.9509C4.85133 18.0338 4.8184 18.1133 4.7598 18.1719C4.70119 18.2305 4.62171 18.2634 4.53883 18.2634H2.04902C1.96614 18.2634 1.88666 18.2305 1.82805 18.1719C1.76945 18.1133 1.73652 18.0338 1.73652 17.9509V16.5422C1.73652 16.4593 1.76945 16.3798 1.82805 16.3212C1.88666 16.2626 1.96614 16.2297 2.04902 16.2297H4.53883C4.62171 16.2297 4.70119 16.2626 4.7598 16.3212C4.8184 16.3798 4.85133 16.4593 4.85133 16.5422ZM13.78 6.2109V7.61961C13.78 7.70249 13.747 7.78198 13.6884 7.84058C13.6298 7.89919 13.5503 7.93211 13.4675 7.93211H10.9777C10.8948 7.93211 10.8153 7.89919 10.7567 7.84058C10.6981 7.78198 10.6652 7.70249 10.6652 7.61961V6.2109C10.6652 6.12802 10.6981 6.04853 10.7567 5.98993C10.8153 5.93132 10.8948 5.8984 10.9777 5.8984H13.4675C13.5503 5.8984 13.6298 5.93132 13.6884 5.98993C13.747 6.04853 13.78 6.12802 13.78 6.2109ZM10.154 10.3704H0.917344C0.433086 10.3704 0.0390625 10.7644 0.0390625 11.2487V19.0826C0.0390625 19.5669 0.433086 19.9609 0.917344 19.9609H10.154C10.6383 19.9609 11.0323 19.5669 11.0323 19.0827V11.2487C11.0323 10.7644 10.6383 10.3704 10.154 10.3704ZM10.4073 19.0826C10.4072 19.1498 10.3805 19.2141 10.3331 19.2616C10.2856 19.3091 10.2212 19.3358 10.1541 19.3359H0.917344C0.850192 19.3358 0.785811 19.3091 0.738327 19.2616C0.690843 19.2142 0.664135 19.1498 0.664062 19.0826V11.2487C0.664145 11.1815 0.690857 11.1171 0.738338 11.0697C0.78582 11.0222 0.850195 10.9955 0.917344 10.9954H3.5468V12.9033C3.5468 13.1231 3.67008 13.318 3.86855 13.4119C3.94406 13.4479 4.02663 13.4666 4.11027 13.4667C4.23727 13.4667 4.36258 13.4231 4.46602 13.3382L5.53566 12.4613L6.60527 13.3382C6.77531 13.4776 7.00414 13.5059 7.20273 13.4119C7.40121 13.318 7.52449 13.123 7.52449 12.9033V10.9954H10.154C10.2211 10.9955 10.2855 11.0222 10.333 11.0697C10.3805 11.1171 10.4072 11.1815 10.4072 11.2487V19.0826H10.4073ZM2.2043 9.52434C1.71258 8.06402 1.77781 6.55063 2.38805 5.26293C2.95273 4.07133 3.94559 3.145 5.20203 2.62988L5.07523 2.14762C5.02488 1.95621 5.08676 1.75652 5.2368 1.6266C5.3857 1.49762 5.5916 1.46555 5.77383 1.54277L8.04102 2.50348C8.11361 2.53394 8.17818 2.58075 8.22971 2.64027C8.28124 2.69978 8.31833 2.7704 8.33809 2.8466C8.35834 2.92266 8.36075 3.00236 8.34514 3.0795C8.32953 3.15664 8.29631 3.22913 8.24809 3.29133L6.74664 5.24281C6.6259 5.39984 6.43094 5.47301 6.23781 5.43402C6.04324 5.39469 5.89109 5.25121 5.84082 5.05965L5.74453 4.6934C3.02082 6.25461 2.81035 8.69109 2.81293 9.42355C2.81307 9.4647 2.80509 9.50547 2.78944 9.54352C2.77379 9.58157 2.75078 9.61616 2.72174 9.6453C2.69269 9.67444 2.65817 9.69756 2.62017 9.71333C2.58216 9.72909 2.54142 9.7372 2.50027 9.73719C2.43487 9.73713 2.37114 9.71656 2.31805 9.67837C2.26495 9.64019 2.22517 9.58632 2.2043 9.52434ZM17.7957 10.4757C18.2875 11.936 18.2222 13.4494 17.612 14.7371C17.0473 15.9287 16.0545 16.855 14.798 17.3701L14.9248 17.8524C14.9751 18.0439 14.9132 18.2436 14.7632 18.3734C14.6704 18.4542 14.5517 18.4986 14.4288 18.4987C14.3591 18.4986 14.2902 18.4845 14.2261 18.4572L11.9589 17.4965C11.8864 17.4661 11.8218 17.4192 11.7702 17.3597C11.7187 17.3002 11.6816 17.2296 11.6619 17.1534C11.6416 17.0773 11.6392 16.9976 11.6548 16.9205C11.6704 16.8434 11.7036 16.7709 11.7519 16.7087L13.2534 14.7572C13.3741 14.6003 13.5691 14.527 13.7621 14.566C13.9567 14.6053 14.1089 14.7487 14.1591 14.9404L14.2554 15.3066C16.9791 13.7454 17.1896 11.3089 17.187 10.5764C17.1868 10.5022 17.2129 10.4304 17.2608 10.3737C17.3087 10.317 17.3752 10.2792 17.4484 10.267C17.5217 10.2549 17.5968 10.2693 17.6604 10.3075C17.724 10.3457 17.772 10.4053 17.7957 10.4757Z" fill="#FBFBFB"></path>
-                    </g>
-                    <defs>
-                    <clipPath id="clip0_2_25">
-                    <rect width="20" height="20" fill="white"></rect>
-                    </clipPath>
-                    </defs>
-                </svg> 
-                <h1>{otherName[OtherInfo.Id].name}</h1>
-                <div class="maxslot">
-                    <p>{itemsWithDataCount}<b>/{ItemsData["other"].length}</b></p>
-                    <svg width="20.000000" height="20.000000" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <defs>
-                            <clipPath id="clip2_138">
-                                <rect id="Frame" rx="0.000000" width="19.000000" height="19.000000" transform="translate(0.500000 0.500000)" fill="white" fill-opacity="0"></rect>
-                            </clipPath>
-                        </defs>
-                        <rect id="Frame" rx="0.000000" width="19.000000" height="19.000000" transform="translate(0.500000 0.500000)" fill="#FFFFFF" fill-opacity="0"></rect>
-                        <g clip-path="url(#clip2_138)">
-                            <path id="Vector" d="M12.29 7.11L14.05 7.11L14.05 9.82L12.29 9.82L12.29 7.11ZM6.54 17.34L8.89 17.34L8.89 17.8L6.54 17.8L6.54 17.34Z" fill="#FFFFFF" fill-opacity="0.250000" fill-rule="nonzero"></path>
-                            <path id="Vector" d="M1.52 10.31C1.5 10.31 1.48 10.32 1.46 10.33C1.44 10.35 1.43 10.37 1.43 10.4L1.43 18.66C1.43 18.7 1.48 18.74 1.52 18.74L9.78 18.74C9.83 18.74 9.87 18.7 9.87 18.66L9.87 10.4C9.87 10.37 9.86 10.35 9.84 10.33C9.83 10.32 9.81 10.31 9.78 10.31L7.16 10.31L7.16 13.32C7.16 13.41 7.12 13.49 7.07 13.55C7.01 13.6 6.93 13.64 6.85 13.64L4.46 13.64C4.38 13.64 4.3 13.6 4.24 13.55C4.18 13.49 4.15 13.41 4.15 13.32L4.15 10.31L1.52 10.31ZM5.91 17.03C5.91 16.94 5.95 16.86 6.01 16.81C6.06 16.75 6.14 16.71 6.23 16.71L9.2 16.71C9.29 16.71 9.37 16.75 9.43 16.81C9.48 16.86 9.52 16.94 9.52 17.03L9.52 18.12C9.52 18.2 9.48 18.28 9.43 18.34C9.37 18.4 9.29 18.43 9.2 18.43L6.23 18.43C6.14 18.43 6.06 18.4 6.01 18.34C5.95 18.28 5.91 18.2 5.91 18.12L5.91 17.03ZM4.28 17.16C4.28 17.08 4.32 17 4.38 16.94C4.43 16.88 4.51 16.85 4.6 16.85C4.68 16.85 4.76 16.88 4.82 16.94C4.88 17 4.91 17.08 4.91 17.16L4.91 17.98C4.91 18.07 4.88 18.15 4.82 18.2C4.76 18.26 4.68 18.3 4.6 18.3C4.51 18.3 4.43 18.26 4.38 18.2C4.32 18.15 4.28 18.07 4.28 17.98L4.28 17.16ZM2.5 17.98C2.5 18.07 2.47 18.15 2.41 18.2C2.35 18.26 2.27 18.3 2.19 18.3C2.11 18.3 2.03 18.26 1.97 18.2C1.91 18.15 1.88 18.07 1.88 17.98L1.88 17.16C1.88 17.08 1.91 17 1.97 16.94C2.03 16.88 2.11 16.85 2.19 16.85C2.27 16.85 2.35 16.88 2.41 16.94C2.47 17 2.5 17.08 2.5 17.16L2.5 17.98ZM3.48 17.16C3.48 17.08 3.52 17 3.57 16.94C3.63 16.88 3.71 16.85 3.79 16.85C3.88 16.85 3.96 16.88 4.02 16.94C4.07 17 4.11 17.08 4.11 17.16L4.11 17.98C4.11 18.07 4.07 18.15 4.02 18.2C3.96 18.26 3.88 18.3 3.79 18.3C3.71 18.3 3.63 18.26 3.57 18.2C3.52 18.15 3.48 18.07 3.48 17.98L3.48 17.16ZM3.31 17.16L3.31 17.98C3.31 18.07 3.27 18.15 3.21 18.2C3.15 18.26 3.08 18.3 2.99 18.3C2.91 18.3 2.83 18.26 2.77 18.2C2.71 18.15 2.68 18.07 2.68 17.98L2.68 17.16C2.68 17.08 2.71 17 2.77 16.94C2.83 16.88 2.91 16.85 2.99 16.85C3.08 16.85 3.15 16.88 3.21 16.94C3.27 17 3.31 17.08 3.31 17.16ZM9.3 1.25L11.06 1.25L11.06 4.13L9.3 4.13L9.3 1.25ZM14.67 17.06L17.44 17.06L17.44 17.67L14.67 17.67L14.67 17.06Z" fill="#FFFFFF" fill-opacity="0.250000" fill-rule="nonzero"></path>
-                            <path id="Vector" d="M10.49 18.75L18.56 18.75L18.56 7.11L14.67 7.11L14.67 10.13C14.67 10.21 14.64 10.29 14.58 10.35C14.52 10.41 14.44 10.44 14.36 10.44L11.97 10.44C11.89 10.44 11.81 10.41 11.75 10.35C11.69 10.29 11.66 10.21 11.66 10.13L11.66 7.11L7.77 7.11L7.77 9.68L9.78 9.68C9.97 9.68 10.15 9.76 10.29 9.89C10.42 10.03 10.5 10.21 10.5 10.4L10.5 18.66C10.5 18.69 10.49 18.72 10.49 18.74L10.49 18.75ZM14.05 16.74C14.05 16.66 14.08 16.58 14.14 16.52C14.2 16.46 14.27 16.43 14.36 16.43L17.75 16.43C17.84 16.43 17.92 16.46 17.97 16.52C18.03 16.58 18.07 16.66 18.07 16.74L18.07 17.98C18.07 18.07 18.03 18.15 17.97 18.2C17.92 18.26 17.84 18.3 17.75 18.3L14.36 18.3C14.27 18.3 14.2 18.26 14.14 18.2C14.08 18.15 14.05 18.07 14.05 17.98L14.05 16.74ZM4.77 10.31L6.53 10.31L6.53 13.01L4.77 13.01L4.77 10.31Z" fill="#FFFFFF" fill-opacity="0.250000" fill-rule="nonzero"></path>
-                            <path id="Vector" d="M3.44 1.25L3.44 9.68L7.15 9.68L7.15 6.8C7.15 6.72 7.18 6.64 7.24 6.58C7.3 6.52 7.38 6.49 7.46 6.49L16.93 6.49L16.93 1.25L11.69 1.25L11.69 4.44C11.69 4.53 11.66 4.61 11.6 4.66C11.54 4.72 11.46 4.76 11.38 4.76L8.99 4.76C8.91 4.76 8.83 4.72 8.77 4.66C8.71 4.61 8.68 4.53 8.68 4.44L8.68 1.25L3.44 1.25Z" fill="#FFFFFF" fill-opacity="0.250000" fill-rule="nonzero"></path>
-                        </g>
-                    </svg>
-                </div>
-                <div class="inputbg">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_2_21)">
-                        <path d="M13.8289 13.0042L9.84773 9.02303C10.6189 8.07047 11.0832 6.86005 11.0832 5.54174C11.0832 2.48627 8.59706 0.00012207 5.54159 0.00012207C2.48612 0.00012207 0 2.48625 0 5.54172C0 8.59719 2.48615 11.0833 5.54162 11.0833C6.85993 11.0833 8.07035 10.619 9.02291 9.84785L13.0041 13.8291C13.1179 13.9428 13.2672 14 13.4165 14C13.5659 14 13.7152 13.9428 13.829 13.8291C14.057 13.601 14.057 13.2323 13.8289 13.0042ZM5.54162 9.91667C3.12897 9.91667 1.16666 7.95437 1.16666 5.54172C1.16666 3.12906 3.12897 1.16676 5.54162 1.16676C7.95427 1.16676 9.91658 3.12906 9.91658 5.54172C9.91658 7.95437 7.95425 9.91667 5.54162 9.91667Z" fill="white" fill-opacity="0.15"></path>
-                        </g>
-                        <defs>
-                        <clipPath id="clip0_2_21">
-                        <rect width="14" height="14" fill="white"></rect>
-                        </clipPath>
-                        </defs>
-                    </svg>
-                    <input bind:value={searchText} placeholder="Поиск...">                            
-                </div>                    
-            </div>
-            <div class="itemslist" on:mouseenter={e => mainInventoryArea = true} on:mouseleave={e => mainInventoryArea = false}>
-                {#each ItemsData["other"] as item, index}
-                    {#if (!searchText || !searchText.length) || (searchText && itemsInfo[item.ItemId].Name.toLowerCase().trim().includes(searchText.toLowerCase().trim()))}
-                        <Slot2
-                            key={index}
-                            item={item}
-                            iconInfo={item ? window.getItem(item.ItemId) : null}
-                            on:mousedown={(event) => handleMouseDown(event, index, "other")}
-                            on:mouseup={handleSlotMouseUp}
-                            on:mouseenter={(event) => handleSlotMouseEnter(event, index, "other")}
-                            on:mouseleave={handleSlotMouseLeave} />
-                    {/if}
-                {/each}
-            </div>
-        </div>
-        <div class="mainright">
-            <div class="mhead">
-                <p class:active={selcetinv} on:keypress={() => {}} on:click={() => onSelectedInv (true)}>Предметы</p>
-                <p class:active={!selcetinv} on:keypress={() => {}} on:click={() => onSelectedInv (false)}>Мой инвентарь</p>
-                <span on:keypress={() => {}} on:click={() => onExit ()}>
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0.999207 0.999756L4.99921 4.99976M8.99921 8.99976L4.99921 4.99976M4.99921 4.99976L8.99921 0.999756L0.999207 8.99976" stroke="#949494" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
-                </span>
-            </div>
-            <div class="itemslist" on:mouseenter={e => mainInventoryArea = true} on:mouseleave={e => mainInventoryArea = false}>
-                {#if selcetinv}
-                    {#each ItemsData["other"] as item, index}
-                        {#if (!searchText || !searchText.length) || (searchText && itemsInfo[item.ItemId].Name.toLowerCase().trim().includes(searchText.toLowerCase().trim()))}
-                            <Slot3
-                                key={index}
-                                item={item}
-                                iconInfo={item ? window.getItem(item.ItemId) : null}
-                                {onTransfer}
-                                {selcetinv}
-                                on:mousedown={(event) => handleMouseDown(event, index, "other")}
-                                on:mouseup={handleSlotMouseUp}
-                                on:mouseenter={(event) => handleSlotMouseEnter(event, index, "other")}
-                                on:mouseleave={handleSlotMouseLeave} />
-                        {/if}
-                    {/each}
-                    {:else}
-                        {#each ItemsData["inventory"] as item, index}
-                                <Slot3
-                                    key={index}
-                                    item={item}
-                                    {onTransfer}
-                                    {selcetinv}
-                                    iconInfo={item ? window.getItem(item.ItemId) : null}
-                                    on:mousedown={(event) => handleMouseDown(event, index, "inventory")}
-                                    on:mouseup={handleSlotMouseUp}
-                                    on:mouseenter={(event) => handleSlotMouseEnter(event, index, "inventory")}
-                                    on:mouseleave={handleSlotMouseLeave} />
-                        {/each}
+    <div class="inventory-interface full-width full-height" data-v-29f6b6db>
+        
+        <!-- Click Menu (Context Menu) -->
+        {#if clickMenu.visible}
+            <div class="click-block" data-v-29f6b6db 
+                style="left: {clickMenu.x}px; top: {clickMenu.y}px; opacity: 1;">
+                
+                {#if clickMenu.buttons.wear}
+                    <div class="button" data-v-29f6b6db on:click={() => handleAction('wear')}>Надеть</div>
+                {/if}
+                
+                {#if clickMenu.buttons.putInBackpack}
+                    <div class="button" data-v-29f6b6db on:click={() => handleAction('putInBackpack')}>Положить в рюкзак</div>
+                {/if}
+                
+                {#if clickMenu.buttons.drop}
+                    <div class="button" data-v-29f6b6db on:click={() => handleAction('drop')}>Выбросить</div>
+                {/if}
+                
+                {#if clickMenu.buttons.use}
+                    <div class="button" data-v-29f6b6db on:click={() => handleAction('use')}>Использовать</div>
+                {/if}
+                
+                {#if clickMenu.buttons.split}
+                    <div class="button" data-v-29f6b6db on:click={() => handleAction('split')}>Разделить</div>
                 {/if}
             </div>
-        </div>
-    </div>
-    {:else}
-      
-            {#if tradeInfo.Active === false}
-            <div class="minvosn">
-                <div class="closedinv" on:keypress={() => {}} on:click={() => onExit ()}>
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0.999268 0.999756L4.99927 4.99976M8.99927 8.99976L4.99927 4.99976M4.99927 4.99976L8.99927 0.999756L0.999268 8.99976" stroke="#949494" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>                    
-                </div>
-                <div class="leftinv">
-                    <h1>Окружение</h1>
-                    <div class="itemlist" on:mouseenter={e => mainInventoryArea = true} on:mouseleave={e => mainInventoryArea = false}>
-                        {#each ItemsData["other"] as item, index}
-                            <Slot
-                                key={index}
-                                item={item}
-                                iconInfo={item ? window.getItem(item.ItemId) : null}
-                                on:mousedown={(event) => handleMouseDown(event, index, "other")}
-                                on:mouseup={handleSlotMouseUp}
-                                on:mouseenter={(event) => handleSlotMouseEnter(event, index, "other")}
-                                on:mouseleave={handleSlotMouseLeave} />
-                        {/each}
-                    </div>
-                    {#if maxSlotBackpack > 0 && ItemsData["backpack"].length && ItemsData["backpack"][0] !== undefined && ItemsData["backpack"][0].use !== undefined}
-                        <h1>Рюкзак</h1>
-                        <div class="itemlist max" on:mouseenter={e => mainInventoryArea = true} on:mouseleave={e => mainInventoryArea = false}>
-                            {#each ItemsData["backpack"] as item, index}
-                                <Slot
-                                    key={index}
-                                    item={item}
-                                    iconInfo={item ? window.getItem(item.ItemId) : null}
-                                    on:mousedown={(event) => handleMouseDown(event, index, "backpack")}
-                                    on:mouseup={handleSlotMouseUp}
-                                    on:mouseenter={(event) => handleSlotMouseEnter(event, index, "backpack")}
-                                    on:mouseleave={handleSlotMouseLeave} />
-                            {/each}
-                        </div>
-                    {/if}
-                </div>
-                <div class="centerinv">
-                    <h1>{selectCharData.Name}</h1>
-                    <div class="invpers">
-                        <div class="lpers" on:mouseenter={e => mainInventoryArea = true} on:mouseleave={e => mainInventoryArea = false}>
-                            <SlotAccs
-                                item={ItemsData["accessories"][clothes.Hats.slotId]}
-                                iconInfo={window.getItem (ItemsData["accessories"][clothes.Hats.slotId].ItemId)}
-                                defaultIcon={clothes.Hats.icon}
-                                defaultName={translateText('player1', 'шапка')}
-                                defaultNamei="head"
-                                on:mousedown={(event) => handleMouseDown(event, clothes.Hats.slotId, "accessories")}
-                                on:mouseup={handleSlotMouseUp}
-                                on:mouseenter={(event) => handleSlotMouseEnter(event, clothes.Hats.slotId, "accessories")}
-                                on:mouseleave={handleSlotMouseLeave} />
-                            <SlotAccs
-                                item={ItemsData["accessories"][clothes.Tops.slotId]}
-                                iconInfo={window.getItem (ItemsData["accessories"][clothes.Tops.slotId].ItemId)}
-                                defaultIcon={clothes.Tops.icon}
-                                defaultName={translateText('player1', 'верх')}
-                                defaultNamei="tops"
-                                on:mousedown={(event) => handleMouseDown(event, clothes.Tops.slotId, "accessories")}
-                                on:mouseup={handleSlotMouseUp}
-                                on:mouseenter={(event) => handleSlotMouseEnter(event, clothes.Tops.slotId, "accessories")}
-                                on:mouseleave={handleSlotMouseLeave} />
-                            <SlotAccs
-                                item={ItemsData["accessories"][clothes.Accessories.slotId]}
-                                iconInfo={window.getItem (ItemsData["accessories"][clothes.Accessories.slotId].ItemId)}
-                                defaultIcon={clothes.Accessories.icon}
-                                defaultName={translateText('player1', 'шея')}
-                                defaultNamei="decals"
-                                on:mousedown={(event) => handleMouseDown(event, clothes.Accessories.slotId, "accessories")}
-                                on:mouseup={handleSlotMouseUp}
-                                on:mouseenter={(event) => handleSlotMouseEnter(event, clothes.Accessories.slotId, "accessories")}
-                                on:mouseleave={handleSlotMouseLeave} />
-                            <SlotAccs
-                                item={ItemsData["accessories"][clothes.Legs.slotId]}
-                                iconInfo={window.getItem (ItemsData["accessories"][clothes.Legs.slotId].ItemId)}
-                                defaultIcon={clothes.Legs.icon}
-                                defaultName={translateText('player1', 'штаны')}
-                                defaultNamei="legs"
-                                on:mousedown={(event) => handleMouseDown(event, clothes.Legs.slotId, "accessories")}
-                                on:mouseup={handleSlotMouseUp}
-                                on:mouseenter={(event) => handleSlotMouseEnter(event, clothes.Legs.slotId, "accessories")}
-                                on:mouseleave={handleSlotMouseLeave} />
-                            <SlotAccs
-                                item={ItemsData["accessories"][clothes.Watches.slotId]}
-                                iconInfo={window.getItem (ItemsData["accessories"][clothes.Watches.slotId].ItemId)}
-                                defaultIcon={clothes.Watches.icon}
-                                defaultName={translateText('player1', 'часы')}
-                                defaultNamei="watches"
-                                on:mousedown={(event) => handleMouseDown(event, clothes.Watches.slotId, "accessories")}
-                                on:mouseup={handleSlotMouseUp}
-                                on:mouseenter={(event) => handleSlotMouseEnter(event, clothes.Watches.slotId, "accessories")}
-                                on:mouseleave={handleSlotMouseLeave} />
-                        </div>
-                        <div class="cpers">
-                            <img src="https://cdn.majestic-files.com/public/master/static/img/inventory/male.png" alt="">
-                            <div class="listitem" on:mouseenter={e => mainInventoryArea = true} on:mouseleave={e => mainInventoryArea = false}>
-                                <SlotAccs
-                                    item={ItemsData["accessories"][clothes.Masks.slotId]}
-                                    iconInfo={window.getItem (ItemsData["accessories"][clothes.Masks.slotId].ItemId)}
-                                    defaultIcon={clothes.Masks.icon}
-                                    defaultName={translateText('player1', 'маска')}
-                                    defaultNamei="masks"
-                                    on:mousedown={(event) => handleMouseDown(event, clothes.Masks.slotId, "accessories")}
-                                    on:mouseup={handleSlotMouseUp}
-                                    on:mouseenter={(event) => handleSlotMouseEnter(event, clothes.Masks.slotId, "accessories")}
-                                    on:mouseleave={handleSlotMouseLeave} />
-                                <SlotAccs
-                                    item={ItemsData["accessories"][clothes.Ears.slotId]}
-                                    iconInfo={window.getItem (ItemsData["accessories"][clothes.Ears.slotId].ItemId)}
-                                    defaultIcon={clothes.Ears.icon}
-                                    defaultName={translateText('player1', 'уши')}
-                                    defaultNamei="ears"
-                                    on:mousedown={(event) => handleMouseDown(event, clothes.Ears.slotId, "accessories")}
-                                    on:mouseup={handleSlotMouseUp}
-                                    on:mouseenter={(event) => handleSlotMouseEnter(event, clothes.Ears.slotId, "accessories")}
-                                    on:mouseleave={handleSlotMouseLeave} />
-                                <SlotAccs
-                                    item={ItemsData["accessories"][clothes.Bracelets.slotId]}
-                                    iconInfo={window.getItem (ItemsData["accessories"][clothes.Bracelets.slotId].ItemId)}
-                                    defaultIcon={clothes.Bracelets.icon}
-                                    defaultName={translateText('player1', 'браслет')}
-                                    defaultNamei="bracelets"
-                                    on:mousedown={(event) => handleMouseDown(event, clothes.Bracelets.slotId, "accessories")}
-                                    on:mouseup={handleSlotMouseUp}
-                                    on:mouseenter={(event) => handleSlotMouseEnter(event, clothes.Bracelets.slotId, "accessories")}
-                                    on:mouseleave={handleSlotMouseLeave} /> 
-                            </div>
-                        </div>
-                        <div class="rpers" on:mouseenter={e => mainInventoryArea = true} on:mouseleave={e => mainInventoryArea = false}>
-                            <SlotAccs
-                                item={ItemsData["accessories"][clothes.Glasses.slotId]}
-                                iconInfo={window.getItem (ItemsData["accessories"][clothes.Glasses.slotId].ItemId)}
-                                defaultIcon={clothes.Glasses.icon}
-                                defaultName={translateText('player1', 'очки')}
-                                defaultNamei="glasses"
-                                on:mousedown={(event) => handleMouseDown(event, clothes.Glasses.slotId, "accessories")}
-                                on:mouseup={handleSlotMouseUp}
-                                on:mouseenter={(event) => handleSlotMouseEnter(event, clothes.Glasses.slotId, "accessories")}
-                                on:mouseleave={handleSlotMouseLeave} />
-                            <SlotAccs
-                                item={ItemsData["accessories"][clothes.Undershirts.slotId]}
-                                iconInfo={window.getItem (ItemsData["accessories"][clothes.Undershirts.slotId].ItemId)}                               
-                                defaultIcon={clothes.Undershirts.icon}
-                                defaultName={translateText('player1', 'футболка')}
-                                defaultNamei="undershirts"
-                                on:mousedown={(event) => handleMouseDown(event, clothes.Undershirts.slotId, "accessories")}
-                                on:mouseup={handleSlotMouseUp}
-                                on:mouseenter={(event) => handleSlotMouseEnter(event, clothes.Undershirts.slotId, "accessories")}
-                                on:mouseleave={handleSlotMouseLeave} />
-                            <SlotAccs
-                                item={ItemsData["accessories"][clothes.Shoes.slotId]}
-                                iconInfo={window.getItem (ItemsData["accessories"][clothes.Shoes.slotId].ItemId)}
-                                defaultIcon={clothes.Shoes.icon}
-                                defaultName={translateText('player1', 'обувь')}
-                                defaultNamei="shoes"
-                                on:mousedown={(event) => handleMouseDown(event, clothes.Shoes.slotId, "accessories")}
-                                on:mouseup={handleSlotMouseUp}
-                                on:mouseenter={(event) => handleSlotMouseEnter(event, clothes.Shoes.slotId, "accessories")}
-                                on:mouseleave={handleSlotMouseLeave} />
-                            <SlotAccs
-                                item={ItemsData["accessories"][clothes.Torsos.slotId]}
-                                iconInfo={window.getItem (ItemsData["accessories"][clothes.Torsos.slotId].ItemId)}
-                                defaultIcon={"inv-item-hand-right"}
-                                defaultName={translateText('player1', 'перчатки')}
-                                defaultNamei="gloves"
-                                on:mousedown={(event) => handleMouseDown(event, clothes.Torsos.slotId, "accessories")}
-                                on:mouseup={handleSlotMouseUp}
-                                on:mouseenter={(event) => handleSlotMouseEnter(event, clothes.Torsos.slotId, "accessories")}
-                                on:mouseleave={handleSlotMouseLeave} />
-                            <SlotAccs
-                                item={ItemsData["accessories"][clothes.Suit.slotId]}
-                                iconInfo={window.getItem (ItemsData["accessories"][clothes.Suit.slotId].ItemId)}
-                                defaultIcon={clothes.Suit.icon}
-                                defaultName={translateText('player1', 'украшения')}
-                                defaultNamei="accessories"
-                                on:mousedown={(event) => handleMouseDown(event, clothes.Suit.slotId, "accessories")}
-                                on:mouseup={handleSlotMouseUp}
-                                on:mouseenter={(event) => handleSlotMouseEnter(event, clothes.Suit.slotId, "accessories")}
-                                on:mouseleave={handleSlotMouseLeave} />
-                        </div>
-                    </div>
-                    <div class="hud" on:mouseenter={e => mainInventoryArea = true} on:mouseleave={e => mainInventoryArea = false}>
+        {/if}
 
-                        {#if opened}
-                        <div class="indicator">
-                            <img src="http://cdn.piecerp.ru/cloud/icons/water.svg" alt="water" />
-                            <div class="bar">
-                                <div class="fill2" style="width: {water}%"></div>
-                            </div>
-                            <span>{water}</span>
+        <!-- Hover Block -->
+        {#if (infoItem !== defaulHoverItem && selectItem.use !== stageItem.move)}
+            <div class="hover-block" data-v-29f6b6db 
+                style="opacity: 1; left: {fixOutToX(cursorX + 20)}px; top: {fixOutToY(cursorY)}px;">
+                <div class="hover-block-body column-block" data-v-29f6b6db>
+                    <div class="title" data-v-29f6b6db>
+                        <div data-v-29f6b6db>{@html getName(infoItem, infoItem.arrayName)}</div>
+                        <div class="hover-block-body__text-description" data-v-29f6b6db>
+                            {itemsInfo[infoItem.ItemId].Description}
                         </div>
-                        <div class="indicator">
-                            <img src="http://cdn.piecerp.ru/cloud/icons/hunger.svg" alt="hunger" />
-                            <div class="bar">
-                                <div class="fill3" style="width: {eat}%"></div>
-                            </div>
-                            <span>{eat}</span>
+                    </div>
+                    <div class="row-block full-width align-center justify-between" data-v-29f6b6db>
+                        <div class="weight row-block align-center" data-v-29f6b6db>
+                            <span class="weight__value" data-v-29f6b6db>{infoItem.Count || 1}</span>
+                            <span class="weight__icon" data-v-29f6b6db>шт</span>
                         </div>
-                        <div class="indicator">
-                            <img src="http://cdn.piecerp.ru/cloud/icons/health.svg" alt="HP" />
-                            <div class="bar">
-                                <div class="fill" style="width: {hp}%"></div>
-                            </div>
-                            <span>{hp}</span>
-                        </div>
-                        
-                       
-                        {/if}
-                  
-                    </div>
-                    
-                    <div class="dopslots" on:mouseenter={e => mainInventoryArea = true} on:mouseleave={e => mainInventoryArea = false}>
-                        
-                        <SlotAccs
-                            item={ItemsData["accessories"][clothes.Armors.slotId]}
-                            iconInfo={window.getItem (ItemsData["accessories"][clothes.Armors.slotId].ItemId)}
-                            defaultIcon={clothes.Armors.icon}
-                            defaultName={translateText('player1', 'бронежилет')}
-                            defaultNamei="armour"
-                            on:mousedown={(event) => handleMouseDown(event, clothes.Armors.slotId, "accessories")}
-                            on:mouseup={handleSlotMouseUp}
-                            on:mouseenter={(event) => handleSlotMouseEnter(event, clothes.Armors.slotId, "accessories")}
-                            on:mouseleave={handleSlotMouseLeave} />
-                        <SlotAccs
-                            item={ItemsData["accessories"][clothes.Bags.slotId]}
-                            iconInfo={window.getItem (ItemsData["accessories"][clothes.Bags.slotId].ItemId)}
-                            defaultIcon={clothes.Bags.icon}
-                            defaultName={translateText('player1', 'рюкзак')}
-                            defaultNamei="bags"
-                            on:mousedown={(event) => handleMouseDown(event, clothes.Bags.slotId, "accessories")}
-                            on:mouseup={handleSlotMouseUp}
-                            on:mouseenter={(event) => handleSlotMouseEnter(event, clothes.Bags.slotId, "accessories")}
-                            on:mouseleave={handleSlotMouseLeave} />
-                    </div>
-                    <div class="fastslot" on:mouseenter={e => mainInventoryArea = true} on:mouseleave={e => mainInventoryArea = false}>
-                        {#each ItemsData["fastSlots"] as item, index}
-                            <Slot4 
-                                key={index}
-                                index={fastSlots [index]}
-                                item={item}
-                                iconInfo={item ? window.getItem(item.ItemId) : null}
-                                defaultStyle="smoll"
-                                on:mousedown={(event) => handleMouseDown(event, index, "fastSlots")}
-                                on:mouseup={handleSlotMouseUp}
-                                on:mouseenter={(event) => handleSlotMouseEnter(event, index, "fastSlots")}
-                                on:mouseleave={handleSlotMouseLeave} />
-                        {/each}
-                    </div>
-                </div>
-                <div class="rightinv">
-                    <h1>Инвентарь</h1>
-                    <div class="itemlist" on:mouseenter={e => mainInventoryArea = true} on:mouseleave={e => mainInventoryArea = false}>
-                        {#each ItemsData["inventory"] as item, index}
-                            <Slot
-                                key={index}
-                                item={item}
-                                iconInfo={item ? window.getItem(item.ItemId) : null}
-                                on:mousedown={(event) => handleMouseDown(event, index, "inventory")}
-                                on:mouseup={handleSlotMouseUp}
-                                on:mouseenter={(event) => handleSlotMouseEnter(event, index, "inventory")}
-                                on:mouseleave={handleSlotMouseLeave} />
-                        {/each}
                     </div>
                 </div>
             </div>
-        {:else}
-        <div class="minvtrade">
-            <div class="closedinv" on:keypress={() => {}} on:click={() => onExit ()}>
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0.999268 0.999756L4.99927 4.99976M8.99927 8.99976L4.99927 4.99976M4.99927 4.99976L8.99927 0.999756L0.999268 8.99976" stroke="#949494" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>                    
-            </div>
-            <div class="leftinv">
-                <div class="lihead">
-                    <h1>{tradeInfo.WithName}</h1>
-                    {#if tradeInfo.WithMoney > 0}
-                        <p>Доплата вам:<b>{tradeInfo.WithMoney}$</b></p>
-                    {/if}
-                </div>
-                <div class="itemlist" on:mouseenter={e => mainInventoryArea = true} on:mouseleave={e => mainInventoryArea = false}>
-                    {#if tradeInfo.WithStatus}
-                        <div class="activetrade"></div>
-                    {/if}
-                    {#each ItemsData["with_trade"] as item, index}
-                        <Slot
-                            key={index}
-                            item={item}
-                            iconInfo={item ? window.getItem(item.ItemId) : null}
-                            on:mouseenter={(event) => handleSlotMouseEnter(event, index, "with_trade")}
-                            on:mouseleave={handleSlotMouseLeave} />
-                    {/each}
-                </div>
-                <div class="btntrade" class:active={tradeInfo.WithStatus}>
-                    {#if tradeInfo.WithStatus}
-                        <p>Готов к обмену</p>
-                        {:else}
-                        <p>Ожидание</p>
-                    {/if}
+        {/if}
+
+        <!-- Drag & Drop Handler -->
+        {#if (selectItem.use === stageItem.move)}
+    <div class="handler" data-v-29f6b6db 
+        style="width: {handler.width}px; 
+               height: {handler.height}px; 
+               left: {$coords.x - handler.offsetX}px; 
+               top: {$coords.y - handler.offsetY}px;">
+        <div class="handler_static" data-v-29f6b6db>
+            <div class="picture-handler" data-v-29f6b6db 
+                style="width: {handler.width}px; 
+                       height: {handler.height}px;">
+                
+                <!-- ✅ КАРТИНКА С ПОВОРОТОМ -->
+                <div class="picture-handler__picture" data-v-29f6b6db
+                    style="background-image: url({getPng(selectItem, window.getItem(selectItem.ItemId))});
+                           {selectItem.isTurn ? 'transform: rotate(90deg);' : ''}">
                 </div>
             </div>
-            <div class="centerinv">
-                <h1>Предметы для обмена</h1>
-                <div class="itemlist" on:mouseenter={e => mainInventoryArea = true} on:mouseleave={e => mainInventoryArea = false}>
-                    {#if tradeInfo.YourStatus}
-                        <div class="activetrade"></div>
-                    {/if}
-                    {#each ItemsData["trade"] as item, index}
-                        <Slot
-                            key={index}
-                            item={item}
-                            iconInfo={item ? window.getItem(item.ItemId) : null}
-                            on:mousedown={(event) => handleMouseDown(event, index, "trade")}
-                            on:mouseup={handleSlotMouseUp}
-                            on:mouseenter={(event) => handleSlotMouseEnter(event, index, "trade")}
-                            on:mouseleave={handleSlotMouseLeave} />
-                    {/each}
                 </div>
-                <input type="number" bind:value={tradeInfo.YourMoney} class="input" on:input={(event) => handleInputChange ("YourMoney", event.target.value)} onBlur={onBlur} placeholder="Введите сумму доплаты" disabled={!(!tradeInfo.YourStatusChange && !tradeInfo.YourStatus)}>
-                <div class="checktrade">
-                    <div class="yestrade" class:active={tradeInfo.YourStatus} on:keypress={() => {}} on:click={TradeSelect}>
-                        <svg width="38" height="33" viewBox="0 0 38 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g filter="url(#filter0_d_1_2123)">
-                            <path d="M27.5818 10.4181C27.0248 9.86045 26.1205 9.8608 25.5628 10.4181L16.4762 19.5051L12.4375 15.4665C11.8799 14.9089 10.9759 14.9089 10.4182 15.4665C9.86058 16.0242 9.86058 16.9282 10.4182 17.4858L15.4663 22.5339C15.745 22.8125 16.1104 22.9522 16.4758 22.9522C16.8412 22.9522 17.2069 22.8129 17.4856 22.5339L27.5818 12.4374C28.1394 11.8801 28.1394 10.9757 27.5818 10.4181Z" fill="white"></path>
-                            </g>
-                            <defs>
-                            <filter id="filter0_d_1_2123" x="0" y="0" width="38" height="32.9521" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
-                            <feOffset></feOffset>
-                            <feGaussianBlur stdDeviation="5"></feGaussianBlur>
-                            <feComposite in2="hardAlpha" operator="out"></feComposite>
-                            <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.25 0"></feColorMatrix>
-                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_2123"></feBlend>
-                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_2123" result="shape"></feBlend>
-                            </filter>
-                            </defs>
-                        </svg>                                                       
-                    </div>
-                    <p>Подтвердите ваши действия</p>
-                </div>
-                {#if tradeInfo.YourStatus}
-                    {#if tradeInfo.YourStatusChange === true && tradeInfo.WithStatus === true}
-                        <div class="btntrade" class:active={tradeInfo.YourStatusChange}>
-                            <p>Готов к обмену</p>
+            </div>
+        {/if}
+
+        <!-- Main Inventory -->
+       
+    <div class="main-inventory full-width full-height" data-v-29f6b6db>
+        <div class="inventory row-block align-center" data-v-29f6b6db>
+            <div style="position: fixed; top: 10px; right: 10px; background: rgba(0,0,0,0.8); color: white; padding: 15px; z-index: 9999; font-size: 12px;">
+        <h3>DEBUG INFO</h3>
+        <p>InventoryWeight: {inventoryWeight}</p>
+        <p>MaxInventoryWeight: {maxInventoryWeight}</p>
+        <p>BackpackWeight: {backpackWeight}</p>
+        <p>MaxBackpackWeight: {maxBackpackWeight}</p>
+        <hr>
+        <p>charData.InventoryWeight: {$charData?.InventoryWeight}</p>
+        <p>charData.MaxInventoryWeight: {$charData?.MaxInventoryWeight}</p>
+    </div>
+            <!-- ========================================= -->
+            <!-- LEFT COLUMN: ОКРУЖЕНИЕ + РЮКЗАК -->
+            <!-- ========================================= -->
+            <div class="column-block" data-v-29f6b6db>
+                
+                <!-- ОКРУЖЕНИЕ (19 линий x 5 слотов = 95 слотов) -->
+                <div class="inventory-col environment column-block {maxSlotBackpack > 0 ? 'environment-with-backpack' : ''}" data-v-29f6b6db>
+                    <div class="border-block full-width full-height" data-v-29f6b6db></div>
+                    <div class="general-title align-center justify-between" data-v-29f6b6db>
+                        <span data-v-29f6b6db>Окружение</span>
+                        <div class="row-block align-center" data-v-29f6b6db>
+                            <img data-v-29f6b6db src="https://cdn.majestic-files.com/public/master/static/img/inventory/accepted.png" alt="">
                         </div>
-                        {:else}
-                        <div class="btntrade" on:keypress={() => {}} on:click={TradeSelect}>
-                            <p>Потдвердить обмен</p>
-                        </div>
-                    {/if}
-                    {:else}
-                    <div class="btntrade" on:keypress={() => {}} on:click={TradeCancel}>
-                        <p>Отменить</p>
                     </div>
-                {/if}
-            </div>
-            <div class="rightinv">
-                <h1>Инвентарь</h1>
-                <div class="itemlist" on:mouseenter={e => mainInventoryArea = true} on:mouseleave={e => mainInventoryArea = false}>
-                    {#each ItemsData["inventory"] as item, index}
-                        <Slot
-                            key={index}
-                            item={item}
-                            iconInfo={item ? window.getItem(item.ItemId) : null}
-                            on:mousedown={(event) => handleMouseDown(event, index, "inventory")}
-                            on:mouseup={handleSlotMouseUp}
-                            on:mouseenter={(event) => handleSlotMouseEnter(event, index, "inventory")}
-                            on:mouseleave={handleSlotMouseLeave} />
-                    {/each}
-                </div>
-                {#if maxSlotBackpack > 0 && ItemsData["backpack"].length && ItemsData["backpack"][0] !== undefined && ItemsData["backpack"][0].use !== undefined}
-                    <h1>Рюкзак</h1>
-                    <div class="itemlist" on:mouseenter={e => mainInventoryArea = true} on:mouseleave={e => mainInventoryArea = false}>
-                        {#each ItemsData["backpack"] as item, index}
-                            <Slot
-                                key={index}
-                                item={item}
-                                iconInfo={item ? window.getItem(item.ItemId) : null}
-                                on:mousedown={(event) => handleMouseDown(event, index, "backpack")}
-                                on:mouseup={handleSlotMouseUp}
-                                on:mouseenter={(event) => handleSlotMouseEnter(event, index, "backpack")}
-                                on:mouseleave={handleSlotMouseLeave} />
+                    <div class="scrollable-wrapper" data-v-29f6b6db id="vs-7-0" 
+                         on:mouseenter={e => mainInventoryArea = true} 
+                         on:mouseleave={e => mainInventoryArea = false}>
+                        <div class="scroll-up" data-v-29f6b6db></div>
+                        <div class="scroll-down" data-v-29f6b6db></div>
+                        <div class="container full-width" data-v-29f6b6db>
+                            <div class="inv-block" data-v-29f6b6db>
+                                {#each Array(19) as _, lineIndex}
+                                    <div class="line" data-v-29f6b6db>
+                                        {#each Array(5) as _, slotIndex}
+                                            {@const index = lineIndex * 5 + slotIndex}
+                                            {@const item = ItemsData["other"][index]}
+                                            
+                                            <div class="slot" data-v-29f6b6db
+                                                track-by="$index"
+                                                data-position="7" 
+                                                data-id="0" 
+                                                data-x={slotIndex} 
+                                                data-y={lineIndex}
+                                                on:mousedown={(event) => handleMouseDown(event, index, "other")}
+                                                on:mouseup={handleSlotMouseUp}
+                                                on:mouseenter={(event) => handleSlotMouseEnter(event, index, "other")}
+                                                on:mouseleave={handleSlotMouseLeave}>
+                                                
+                                                <!-- ✅ FILL - ПРЕДМЕТ -->
+                                                {#if item && item.ItemId != 0}
+                                                    <div class="fill active" data-v-29f6b6db
+                                                         style="{getItemSize(item)}">
+                                                         
+                                                        <div class="item-properties row-block" data-v-29f6b6db>
+                                                            {#if item.fraction}
+                                                                <img src="{cdn}/img/inventory/job.png" alt="" class="fraction-icon" />
+                                                            {:else if item.gender != null}
+                                                                <img src="{cdn}/img/inventory/{item.gender ? 'female' : 'male'}.svg" alt="" class="fraction-icon" />
+                                                            {/if}
+                                                        </div>
+
+                                                        <div class="picture-handler" data-v-29f6b6db
+                                                             style="{getItemSize(item, true)}">
+                                                            <div class="picture-handler__picture" data-v-29f6b6db
+                                                                data-picture="true"
+                                                                style="background-image: url({getPng(item, itemsInfo[item.ItemId])})">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        {#if item.Count > 1}
+                                                            <div class="amount" data-v-29f6b6db>{item.Count}</div>
+                                                        {/if}
+                                                        
+                                                        <div class="fill-border" data-v-29f6b6db></div>
+                                                    </div>
+                                                {/if}
+                                                
+                                                <!-- ✅ HIGHLIGHT И BORDER - ВСЕГДА -->
+                                                <div class="highlight" data-v-29f6b6db></div>
+                                                <div class="border" data-v-29f6b6db></div>
+                                            </div>
+                                        {/each}
+                                    </div>
                                 {/each}
                             </div>
-                        {/if}
+                        </div>
                     </div>
                 </div>
+
+                <!-- РЮКЗАК (6 линий x 5 слотов = 30 слотов) -->
+                {#if maxSlotBackpack > 0 && ItemsData["backpack"].length}
+                    <div class="inventory-col backpack" data-v-29f6b6db>
+                        <div class="general-title row-block align-center justify-between" data-v-29f6b6db style="padding-top: 0px;">
+                            <div class="row-block full-width align-center" data-v-29f6b6db>
+                                <span data-v-29f6b6db>Рюкзак</span>
+                            
+                            <div class="weight row-block align-center" data-v-29f6b6db>
+        <span data-v-29f6b6db class="weight__text-current" style="color: {backpackColor}">
+            {backpackWeight.toFixed(1)}
+        </span>
+        <span data-v-29f6b6db class="weight__text-max align-center">
+            &nbsp;/ {maxBackpackWeight} <span data-v-29f6b6db class="kg">kg</span>
+        </span>
+    </div></div>
+                            <div data-v-29f6b6db=""><div data-v-29f6b6db="" class="take-off align-center"><!----><span data-v-29f6b6db="" class="take-off__title">Снять</span></div></div>
+                        </div>
+                        <div class="scrollable-wrapper" data-v-29f6b6db id="vs-18" 
+                             on:mouseenter={e => mainInventoryArea = true} 
+                             on:mouseleave={e => mainInventoryArea = false}>
+                            <div class="scroll-up" data-v-29f6b6db></div>
+                            <div class="scroll-down" data-v-29f6b6db></div>
+                            <div class="container full-width" data-v-29f6b6db>
+                                <div class="inv-block" data-v-29f6b6db>
+                                    {#each Array(6) as _, lineIndex}
+                                        <div class="line" data-v-29f6b6db>
+                                            {#each Array(5) as _, slotIndex}
+                                                {@const index = lineIndex * 5 + slotIndex}
+                                                {@const item = ItemsData["backpack"][index]}
+                                                
+                                                <div class="slot" data-v-29f6b6db
+                                                    track-by="$index"
+                                                    data-position="18" 
+                                                    data-id="132" 
+                                                    data-x={slotIndex} 
+                                                    data-y={lineIndex}
+                                                    on:mousedown={(event) => handleMouseDown(event, index, "backpack")}
+                                                    on:mouseup={handleSlotMouseUp}
+                                                    on:mouseenter={(event) => handleSlotMouseEnter(event, index, "backpack")}
+                                                    on:mouseleave={handleSlotMouseLeave}>
+                                                    
+                                                    <!-- ✅ FILL - ПРЕДМЕТ -->
+                                                    {#if item && item.ItemId != 0}
+                                                        <div class="fill active" data-v-29f6b6db
+                                                             style="{getItemSize(item)}">
+                                                             
+                                                            <div class="item-properties row-block" data-v-29f6b6db>
+                                                                {#if item.fraction}
+                                                                    <img src="{cdn}/img/inventory/job.png" alt="" class="fraction-icon" />
+                                                                {:else if item.gender != null}
+                                                                    <img src="{cdn}/img/inventory/{item.gender ? 'female' : 'male'}.svg" alt="" class="fraction-icon" />
+                                                                {/if}
+                                                            </div>
+
+                                                            <div class="picture-handler" data-v-29f6b6db
+                                                                 style="{getItemSize(item, true)}">
+                                                                <div class="picture-handler__picture" data-v-29f6b6db
+                                                                    data-picture="true"
+                                                                    style="background-image: url({getPng(item, itemsInfo[item.ItemId])})">
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            {#if item.Count > 1}
+                                                                <div class="amount" data-v-29f6b6db>{item.Count}</div>
+                                                            {/if}
+                                                            
+                                                            <div class="fill-border" data-v-29f6b6db></div>
+                                                        </div>
+                                                    {/if}
+                                                    
+                                                    <div class="highlight" data-v-29f6b6db></div>
+                                                    <div class="border" data-v-29f6b6db></div>
+                                                </div>
+                                            {/each}
+                                        </div>
+                                    {/each}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 {/if}
+            </div>
+
+            <!-- ========================================= -->
+            <!-- CENTER COLUMN: ПЕРСОНАЖ -->
+            <!-- ========================================= -->
+            <div class="inventory-col character full-height" data-v-29f6b6db>
+                <div class="name full-width" data-v-29f6b6db>{selectCharData.Name}</div>
+                
+                <div class="player-data column-block" data-v-29f6b6db>
+                    <div class="row-block full-width justify-between" data-v-29f6b6db>
+                        <!-- Left Clothes -->
+                        <!-- Left Clothes -->
+<div class="objects column-block" data-v-29f6b6db>
+    {#each [
+        {type: "head", slotId: clothes.Hats.slotId},
+        {type: "tops", slotId: clothes.Tops.slotId},
+        {type: "decals", slotId: clothes.Accessories.slotId},
+        {type: "legs", slotId: clothes.Legs.slotId}
+    ] as cloth}
+        {@const hasItem = ItemsData["accessories"][cloth.slotId] && ItemsData["accessories"][cloth.slotId].ItemId != 0}
+        
+        <div class="cloth" data-v-29f6b6db
+            track-by="$index"
+            data-position="9" 
+            data-tag={cloth.type}
+            style="{hasItem ? '' : `background-image: url('https://cdn.majestic-files.com/public/master/static/img/inventory/clothes/v2/${cloth.type}.svg');`}"
+            on:mousedown={(event) => handleMouseDown(event, cloth.slotId, "accessories")}
+            on:mouseup={handleSlotMouseUp}
+            on:mouseenter={(event) => handleSlotMouseEnter(event, cloth.slotId, "accessories")}
+            on:mouseleave={handleSlotMouseLeave}>
+            
+            {#if hasItem}
+                <div class="picture-handler" data-v-29f6b6db>
+                    <div class="picture-handler__picture" data-v-29f6b6db
+                        style="background-image: url({getPng(ItemsData['accessories'][cloth.slotId], itemsInfo[ItemsData['accessories'][cloth.slotId].ItemId])})">
+                    </div>
+                </div>
             {/if}
+            
+            <div class="highlight" data-v-29f6b6db></div>
+            <div class="border" data-v-29f6b6db></div>
+        </div>
+    {/each}
+</div>
+
+<!-- Gender Image -->
+<div class="gender" data-v-29f6b6db>
+    <img data-v-29f6b6db
+        class="full-width full-height" 
+        src="https://cdn.majestic-files.com/public/master/static/img/inventory/{$charGender ? 'female' : 'male'}.png" 
+        alt="">
+</div>
+
+<!-- Right Clothes -->
+<div class="objects column-block" data-v-29f6b6db>
+    {#each [
+        {type: "glasses", slotId: clothes.Glasses.slotId},
+        {type: "undershirts", slotId: clothes.Undershirts.slotId},
+        {type: "shoes", slotId: clothes.Shoes.slotId},
+        {type: "gloves", slotId: clothes.Torsos.slotId}
+    ] as cloth}
+        {@const hasItem = ItemsData["accessories"][cloth.slotId] && ItemsData["accessories"][cloth.slotId].ItemId != 0}
+        
+        <div class="cloth" data-v-29f6b6db
+            track-by="$index"
+            data-position="9" 
+            data-tag={cloth.type}
+            style="{hasItem ? '' : `background-image: url('https://cdn.majestic-files.com/public/master/static/img/inventory/clothes/v2/${cloth.type}.svg');`}"
+            on:mousedown={(event) => handleMouseDown(event, cloth.slotId, "accessories")}
+            on:mouseup={handleSlotMouseUp}
+            on:mouseenter={(event) => handleSlotMouseEnter(event, cloth.slotId, "accessories")}
+            on:mouseleave={handleSlotMouseLeave}>
+            
+            {#if hasItem}
+                <div class="picture-handler" data-v-29f6b6db>
+                    <div class="picture-handler__picture" data-v-29f6b6db
+                        style="background-image: url({getPng(ItemsData['accessories'][cloth.slotId], itemsInfo[ItemsData['accessories'][cloth.slotId].ItemId])})">
+                    </div>
+                </div>
+            {/if}
+            
+            <div class="highlight" data-v-29f6b6db></div>
+            <div class="border" data-v-29f6b6db></div>
+        </div>
+    {/each}
+</div>
+                    </div>
+
+                    <!-- Bottom Accessories -->
+                    <div class="objects bottom row-block" data-v-29f6b6db>
+    {#each [
+        {type: "watches", slotId: clothes.Watches.slotId},
+        {type: "masks", slotId: clothes.Masks.slotId},
+        {type: "ears", slotId: clothes.Ears.slotId},
+        {type: "bracelets", slotId: clothes.Bracelets.slotId},
+        {type: "accessories", slotId: clothes.Suit.slotId}
+    ] as cloth}
+        {@const hasItem = ItemsData["accessories"][cloth.slotId] && ItemsData["accessories"][cloth.slotId].ItemId != 0}
+        
+        <div class="slot cloth" data-v-29f6b6db
+            track-by="$index"
+            data-position="9" 
+            data-tag={cloth.type}
+            style="{hasItem ? '' : `background-image: url('https://cdn.majestic-files.com/public/master/static/img/inventory/clothes/v2/${cloth.type}.svg');`}"
+            on:mousedown={(event) => handleMouseDown(event, cloth.slotId, "accessories")}
+            on:mouseup={handleSlotMouseUp}
+            on:mouseenter={(event) => handleSlotMouseEnter(event, cloth.slotId, "accessories")}
+            on:mouseleave={handleSlotMouseLeave}>
+            
+            {#if hasItem}
+                <div class="picture-handler" data-v-29f6b6db>
+                    <div class="picture-handler__picture" data-v-29f6b6db
+                        style="background-image: url({getPng(ItemsData['accessories'][cloth.slotId], itemsInfo[ItemsData['accessories'][cloth.slotId].ItemId])})">
+                    </div>
+                </div>
+            {/if}
+            
+            <div class="highlight" data-v-29f6b6db></div>
+            <div class="border" data-v-29f6b6db></div>
+        </div>
+    {/each}
+</div>
+
+                    <!-- Indicators -->
+                    <div class="indicators column-block" data-v-29f6b6db>
+                        <div class="state-block align-center hunger" data-v-29f6b6db>
+                            <img data-v-29f6b6db class="state-block__picture" src="https://cdn.majestic-files.com/public/master/static/img/inventory/indicators/v2/hunger.svg" alt="">
+                            <progress data-v-29f6b6db class="state-block__progress" max="100" min="0" value={eat}></progress>
+                            <div class="state-block__value" data-v-29f6b6db>{eat}</div>
+                        </div>
+                        <div class="state-block align-center water" data-v-29f6b6db>
+                            <img data-v-29f6b6db class="state-block__picture" src="https://cdn.majestic-files.com/public/master/static/img/inventory/indicators/v2/water.svg" alt="">
+                            <progress data-v-29f6b6db class="state-block__progress" max="100" min="0" value={water}></progress>
+                            <div class="state-block__value" data-v-29f6b6db>{water}</div>
+                        </div>
+                        <div class="state-block align-center health" data-v-29f6b6db>
+                            <img data-v-29f6b6db class="state-block__picture" src="https://cdn.majestic-files.com/public/master/static/img/inventory/indicators/v2/health.svg" alt="">
+                            <progress data-v-29f6b6db class="state-block__progress" max="100" min="0" value={hp}></progress>
+                            <div class="state-block__value" data-v-29f6b6db>{hp}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weapon Slot -->
+                <div class="weapon" data-v-29f6b6db>
+                    <div class="slot cloth" data-v-29f6b6db data-position="19">
+                        <div class="empty-item full-width full-height column-block" data-v-29f6b6db>
+                            <img data-v-29f6b6db class="empty-item__picture" src="https://cdn.majestic-files.com/public/master/static/img/inventory/empty/weapon.svg" alt="">
+                            <span data-v-29f6b6db class="empty-item__title">Активные предметы</span>
+                        </div>
+                        <div class="highlight" data-v-29f6b6db></div>
+                        <div class="border" data-v-29f6b6db></div>
+                    </div>
+                </div>
+
+                <!-- Armor & Bag -->
+                <div class="wear-items row-block full-width justify-between" data-v-29f6b6db>
+                    <div class="wear-item" data-v-29f6b6db>
+                        <div class="slot cloth" data-v-29f6b6db data-position="9" data-tag="armor">
+                            <div class="empty-item full-width full-height column-block" data-v-29f6b6db>
+                                <img data-v-29f6b6db class="empty-item__picture" src="https://cdn.majestic-files.com/public/master/static/img/inventory/empty/armour.svg" alt="">
+                                <span data-v-29f6b6db class="empty-item__title">Бронежилет</span>
+                            </div>
+                            <div class="highlight" data-v-29f6b6db></div>
+                            <div class="border" data-v-29f6b6db></div>
+                        </div>
+                    </div>
+                    <div class="wear-item" data-v-29f6b6db>
+                        <div class="slot cloth" data-v-29f6b6db data-position="9" data-tag="bags">
+                            <div class="empty-item full-width full-height column-block" data-v-29f6b6db>
+                                <img data-v-29f6b6db class="empty-item__picture" src="https://cdn.majestic-files.com/public/master/static/img/inventory/empty/backpack.svg" alt="">
+                                <span data-v-29f6b6db class="empty-item__title">Рюкзак</span>
+                            </div>
+                            <div class="highlight" data-v-29f6b6db></div>
+                            <div class="border" data-v-29f6b6db></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fast Slots -->
+                <div class="fast-slots row-block justify-between" data-v-29f6b6db>
+                    {#each ItemsData["fastSlots"] as item, index}
+                        <div class="fast-slot" data-v-29f6b6db
+                            track-by="$index"
+                            data-position="20"
+                            on:mousedown={(event) => handleMouseDown(event, index, "fastSlots")}
+                            on:mouseup={handleSlotMouseUp}
+                            on:mouseenter={(event) => handleSlotMouseEnter(event, index, "fastSlots")}
+                            on:mouseleave={handleSlotMouseLeave}>
+                            
+                            {#if item && item.ItemId != 0}
+                                <div class="picture-handler" data-v-29f6b6db
+                                     >
+                                    <div class="picture-handler__picture" data-v-29f6b6db
+                                        style="background-image: url({getPng(item, itemsInfo[item.ItemId])})">
+                                    </div>
+                                </div>
+                            {/if}
+                            
+                            <div class="fast-slot__text-index" data-v-29f6b6db>{index + 1}</div>
+                            <div class="border" data-v-29f6b6db></div>
+                        </div>
+                    {/each}
+                </div>
+            </div>
+
+            <!-- ========================================= -->
+            <!-- RIGHT COLUMN: ИНВЕНТАРЬ -->
+            <!-- ========================================= -->
+            <div class="inventory-col" data-v-29f6b6db>
+                <div class="general-title row-block align-center justify-between" data-v-29f6b6db>
+                    <span data-v-29f6b6db>Инвентарь</span>
+                    <div class="row-block align-center" data-v-29f6b6db>
+                        <div class="weight row-block align-center" data-v-29f6b6db>
+            <span data-v-29f6b6db class="weight__text-current" style="color: {inventoryColor}">
+                {inventoryWeight.toFixed(1)}
+            </span>
+            <span data-v-29f6b6db class="weight__text-max align-center">
+                &nbsp;/ {maxInventoryWeight} <span data-v-29f6b6db class="kg">kg</span>
+            </span>
+        </div>
+        <div class="close-block flex-block" data-v-29f6b6db on:click={onExit}></div>
+    </div>
+                </div>
+                
+                <div class="scrollable-wrapper" data-v-29f6b6db id="vs-1" 
+                     on:mouseenter={e => mainInventoryArea = true} 
+                     on:mouseleave={e => mainInventoryArea = false}>
+                    <div class="scroll-up" data-v-29f6b6db></div>
+                    <div class="scroll-down" data-v-29f6b6db></div>
+                    <div class="container full-width" data-v-29f6b6db>
+                        <div class="inv-block" data-v-29f6b6db>
+                            {#each Array(17) as _, lineIndex}
+                                <div class="line" data-v-29f6b6db>
+                                    {#each Array(5) as _, slotIndex}
+                                        {@const index = lineIndex * 5 + slotIndex}
+                                        {@const item = ItemsData["inventory"][index]}
+                                        
+                                        <div class="slot" data-v-29f6b6db
+                                            track-by="$index"
+                                            data-position="1" 
+                                            data-x={slotIndex} 
+                                            data-y={lineIndex}
+                                            on:mousedown={(event) => handleMouseDown(event, index, "inventory")}
+                                            on:mouseup={handleSlotMouseUp}
+                                            on:click={(event) => handleSlotClick(event, index, "inventory")}
+                                            on:mouseenter={(event) => handleSlotMouseEnter(event, index, "inventory")}
+                                            on:mouseleave={handleSlotMouseLeave}>
+                                            
+                                            <!-- ✅ FILL - ПРЕДМЕТ -->
+                                            {#if item && item.ItemId != 0}
+                                                <div class="fill active" data-v-29f6b6db
+                                                     style="{getItemSize(item)}">
+                                                     
+                                                    <div class="item-properties row-block" data-v-29f6b6db>
+                                                        {#if item.fraction}
+                                                            <img src="{cdn}/img/inventory/job.png" alt="" class="fraction-icon" />
+                                                        {:else if item.gender != null}
+                                                            <img src="{cdn}/img/inventory/{item.gender ? 'female' : 'male'}.svg" alt="" class="fraction-icon" />
+                                                        {/if}
+                                                    </div>
+
+                                                    <div class="picture-handler" data-v-29f6b6db
+                                                         style="{getItemSize(item, true)}">
+                                                        <div class="picture-handler__picture" data-v-29f6b6db
+                                                            data-picture="true"
+                                                            style="background-image: url({getPng(item, itemsInfo[item.ItemId])})">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    {#if item.Count > 1}
+                                                        <div class="amount" data-v-29f6b6db>{item.Count}</div>
+                                                    {/if}
+                                                    
+                                                    <div class="fill-border" data-v-29f6b6db></div>
+                                                </div>
+                                            {/if}
+                                            
+                                            <!-- ✅ HIGHLIGHT И BORDER - ВСЕГДА -->
+                                            <div class="highlight" data-v-29f6b6db></div>
+                                            <div class="border" data-v-29f6b6db></div>
+                                        </div>
+                                    {/each}
+                                </div>
+                            {/each}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-</div>
-</div>
 
+    </div>
     {/if}
-
