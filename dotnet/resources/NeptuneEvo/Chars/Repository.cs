@@ -1,4 +1,4 @@
-﻿using GTANetworkAPI;
+using GTANetworkAPI;
 using NeptuneEvo.Handles;
 using Redage.SDK;
 using System;
@@ -3981,13 +3981,38 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
 
                             ItemsData[locationName][Location][i] = new InventoryItemData(Item.SqlId, Item.ItemId, Item.Count, Item.Data, i);
                             ItemsData[locationName][Location][i].Price = Item.Price;
-                            ItemsData[locationName][Location][i].IsTurn = Item.IsTurn; // ✅ СОХРАНЯЕМ ПОВОРОТ
+                            ItemsData[locationName][Location][i].IsTurn = Item.IsTurn;
+
+                            // ✅ ДОБАВЛЕНО: Создаём заглушки для предметов больше 1x1
+                            if (itemWidth > 1 || itemHeight > 1)
+                            {
+                                for (int y = 0; y < itemHeight; y++)
+                                {
+                                    for (int x = 0; x < itemWidth; x++)
+                                    {
+                                        if (x == 0 && y == 0) continue;
+
+                                        int placeholderIndex = (startY + y) * maxCols + (startX + x);
+
+                                        if (!ItemsData[locationName][Location].ContainsKey(placeholderIndex))
+                                        {
+                                            ItemsData[locationName][Location][placeholderIndex] = new InventoryItemData(
+                                                SqlId: -1,
+                                                ItemId: ItemId.Debug,
+                                                Count: 0,
+                                                Data: $"placeholder_{i}",
+                                                Index: placeholderIndex
+                                            );
+                                        }
+                                    }
+                                }
+                            }
 
                             UpdateSqlItemData(locationName, Location, i, ItemsData[locationName][Location][i]);
                             UpdatePlayerItemData(player, locationName, Location, i, ItemsData[locationName][Location][i]);
                             ItemsOtherUpdate(player, locationName, Location, i, ItemsData[locationName][Location][i]);
 
-                            // ✅ Обновляем вес после добавления
+                            // ✅ Обновляем вес
                             if (player.IsCharacterData())
                             {
                                 var characterData = player.GetCharacterData();
@@ -4136,6 +4161,32 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                             {
                                 AddSqlItem(player, locationName, Location, ItemId, i, count, ItemData, price);
                                 count = 0;
+                            }
+
+                            // ✅ ДОБАВЛЕНО: Создаём заглушки для предметов больше 1x1
+                            if (itemWidth > 1 || itemHeight > 1)
+                            {
+                                for (int y = 0; y < itemHeight; y++)
+                                {
+                                    for (int x = 0; x < itemWidth; x++)
+                                    {
+                                        if (x == 0 && y == 0) continue; // Пропускаем основной слот
+
+                                        int placeholderIndex = (startY + y) * maxCols + (startX + x);
+
+                                        if (!ItemsData[locationName][Location].ContainsKey(placeholderIndex))
+                                        {
+                                            // Создаём пустую заглушку
+                                            ItemsData[locationName][Location][placeholderIndex] = new InventoryItemData(
+                                                SqlId: -1,
+                                                ItemId: ItemId.Debug,
+                                                Count: 0,
+                                                Data: $"placeholder_{i}", // Ссылка на основной слот
+                                                Index: placeholderIndex
+                                            );
+                                        }
+                                    }
+                                }
                             }
 
                             // ✅ Обновляем вес после добавления
@@ -5010,10 +5061,50 @@ public static IReadOnlyDictionary<ClothesComponent, ItemId> ClothesComponentToIt
                     InventoryItemData itemLog = item;
                     string textLog = "положил на склад";
 
+                    // ✅ ДОБАВЛЕНО: Удаление заглушек при удалении предмета
                     if (item.ItemId == ItemId.Debug && ItemsData[locationName][Location].ContainsKey(SlotId))
                     {
                         textLog = "взял со склада";
                         itemLog = ItemsData[locationName][Location][SlotId];
+
+                        var removedItem = ItemsData[locationName][Location][SlotId];
+
+                        if (ItemsInfo.ContainsKey(removedItem.ItemId))
+                        {
+                            var itemInfo = ItemsInfo[removedItem.ItemId];
+                            if (itemInfo.Width > 1 || itemInfo.Height > 1)
+                            {
+                                int maxCols = Location switch
+                                {
+                                    "inventory" => 6,
+                                    "backpack" => 6,
+                                    "other" => 6,
+                                    _ => 5
+                                };
+
+                                int startX = SlotId % maxCols;
+                                int startY = SlotId / maxCols;
+
+                                for (int y = 0; y < itemInfo.Height; y++)
+                                {
+                                    for (int x = 0; x < itemInfo.Width; x++)
+                                    {
+                                        if (x == 0 && y == 0) continue;
+
+                                        int placeholderIndex = (startY + y) * maxCols + (startX + x);
+
+                                        if (ItemsData[locationName][Location].ContainsKey(placeholderIndex))
+                                        {
+                                            var placeholder = ItemsData[locationName][Location][placeholderIndex];
+                                            if (placeholder.ItemId == ItemId.Debug && placeholder.Data == $"placeholder_{SlotId}")
+                                            {
+                                                ItemsData[locationName][Location].TryRemove(placeholderIndex, out _);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
 
                     item.Index = SlotId;
